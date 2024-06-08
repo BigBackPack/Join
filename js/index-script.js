@@ -1,3 +1,3 @@
 function init() {
-    alert("All Fine!");
+    console.log("All Fine!");
 }
