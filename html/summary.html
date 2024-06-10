@@ -3,111 +3,128 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Task Dashboard</title>
     <link rel="shortcut icon" href="#" type="image/x-icon" />
+
+    <!-- css links -->
     <link rel="stylesheet" href="../css/summary.css" />
     <link rel="stylesheet" href="../css/global-style.css" />
-  </head>
-  <body>
-    <header id="header">
-      <div>HEADER</div>
-    </header>
-    <section id="sidebar"></section>
-    <main>
-      <div id="content">
-        <section id="title">
-          <h1>Join 360</h1>
-          <span id="vert-line"></span>
-          <h3>Key Metrics at a Glance</h3>
-        </section>
-        <div id="dashboard">
-          <section id="login-overview">
-            <div id="overview-line-ctr">
-              <div
-                id="todo-container"
-                class="icon-tile-details tile-row tile-color tile-details"
-              >
-                <img
-                  class="icon"
-                  src="../img/pen_circle_icon.svg"
-                  alt="pencil - icon"
-                />
-                <div>
-                  <p class="font-tiles" id="amount-todo">1</p>
-                  <span id="category-todo">To-do</span>
-                </div>
-              </div>
-
-              <div
-                id="done-container"
-                class="icon-tile-details tile-row tile-color tile-details"
-              >
-                <img
-                  src="../img/checkmark_circle_icon.svg"
-                  alt="check - icon"
-                />
-                <div>
-                  <p class="font-tiles" id="amount-done">1</p>
-                  <span id="category-done">Done</span>
-                </div>
-              </div>
-            </div>
-            <div id="">
-              <div
-                id="urgent-container"
-                class="icon-tile-details tile-color tile-details"
-              >
-                <div id="urgent-left-container">
-                  <img
-                    id="urgent-icon"
-                    src="../img/prio_urgent_icon.svg"
-                    alt="urgent task - icon"
-                  />
-                  <div>
-                    <p class="font-tiles" id="overview-urgent-amount">1</p>
-                    <span id="overview-urgent-txt">Urgent</span>
-                  </div>
-                </div>
-
-                <span id="overview-urgent-vertical"></span>
-
-                <div>
-                  <p class="font-date" id="overview-urgent-date">ACUAL DATE</p>
-                  <span id="urgent-subline" id="overview-urgent-title"
-                    >Upcoming Deadline</span
-                  >
-                </div>
-              </div>
-            </div>
-            <div id="overview-line-ctr">
-              <div
-                class="urgent-gap flex-column icon-tile-details tile-row tile-color tile-details"
-              >
-                <p class="font-tiles" id="task-on-board">5</p>
-                <span class="title-third-row">Tasks in Board</span>
-              </div>
-              <div
-                class="flex-column icon-tile-details tile-row tile-color tile-details"
-              >
-                <p class="font-tiles" id="task-in-progress">2</p>
-                <span class="title-third-row">Tasks in Progress</span>
-              </div>
-              <div
-                class="flex-column icon-tile-details tile-row tile-color tile-details"
-              >
-                <p class="font-tiles" id="task-feedback">2</p>
-                <span class="title-third-row">Awaiting Feedback</span>
-              </div>
-            </div>
-          </section>
-          <section id="greeting-container">
-            <h4 id="greeting-user">Good Morning,</h4>
-            <p class="icon-tile-details" id="user-name">&lt;USER&gt;</p>
-          </section>
-        </div>
-      </div>
-    </main>
-    <footer></footer>
+    
+    <!-- js links -->
+    <script src="../js/template-loader.js"></script>
     <script src="../js/summary.js"></script>
+
+    <title>JOIN Summary</title>
+  </head>
+
+
+  <body onload="includeHTML()">
+    <div class="main-content-container">
+      <div class="left-content-container">
+        <!-- nav bar template -->
+          <div w3-include-html="templates/nav-bar-template.html"></div>
+      </div>
+
+      <div class="right-content-container">
+        <!-- status bar template -->
+          <div w3-include-html="templates/status-bar-template.html"></div>
+
+          <div class="individual-content-conatiner">
+
+              <div id="content">
+                <section id="title">
+                  <h1>Join 360</h1>
+                  <span id="vert-line"></span>
+                  <h3>Key Metrics at a Glance</h3>
+                </section>
+                <div id="dashboard">
+                  <section id="login-overview">
+                    <div id="overview-line-ctr">
+                      <div
+                        id="todo-container"
+                        class="icon-tile-details tile-row tile-color tile-details"
+                      >
+                        <img
+                          class="icon"
+                          src="../img/pen_circle_icon.svg"
+                          alt="pencil - icon"
+                        />
+                        <div>
+                          <p class="font-tiles" id="amount-todo">1</p>
+                          <span id="category-todo">To-do</span>
+                        </div>
+                      </div>
+        
+                      <div
+                        id="done-container"
+                        class="icon-tile-details tile-row tile-color tile-details"
+                      >
+                        <img
+                          src="../img/checkmark_circle_icon.svg"
+                          alt="check - icon"
+                        />
+                        <div>
+                          <p class="font-tiles" id="amount-done">1</p>
+                          <span id="category-done">Done</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="">
+                      <div
+                        id="urgent-container"
+                        class="icon-tile-details tile-color tile-details"
+                      >
+                        <div id="urgent-left-container">
+                          <img
+                            id="urgent-icon"
+                            src="../img/prio_urgent_icon.svg"
+                            alt="urgent task - icon"
+                          />
+                          <div>
+                            <p class="font-tiles" id="overview-urgent-amount">1</p>
+                            <span id="overview-urgent-txt">Urgent</span>
+                          </div>
+                        </div>
+        
+                        <span id="overview-urgent-vertical"></span>
+        
+                        <div>
+                          <p class="font-date" id="overview-urgent-date">ACUAL DATE</p>
+                          <span id="urgent-subline" id="overview-urgent-title"
+                            >Upcoming Deadline</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div id="overview-line-ctr">
+                      <div
+                        class="urgent-gap flex-column icon-tile-details tile-row tile-color tile-details"
+                      >
+                        <p class="font-tiles" id="task-on-board">5</p>
+                        <span class="title-third-row">Tasks in Board</span>
+                      </div>
+                      <div
+                        class="flex-column icon-tile-details tile-row tile-color tile-details"
+                      >
+                        <p class="font-tiles" id="task-in-progress">2</p>
+                        <span class="title-third-row">Tasks in Progress</span>
+                      </div>
+                      <div
+                        class="flex-column icon-tile-details tile-row tile-color tile-details"
+                      >
+                        <p class="font-tiles" id="task-feedback">2</p>
+                        <span class="title-third-row">Awaiting Feedback</span>
+                      </div>
+                    </div>
+                  </section>
+                  <section id="greeting-container">
+                    <h4 id="greeting-user">Good Morning,</h4>
+                    <p class="icon-tile-details" id="user-name">&lt;USER&gt;</p>
+                  </section>
+                </div>
+              </div>
+          
+            </div>
+      </div>
+    </div>
   </body>
 </html>
