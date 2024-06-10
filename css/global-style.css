@@ -17,22 +17,61 @@ h1{
     font-size: 1.4rem;
 }
 
+h2{
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+h3{
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+h4{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
 .main-content-container{
     width: 100%;
-    /* height: 100vh; */
     display: flex;
     justify-content: left;
 }
 
 .left-content-container{
     width: 15%;
+    position: -webkit-sticky;
+    position: fixed;
+    top: 0;
 }
 
 .right-content-container{
     width: 85%;
+    margin-left: 15%;
 }
 
-/* #region nav -------------------------------------*/   
+
+/* #region sub pages text content ------------------*/   
+.text-container{
+    padding: 120px 64px;
+}
+
+.listed-text-container{
+    display: flex;
+    align-items: start;
+}
+
+.number-container{
+    text-align: left;
+}
+
+.number-container h3{
+    padding-right: 64px;
+}
+/* #endregion sub pages text content*/
+
+
+/* #region nav bar --------------------------------*/   
 .nav-bar-container{
     height: 100vh;
     background-color: var(--mainColor);
