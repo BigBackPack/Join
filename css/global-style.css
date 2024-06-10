@@ -1,3 +1,146 @@
-body {
+:root {
+    --mainColor: #2A3647;
+    --mainColorHover: #4f6481;
+    --mainColorSelect: #091931;
+}
+
+body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    font-weight: normal;
+    font-size: 1.4rem;
+}
+
+.main-content-container{
+    width: 100%;
+    /* height: 100vh; */
+    display: flex;
+    justify-content: left;
+}
+
+.left-content-container{
+    width: 20%;
+}
+
+.right-content-container{
+    width: 80%;
+}
+
+/* #region nav -------------------------------------*/   
+.nav-bar-container{
+    height: 100vh;
+    background-color: var(--mainColor);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.join-logo{
+    padding: 120px 0 120px 0;
+}
+
+.nav-link{
+    all: unset;
+    color: inherit;
+    width: 100%;
+}
+
+.menu-entry{
+    display: flex;
+    justify-content: left;
+    cursor: pointer;
+    background-color: var(--mainColor);
+    width: 100%;
+    padding: 24px 0;
+}
+
+.menu-entry:hover{
+    opacity: 100%;
+    background-color: var(--mainColorHover);
+}
+
+.menu-entry img{
+    padding-left: 25%;
+    padding-right: 12px;
+}
+
+.summary{
+    background-color: var(--mainColor);
+    color: white;
+    opacity: 50%;
+}
+
+.add-task{
+    background-color: var(--mainColor);
+    color: white;
+    opacity: 50%;
+}
+
+.board{
+    background-color: var(--mainColor);
+    color: white;
+    opacity: 50%;
+}
+
+.contacts{
+    background-color: var(--mainColor);
+    color: white;
+    opacity: 50%;
+}
+
+.legal-links-container{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 120px 0;
+
+}
+
+.legal-links-container a{
+    color: white;
+    opacity: 50%;
+    text-decoration: none;
+    padding: 12px 0;
+}
+
+.legal-links-container a:hover{opacity: 100%;}
+/* #endregion nav*/
+
+
+/* #region status-bar ------------------------------*/
+.status-bar-container{
+    background-color: white;
+    box-shadow: 0 6px 4px #0000001e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 64px;
+}
+
+.profile-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100px;
+}
+
+.provile-icon{
+    font-weight: bold;
+    border: 2px solid var(--mainColor);
+    border-radius: 100%;
+    padding: 8px;
+}
+/* #endregion status-bar*/
+
+
+.individual-content-conatiner{
+    /* width: 100vw;
+    height: 100vh; */
+    background-color: tomato;
 }

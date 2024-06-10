@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- css links -->
+    <link rel="stylesheet" href="../../css/global-style.css">
+
+    <!-- js links -->
+    <script src="../js/template-loader.js"></script>
+
+    <title>JOIN Board</title>
+</head>
+
+
+<body onload="includeHTML()">
+    <div class="main-content-container">
+        <div class="left-content-container">
+            <div w3-include-html="templates/nav-bar-template.html"></div>
+        </div>
+
+        <div class="right-content-container">
+            <div w3-include-html="templates/status-bar-template.html"></div>
+            <div class="individual-content-conatiner"></div>
+        </div>
+    </div>
+</body>
+</html>
+
