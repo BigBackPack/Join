@@ -6,9 +6,16 @@
   src: local(''), url('../fonts/Inter-VariableFont_slnt,wght.tff');
 }
 
+:root {
+  --blue: #29abe2;
+  --white: #ffffff;
+  --black: #2a3647;
+  --light-grey: #f6f7f8;
+}
+
 body {
   margin: 0;
-  background-color: #f6f7f8;
+  background-color: var(--light-grey);
   font-family: 'Inter';
 }
 
@@ -26,13 +33,13 @@ h1 {
 h3 {
   font-weight: 400;
   font-size: 27px;
-  color: #2a3647;
+  color: var(--black);
 }
 
 h4 {
   font-weight: 500;
   font-size: 47px;
-  color: #2a3647;
+  color: var(--black);
 }
 
 p {
@@ -48,7 +55,7 @@ p {
 /* LINES */
 
 #vert-line {
-  border-right: 3px solid #29abe2;
+  border-right: 3px solid var(--blue);
   height: 59px;
 }
 
@@ -58,14 +65,14 @@ p {
 }
 
 #overview-urgent-vertical {
-  border-right: 2px solid #d1d1d1;
+  border-right: 2px solid var(--light-grey);
   height: 102.02px;
 }
 
 /* COLOR */
 
 .tile-color {
-  background-color: #ffffff;
+  background-color: var(--white);
 }
 
 /* ICONS */
@@ -84,7 +91,6 @@ p {
 #header {
   width: 80%;
   height: 8%;
-  border: violet 1px solid;
   position: absolute;
   top: 0;
   right: 74px;
@@ -95,7 +101,6 @@ p {
 #sidebar {
   height: 100vh;
   width: 15%;
-  border: thistle 1px solid;
 }
 
 /* MAIN */
@@ -115,7 +120,6 @@ p {
 }
 
 #content {
-  border: tomato 1px solid;
   display: flex;
   position: absolute;
   top: 8%;
@@ -150,7 +154,7 @@ p {
 
 /* USER GREETING*/
 #user-name {
-  color: #29abe2;
+  color: var(--blue);
   font-weight: 700;
   font-size: 64px;
 }
@@ -178,7 +182,7 @@ p {
   transition: all ease-in 225ms;
   &:hover {
     background-color: gray;
-    color: white;
+    color: var(--white);
     scale: 1.1;
   }
 }
@@ -197,6 +201,14 @@ p {
   gap: 10px;
 }
 
+#urgent-icon {
+  /* color: #FF3D00; */
+  width: 60px;
+  height: 60px;
+  background-color: tan;
+  border-radius: 50%;
+}
+
 .third-row {
   width: 264px;
   height: 88px;
@@ -205,7 +217,7 @@ p {
 .third-row,
 .tile-row:hover {
   background-color: gray;
-  color: white;
+  color: var(--white);
   scale: 1.1;
 }
 
