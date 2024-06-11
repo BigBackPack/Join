@@ -1,0 +1,25 @@
+.contacts-container{
+    display: flex;
+    margin: 120px 64px;
+
+}
+
+.contacts-content-left{
+    width: 50%;
+    background-color: tomato;
+}
+
+.contacts-content-right{
+    margin: 64px;
+}
+
+.contacts-title-container{
+    display: flex;
+    align-items: center;
+}
+
+.contact-slogan{
+    margin-left: 24px;
+    padding-left:24px;
+    border-left: 2px solid var(--secondaryColor);
+}

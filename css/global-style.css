@@ -4,12 +4,15 @@
     --mainColorSelect: #091931;
 
     --secondaryColor: #29ABE2;
+
+    --bgColor: #F6F7F8;
 }
 
 body{
     font-family: 'Inter', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: var(--bgColor);
 }
 
 h1{
@@ -49,6 +52,32 @@ h4{
     width: 85%;
     margin-left: 15%;
 }
+
+
+/* #region global buttons ------------------------*/ 
+.primary-button {
+    border: 0;
+    background-color: var(--mainColor);
+    color: white;
+    border-radius: 8px;
+    padding: 12px 21px 12px 21px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+.secondary-button {
+    border: 1px solid var(--mainColor);
+    color: var(--mainColor);
+    background-color: white;
+    border-radius: 8px;
+    padding: 12px 21px 12px 21px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* #endregion global buttons*/
 
 
 /* #region sub pages text content ------------------*/   
