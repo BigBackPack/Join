@@ -6,6 +6,10 @@
     --secondaryColor: #29ABE2;
 
     --bgColor: #F6F7F8;
+    --borderColor: #D1D1D1;
+
+    --white: #ffffff;
+    --black: #000000;
 }
 
 body{

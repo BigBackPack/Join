@@ -1,0 +1,131 @@
+/* GENERAL */
+@font-face {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  src: local(''), url('../fonts/Inter-VariableFont_slnt,wght.tff');
+}
+
+@font-face {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  src: local(''), url('../fonts/Inter-VariableFont_slnt,wght.tff');
+}
+
+@font-face {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  src: local(''), url('../fonts/Inter-VariableFont_slnt,wght.tff');
+}
+
+@font-face {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  src: local(''), url('../fonts/Inter-VariableFont_slnt,wght.tff');
+}
+
+:root {
+  --blue: #29abe2;
+  --white: #ffffff;
+  --black: #2a3647;
+  --light-grey: #f6f7f8;
+  --grey: #a8a8a8;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background-color: var(--light-grey);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* CONTENT */
+
+#board-header {
+  width: 1208px;
+  height: 232px;
+  position: relative;
+  top: 6px;
+  left: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#board {
+  position: absolute;
+  top: 336px;
+  left: 285px;
+  padding: 0 64px 0 64px;
+  gap: 26px;
+  width: 1208px;
+  height: 688px;
+}
+
+#task-admin {
+  width: 555px;
+  height: 48px;
+  display: flex;
+  gap: 32px;
+}
+
+#search-task {
+  border-radius: 10px;
+  width: 312px;
+  height: 48px;
+  border: 1px solid var(--grey);
+  gap: 10px;
+  font-size: 24px;
+  margin-right: 24px;
+  padding-left: 10px;
+}
+
+#search-right-container {
+  display: flex;
+  gap: 16px;
+  position: absolute;
+  top: 102px;
+  right: 367px;
+}
+
+#vert-line {
+  border-right: 1px solid #d1d1d1;
+  height: 31px;
+}
+
+#search-icon {
+  width: 32px;
+  height: 32px;
+}
+
+#plus-icon {
+  width: 18.67px;
+  height: 18.67px;
+  color: var(--white);
+}
+
+#add-task-btn {
+  background-color: var(--black);
+  color: var(--white);
+  width: 160px;
+  height: 48px;
+  border-radius: 10px;
+  border: 1px solid var(--black);
+  padding: 8px 16px 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  cursor: pointer;
+  font-size: large;
+  font-weight: bold;
+  &:hover {
+    background-color: var(--blue);
+  }
+}
