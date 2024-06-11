@@ -29,7 +29,7 @@ a{
     justify-content: space-between;
     width: 100vw;
     height: 100vh;
-    background-color: #F6F7F8;
+    background-color: var(--bgColor);
 }
 
 .signup-header{
@@ -54,14 +54,14 @@ a{
 
 .signup-header-signup a{
     text-decoration: none;
-    color: #2A3647;
+    color: var(--mainColor);
     cursor: pointer;
 }
 
 .signup-button{
     border: 0;
-    background-color: #2A3647;
-    color: white;
+    background-color: var(--mainColor);
+    color: var(--white);
     border-radius: 8px;
     height: 48px;
     padding: 12px 21px 12px 21px;
@@ -72,7 +72,7 @@ a{
 
 
 .signup-card {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--white);
     padding: 48px 115px 48px 115px;
     border-radius: 30px;
     display: flex;
@@ -86,7 +86,7 @@ a{
     font-weight: bold;
     padding-bottom: 15px;
     margin-bottom: 30px;
-    border-bottom: 3px solid #29ABE2;
+    border-bottom: 3px solid var(--secondaryColor);
 }
 
 .signup-card-input{
@@ -99,7 +99,7 @@ a{
     width: 400px;
     height: 28px;
     border-radius: 10px;
-    border: 1px solid #D1D1D1;
+    border: 1px solid var(--borderColor);
     padding: 12px 21px 12px 21px;
     padding-right: 50px; 
 }
@@ -127,7 +127,7 @@ a{
     justify-content: center;
     gap: 5px;
     padding-top: 25px;
-    color: #A8A8A8;
+    color: var(--borderColor);
 }
 
 .signup-card-button{
@@ -139,8 +139,8 @@ a{
 
 .signup-button {
     border: 0;
-    background-color: #2A3647;
-    color: white;
+    background-color: var(--mainColor);
+    color: var(--white);
     border-radius: 8px;
     padding: 12px 21px 12px 21px;
     font-size: 16px;
@@ -150,9 +150,9 @@ a{
 }
 
 .guest-button {
-    border: 1px solid #2A3647;
-    color: #2A3647;
-    background-color: white;
+    border: 1px solid var(--mainColor);
+    color: var(--mainColor);
+    background-color: var(--white);
     border-radius: 8px;
     padding: 12px 21px 12px 21px;
     font-size: 16px;
@@ -169,7 +169,7 @@ a{
 
 .signup-footer a{
     text-decoration: none;
-    color: #A8A8A8;
+    color: var(--borderColor);
     font-size: 14px;
     cursor: pointer;
 }

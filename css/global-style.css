@@ -6,6 +6,10 @@
     --secondaryColor: #29ABE2;
 
     --bgColor: #F6F7F8;
+    --borderColor: #D1D1D1;
+
+    --white: #ffffff;
+    --black: #000000;
 }
 
 body{
@@ -33,6 +37,11 @@ h3{
 h4{
     font-weight: bold;
     font-size: 1.5rem;
+}
+
+a{
+    text-decoration: none;
+    color: var(--secondaryColor);
 }
 
 .main-content-container{
@@ -64,7 +73,19 @@ h4{
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.primary-button img{
+    margin-left: 14px;
+    width: 24px;
+    height: auto;
+}
+
+.primary-button:hover{
+    background-color: var(--mainColorHover);
 }
 
 .secondary-button {
@@ -199,6 +220,7 @@ h4{
     padding: 0 64px;
     position: fixed;
     width: 80%;
+    height: 64px;
 }
 
 .profile-container{
