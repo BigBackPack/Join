@@ -38,9 +38,23 @@
     display: block;
 }
 
-.contact-review{
+.contact-preview{
     display: flex;
-    padding: ;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    align-items: center;
+    margin-top: 14px;
+}
+
+.contact-preview:hover{
+    background-color: var(--mainColorHover);
+    color: white;
+}
+
+.aphabetical-indicator{
+    border-bottom: 2px solid var(--borderColor);
+    padding: 0 36px;
 }
 
 .sorted-contact-icon{
@@ -55,8 +69,10 @@
     font-size: 1rem;
     font-weight: bold;
     color: white;
-    margin-right: 64px;
+    margin-right: 24px;
 }
+
+.contac-name-preview{font-size: 1.5rem;}
 /* #endregion sorted contact view*/
 
 

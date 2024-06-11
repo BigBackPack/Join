@@ -1,4 +1,4 @@
-/* GENERAL */
+/* FONT */
 @font-face {
   font-family: 'Inter', sans-serif;
   font-style: normal;
@@ -27,6 +27,8 @@
   src: local(''), url('../fonts/Inter-VariableFont_slnt,wght.tff');
 }
 
+/* GENERELL */
+
 :root {
   --blue: #29abe2;
   --white: #ffffff;
@@ -46,29 +48,20 @@ html {
 }
 
 /* CONTENT */
+/* BOARD HEADER */
 
 #board-header {
   width: 1208px;
   height: 232px;
   position: relative;
-  top: 6px;
+  top: 96px;
   left: 22px;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
-#board {
-  position: absolute;
-  top: 336px;
-  left: 285px;
-  padding: 0 64px 0 64px;
-  gap: 26px;
-  width: 1208px;
-  height: 688px;
-}
-
-#task-admin {
+#search-btn-container {
   width: 555px;
   height: 48px;
   display: flex;
@@ -128,4 +121,45 @@ html {
   &:hover {
     background-color: var(--blue);
   }
+}
+
+/* BOARD */
+
+#board {
+  background-color: var(--light-grey);
+  position: absolute;
+  top: 336px;
+  left: 330px;
+  width: 1038px;
+  height: 688px;
+  display: flex;
+  flex-direction: row;
+}
+
+.column-1 {
+  background-color: yellowgreen;
+  width: 246px;
+  height: 100%;
+  margin-right: 24px;
+}
+
+.column-2,
+.column-3,
+.column-4 {
+  width: 252px;
+  height: 100%;
+}
+
+.column-2 {
+  margin-right: 16px;
+  background-color: pink;
+}
+
+.column-3 {
+  margin-right: 16px;
+  background-color: tomato;
+}
+
+.column-4 {
+  background-color: blue;
 }
