@@ -35,6 +35,11 @@ h4{
     font-size: 1.5rem;
 }
 
+a{
+    text-decoration: none;
+    color: var(--secondaryColor);
+}
+
 .main-content-container{
     width: 100%;
     display: flex;
@@ -64,7 +69,19 @@ h4{
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.primary-button img{
+    margin-left: 14px;
+    width: 24px;
+    height: auto;
+}
+
+.primary-button:hover{
+    background-color: var(--mainColorHover);
 }
 
 .secondary-button {
@@ -199,6 +216,7 @@ h4{
     padding: 0 64px;
     position: fixed;
     width: 80%;
+    height: 64px;
 }
 
 .profile-container{

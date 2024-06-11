@@ -1,12 +1,13 @@
 .contacts-container{
     display: flex;
-    margin: 120px 64px;
-
+    margin: 64px 64px 0 0;
 }
 
 .contacts-content-left{
-    width: 50%;
-    background-color: tomato;
+    width: 30%;
+    background-color: white;
+    padding: 24px;
+    height: 100vh;
 }
 
 .contacts-content-right{
@@ -22,4 +23,76 @@
     margin-left: 24px;
     padding-left:24px;
     border-left: 2px solid var(--secondaryColor);
+    height: 40px;
+    display: flex;
+    align-items: center;
 }
+
+.full-with{
+    width: 100%;
+}
+
+
+/* #region sorted contact view ---------------------*/ 
+.deatailed-contact-container{
+    display: block;
+}
+
+.contact-review{
+    display: flex;
+    padding: ;
+}
+
+.sorted-contact-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    border-radius: 100%;
+    background-color: orange;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    margin-right: 64px;
+}
+/* #endregion sorted contact view*/
+
+
+/* #region detailed contact view ---------------------*/ 
+.deatailed-contact-container{
+    display: block;
+}
+
+.flex-center{
+    display: flex;
+    align-items: center;
+}
+
+.flex-center img{margin-right: 8px;}
+.flex-center p{margin-right: 24px;}
+
+.edit-links{cursor: pointer;}
+.edit-links:hover{
+    color: var(--secondaryColor);
+    fill: var(--secondaryColor);
+}
+
+.deatailed-contact-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    border-radius: 100%;
+    background-color: orange;
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-right: 64px;
+}
+
+.contact-suptitle{padding-top: 24px;}
+/* #endregion detailed contact view*/
