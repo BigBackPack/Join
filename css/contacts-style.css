@@ -1,3 +1,5 @@
+html{ overflow: hidden;}
+
 .contacts-container{
     display: flex;
     margin: 64px 64px 0 0;
@@ -54,7 +56,9 @@
 
 .aphabetical-indicator{
     border-bottom: 2px solid var(--borderColor);
-    padding: 0 36px;
+    padding: 0 34px;
+    font-weight: normal;
+    font-size: 2rem;
 }
 
 .sorted-contact-icon{
@@ -73,6 +77,23 @@
 }
 
 .contac-name-preview{font-size: 1.5rem;}
+
+.alphabetic-sorting-container{
+    margin-top: 14px;
+    max-height: 80%;
+    overflow-y: scroll;
+    padding-right: 14px;
+}
+
+.alphabetic-sorting-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.alphabetic-sorting-container::-webkit-scrollbar-thumb {
+    background-color: var(--borderColor);
+    border-radius: 10px;
+}
+
 /* #endregion sorted contact view*/
 
 
