@@ -13,6 +13,11 @@
     <script src="../js/board-script.js" defer></script>
 
     <title>JOIN Board</title>
+    <link
+      rel="shortcut icon"
+      href="../img/join_logo_dark.svg"
+      type="image/x-icon"
+    />
   </head>
 
   <body onload="includeHTML()">
@@ -23,6 +28,7 @@
 
       <div class="right-content-container">
         <div w3-include-html="templates/status-bar-template.html"></div>
+
         <div class="individual-content-conatiner">
           <div id="board-header">
             <h2>Board</h2>
@@ -47,11 +53,80 @@
               </button>
             </div>
           </div>
-          <div id="board">
-            <div class="column-1"></div>
-            <div class="column-2"></div>
-            <div class="column-3"></div>
-            <div class="column-4"></div>
+          <section id="board-title">
+            <div class="column-name">
+              <span class="column-txt">To Do</span>
+              <button class="task-plus-btn">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    class="edit-svg-btn"
+                    d="M8.66602 11.3327H0.666016V8.66602H8.66602V0.666016H11.3327V8.66602H19.3327V11.3327H11.3327V19.3327H8.66602V11.3327Z"
+                    fill="white"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="column-name">
+              <span class="column-txt">In progress</span>
+              <button class="task-plus-btn">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    class="edit-svg-btn"
+                    d="M8.66602 11.3327H0.666016V8.66602H8.66602V0.666016H11.3327V8.66602H19.3327V11.3327H11.3327V19.3327H8.66602V11.3327Z"
+                    fill="white"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="column-name">
+              <span class="column-txt">Await feedback</span>
+              <button class="task-plus-btn">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    class="edit-svg-btn"
+                    d="M8.66602 11.3327H0.666016V8.66602H8.66602V0.666016H11.3327V8.66602H19.3327V11.3327H11.3327V19.3327H8.66602V11.3327Z"
+                    fill="white"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="column-name">
+              <span class="column-txt">Done</span>
+            </div>
+          </section>
+          <div id="board-overview">
+            <div class="column-1">
+              <div class="empty-task">
+                <span id="empty-task-txt">No task To do</span>
+              </div>
+            </div>
+            <div class="column-2">
+              <div class="board-card"></div>
+            </div>
+            <div class="column-3">
+              <div class="board-card"></div>
+            </div>
+            <div class="column-4">
+              <div class="board-card"></div>
+            </div>
           </div>
         </div>
       </div>

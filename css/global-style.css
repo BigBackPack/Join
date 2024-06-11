@@ -6,6 +6,7 @@
     --secondaryColor: #29ABE2;
 
     --bgColor: #F6F7F8;
+    --overlayBgColor: #000000e0;
     --borderColor: #D1D1D1;
 
     --white: #ffffff;
@@ -63,6 +64,24 @@ a{
 }
 
 
+/* #region global inputs ------------------------*/
+.input{
+    background-repeat: no-repeat;
+    background-position: calc(100% - 20px) center;
+    width: 400px;
+    height: 18px;
+    border-radius: 10px;
+    border: 1px solid var(--borderColor);
+    padding: 12px 21px 12px 21px;
+    padding-right: 50px;
+}
+
+.input-type-name{background-image: url(/img/person_icon.svg);}
+.input-type-mail{background-image: url(/img/mail_icon.svg);}
+.input-type-phone{background-image: url(/img/phone_icon.svg);}
+/* #endregion global inputs*/
+
+
 /* #region global buttons ------------------------*/ 
 .primary-button {
     border: 0;
@@ -85,7 +104,8 @@ a{
 }
 
 .primary-button:hover{
-    background-color: var(--mainColorHover);
+    background-color: var(--secondaryColor);
+    filter: drop-shadow(0 4px 2px #00000036);
 }
 
 .secondary-button {
@@ -97,6 +117,21 @@ a{
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.secondary-button svg{
+    margin-left: 10px;
+    width: 32px;
+    height: auto;
+}
+
+.secondary-button:hover{
+    border: 2px solid var(--secondaryColor);
+    color: var(--secondaryColor);
+    filter: drop-shadow(0 4px 2px #00000036);
 }
 /* #endregion global buttons*/
 

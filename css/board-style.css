@@ -35,6 +35,8 @@
   --black: #2a3647;
   --light-grey: #f6f7f8;
   --grey: #a8a8a8;
+  --very-light-grey: #e7e7e7;
+  --very-dark-blue: #42526e;
 }
 
 body {
@@ -124,12 +126,65 @@ html {
 }
 
 /* BOARD */
+/* column title */
 
-#board {
+#board-title {
+  display: flex;
+  position: relative;
+  top: 50.5px;
+  justify-content: space-between;
+  padding: 0 64px 0 64px;
+  width: 1208px;
+  height: 24px;
+}
+
+.column-name {
+  width: 244px;
+  height: 24px;
+  justify-content: space-between;
+}
+
+.column-txt {
+  width: 54px;
+  height: 24px;
+  color: var(--very-dark-blue);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.task-plus-btn {
+  background-color: var(--light-grey);
+  width: 27px;
+  height: 27px;
+  border-radius: 8px;
+  border: 2px solid var(--black);
+  gap: 10px;
+  padding: 3px;
+  &:hover {
+    border: 2px solid var(--blue);
+  }
+}
+
+.task-plus-icon {
+  width: 8px;
+  height: 8px;
+}
+
+.edit-svg-btn {
+  fill: var(--black);
+}
+
+.task-plus-btn:hover .edit-svg-btn {
+  fill: var(--blue);
+}
+
+/* BOARD ITSELF */
+
+#board-overview {
   background-color: var(--light-grey);
   position: absolute;
   top: 336px;
-  left: 330px;
+  left: 390px;
   width: 1038px;
   height: 688px;
   display: flex;
@@ -137,7 +192,6 @@ html {
 }
 
 .column-1 {
-  background-color: yellowgreen;
   width: 246px;
   height: 100%;
   margin-right: 24px;
@@ -152,14 +206,41 @@ html {
 
 .column-2 {
   margin-right: 16px;
-  background-color: pink;
 }
 
 .column-3 {
   margin-right: 16px;
-  background-color: tomato;
 }
 
 .column-4 {
-  background-color: blue;
+}
+
+/* CARDS */
+
+.board-card {
+  width: 212px;
+  height: 246px;
+  border-radius: 24px;
+  padding: 16px;
+  gap: 10px;
+  background-color: var(--white);
+}
+
+.empty-task {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--very-light-grey);
+  width: 246px;
+  height: 48px;
+  border-radius: 10px;
+  border: 1px solid var(--grey);
+  gap: 10px;
+}
+
+#empty-task-txt {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--grey);
+  font-family: 'Open Sans', sans-serif;
 }
