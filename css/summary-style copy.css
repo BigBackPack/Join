@@ -35,9 +35,9 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
   margin: 0;
   background-color: var(--light-grey);
+  font-family: 'Inter';
 }
 
 html {
@@ -45,24 +45,22 @@ html {
 }
 
 /* FONT */
+
 h1 {
   font-size: 61px;
   font-weight: 700;
 }
 
-h3,
-h4 {
+h3 {
+  font-weight: 400;
+  font-size: 27px;
   color: var(--black);
 }
 
-h3 {
-  font-size: 27px;
-  font-weight: 400;
-}
-
 h4 {
-  font-size: 47px;
   font-weight: 500;
+  font-size: 47px;
+  color: var(--black);
 }
 
 p {
@@ -76,6 +74,7 @@ p {
 }
 
 /* LINES */
+
 #vert-line {
   border-right: 3px solid var(--blue);
   height: 59px;
@@ -92,22 +91,24 @@ p {
 }
 
 /* COLOR */
+
 .tile-color {
   background-color: var(--white);
 }
 
 /* ICONS */
+
 .icon {
   width: 69px;
   height: 69px;
   object-fit: contain;
-}
-
-.icon:hover {
-  color: gray;
+  &:hover {
+    color: gray;
+  }
 }
 
 /* HEADER */
+
 #header {
   width: 80%;
   height: 8%;
@@ -117,20 +118,21 @@ p {
 }
 
 /* SIDEBAR */
+
 #sidebar {
   height: 100vh;
   width: 15%;
 }
 
 /* MAIN */
+
 #greeting-container {
   width: 385px;
   height: 136px;
   position: absolute;
   top: 347.5px;
   gap: 3px;
-  /* right: 90px; */
-  left: 730px;
+  right: 90px;
 }
 
 #dashboard {
@@ -153,10 +155,13 @@ p {
   padding-top: 42px;
   align-items: center;
   height: 73.2px;
+
   gap: 30px;
 }
 
 /* LOGIN OVERVIEW - DASHBOARD/SUMMARY */
+
+/* task overview - the whole frame */
 #login-overview {
   position: absolute;
   top: 215px;
@@ -165,7 +170,7 @@ p {
   height: 562px;
 }
 
-/* USER GREETING */
+/* USER GREETING*/
 #user-name {
   color: var(--blue);
   font-weight: 700;
@@ -173,27 +178,19 @@ p {
 }
 
 /* TILES OVERVIEW */
-.tile-row,
-.third-row {
+.tile-row {
   width: 264px;
   height: 88px;
 }
 
+/* ALL TILES */
 .tile-details {
   gap: 18px;
-  padding: 38px 19px;
+  padding: 38px 19px 38px 19px;
   border-radius: 22px;
   box-shadow: 0 0 4px 0 #0000001a;
   margin-bottom: 25px;
   cursor: pointer;
-}
-
-.tile-row:hover,
-.third-row:hover,
-#urgent-container:hover {
-  background-color: var(--black);
-  color: var(--white);
-  scale: 1.1;
 }
 
 #urgent-container {
@@ -201,6 +198,11 @@ p {
   height: 68px;
   gap: 75px;
   transition: all ease-in 225ms;
+  &:hover {
+    background-color: gray;
+    color: var(--white);
+    scale: 1.1;
+  }
 }
 
 #urgent-left-container {
@@ -208,8 +210,7 @@ p {
   gap: 24px;
 }
 
-#urgent-subline,
-#overview-urgent-txt {
+#urgent-subline {
   font-weight: 400;
   font-size: 16px;
 }
@@ -223,6 +224,18 @@ p {
   height: 60px;
   background-color: tan;
   border-radius: 50%;
+}
+
+.third-row {
+  width: 264px;
+  height: 88px;
+}
+
+.third-row,
+.tile-row:hover {
+  background-color: gray;
+  color: var(--white);
+  scale: 1.1;
 }
 
 .icon-tile-details {
@@ -244,5 +257,10 @@ p {
 
 .title-third-row {
   font-size: 20px;
+  font-weight: 400;
+}
+
+#overview-urgent-txt {
+  font-size: 16px;
   font-weight: 400;
 }

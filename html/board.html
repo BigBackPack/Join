@@ -1,31 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="robots" content="noindex" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- css links -->
-    <link rel="stylesheet" href="../../css/global-style.css">
+    <link rel="stylesheet" href="../css/board-style.css" />
+    <link rel="stylesheet" href="../../css/global-style.css" />
 
     <!-- js links -->
     <script src="../js/template-loader.js"></script>
+    <script src="../js/board-script.js" defer></script>
 
     <title>JOIN Board</title>
-</head>
+  </head>
 
-
-<body onload="includeHTML()">
+  <body onload="includeHTML()">
     <div class="main-content-container">
-        <div class="left-content-container">
-            <div w3-include-html="templates/nav-bar-template.html"></div>
-        </div>
+      <div class="left-content-container">
+        <div w3-include-html="templates/nav-bar-template.html"></div>
+      </div>
 
-        <div class="right-content-container">
-            <div w3-include-html="templates/status-bar-template.html"></div>
-            <div class="individual-content-conatiner"></div>
+      <div class="right-content-container">
+        <div w3-include-html="templates/status-bar-template.html"></div>
+        <div class="individual-content-conatiner">
+          <div id="board-header">
+            <h2>Board</h2>
+            <div id="task-admin">
+              <div id="search-right-container">
+                <span id="vert-line"></span>
+                <img
+                  id="search-icon"
+                  src="../img/search-icon.png"
+                  alt="a magnifying glass"
+                />
+              </div>
+
+              <input id="search-task" type="text" placeholder="Find Task ..." />
+              <button id="add-task-btn" onclick="addTask()">
+                Add Task
+                <img
+                  id="plus-icon"
+                  src="../img/plus-icon.svg"
+                  alt="plus icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div id="board"></div>
         </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
-
