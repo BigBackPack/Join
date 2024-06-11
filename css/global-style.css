@@ -85,7 +85,7 @@ a{
 }
 
 .primary-button:hover{
-    background-color: var(--mainColorHover);
+    background-color: var(--secondaryColor);
 }
 
 .secondary-button {
