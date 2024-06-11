@@ -111,10 +111,8 @@ html{ overflow: hidden;}
 .flex-center p{margin-right: 24px;}
 
 .edit-links{cursor: pointer;}
-.edit-links:hover{
-    color: var(--secondaryColor);
-    fill: var(--secondaryColor);
-}
+.edit-links:hover{color: var(--secondaryColor);}
+.edit-links:hover .svg-icon{fill: var(--secondaryColor);}
 
 .deatailed-contact-icon{
     display: flex;
@@ -133,3 +131,132 @@ html{ overflow: hidden;}
 
 .contact-suptitle{padding-top: 24px;}
 /* #endregion detailed contact view*/
+
+
+/* #region add contact overlay -----------------------*/ 
+.fullscreen-overlay{
+    position: absolute;
+    top: 0;
+    margin: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlayBgColor);
+    backdrop-filter: blur(3px);
+    z-index: 200;
+    display: none; /*flex*/
+    justify-content: center;
+    align-items: center;
+}
+
+.add-contact-form{
+    display: flex;
+    align-items: center;
+    width: 1000px;
+    height: 500px;
+    background-color: var(--bgColor);
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.close-button-container{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    margin-bottom: 84px;
+}
+
+.overlay-close-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.overlay-close-button:hover{background-color: var(--borderColor);}
+
+/* info : right side */
+.add-contact-info-container{
+    background-color: var(--mainColor);
+    width: 500px;
+    height: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding-left: 24px;
+}
+
+.add-contact-info-container img{
+    background-color: var(--mainColor);
+    width: 50px;
+    height: auto;
+    margin-bottom: 24px;
+}
+
+.add-contact-overlay-title{
+    font-size: 2.2rem;
+    line-height: 0.1rem;
+    font-weight: bolder;
+}
+
+.add-contact-overlay-slogan{
+    font-weight: lighter;
+    line-height: 0.1rem;
+}
+
+.blue-line{
+    border-top: 2px solid var(--secondaryColor);
+    width: 50px;
+}
+
+/* inputs : left side*/
+.add-input-info-container{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.persona-icon-container{
+    /* width: 300px; */
+    display: flex;
+    justify-content: center;
+}
+
+.persona-icon{
+    width: 100px;
+    height: 100px;
+    margin: 0 44px;
+}
+
+.contact-inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+    margin-right: 24px;
+}
+
+.contact-inputs input{
+    margin: 12px 0;
+}
+
+.button-container{
+    display: flex;
+    justify-content: left;
+    width: 400px;
+    margin-top: 24px;
+}
+
+.button-container button{
+    margin-right: 24px;
+}
+
+.secondary-button:hover .svg-icon{fill: var(--secondaryColor);}
+
+/* #endregion add contact overlay*/
