@@ -68,6 +68,12 @@ h4{
 .number-container h3{
     padding-right: 64px;
 }
+
+.text-header-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 /* #endregion sub pages text content*/
 
 
@@ -162,6 +168,8 @@ h4{
     justify-content: space-between;
     align-items: center;
     padding: 0 64px;
+    position: fixed;
+    width: 80%;
 }
 
 .profile-container{
