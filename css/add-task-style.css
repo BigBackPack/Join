@@ -1,0 +1,168 @@
+
+.individual-content-conatiner{
+    padding-top: 150px;
+    padding-right: 100px;
+    padding-left: 100px;
+    padding-bottom: 150px;
+   
+}
+
+
+
+
+.form-fields{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.seperator{
+    width: 1px;
+    background-color: var(--borderColor);
+}
+
+.left-form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 20px;
+}
+
+.right-form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 20px;
+}
+
+.flex-form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex;
+    gap: 10px;
+}
+
+
+
+
+
+
+.dropdown-container {
+    display: block;
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.dropbtn {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--borderColor);
+    padding: 12px 21px;
+    background-color: var(--white);
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    box-sizing: border-box;
+    text-align: left;
+    margin-top: 10px;
+    background-image: url(/img/mail_icon.svg);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 20px) center;
+    z-index: 1;
+    position: relative;
+}
+
+.dropbtn:hover {
+    border: 1px solid var(--mainColor);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 0px 0px 10px 10px;
+    overflow: hidden;
+    border: 1px solid var(--borderColor);
+    box-sizing: border-box;
+    margin-top: -10px;
+    padding-top: 10px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 21px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+
+
+
+
+
+
+.prio-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    padding-top: 10px;
+}
+
+.prio-buttons input[type="radio"] {
+    display: none;
+}
+
+.prio-buttons label {
+    padding: 10px 20px;
+    background-color: var(--white);
+    border: 1px solid var(--borderColor);
+    border-radius: 10px;
+    cursor: pointer;
+    width: 33.33%;
+    text-align: center;
+
+    
+}
+
+.prio-buttons input[type="radio"]:checked + label {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+
+.input-field-icon{
+    background-image: url(/img/mail_icon.svg);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 20px) center;
+}
+
+.input-field{
+    border-radius: 10px;
+    border: 1px solid var(--borderColor);
+    padding: 12px 21px 12px 21px;
+}
+
+
+.form-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 150px;
+}
+
+.form-buttons{
+    display: flex;
+    gap: 10px;
+}
