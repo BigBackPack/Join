@@ -219,7 +219,7 @@ html {
   display: flex;
   padding-right: 16px;
   gap: 16px;
-  top: -61px;
+  top: -149px;
 }
 
 .col-1 {
@@ -227,7 +227,11 @@ html {
 }
 
 .col-2 {
-  margin-left: -6px;
+  margin-left: -4px;
+}
+
+.col-3 {
+  margin-left: -9px;
 }
 
 /* CARDS */
@@ -258,6 +262,10 @@ html {
   font-weight: 400;
   color: var(--grey);
   font-family: 'Open Sans', sans-serif;
+}
+
+.small-card {
+  height: 219px;
 }
 
 /* CARD ITSELF/CONTENT */
