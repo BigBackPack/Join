@@ -1,6 +1,5 @@
 
 
-// filter dropdown funktion
 function filterDropdown() {
     let input = document.getElementById("dropdown");
     let filter = input.value.toLowerCase();
@@ -17,7 +16,6 @@ function filterDropdown() {
 }
 
 
-// dropdown funktion
 document.addEventListener("DOMContentLoaded", function () {
     let dropdownButton = document.querySelector(".dropbtn");
     dropdownButton.addEventListener("click", function () {
@@ -42,21 +40,19 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     let checkboxes = document.querySelectorAll('.dropdown-checkbox');
-    checkboxes.forEach(function(checkbox) {
-        checkbox.addEventListener('change', function() {
+    checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
             updateSelectedInitials();
         });
     });
 });
 
 
-
-// anzeigen der auswahl
 function updateSelectedInitials() {
     let selectedInitialsContainer = document.getElementById('selected-initials');
     selectedInitialsContainer.innerHTML = '';
     let checkboxes = document.querySelectorAll('.dropdown-checkbox:checked');
-    checkboxes.forEach(function(checkbox) {
+    checkboxes.forEach(function (checkbox) {
         let initials = checkbox.getAttribute('data-initials');
         let initialsDiv = document.createElement('div');
         initialsDiv.className = 'selected-initials-item';
@@ -65,7 +61,7 @@ function updateSelectedInitials() {
     });
 }
 
-//ausgewählte kategorie anzeigen im dropdown div
+
 function selectCategory(category) {
     let categoryDropdownButton = document.getElementById("dropdownCategoryButton");
     categoryDropdownButton.innerHTML = category;
@@ -73,13 +69,12 @@ function selectCategory(category) {
 }
 
 
-
-// funktionen für subtasks
 function showIcons() {
     document.getElementById("plus-icon").classList.add("hidden");
     document.getElementById("x-icon").classList.remove("hidden");
     document.getElementById("tick-icon").classList.remove("hidden");
 }
+
 
 function hideIconsIfEmpty() {
     let input = document.getElementById("toggleInput");
@@ -90,15 +85,18 @@ function hideIconsIfEmpty() {
     }
 }
 
+
 function focusInput() {
     document.getElementById("toggleInput").focus();
 }
+
 
 function clearInput() {
     let input = document.getElementById("toggleInput");
     input.value = "";
     input.focus();
 }
+
 
 function displayText() {
     let input = document.getElementById("toggleInput");
@@ -119,6 +117,7 @@ function displayText() {
     }
 }
 
+
 function editItem(element) {
     let listItem = element.closest('li');
     let currentText = listItem.querySelector('.item-text').textContent.trim();
@@ -135,6 +134,7 @@ function editItem(element) {
     listItem.querySelector('.edit-input').focus();
 }
 
+
 function saveEdit(element) {
     let listItem = element.closest('li');
     let newText = element.value;
@@ -147,6 +147,7 @@ function saveEdit(element) {
         </div>
     `;
 }
+
 
 function removeItem(element) {
     element.closest('li').remove();

@@ -1,55 +1,47 @@
-
-p{
+p {
     margin: 0;
 }
 
-.individual-content-conatiner{
+.individual-content-conatiner {
     padding-top: 150px;
     padding-right: 100px;
     padding-left: 100px;
     padding-bottom: 150px;
-   
 }
 
-
-
-
-.form-fields{
+.form-fields {
     display: flex;
     justify-content: center;
     gap: 30px;
 }
 
-.separator{
+.separator {
     width: 1px;
     background-color: var(--borderColor);
 }
 
-.left-form{
+.left-form {
     display: flex;
     flex-direction: column;
     width: 50%;
     gap: 20px;
 }
 
-.right-form{
+.right-form {
     display: flex;
     flex-direction: column;
     width: 50%;
     gap: 20px;
 }
 
-.flex-form{
+.flex-form {
     display: flex;
     flex-direction: column;
     align-items: flex;
     gap: 10px;
 }
 
-
-
-
-
+/* dropdown */
 
 .dropdown-container {
     display: block;
@@ -85,7 +77,7 @@ p{
     position: absolute;
     background-color: #f9f9f9;
     width: 100%;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     border-radius: 0px 0px 10px 10px;
     overflow: hidden;
     border: 1px solid var(--borderColor);
@@ -132,9 +124,8 @@ p{
 }
 
 .dropdown-item.active {
-    background-color: var(--mainColor) ; 
+    background-color: var(--mainColor);
 }
-
 
 #selected-initials {
     margin-top: px;
@@ -154,10 +145,7 @@ p{
     align-items: center;
     color: white;
     font-size: 16px;
-
 }
-
-
 
 .prio-buttons {
     display: flex;
@@ -178,46 +166,39 @@ p{
     cursor: pointer;
     width: 33.33%;
     text-align: center;
-
-    
 }
 
-.prio-buttons input[type="radio"]:checked + label {
+.prio-buttons input[type="radio"]:checked+label {
     background-color: #007bff;
     border-color: #007bff;
     color: white;
 }
 
-
-.input-field-icon{
+.input-field-icon {
     background-image: url(/img/mail_icon.svg);
     background-repeat: no-repeat;
     background-position: calc(100% - 20px) center;
 }
 
-.input-field{
+.input-field {
     border-radius: 10px;
     border: 1px solid var(--borderColor);
     padding: 12px 21px 12px 21px;
 }
 
-
-.form-footer{
+.form-footer {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     padding-top: 150px;
 }
 
-.form-buttons{
+.form-buttons {
     display: flex;
     gap: 10px;
 }
 
-
-
-
-
+/* subtask input */
 
 .input-container {
     position: relative;
@@ -227,7 +208,7 @@ p{
 .input-container input {
     width: 100%;
     padding: 12px 21px;
-    padding-right: 50px; /* Platz für das Icon */
+    padding-right: 50px;
     border: 1px solid var(--borderColor);
     border-radius: 10px;
     box-sizing: border-box;
@@ -237,7 +218,7 @@ p{
     position: absolute;
     top: 55%;
     transform: translateY(-50%);
-    right: 25px; /* Anpassen der Position der Icons */
+    right: 25px;
     cursor: pointer;
 }
 
@@ -246,22 +227,20 @@ p{
 }
 
 .icon-style {
-    width: 30px; /* Einheitliche Größe für die Icons */
+    width: 30px;
     height: 30px;
 }
 
 .plus-icon-style {
-    width: 15px; /* Einheitliche Größe für die Icons */
+    width: 15px;
     height: 15px;
 }
 
 #x-icon {
-    right: 55px; /* Anpassen der Position des X-Icons */
+    right: 55px;
 }
 
-
-
-
+/* subtasks display */
 
 .text-display {
     font-size: 16px;
@@ -269,7 +248,7 @@ p{
 
 .text-display ul {
     list-style-type: disc;
-    padding-left: 0px; /* Abstand vom Rand für die Listenelemente */
+    padding-left: 0px;
     margin: 0;
 }
 
@@ -277,34 +256,34 @@ p{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 5px; /* Abstand zwischen den Listenelementen */
+    margin-bottom: 5px;
     border-radius: 10px;
 }
 
 .text-display li:hover {
-    background-color: rgb(236, 236, 236); /* Hintergrundfarbe bei Hover */
+    background-color: rgb(236, 236, 236);
 }
 
 .feature-icons {
     display: flex;
     align-items: center;
     padding-right: 20px;
-    visibility: hidden; /* Icons standardmäßig verstecken */
+    visibility: hidden;
 }
 
 .text-display li:hover .feature-icons {
-    visibility: visible; /* Icons bei Hover anzeigen */
+    visibility: visible;
 }
 
 .separator-list {
     width: 1px;
     height: 20px;
-    background-color: #000; /* Farbe des Separators */
+    background-color: #000;
     margin: 0 10px;
 }
 
 .edit-input {
-    width: calc(100% - 50px); /* Anpassung für das Edit-Input-Feld */
+    width: calc(100% - 50px);
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;
@@ -313,25 +292,22 @@ p{
     outline: none;
     background-color: transparent;
     font-size: 16px;
-    
 }
 
-.edit-input:focus{
+.edit-input:focus {
     border: none;
     background-color: none;
 }
 
-.edit-container{
+.edit-container {
     background-color: #ffffff;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid var(--secondaryColor);
     width: 100%;
-    
-    
 }
 
-.item-text{
+.item-text {
     padding-left: 20px;
     padding-bottom: 10px;
     padding-top: 10px;
