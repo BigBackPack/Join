@@ -32,6 +32,7 @@
   --white: #ffffff;
   --black: #2a3647;
   --light-grey: #f6f7f8;
+  --urgent-orange: #ff3d00;
 }
 
 body {
@@ -101,10 +102,6 @@ p {
   width: 69px;
   height: 69px;
   object-fit: contain;
-}
-
-.icon:hover {
-  color: gray;
 }
 
 /* HEADER */
@@ -188,6 +185,18 @@ p {
   cursor: pointer;
 }
 
+/* HOVER OF BOARD ICONS */
+
+.icon:hover,
+.icon-check:hover {
+  fill: var(--white);
+  stroke: var(--black);
+}
+
+.icon-pen:hover {
+  fill: var(--black);
+}
+
 .tile-row:hover,
 .third-row:hover,
 #urgent-container:hover {
@@ -195,6 +204,8 @@ p {
   color: var(--white);
   scale: 1.1;
 }
+
+/* MID/URGENT ROW*/
 
 #urgent-container {
   width: 524px;
@@ -205,6 +216,7 @@ p {
 
 #urgent-left-container {
   display: flex;
+  align-items: center;
   gap: 24px;
 }
 
@@ -221,8 +233,12 @@ p {
 #urgent-icon {
   width: 60px;
   height: 60px;
-  background-color: tan;
+  background-color: var(--urgent-orange);
   border-radius: 50%;
+}
+
+.icon-urgent:hover {
+  fill: var(--urgent-orange);
 }
 
 .icon-tile-details {
