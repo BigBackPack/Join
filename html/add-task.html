@@ -12,11 +12,10 @@
 
     <!-- js links -->
     <script src="../js/template-loader.js"></script>
-
+    <script src="../js/add-task-script.js"></script>
 
     <title>JOIN Add Task</title>
 </head>
-
 
 <body onload="includeHTML()">
     <div class="main-content-container">
@@ -28,10 +27,9 @@
             <div w3-include-html="templates/status-bar-template.html"></div>
             <div class="individual-content-conatiner">
                 <h1>Add Task</h1>
-                <Form class="form-body">
+                <form class="form-body">
 
                     <div class="form-fields">
-
                         <div class="left-form">
                             <div class="flex-form">
                                 <label for="title">Title</label>
@@ -39,21 +37,45 @@
                             </div>
                             <div class="flex-form">
                                 <label for="description">Description</label>
-                                <textarea class="input-field" id="description" rows="5"
-                                    placeholder="Enter a Description"></textarea>
+                                <textarea class="input-field" id="description" rows="5" placeholder="Enter a Description"></textarea>
                             </div>
                             <div class="dropdown-container">
                                 <label class="dropdown-label" for="dropdown">Assigned to</label>
                                 <div class="dropdown">
-                                    <button class="dropbtn" id="dropdown">Select contacts to assign</button>
-                                    <div class="dropdown-content">
-                                        <a href="#" data-value="option1">Option 1</a>
-                                        <a href="#" data-value="option2">Option 2</a>
-                                        <a href="#" data-value="option3">Option 3</a>
-                                        <a href="#" data-value="option4">Option 4</a>
+                                    <input type="text" class="dropbtn" id="dropdown" placeholder="Select contacts to assign" onkeyup="filterDropdown()">
+                                    <div class="dropdown-content" id="dropdownContent">
+                                        <a href="#" data-value="option1">
+                                            <div class="dropdown-item">
+                                                <div class="dropdown-image"><p>BU</p></div> 
+                                                <span>Bilal Urgun</span>
+                                                <input type="checkbox" class="dropdown-checkbox" data-initials="BU">
+                                            </div>
+                                        </a>
+                                        <a href="#" data-value="option2">
+                                            <div class="dropdown-item">
+                                                <div class="dropdown-image"><p>PP</p></div> 
+                                                <span>Pawel Paw</span>
+                                                <input type="checkbox" class="dropdown-checkbox" data-initials="PP">
+                                            </div>
+                                        </a>
+                                        <a href="#" data-value="option3">
+                                            <div class="dropdown-item">
+                                                <div class="dropdown-image"><p>JJ</p></div> 
+                                                <span>Johannes John</span>
+                                                <input type="checkbox" class="dropdown-checkbox" data-initials="JJ">
+                                            </div>
+                                        </a>
+                                        <a href="#" data-value="option4">
+                                            <div class="dropdown-item">
+                                                <div class="dropdown-image"><p>MM</p></div> 
+                                                <span>Max Muster</span>
+                                                <input type="checkbox" class="dropdown-checkbox" data-initials="MM">
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
+                            <div id="selected-initials"></div>
                         </div>
 
                         <div class="seperator"></div>
@@ -66,35 +88,32 @@
                             <div>
                                 <label for="prio1">Prio</label>
                                 <div class="prio-buttons" id="prio-buttons">
-
                                     <input type="radio" name="priority" id="prio1">
                                     <label for="prio1">Prio 1</label>
-
                                     <input type="radio" name="priority" id="prio2">
                                     <label for="prio2">Prio 2</label>
-
                                     <input type="radio" name="priority" id="prio3">
                                     <label for="prio3">Prio 3</label>
                                 </div>
                             </div>
                             <div class="dropdown-container">
-                                <label for="dropdown">Category</label>
+                                <label for="dropdownCategory">Category</label>
                                 <div class="dropdown">
-                                    <button class="dropbtn" id="dropdown">Select a category </button>
-                                    <div class="dropdown-content">
-                                        <a href="#" data-value="option1">Option 1</a>
-                                        <a href="#" data-value="option2">Option 2</a>
-                                        <a href="#" data-value="option3">Option 3</a>
-                                        <a href="#" data-value="option4">Option 4</a>
+                                    <div class="dropbtn" id="dropdownCategoryButton">Select a category</div>
+                                    <div class="dropdown-content" id="dropdownCategoryContent">
+                                        <a href="#" data-value="option1" onclick="selectCategory('Option 1')">Option 1</a>
+                                        <a href="#" data-value="option2" onclick="selectCategory('Option 2')">Option 2</a>
+                                        <a href="#" data-value="option3" onclick="selectCategory('Option 3')">Option 3</a>
+                                        <a href="#" data-value="option4" onclick="selectCategory('Option 4')">Option 4</a>
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="flex-form">
                                 <label for="subtask">Subtask</label>
                                 <input class="input-field input-field-icon" type="text" id="subtask" placeholder="Add new subtask">
                             </div>
                         </div>
-
                     </div>
 
                     <div class="form-footer">
@@ -104,13 +123,11 @@
                             <button class="primary-button">Create Task</button>
                         </div>
                     </div>
-                </Form>
-
-
-                <script src="../js/add-task-script.js"></script>
+                </form>
             </div>
         </div>
     </div>
+
 </body>
 
 </html>
