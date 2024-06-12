@@ -133,13 +133,13 @@ html {
   position: relative;
   top: 50.5px;
   justify-content: space-between;
-  padding: 0 64px 0 64px;
+  /* padding: 0 64px 0 64px; */
   width: 1208px;
   height: 24px;
 }
 
 .column-name {
-  width: 224px;
+  width: 253px;
   height: 24px;
   justify-content: space-between;
   display: flex;
@@ -201,7 +201,7 @@ html {
 }
 
 .column-1 {
-  width: 246px;
+  width: 252px;
   height: 100%;
   /* margin: 24px; */
 }
@@ -222,6 +222,14 @@ html {
   top: -61px;
 }
 
+.col-1 {
+  padding-left: 62px;
+}
+
+.col-2 {
+  margin-left: -6px;
+}
+
 /* CARDS */
 
 .board-card {
@@ -238,7 +246,7 @@ html {
   align-items: center;
   justify-content: center;
   background-color: var(--very-light-grey);
-  width: 224px;
+  width: 252px;
   height: 48px;
   border-radius: 10px;
   border: 1px dotted var(--grey);
