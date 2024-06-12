@@ -53,21 +53,21 @@ html {
 /* BOARD HEADER */
 
 #board-header {
-  width: 1208px;
+  width: 1148px;
   height: 232px;
   position: relative;
   top: 96px;
-  left: 22px;
+  left: 52px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 #search-btn-container {
   width: 555px;
   height: 48px;
   display: flex;
-  gap: 32px;
+  /* gap: 32px; */
 }
 
 #search-task {
@@ -84,9 +84,9 @@ html {
 #search-right-container {
   display: flex;
   gap: 16px;
-  position: absolute;
-  top: 102px;
-  right: 367px;
+  position: relative;
+  top: 11px;
+  right: -313px;
 }
 
 #vert-line {
@@ -133,13 +133,13 @@ html {
   position: relative;
   top: 50.5px;
   justify-content: space-between;
-  padding: 0 64px 0 64px;
+  /* padding: 0 64px 0 64px; */
   width: 1208px;
   height: 24px;
 }
 
 .column-name {
-  width: 224px;
+  width: 253px;
   height: 24px;
   justify-content: space-between;
   display: flex;
@@ -185,13 +185,13 @@ html {
 /* BOARD ITSELF */
 
 .container-css {
-  position: absolute;
+  position: relative;
 }
 
 #board-overview {
   background-color: var(--light-grey);
-  position: relative;
-  top: 86px;
+  position: absolute;
+  top: 326px;
   left: 60px;
   width: 1038px;
   height: 688px;
@@ -201,7 +201,7 @@ html {
 }
 
 .column-1 {
-  width: 246px;
+  width: 252px;
   height: 100%;
   /* margin: 24px; */
 }
@@ -215,11 +215,23 @@ html {
 }
 
 .column-2-3-4 {
+  position: relative;
   display: flex;
   padding-right: 16px;
   gap: 16px;
-  position: relative;
-  top: -370px;
+  top: -149px;
+}
+
+.col-1 {
+  padding-left: 62px;
+}
+
+.col-2 {
+  margin-left: -4px;
+}
+
+.col-3 {
+  margin-left: -9px;
 }
 
 /* CARDS */
@@ -238,7 +250,7 @@ html {
   align-items: center;
   justify-content: center;
   background-color: var(--very-light-grey);
-  width: 224px;
+  width: 252px;
   height: 48px;
   border-radius: 10px;
   border: 1px dotted var(--grey);
@@ -252,14 +264,63 @@ html {
   font-family: 'Open Sans', sans-serif;
 }
 
+.small-card {
+  height: 219px;
+}
+
 /* CARD ITSELF/CONTENT */
 
 .main-card {
-  border: 1px green solid;
   width: 220px;
-  height: 231px;
+  /* height: 231px; */
   border-radius: 24px;
-  padding: 16px;
+  padding: 3px;
   gap: 24px;
   background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--black);
+  font-family: 'Inter', sans-serif;
+}
+
+.card-sub-title {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--grey);
+  font-family: 'Inter', sans-serif;
+}
+
+.progress-container {
+  width: 220px;
+  height: 16px;
+}
+
+.card-progress-bar {
+  width: 128px;
+  height: 8px;
+  top: 4px;
+  border-radius: 8px;
+  padding: 0 64px 0 0;
+  gap: 10px;
+}
+
+.card-footer {
+  width: 220px;
+  height: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-badge {
+  width: 80px;
+  height: 32px;
+}
+
+.profile-overlap {
+  margin-left: -15px;
 }
