@@ -37,37 +37,47 @@
                             </div>
                             <div class="flex-form">
                                 <label for="description">Description</label>
-                                <textarea class="input-field" id="description" rows="5" placeholder="Enter a Description"></textarea>
+                                <textarea class="input-field" id="description" rows="5"
+                                    placeholder="Enter a Description"></textarea>
                             </div>
                             <div class="dropdown-container">
                                 <label class="dropdown-label" for="dropdown">Assigned to</label>
                                 <div class="dropdown">
-                                    <input type="text" class="dropbtn" id="dropdown" placeholder="Select contacts to assign" onkeyup="filterDropdown()">
+                                    <input type="text" class="dropbtn" id="dropdown"
+                                        placeholder="Select contacts to assign" onkeyup="filterDropdown()">
                                     <div class="dropdown-content" id="dropdownContent">
                                         <a href="#" data-value="option1">
                                             <div class="dropdown-item">
-                                                <div class="dropdown-image"><p>BU</p></div> 
+                                                <div class="dropdown-image">
+                                                    <p>BU</p>
+                                                </div>
                                                 <span>Bilal Urgun</span>
                                                 <input type="checkbox" class="dropdown-checkbox" data-initials="BU">
                                             </div>
                                         </a>
                                         <a href="#" data-value="option2">
                                             <div class="dropdown-item">
-                                                <div class="dropdown-image"><p>PP</p></div> 
+                                                <div class="dropdown-image">
+                                                    <p>PP</p>
+                                                </div>
                                                 <span>Pawel Paw</span>
                                                 <input type="checkbox" class="dropdown-checkbox" data-initials="PP">
                                             </div>
                                         </a>
                                         <a href="#" data-value="option3">
                                             <div class="dropdown-item">
-                                                <div class="dropdown-image"><p>JJ</p></div> 
+                                                <div class="dropdown-image">
+                                                    <p>JJ</p>
+                                                </div>
                                                 <span>Johannes John</span>
                                                 <input type="checkbox" class="dropdown-checkbox" data-initials="JJ">
                                             </div>
                                         </a>
                                         <a href="#" data-value="option4">
                                             <div class="dropdown-item">
-                                                <div class="dropdown-image"><p>MM</p></div> 
+                                                <div class="dropdown-image">
+                                                    <p>MM</p>
+                                                </div>
                                                 <span>Max Muster</span>
                                                 <input type="checkbox" class="dropdown-checkbox" data-initials="MM">
                                             </div>
@@ -78,7 +88,7 @@
                             <div id="selected-initials"></div>
                         </div>
 
-                        <div class="seperator"></div>
+                        <div class="separator"></div>
 
                         <div class="right-form">
                             <div class="flex-form">
@@ -101,18 +111,34 @@
                                 <div class="dropdown">
                                     <div class="dropbtn" id="dropdownCategoryButton">Select a category</div>
                                     <div class="dropdown-content" id="dropdownCategoryContent">
-                                        <a href="#" data-value="option1" onclick="selectCategory('Option 1')">Option 1</a>
-                                        <a href="#" data-value="option2" onclick="selectCategory('Option 2')">Option 2</a>
-                                        <a href="#" data-value="option3" onclick="selectCategory('Option 3')">Option 3</a>
-                                        <a href="#" data-value="option4" onclick="selectCategory('Option 4')">Option 4</a>
+                                        <a href="#" data-value="option1" onclick="selectCategory('Option 1')">Option
+                                            1</a>
+                                        <a href="#" data-value="option2" onclick="selectCategory('Option 2')">Option
+                                            2</a>
+                                        <a href="#" data-value="option3" onclick="selectCategory('Option 3')">Option
+                                            3</a>
+                                        <a href="#" data-value="option4" onclick="selectCategory('Option 4')">Option
+                                            4</a>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="flex-form">
-                                <label for="subtask">Subtask</label>
-                                <input class="input-field input-field-icon" type="text" id="subtask" placeholder="Add new subtask">
+
+                            <div class="input-container">
+                                <input type="text" id="toggleInput" placeholder="Enter text here" onfocus="showIcons()" onblur="hideIconsIfEmpty()">
+                                <span class="icon" id="plus-icon" onclick="focusInput()"> 
+                                    <img class="plus-icon-style" src="/img/plus_black_icon.svg"> 
+                                </span>
+                                <span class="icon hidden" id="x-icon" onclick="clearInput()"> 
+                                    <img class="icon-style" src="/img/close_icon.svg"> 
+                                </span>
+                                <span class="icon hidden" id="tick-icon" onclick="displayText()"> 
+                                    <img class="icon-style" src="/img/check_black_icon.svg"> 
+                                </span>
                             </div>
+                            <div id="textDisplay" class="text-display">
+                                <ul id="textList"></ul>
+                            </div>
+                            
                         </div>
                     </div>
 

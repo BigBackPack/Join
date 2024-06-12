@@ -71,3 +71,83 @@ function selectCategory(category) {
     categoryDropdownButton.innerHTML = category;
     document.getElementById("dropdownCategoryContent").classList.remove("show");
 }
+
+
+
+// funktionen für subtasks
+function showIcons() {
+    document.getElementById("plus-icon").classList.add("hidden");
+    document.getElementById("x-icon").classList.remove("hidden");
+    document.getElementById("tick-icon").classList.remove("hidden");
+}
+
+function hideIconsIfEmpty() {
+    let input = document.getElementById("toggleInput");
+    if (input.value === "") {
+        document.getElementById("plus-icon").classList.remove("hidden");
+        document.getElementById("x-icon").classList.add("hidden");
+        document.getElementById("tick-icon").classList.add("hidden");
+    }
+}
+
+function focusInput() {
+    document.getElementById("toggleInput").focus();
+}
+
+function clearInput() {
+    let input = document.getElementById("toggleInput");
+    input.value = "";
+    input.focus();
+}
+
+function displayText() {
+    let input = document.getElementById("toggleInput");
+    let textList = document.getElementById("textList");
+    if (input.value !== "") {
+        let newItem = document.createElement("li");
+        newItem.innerHTML = `
+            <span class="item-text">${input.value}</span>
+            <div class="feature-icons">
+                <span class="edit-icon" onclick="editItem(this)"><img  src="/img/edit_icon.svg"></span>
+                <div class="separator-list"></div>
+                <span class="delete-icon" onclick="removeItem(this)"><img  src="/img/delete_icon.svg"></span>
+            </div>
+        `;
+        textList.appendChild(newItem);
+        input.value = "";
+        hideIconsIfEmpty();
+    }
+}
+
+function editItem(element) {
+    let listItem = element.closest('li');
+    let currentText = listItem.querySelector('.item-text').textContent.trim();
+    listItem.innerHTML = `
+        <div class="edit-container">
+            <input type="text" class="edit-input" value="${currentText}" onblur="saveEdit(this)">
+            <div class="feature-icons">
+                <span class="edit-icon" onclick="saveEdit(this)"><img src="/img/check_black_icon.svg"></span>
+                <div class="separator-list"></div>
+                <span class="delete-icon" onclick="removeItem(this)"><img src="/img/delete_icon.svg"></span>
+            </div>
+        </div>
+    `;
+    listItem.querySelector('.edit-input').focus();
+}
+
+function saveEdit(element) {
+    let listItem = element.closest('li');
+    let newText = element.value;
+    listItem.innerHTML = `
+        <span class="item-text">${newText}</span>
+        <div class="feature-icons">
+            <span class="edit-icon" onclick="editItem(this)"><img  src="/img/edit_icon.svg"></span>
+            <div class="separator-list"></div>
+            <span class="delete-icon" onclick="removeItem(this)"><img  src="/img/delete_icon.svg"></span>
+        </div>
+    `;
+}
+
+function removeItem(element) {
+    element.closest('li').remove();
+}
