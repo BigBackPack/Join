@@ -232,7 +232,7 @@ p {
   gap: 10px;
 }
 
-#urgent-icon {
+.icon-urgent {
   width: 60px;
   height: 60px;
   background-color: var(--urgent-orange);
