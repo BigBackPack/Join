@@ -208,6 +208,7 @@ function resetAllContactPreviewsToDefaultState() {
 
 
 function displayDetailedContactInfo(firebaseId ) {
+    const deleteContactContainer = document.getElementById("delete-contact-container");
     const detailedContactDisplay = document.getElementById("deatailed-contact-container");
     const contactSignatur = document.getElementById("signatur-display");
     const contactName = document.getElementById("name-display");
@@ -217,9 +218,34 @@ function displayDetailedContactInfo(firebaseId ) {
 
     detailedContactDisplay.style.display = "block";
     contactSignatur.innerHTML = createInitials(contact.name);
+    contactSignatur.style.backgroundColor = contact.bgColor;
     contactName.innerHTML = contact.name;
     contactMail.innerHTML = contact.mail;
     contactPhone.innerHTML = contact.tel;
+
+    deleteContactContainer.onclick = function() {
+        deleteContact(firebaseId);
+    };
+}
+
+
+async function deleteContact(firebaseId) {
+    // console.log(firebaseId);
+    try {
+        const response = await fetch(`${BASE_URL}${CONTACT_PATH_SUFFIX}/${firebaseId}.json`, {
+            method: "DELETE"
+        });
+
+        if (!response.ok) {
+            console.error('Failed to delete contact:', response.statusText);
+            throw new Error('Failed to delete contact');
+        }
+
+        console.log("Contact deleted successfully");
+        loadContactsData(CONTACT_PATH_SUFFIX); // Refresh contact list
+    } catch (error) {
+        console.error("Error deleting contact data:", error);
+    }
 }
 
 

@@ -121,7 +121,7 @@ html{ overflow: hidden;}
     border: 2px solid white;
     border-radius: 100%;
     background-color: orange;
-    width: 80px;
+    min-width: 80px;
     height: 80px;
     font-size: 2rem;
     font-weight: bold;
