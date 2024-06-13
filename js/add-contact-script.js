@@ -2,6 +2,14 @@ const BASE_URL = "https://join-2c971-default-rtdb.europe-west1.firebasedatabase.
 const CONTACT_PATH_SUFFIX = "/contacts";
 const contactsPreview = document.getElementById("alphabetic-sorting-container");
 
+const nameInput = document.getElementById("name-input");
+const mailInput = document.getElementById("mail-input");
+const telInput = document.getElementById("tel-input");
+
+const nameEditInput = document.getElementById("name-edit-input");
+const mailEditInput = document.getElementById("mail-edit-input");
+const telEditInput = document.getElementById("tel-edit-input");
+
 let contactList = {};
 const signatureColors = [
     "#FF5733", // Red-Orange
@@ -38,8 +46,9 @@ function turnOnAddContactOverlay() {
 }
 
 
-function turnOffAddContactOverlay() {
+function turnOffAllOverlays() {
     document.getElementById("fullscreen-overlay").style.display = "none";
+    document.getElementById("fullscreen-overlay-edit-contact").style.display = "none";
 }
 
 
@@ -75,9 +84,9 @@ function storeContactInputs(event) {
     event.preventDefault(); // Prevent default form submission
 
     const bgColor = pickBgColorInitials();
-    const nameInput = document.getElementById("name-input");
-    const mailInput = document.getElementById("mail-input");
-    const telInput = document.getElementById("tel-input");
+    // const nameInput = document.getElementById("name-input");
+    // const mailInput = document.getElementById("mail-input");
+    // const telInput = document.getElementById("tel-input");
     const nameValue = nameInput.value.trim();
     const mailValue = mailInput.value.trim();
     const telValue = telInput.value.trim();
@@ -113,7 +122,7 @@ function storeContactInputs(event) {
                 "tel": telValue,
                 "bgColor": bgColor
             }).then(() => {
-                turnOffAddContactOverlay();
+                turnOffAllOverlays();
                 loadContactsData(CONTACT_PATH_SUFFIX); 
                 nameInput.value = "";
                 mailInput.value = "";
@@ -126,6 +135,13 @@ function storeContactInputs(event) {
     } else {
         alert("Your input is incomplete. Please fill out all of the input fields");
     }
+}
+
+
+function overrideContactData(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    console.log("override");
 }
 
 
@@ -209,6 +225,7 @@ function resetAllContactPreviewsToDefaultState() {
 
 function displayDetailedContactInfo(firebaseId ) {
     const deleteContactContainer = document.getElementById("delete-contact-container");
+    const editContactContainer = document.getElementById("edit-contact-container");
     const detailedContactDisplay = document.getElementById("deatailed-contact-container");
     const contactSignatur = document.getElementById("signatur-display");
     const contactName = document.getElementById("name-display");
@@ -226,11 +243,38 @@ function displayDetailedContactInfo(firebaseId ) {
     deleteContactContainer.onclick = function() {
         deleteContact(firebaseId);
     };
+
+    editContactContainer.onclick = function() {
+        editContact(firebaseId);
+    };
+}
+
+
+function editContact(firebaseId) {
+    console.log(firebaseId);
+    document.getElementById("fullscreen-overlay-edit-contact").style.display = "flex";
+    const deleteContactBtn = document.getElementById("delete-contact-btn");
+    const contactSignatur = document.getElementById("edit-signatur-display");
+    const contact = contactList[firebaseId];
+
+    deleteContactBtn.onclick = function() {
+        deleteContact(firebaseId);
+    };
+
+    contactSignatur.innerHTML = createInitials(contact.name);
+    contactSignatur.style.backgroundColor = contact.bgColor;
+    contactSignatur.style.minWidth = "80px";
+    contactSignatur.style.minHeight = "80px";
+    contactSignatur.style.marginLeft = "32px";
+    nameEditInput.value = contact.name;
+    mailEditInput.value = contact.mail;
+    telEditInput.value = contact.tel;
 }
 
 
 async function deleteContact(firebaseId) {
-    // console.log(firebaseId);
+    const detailedContactDisplay = document.getElementById("deatailed-contact-container");
+
     try {
         const response = await fetch(`${BASE_URL}${CONTACT_PATH_SUFFIX}/${firebaseId}.json`, {
             method: "DELETE"
@@ -240,9 +284,8 @@ async function deleteContact(firebaseId) {
             console.error('Failed to delete contact:', response.statusText);
             throw new Error('Failed to delete contact');
         }
-
-        console.log("Contact deleted successfully");
         loadContactsData(CONTACT_PATH_SUFFIX); // Refresh contact list
+        detailedContactDisplay.style.display = "none";
     } catch (error) {
         console.error("Error deleting contact data:", error);
     }
@@ -252,3 +295,5 @@ async function deleteContact(firebaseId) {
 function stopPropagation(event) {
     event.stopPropagation();
 }
+
+
