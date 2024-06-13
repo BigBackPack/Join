@@ -1,7 +1,3 @@
-function addTask() {
-  pass;
-}
-
 function renderKochwelt() {
   console.log('return f() triggered');
   return `
@@ -23,7 +19,7 @@ function renderKochwelt() {
                         />
                       </svg>
                     </div>
-                    <span id="overlay-close-btn">X</span>
+                    <span id="overlay-close-btn" class="ol-close-btn" onclick="closeOverlay()">X</span>
                   </div>
                   <div class="ol-card-info">
                     <span class="ol-card-title"
@@ -151,4 +147,9 @@ function renderCardKochwelt() {
   const content = document.getElementById('overlay-card');
   content.innerHTML = '';
   content.innerHTML = renderKochwelt();
+}
+
+function closeOverlay() {
+  console.log('closeOverlay f() - triggered');
+  document.getElementById('overlay-card').classList.add('d-none');
 }
