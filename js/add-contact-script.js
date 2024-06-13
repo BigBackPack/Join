@@ -3,6 +3,28 @@ const CONTACT_PATH_SUFFIX = "/contacts";
 const contactsPreview = document.getElementById("alphabetic-sorting-container");
 
 let contactList = {};
+const signatureColors = [
+    "#FF5733", // Red-Orange
+    "#FF8D33", // Orange
+    "#FFC300", // Yellow-Orange
+    "#FFD700", // Yellow
+    "#ADFF2F", // Green-Yellow
+    "#7FFF00", // Green
+    "#32CD32", // Lime Green
+    "#00FF7F", // Spring Green
+    "#00FA9A", // Medium Spring Green
+    "#40E0D0", // Turquoise
+    "#00CED1", // Dark Turquoise
+    "#1E90FF", // Dodger Blue
+    "#4169E1", // Royal Blue
+    "#6A5ACD", // Slate Blue
+    "#8A2BE2", // Blue Violet
+    "#9400D3", // Dark Violet
+    "#9932CC", // Dark Orchid
+    "#BA55D3", // Medium Orchid
+    "#C71585", // Medium Violet Red
+    "#FF1493"  // Deep Pink
+];
 
 
 function init() {
@@ -52,6 +74,7 @@ async function postContactData(path, data = {}) {
 function storeContactInputs(event) {
     event.preventDefault(); // Prevent default form submission
 
+    const bgColor = pickBgColorInitials();
     const nameInput = document.getElementById("name-input");
     const mailInput = document.getElementById("mail-input");
     const telInput = document.getElementById("tel-input");
@@ -63,7 +86,8 @@ function storeContactInputs(event) {
         postContactData("/contacts", {
             "name": nameValue,
             "mail": mailValue,
-            "tel": telValue
+            "tel": telValue,
+            "bgColor": bgColor
         }).then(() => {
             turnOffAddContactOverlay();
             loadContactsData(CONTACT_PATH_SUFFIX); 
@@ -105,7 +129,9 @@ function addContactsToPreview() {
 
         contactsPreview.innerHTML += /*html*/`
             <div id="contact-preview-${firebaseId}" class="contact-preview" onclick="selectContact('${firebaseId}')">
-                <div class="sorted-contact-icon">${contactInitials}</div>
+                <div class="sorted-contact-icon" style="background-color: ${contact.bgColor}">
+                    ${contactInitials}
+                </div>
                 <div>
                     <div class="contac-name-preview">
                         ${contact.name}
@@ -129,6 +155,12 @@ function createInitials(fullName) {
         }
     }
     return initials;
+}
+
+
+function pickBgColorInitials() {
+    const ranBumSelector = Math.floor(Math.random() * 20);
+    return signatureColors[ranBumSelector];
 }
 
 
