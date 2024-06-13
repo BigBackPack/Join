@@ -187,22 +187,24 @@ p {
 
 /* HOVER OF BOARD ICONS */
 
-.icon:hover,
-.icon-check:hover {
-  fill: var(--white);
-  stroke: var(--black);
-}
-
-.icon-pen:hover  {
-  fill: var(--black);
-}
-
 .tile-row:hover,
 .third-row:hover,
 #urgent-container:hover {
   background-color: var(--black);
   color: var(--white);
-  scale: 1.1;
+
+  .icon {
+    fill: var(--white);
+    stroke: var(--black);
+  }
+
+  .icon-pen {
+    fill: var(--black);
+  }
+
+  .icon-check {
+    stroke: var(--black);
+  }
 }
 
 /* MID/URGENT ROW*/
