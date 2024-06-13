@@ -15,6 +15,13 @@ a{
     justify-content: space-between;
     width: 100%;
 }
+
+.signup-card-head a{
+    display: flex;
+    align-items: center;
+    
+}
+
 .placeholder-arrow{
     opacity: 0;
 }
