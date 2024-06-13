@@ -1,4 +1,28 @@
-function renderKochwelt() {
+/**
+ * Renders a card based on the provided parameter.
+ *
+ * @param {string} param - The parameter indicating which card to render. Can be 'progress', 'feedback', or 'done'.
+ */
+function renderCard(param) {
+  console.log('param: ', param);
+  document.getElementById('overlay-card').classList.remove('d-none');
+  const content = document.getElementById('overlay-card');
+  content.innerHTML = '';
+
+  if (param == 'progress') {
+    content.innerHTML = renderProgress();
+  } else if (param == 'feedback') {
+    content.innerHTML = renderFeedback();
+  } else if (param == 'done') {
+    content.innerHTML = renderDone();
+  }
+}
+
+/**
+ * This function is used to generate and return the html/css code for an overlay-card.
+ * @returns - return the complete js-generated html/css code for the overlay-card from a specific row
+ */
+function renderProgress() {
   console.log('return f(Kochwelt) triggered');
   return `
     <div class="ol-board-card">
@@ -142,28 +166,11 @@ function renderKochwelt() {
     `;
 }
 
-function renderCardKochwelt() {
-  document.getElementById('overlay-card').classList.remove('d-none');
-  const content = document.getElementById('overlay-card');
-  content.innerHTML = '';
-  content.innerHTML = renderKochwelt();
-}
-
-function closeOverlay() {
-  console.log('closeOverlay f() - triggered');
-  document.getElementById('overlay-card').classList.add('d-none');
-  const content = document.getElementById('overlay-card');
-  content.innerHTML = '';
-}
-
-function renderCardCss() {
-  document.getElementById('overlay-card').classList.remove('d-none');
-  const content = document.getElementById('overlay-card');
-  content.innerHTML = '';
-  content.innerHTML = renderCss();
-}
-
-function renderCss() {
+/**
+ * This function is used to generate and return the html/css code for an overlay-card.
+ * @returns - return the complete js-generated html/css code for the overlay-card from a specific row
+ */
+function renderDone() {
   console.log('return f(Css) triggered');
   return `
     <div class="ol-board-card">
@@ -291,4 +298,14 @@ function renderCss() {
                 </div>
               </div>
     `;
+}
+
+/**
+ * This function is used to close the overlay once the X in the upper right corner of the overlay * is clicked.
+ */
+function closeOverlay() {
+  console.log('closeOverlay f() - triggered');
+  document.getElementById('overlay-card').classList.add('d-none');
+  const content = document.getElementById('overlay-card');
+  content.innerHTML = '';
 }
