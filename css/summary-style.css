@@ -193,7 +193,7 @@ p {
   stroke: var(--black);
 }
 
-.icon-pen:hover {
+.icon-pen:hover  {
   fill: var(--black);
 }
 

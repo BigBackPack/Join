@@ -1,4 +1,5 @@
 const BASE_URL = "https://join-2c971-default-rtdb.europe-west1.firebasedatabase.app/";
+const CONTACT_PATH_SUFFIX = "/contacts";
 const contactsPreview = document.getElementById("alphabetic-sorting-container");
 
 let contactList = {};
@@ -6,7 +7,7 @@ let contactList = {};
 
 function init() {
     addContactsToPreview();
-    loadContactsData();
+    loadContactsData(CONTACT_PATH_SUFFIX);
 }
 
 
@@ -20,17 +21,17 @@ function turnOffAddContactOverlay() {
 }
 
 
-async function loadContactsData() {
-    let response = await fetch(BASE_URL + ".json");
+async function loadContactsData(path) {
+    let response = await fetch(BASE_URL + path + ".json");
     let responseToJson = await response.json();
     contactList = responseToJson;
     addContactsToPreview();
 }
 
 
-async function postContactData(data = {}) {
+async function postContactData(path, data = {}) {
     console.log("Posting contact data:", data);
-    let response = await fetch(BASE_URL + ".json", {
+    let response = await fetch(BASE_URL + path + ".json", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -59,13 +60,13 @@ function storeContactInputs(event) {
     const telValue = telInput.value.trim();
 
     if (nameValue && mailValue && telValue) {
-        postContactData({
+        postContactData("/contacts", {
             "name": nameValue,
             "mail": mailValue,
             "tel": telValue
         }).then(() => {
             turnOffAddContactOverlay();
-            loadContactsData(); 
+            loadContactsData(CONTACT_PATH_SUFFIX); 
             nameInput.value = "";
             mailInput.value = "";
             telInput.value = "";
