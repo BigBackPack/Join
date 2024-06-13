@@ -1,12 +1,12 @@
 
 
-function filterDropdown() {
+function filterDropdown(dropdownContentId) {
     let input = document.getElementById("dropdown");
     let filter = input.value.toLowerCase();
-    let div = document.getElementById("dropdownContent");
+    let div = document.getElementById(dropdownContentId);
     let a = div.getElementsByTagName("a");
-    for (i = 0; i < a.length; i++) {
-        txtValue = a[i].textContent || a[i].innerText;
+    for (let i = 0; i < a.length; i++) {
+        let txtValue = a[i].textContent || a[i].innerText;
         if (txtValue.toLowerCase().indexOf(filter) > -1) {
             a[i].style.display = "";
         } else {
@@ -14,38 +14,6 @@ function filterDropdown() {
         }
     }
 }
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    let dropdownButton = document.querySelector(".dropbtn");
-    dropdownButton.addEventListener("click", function () {
-        document.getElementById("dropdownContent").classList.toggle("show");
-    });
-
-    let categoryDropdownButton = document.querySelector("#dropdownCategoryButton");
-    categoryDropdownButton.addEventListener("click", function () {
-        document.getElementById("dropdownCategoryContent").classList.toggle("show");
-    });
-
-    window.onclick = function (event) {
-        if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-checkbox') && !event.target.closest('.dropdown-item')) {
-            let dropdowns = document.getElementsByClassName("dropdown-content");
-            for (let i = 0; i < dropdowns.length; i++) {
-                let openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    };
-
-    let checkboxes = document.querySelectorAll('.dropdown-checkbox');
-    checkboxes.forEach(function (checkbox) {
-        checkbox.addEventListener('change', function () {
-            updateSelectedInitials();
-        });
-    });
-});
 
 
 function updateSelectedInitials() {
@@ -77,7 +45,7 @@ function showIcons() {
 
 
 function hideIconsIfEmpty() {
-    let input = document.getElementById("toggleInput");
+    let input = document.getElementById("subtask-input");
     if (input.value === "") {
         document.getElementById("plus-icon").classList.remove("hidden");
         document.getElementById("x-icon").classList.add("hidden");
@@ -87,19 +55,19 @@ function hideIconsIfEmpty() {
 
 
 function focusInput() {
-    document.getElementById("toggleInput").focus();
+    document.getElementById("subtask-input").focus();
 }
 
 
 function clearInput() {
-    let input = document.getElementById("toggleInput");
+    let input = document.getElementById("subtask-input");
     input.value = "";
     input.focus();
 }
 
 
 function displayText() {
-    let input = document.getElementById("toggleInput");
+    let input = document.getElementById("subtask-input");
     let textList = document.getElementById("textList");
     if (input.value !== "") {
         let newItem = document.createElement("li");
@@ -152,3 +120,54 @@ function saveEdit(element) {
 function removeItem(element) {
     element.closest('li').remove();
 }
+
+
+function validateForm() {
+    let dropdownButton = document.getElementById("dropdownCategoryButton");
+    let selectedCategory = dropdownButton.getAttribute("data-selected");
+    let requiredText = document.getElementById("required-text")
+
+    if (!selectedCategory) {
+        dropdownButton.parentElement.classList.add("invalid");
+        requiredText.style.display = "unset"
+        return false; 
+    } else {
+        dropdownButton.parentElement.classList.remove("invalid");
+        requiredText.style.display = "none"
+        return true; 
+    }
+}
+
+function toggleDropdown(dropdownId) {
+    document.getElementById(dropdownId).classList.toggle("show");
+}
+
+function selectCategory(category) {
+    let dropdownButton = document.getElementById("dropdownCategoryButton");
+    dropdownButton.innerHTML = category;
+    dropdownButton.setAttribute("data-selected", category);
+    document.getElementById("dropdownCategoryContent").classList.remove("show");
+    validateForm();
+}
+
+window.onclick = function (event) {
+    if (!event.target.matches('.dropbtn') && !event.target.closest('.dropdown-item')) {
+        let dropdowns = document.getElementsByClassName("dropdown-content");
+        for (let i = 0; i < dropdowns.length; i++) {
+            let openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+};
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    let checkboxes = document.querySelectorAll('.dropdown-checkbox');
+    checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+            updateSelectedInitials();
+        });
+    });
+});

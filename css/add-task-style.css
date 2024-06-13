@@ -41,7 +41,24 @@ p {
     gap: 10px;
 }
 
+.required-star{
+    color: var(--red);
+}
+
+.required-text{
+    color: var(--red);
+    font-size: small;
+    padding-top: 10px;
+    padding-left: 10px;
+    display: none;
+}
 /* dropdown */
+
+
+.dropdown.invalid .dropbtn {
+    border-color: red;
+}
+
 
 .dropdown-container {
     display: block;
@@ -159,20 +176,56 @@ p {
 }
 
 .prio-buttons label {
-    padding: 10px 20px;
+    padding: 15px;
     background-color: var(--white);
     border: 1px solid var(--borderColor);
     border-radius: 10px;
     cursor: pointer;
     width: 33.33%;
     text-align: center;
+    font-size: 18px;
 }
 
-.prio-buttons input[type="radio"]:checked+label {
-    background-color: #007bff;
-    border-color: #007bff;
-    color: white;
+.prio-icon {
+    width: 20px; 
+    height: 20px; 
+    margin-left: 8px; 
+    vertical-align: middle;
 }
+
+
+/* change color from prio buttons on focus */
+input[type="radio"]#prio-urgent:checked + label {
+    background-color: var(--red);
+    color: white;
+    font-weight: bold;
+}
+
+input[type="radio"]#prio-urgent:checked + label .prio-icon {
+    filter: brightness(0) invert(1);
+}
+
+input[type="radio"]#prio-medium:checked + label {
+    background-color: var(--orange);
+    color: white;
+    font-weight: bold;
+}
+
+input[type="radio"]#prio-medium:checked + label .prio-icon {
+    filter: brightness(0) invert(1);
+}
+
+input[type="radio"]#prio-low:checked + label {
+    background-color: var(--green);
+    color: white;
+    font-weight: bold;
+}
+
+input[type="radio"]#prio-low:checked + label .prio-icon {
+    filter: brightness(0) invert(1);
+}
+/* -------- */
+
 
 .input-field-icon {
     background-image: url(/img/mail_icon.svg);
@@ -203,6 +256,12 @@ p {
 .input-container {
     position: relative;
     width: 100%;
+
+}
+.subtask-label{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .input-container input {
@@ -312,3 +371,5 @@ p {
     padding-bottom: 10px;
     padding-top: 10px;
 }
+
+

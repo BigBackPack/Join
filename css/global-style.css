@@ -11,6 +11,11 @@
 
     --white: #ffffff;
     --black: #000000;
+
+    --red: #FF3D00;
+    --orange: #FFA800;
+    --green: #7AE229;
+
 }
 
 body{
