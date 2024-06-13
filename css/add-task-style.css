@@ -49,7 +49,6 @@ p {
     color: var(--red);
     font-size: small;
     padding-top: 10px;
-    padding-left: 10px;
     display: none;
 }
 /* dropdown */
@@ -156,12 +155,11 @@ p {
     height: 40px;
     border-radius: 50%;
     border: 2px solid var(--white);
-    background-color: #007bff;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
-    font-size: 16px;
+    color: var(--white);
+    font-size: 14px;
 }
 
 .prio-buttons {
