@@ -19,7 +19,7 @@ function renderKochwelt() {
                         />
                       </svg>
                     </div>
-                    <span id="overlay-close-btn" class="ol-close-btn" onclick="closeOverlay()">X</span>
+                    <span title="close overlay" id="overlay-close-btn" class="ol-close-btn" onclick="closeOverlay()">X</span>
                   </div>
                   <div class="ol-card-info">
                     <span class="ol-card-title"
@@ -152,4 +152,6 @@ function renderCardKochwelt() {
 function closeOverlay() {
   console.log('closeOverlay f() - triggered');
   document.getElementById('overlay-card').classList.add('d-none');
+  const content = document.getElementById('overlay-card');
+  content.innerHTML = '';
 }

@@ -234,7 +234,7 @@ html {
   margin-left: -9px;
 }
 
-/* CARDS */
+/* BOARD-CARDS */
 
 .board-card {
   width: 252px;
@@ -324,4 +324,190 @@ html {
 
 .profile-overlap {
   margin-left: -15px;
+}
+
+/* OVERLAY CARD */
+
+.ol-kochwelt {
+  position: relative;
+  top: -188px;
+  margin-left: auto;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: color(srgb 0 0 0 / 0.5);
+  backdrop-filter: blur(8px);
+  /* z-index: 200; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  /* padding-top: 24px; */
+}
+
+.ol-close-btn {
+  cursor: pointer;
+}
+
+.ol-board-card {
+  width: 525px;
+  height: 871px;
+  border-radius: 30px;
+  padding: 16px;
+  margin: 10px;
+  background-color: var(--white);
+}
+
+.ol-main-card {
+  /* width: 220px; */
+  /* height: 231px; */
+  border-radius: 24px;
+  padding: 3px;
+  gap: 24px;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  margin-left: 16px;
+}
+
+.ol-card-header {
+  width: 445px;
+  height: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 0 24px 0 24px; */
+}
+
+.ol-header-btn {
+  width: 164px;
+  height: 36px;
+}
+
+.ol-card-info {
+  width: 445px;
+  height: 219px;
+}
+
+.ol-card-sub {
+  width: 445px;
+  height: 24px;
+}
+
+.ol-card-title {
+  font-size: 61px;
+  font-weight: 700;
+  color: var(--black);
+  font-family: 'Inter', sans-serif;
+}
+
+.ol-card-sub-title {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--black);
+  font-family: 'Inter', sans-serif;
+}
+
+.ol-due-date {
+  width: 445px;
+  height: 24px;
+  gap: 25px;
+}
+
+.ol-due-date-txt {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--black);
+  font-family: 'Inter', sans-serif;
+  margin-left: 32px;
+}
+
+.ol-priority {
+  width: 445px;
+  height: 32px;
+  gap: 25px;
+}
+
+.ol-priority-txt {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--black);
+  font-family: 'Inter', sans-serif;
+  margin-left: 42px;
+  margin-right: 8px;
+}
+
+.ol-priority-icon {
+  width: 17px;
+  height: 8px;
+}
+
+.ol-assigned-container {
+  width: 445px;
+  height: 208px;
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ol-assigned-user {
+  width: 445px;
+  height: 176px;
+  gap: 4px;
+}
+
+.ol-user {
+  width: 445px;
+  height: 56px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding-left: 32px;
+}
+
+.ol-sub-tasks {
+  width: 445px;
+  height: 100px;
+  gap: 8px;
+}
+
+.ol-sub-tasks-txt {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--black);
+  font-family: 'Inter', sans-serif;
+}
+
+.ol-sub-tasks-container {
+  width: 445px;
+  height: 68px;
+  gap: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ol-sub-task {
+  width: 344px;
+  height: 32px;
+  padding: 6px 16px 6px 16px;
+  gap: 16px;
+}
+
+.ol-sub-task-checkbox {
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+}
+
+.ol-crud {
+  /* width: 159px; */
+  height: 24px;
+  gap: 8px;
+  display: flex;
+  justify-content: end;
+}
+
+.ol-vertical {
+  height: 24px;
+  border-left: 1px solid var(--borderColor);
 }
