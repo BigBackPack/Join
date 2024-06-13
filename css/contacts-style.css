@@ -68,7 +68,7 @@ html{ overflow: hidden;}
     border: 2px solid white;
     border-radius: 100%;
     background-color: orange;
-    width: 40px;
+    min-width: 40px;
     height: 40px;
     font-size: 1rem;
     font-weight: bold;
@@ -76,7 +76,7 @@ html{ overflow: hidden;}
     margin-right: 24px;
 }
 
-.contac-name-preview{font-size: 1.5rem;}
+.contac-name-preview{font-size: 1.2rem;}
 
 .alphabetic-sorting-container{
     margin-top: 14px;
@@ -99,7 +99,7 @@ html{ overflow: hidden;}
 
 /* #region detailed contact view ---------------------*/ 
 .deatailed-contact-container{
-    display: block;
+    display: none; /*blck*/
 }
 
 .flex-center{
