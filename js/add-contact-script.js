@@ -83,20 +83,46 @@ function storeContactInputs(event) {
     const telValue = telInput.value.trim();
 
     if (nameValue && mailValue && telValue) {
-        postContactData("/contacts", {
-            "name": nameValue,
-            "mail": mailValue,
-            "tel": telValue,
-            "bgColor": bgColor
-        }).then(() => {
-            turnOffAddContactOverlay();
-            loadContactsData(CONTACT_PATH_SUFFIX); 
-            nameInput.value = "";
-            mailInput.value = "";
-            telInput.value = "";
-        }).catch(error => {
-            console.error("Error posting contact data:", error);
-        });
+        let nameTaken = false;
+        let mailTaken = false;
+        let telTaken = false;
+
+        for(let firebaseId in contactList) {
+            if (contactList[firebaseId].name === nameValue) {
+                nameTaken = true;
+                break;
+            } else if (contactList[firebaseId].mail === mailValue) {
+                mailTaken = true;
+                break;
+            } else if (contactList[firebaseId].tel === telValue) {
+                telTaken = true;
+                break;
+            }
+        } 
+
+        if (nameTaken) {
+            alert("This name is already taken. Please choose a different one.");
+        } else if (mailTaken) {
+            alert("This email is already taken. Please choose a different one.");
+        } else if (telTaken) {
+            alert("This phone number is already taken. Please choose a different one.");
+        } else {
+            postContactData("/contacts", {
+                "name": nameValue,
+                "mail": mailValue,
+                "tel": telValue,
+                "bgColor": bgColor
+            }).then(() => {
+                turnOffAddContactOverlay();
+                loadContactsData(CONTACT_PATH_SUFFIX); 
+                nameInput.value = "";
+                mailInput.value = "";
+                telInput.value = "";
+            }).catch(error => {
+                console.error("Error posting contact data:", error);
+            });
+        }
+            
     } else {
         alert("Your input is incomplete. Please fill out all of the input fields");
     }
@@ -105,23 +131,16 @@ function storeContactInputs(event) {
 
 function addContactsToPreview() {
     contactsPreview.innerHTML = "";
-
     let contactsArray = Object.entries(contactList);
 
-    // Sort the array alphabetically by contact name
-    contactsArray.sort((a, b) => {
+    contactsArray.sort((a, b) => { // sort array alphabetically by name
         let nameA = a[1].name.toUpperCase(); // Ignore upper and lowercase
         let nameB = b[1].name.toUpperCase(); // Ignore upper and lowercase
 
-        if (nameA < nameB) {
-            return -1;
-        }
-        if (nameA > nameB) {
-            return 1;
-        }
-
-        // Names must be equal
-        return 0;
+        if (nameA < nameB) {return -1;}
+        if (nameA > nameB) {return 1;}
+        
+        return 0; // Names must be equal
     });
 
     contactsArray.forEach(([firebaseId, contact]) => {
