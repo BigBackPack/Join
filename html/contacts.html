@@ -103,16 +103,16 @@
 
                                 <!-- input form -->
                                 <form>
-                                    <input id="name-edit-input" maxlength="20" type="text" placeholder="Name" class="input input-type-name" required>
+                                    <input id="name-edit-input" maxlength="30" type="text" placeholder="Name" class="input input-type-name" required>
     
-                                    <input id="mail-edit-input" maxlength="20" type="email" placeholder="Email" class="input input-type-mail" required>
+                                    <input id="mail-edit-input" maxlength="30" type="email" placeholder="Email" class="input input-type-mail" required>
     
                                     <input id="tel-edit-input" maxlength="20" type="tel" placeholder="Phone" class="input input-type-phone" required>
     
                                     <div class="button-container">
                                         <button id ="delete-contact-btn" class="secondary-button">Delete</button>
     
-                                        <button onclick="overrideContactData(event)" class="primary-button">
+                                        <button id="save-edited-contact-btn" class="primary-button">
                                             Save
                                             <img src="../img/check_icon.svg" alt="Check Icon">
                                         </button>

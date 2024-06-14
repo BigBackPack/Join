@@ -1,6 +1,7 @@
 const BASE_URL = "https://join-2c971-default-rtdb.europe-west1.firebasedatabase.app/";
 const CONTACT_PATH_SUFFIX = "/contacts";
 const contactsPreview = document.getElementById("alphabetic-sorting-container");
+const detailedContactDisplay = document.getElementById("deatailed-contact-container");
 
 const nameInput = document.getElementById("name-input");
 const mailInput = document.getElementById("mail-input");
@@ -84,9 +85,6 @@ function storeContactInputs(event) {
     event.preventDefault(); // Prevent default form submission
 
     const bgColor = pickBgColorInitials();
-    // const nameInput = document.getElementById("name-input");
-    // const mailInput = document.getElementById("mail-input");
-    // const telInput = document.getElementById("tel-input");
     const nameValue = nameInput.value.trim();
     const mailValue = mailInput.value.trim();
     const telValue = telInput.value.trim();
@@ -135,13 +133,6 @@ function storeContactInputs(event) {
     } else {
         alert("Your input is incomplete. Please fill out all of the input fields");
     }
-}
-
-
-function overrideContactData(event) {
-    event.preventDefault(); // Prevent default form submission
-
-    console.log("override");
 }
 
 
@@ -224,9 +215,8 @@ function resetAllContactPreviewsToDefaultState() {
 
 
 function displayDetailedContactInfo(firebaseId ) {
-    const deleteContactContainer = document.getElementById("delete-contact-container");
     const editContactContainer = document.getElementById("edit-contact-container");
-    const detailedContactDisplay = document.getElementById("deatailed-contact-container");
+    const deleteContactContainer = document.getElementById("delete-contact-container");
     const contactSignatur = document.getElementById("signatur-display");
     const contactName = document.getElementById("name-display");
     const contactMail = document.getElementById("email-deisplay");
@@ -254,11 +244,16 @@ function editContact(firebaseId) {
     console.log(firebaseId);
     document.getElementById("fullscreen-overlay-edit-contact").style.display = "flex";
     const deleteContactBtn = document.getElementById("delete-contact-btn");
+    const saveEditedContactBtn = document.getElementById("save-edited-contact-btn");
     const contactSignatur = document.getElementById("edit-signatur-display");
     const contact = contactList[firebaseId];
 
     deleteContactBtn.onclick = function() {
         deleteContact(firebaseId);
+    };
+
+    saveEditedContactBtn.onclick = function() {
+        overrideContactData(event, firebaseId);
     };
 
     contactSignatur.innerHTML = createInitials(contact.name);
@@ -269,6 +264,48 @@ function editContact(firebaseId) {
     nameEditInput.value = contact.name;
     mailEditInput.value = contact.mail;
     telEditInput.value = contact.tel;
+}
+
+
+async function overrideContactData(event, firebaseId) {
+    event.preventDefault(); // Prevent default form submission
+
+    const nameValue = nameEditInput.value.trim();
+    const mailValue = mailEditInput.value.trim();
+    const telValue = telEditInput.value.trim();
+
+    if (nameValue && mailValue && telValue) {
+        const updatedContact = {
+            name: nameValue,
+            mail: mailValue,
+            tel: telValue,
+            bgColor: contactList[firebaseId].bgColor
+        };
+
+        try {
+            const response = await fetch(`${BASE_URL}${CONTACT_PATH_SUFFIX}/${firebaseId}.json`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(updatedContact)
+            });
+
+            if (!response.ok) {
+                console.error('Failed to update contact:', response.statusText);
+                throw new Error('Failed to update contact');
+            }
+            console.log("Contact updated successfully");
+            turnOffAllOverlays();
+            detailedContactDisplay.style.display = "none";
+
+            loadContactsData(CONTACT_PATH_SUFFIX); // Refresh contact list
+        } catch (error) {
+            console.error("Error updating contact data:", error);
+        }
+    } else {
+        alert("Your input is incomplete. Please fill out all of the input fields");
+    }
 }
 
 
