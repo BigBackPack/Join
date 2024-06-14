@@ -150,10 +150,24 @@ function addContactsToPreview() {
         return 0; // Names must be equal
     });
 
+    let displayedInitials = new Set(); // Keep track of displayed initials
+
     contactsArray.forEach(([firebaseId, contact]) => {
         let contactInitials = createInitials(contact.name);
+        let firstLetter = contact.name.trim().charAt(0).toUpperCase();
+
+        let displayIndicator = !displayedInitials.has(firstLetter);
+        if (displayIndicator) {
+            displayedInitials.add(firstLetter);
+        }
 
         contactsPreview.innerHTML += /*html*/`
+            <!-- alphabetical identificator -->
+            <div id="aphabetical-indicator-${firebaseId}" class="aphabetical-indicator" style="display: ${displayIndicator ? 'block' : 'none'}">
+                <p>${firstLetter}</p>
+            </div>
+            
+            <!-- contact preview -->
             <div id="contact-preview-${firebaseId}" class="contact-preview" onclick="selectContact('${firebaseId}')">
                 <div class="sorted-contact-icon" style="background-color: ${contact.bgColor}">
                     ${contactInitials}

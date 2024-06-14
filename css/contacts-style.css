@@ -58,7 +58,7 @@ html{ overflow: hidden;}
     border-bottom: 2px solid var(--borderColor);
     padding: 0 34px;
     font-weight: normal;
-    font-size: 2rem;
+    font-size: 1rem;
 }
 
 .sorted-contact-icon{
