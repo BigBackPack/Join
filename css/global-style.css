@@ -51,7 +51,6 @@ a{
 }
 
 .main-content-container{
-    width: 100%;
     display: flex;
     justify-content: left;
 }
@@ -236,7 +235,6 @@ a{
     flex-direction: column;
     align-items: start;
     margin: 120px 0;
-
 }
 
 .legal-links-container a{
@@ -262,6 +260,12 @@ a{
     width: 80%;
     height: 64px;
     z-index: 100;
+}
+
+.status-bar-container img{
+    display: none;
+    width: 32px;
+    height: auto;
 }
 
 .profile-container{

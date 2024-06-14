@@ -1,5 +1,60 @@
-/* @media (max-width: 1000px){
+@media (max-width: 1200px){
     .nav-bar-container{
-      background-color: lightsalmon;
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
     }
-} */
+
+    .join-logo{display: none;}
+
+    .nav-link{
+        width: 200px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .menu-entry{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 120px;
+        height: 40px;
+        border-radius: 8px;
+    }
+
+    .menu-entry img{
+        padding: 0 0 8px 0;
+        width: 40px;
+        height: auto;
+    }
+
+    .legal-links-container{display: none;}
+}
+
+
+@media (max-width: 800px){
+    .menu-entry{
+        width: 100px;
+        height: 20px;
+    }
+
+    .menu-entry img{
+        padding: 0 0 8px 0;
+        width: 20px;
+        height: auto;
+    }
+}
+
+
+@media (max-width: 600px){
+    .nav-bar-container{height: 80px;}
+
+    .menu-entry{
+        width: 80px;
+        height: 30px;
+        border-radius: 0px;
+        font-size: 0.8rem;
+    }
+}
