@@ -44,7 +44,7 @@ function createTask() {
     let assignedTo = [];
     document.querySelectorAll('.dropdown-checkbox:checked').forEach(checkbox => {
         assignedTo.push({
-            idMail: checkbox.parentNode.querySelector('span').innerText, 
+            name: checkbox.parentNode.querySelector('span').innerText, 
             bgColor: checkbox.getAttribute('data-bgcolor'),
             initials: checkbox.getAttribute('data-initials')
         });
