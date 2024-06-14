@@ -1,3 +1,8 @@
+/**
+ * Creates a subtask item element.
+ * @param {string} text - The subtask text.
+ * @returns {HTMLElement} - The new subtask item element.
+ */
 function createSubtaskItem(text) {
     let newItem = document.createElement("li");
     newItem.innerHTML = `
@@ -11,7 +16,11 @@ function createSubtaskItem(text) {
     return newItem;
 }
 
-
+/**
+ * Creates the HTML for editing a subtask item.
+ * @param {string} currentText - The current text of the subtask.
+ * @returns {string} - The HTML string for editing the subtask item.
+ */
 function createEditItemHTML(currentText) {
     return `
         <div class="edit-container">
@@ -25,7 +34,11 @@ function createEditItemHTML(currentText) {
     `;
 }
 
-
+/**
+ * Creates the HTML for a subtask item.
+ * @param {string} text - The text of the subtask item.
+ * @returns {string} - The HTML string for the subtask item.
+ */
 function createSubtaskItemHTML(text) {
     return `
         <span class="item-text">${text}</span>
@@ -37,7 +50,12 @@ function createSubtaskItemHTML(text) {
     `;
 }
 
-
+/**
+ * Creates a contact item element for the dropdown.
+ * @param {Object} contact - The contact object.
+ * @param {string} key - The key of the contact.
+ * @returns {string} - The HTML string for the contact item.
+ */
 function createContactItem(contact, key) {
     let initials = contact.name.split(' ').map(word => word[0]).join('');
     return `

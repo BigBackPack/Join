@@ -4,11 +4,17 @@ let TASK_PATH = "/tasks";
 
 document.addEventListener("DOMContentLoaded", initializeApp);
 
+/**
+ * Initializes the application by fetching contacts and setting up event listeners.
+ */
 function initializeApp() {
     fetchContacts();
     setupEventListeners();
 }
 
+/**
+ * Sets up event listeners for the form submission, checkbox changes, and window click events.
+ */
 function setupEventListeners() {
     document.getElementById("add-task-form").addEventListener("submit", handleFormSubmit);
     document.querySelectorAll('.dropdown-checkbox').forEach(checkbox => {
@@ -17,6 +23,10 @@ function setupEventListeners() {
     window.onclick = closeDropdownOnClickOutside;
 }
 
+/**
+ * Handles the form submission event.
+ * @param {Event} event - The form submission event.
+ */
 function handleFormSubmit(event) {
     event.preventDefault();
     if (validateForm()) {
@@ -24,6 +34,10 @@ function handleFormSubmit(event) {
     }
 }
 
+/**
+ * Validates the form by checking if a category is selected.
+ * @returns {boolean} - True if the form is valid, false otherwise.
+ */
 function validateForm() {
     let dropdownButton = document.getElementById("dropdownCategoryButton");
     let selectedCategory = dropdownButton.getAttribute("data-selected");
@@ -40,6 +54,9 @@ function validateForm() {
     return isValid;
 }
 
+/**
+ * Clears the form by resetting all inputs and selected values.
+ */
 function clearForm() {
     document.querySelector(".form-body").reset();
     document.getElementById("selected-initials").innerHTML = '';
@@ -47,12 +64,18 @@ function clearForm() {
     resetCategoryDropdown();
 }
 
+/**
+ * Resets the category dropdown to its default state.
+ */
 function resetCategoryDropdown() {
     let dropdownButton = document.getElementById("dropdownCategoryButton");
     dropdownButton.innerHTML = "Select a category";
     dropdownButton.removeAttribute("data-selected");
 }
 
+/**
+ * Creates a new task by gathering form data and posting it to the server.
+ */
 function createTask() {
     let newTask = {
         title: getInputValue("title"),
@@ -68,18 +91,38 @@ function createTask() {
         .then(() => clearForm())
 }
 
+/**
+ * Gets the value of an input field by its ID.
+ * @param {string} elementId - The ID of the input element.
+ * @returns {string} - The value of the input field.
+ */
 function getInputValue(elementId) {
     return document.getElementById(elementId).value;
 }
 
+/**
+ * Gets the ID of the selected radio button within a named group.
+ * @param {string} name - The name of the radio button group.
+ * @returns {string} - The ID of the selected radio button.
+ */
 function getCheckedRadioButton(name) {
     return document.querySelector(`input[name="${name}"]:checked`).id;
 }
 
+/**
+ * Gets the value of a specified attribute from an element by its ID.
+ * @param {string} elementId - The ID of the element.
+ * @param {string} attribute - The attribute to retrieve.
+ * @returns {string} - The value of the specified attribute.
+ */
 function getAttributeValue(elementId, attribute) {
     return document.getElementById(elementId).getAttribute(attribute);
 }
 
+/**
+ * Retrieves a list of assigned contacts based on checked checkboxes.
+ * @returns {Array} - An array of assigned contact objects.
+ */
 function getAssignedContacts() {
     let assignedContacts = [];
     document.querySelectorAll('.dropdown-checkbox:checked').forEach(checkbox => {
@@ -92,6 +135,10 @@ function getAssignedContacts() {
     return assignedContacts;
 }
 
+/**
+ * Retrieves a list of subtasks from the task list.
+ * @returns {Array} - An array of subtask strings.
+ */
 function getSubtasks() {
     let subtasks = [];
     document.querySelectorAll('#textList li').forEach(subtask => {
@@ -100,6 +147,11 @@ function getSubtasks() {
     return subtasks;
 }
 
+/**
+ * Posts a new task to the server.
+ * @param {Object} task - The task object to be posted.
+ * @returns {Promise} - A promise that resolves to the server response.
+ */
 function postTask(task) {
     return fetch(`${BASE_URL}${TASK_PATH}.json`, {
         method: "POST",
@@ -110,6 +162,9 @@ function postTask(task) {
     }).then(response => response.json());
 }
 
+/**
+ * Fetches contacts from the server and renders them in the dropdown.
+ */
 function fetchContacts() {
     fetch(`${BASE_URL}${CONTACT_PATH}.json`)
         .then(response => response.json())
@@ -117,6 +172,10 @@ function fetchContacts() {
         .catch(error => console.error('Error fetching contacts:', error));
 }
 
+/**
+ * Renders contacts in the dropdown.
+ * @param {Object} contacts - The contacts object fetched from the server.
+ */
 function renderContacts(contacts) {
     let dropdownContent = document.getElementById('dropdownContent');
     dropdownContent.innerHTML = '';
@@ -131,12 +190,18 @@ function renderContacts(contacts) {
 }
 
 
+/**
+ * Sets up event listeners for the checkboxes in the dropdown.
+ */
 function setupCheckboxListeners() {
     document.querySelectorAll('.dropdown-checkbox').forEach(checkbox => {
         checkbox.addEventListener('change', updateSelectedInitials);
     });
 }
 
+/**
+ * Updates the display of selected initials based on checked checkboxes.
+ */
 function updateSelectedInitials() {
     let selectedInitialsContainer = document.getElementById('selected-initials');
     selectedInitialsContainer.innerHTML = '';
@@ -151,6 +216,10 @@ function updateSelectedInitials() {
     });
 }
 
+/**
+ * Toggles the visibility of a dropdown menu.
+ * @param {string} dropdownId - The ID of the dropdown element.
+ */
 function toggleDropdown(dropdownId) {
     let dropdown = document.getElementById(dropdownId);
     if (dropdown.classList.contains("show")) {
@@ -160,6 +229,10 @@ function toggleDropdown(dropdownId) {
     }
 }
 
+/**
+ * Selects a category and updates the category button.
+ * @param {string} category - The selected category.
+ */
 function selectCategory(category) {
     let dropdownButton = document.getElementById("dropdownCategoryButton");
     dropdownButton.innerHTML = category;
@@ -168,6 +241,10 @@ function selectCategory(category) {
     validateForm();
 }
 
+/**
+ * Filters the items in a dropdown menu based on the input value.
+ * @param {string} dropdownContentId - The ID of the dropdown content element.
+ */
 function filterDropdown(dropdownContentId) {
     let input = document.getElementById("dropdown");
     let filter = input.value.toLowerCase();
@@ -183,13 +260,18 @@ function filterDropdown(dropdownContentId) {
     }
 }
 
-// Subtask handling
+/**
+ * Shows the icons for adding, clearing, and confirming subtasks.
+ */
 function showIcons() {
     document.getElementById("plus-icon").classList.add("hidden");
     document.getElementById("x-icon").classList.remove("hidden");
     document.getElementById("tick-icon").classList.remove("hidden");
 }
 
+/**
+ * Hides the icons if the subtask input is empty.
+ */
 function hideIconsIfEmpty() {
     let input = document.getElementById("subtask-input");
     if (input.value === "") {
@@ -199,16 +281,25 @@ function hideIconsIfEmpty() {
     }
 }
 
+/**
+ * Focuses the subtask input field.
+ */
 function focusInput() {
     document.getElementById("subtask-input").focus();
 }
 
+/**
+ * Clears the subtask input field and focuses it.
+ */
 function clearInput() {
     let input = document.getElementById("subtask-input");
     input.value = "";
     input.focus();
 }
 
+/**
+ * Displays the entered subtask in the subtask list.
+ */
 function displayText() {
     let input = document.getElementById("subtask-input");
     if (input.value !== "") {
@@ -220,7 +311,10 @@ function displayText() {
     }
 }
 
-
+/**
+ * Edits a subtask item.
+ * @param {HTMLElement} element - The edit icon element.
+ */
 function editItem(element) {
     let listItem = element.closest('li');
     let currentText = listItem.querySelector('.item-text').textContent.trim();
@@ -228,17 +322,28 @@ function editItem(element) {
     listItem.querySelector('.edit-input').focus();
 }
 
+/**
+ * Saves the edited subtask item.
+ * @param {HTMLElement} element - The input element containing the new text.
+ */
 function saveEdit(element) {
     let listItem = element.closest('li');
     let newText = element.value;
     listItem.innerHTML = createSubtaskItemHTML(newText);
 }
 
-
+/**
+ * Removes a subtask item.
+ * @param {HTMLElement} element - The delete icon element.
+ */
 function removeItem(element) {
     element.closest('li').remove();
 }
 
+/**
+ * Closes any open dropdowns when clicking outside of them.
+ * @param {Event} event - The window click event.
+ */
 function closeDropdownOnClickOutside(event) {
     if (!event.target.matches('.dropbtn') && !event.target.closest('.dropdown-item')) {
         let dropdowns = document.getElementsByClassName("dropdown-content");
