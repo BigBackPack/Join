@@ -13,6 +13,7 @@
     <!-- js links -->
     <script src="../js/template-loader.js"></script>
     <script src="../js/add-task-script.js"></script>
+    <script src="../js/add-task-template.js"></script>
 
     <title>JOIN Add Task</title>
 </head>
@@ -25,9 +26,9 @@
 
         <div class="right-content-container">
             <div w3-include-html="templates/status-bar-template.html"></div>
-            <div class="individual-content-conatiner">
+            <div class="individual-content-container">
                 <h1>Add Task</h1>
-                <form class="form-body" onsubmit="return handleSubmit()">
+                <form class="form-body" id="add-task-form" onsubmit="return handleFormSubmit(event)">
 
                     <div class="form-fields">
                         <div class="left-form">
@@ -39,8 +40,7 @@
                                 <label for="description">Description</label>
                                 <textarea class="input-field" id="description" rows="5"
                                     placeholder="Enter a Description"></textarea>
-                            </div> 
-                            
+                            </div>
                             
                             <div class="dropdown-container">
                                 <label class="dropdown-label" for="dropdown">Assigned to</label>
@@ -52,8 +52,6 @@
                                 </div>
                             </div>
                             <div id="selected-initials"></div>
-                            
-                            
                         </div>
 
                         <div class="separator"></div>
@@ -64,23 +62,19 @@
                                 <input class="input-field" type="date" id="date" required>
                             </div>
                             <div>
-
-                                <label for="prio-urgent">Prio</label>
+                                <label for="prio-urgent">Priority</label>
                                 <div class="prio-buttons" id="prio-buttons">
                                     <input type="radio" name="priority" id="prio-urgent">
                                     <label for="prio-urgent">Urgent
                                         <img src="/img/prio_urgent_icon.svg" alt="Urgent Icon" class="prio-icon">
-
                                     </label>
                                     <input type="radio" name="priority" id="prio-medium" checked>
                                     <label for="prio-medium">Medium
                                         <img src="/img/prio_medium_icon.svg" alt="Medium Icon" class="prio-icon">
-
                                     </label>
                                     <input type="radio" name="priority" id="prio-low">
                                     <label for="prio-low">Low
                                         <img src="/img/prio_low_icon.svg" alt="Low Icon" class="prio-icon">
-
                                     </label>
                                 </div>
                             </div>
@@ -95,10 +89,9 @@
                                         <a href="#" data-value="option3" onclick="selectCategory('Option 3')">Option 3</a>
                                         <a href="#" data-value="option4" onclick="selectCategory('Option 4')">Option 4</a>
                                     </div>
-                                    <p id="required-text" class="required-text">Please select a category.</p>
+                                    <p id="required-text" class="required-text" style="display:none;">Please select a category.</p>
                                 </div>
                             </div>
-
 
                             <div class="subtask-label">
                                 <label for="subtask-input">Subtask</label>
@@ -133,7 +126,6 @@
             </div>
         </div>
     </div>
-
 </body>
 
 </html>

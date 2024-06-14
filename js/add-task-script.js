@@ -1,10 +1,27 @@
-const BASE_URL = "https://join-2c971-default-rtdb.europe-west1.firebasedatabase.app/";
-const CONTACT_PATH_SUFFIX = "/contacts";
-const TASK_PATH_SUFFIX = "/tasks";
+let BASE_URL = "https://join-2c971-default-rtdb.europe-west1.firebasedatabase.app/";
+let CONTACT_PATH = "/contacts";
+let TASK_PATH = "/tasks";
 
+document.addEventListener("DOMContentLoaded", initializeApp);
 
-function handleSubmit() {
-    return validateForm() && createTask();
+function initializeApp() {
+    fetchContacts();
+    setupEventListeners();
+}
+
+function setupEventListeners() {
+    document.getElementById("add-task-form").addEventListener("submit", handleFormSubmit);
+    document.querySelectorAll('.dropdown-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', updateSelectedInitials);
+    });
+    window.onclick = closeDropdownOnClickOutside;
+}
+
+function handleFormSubmit(event) {
+    event.preventDefault();
+    if (validateForm()) {
+        createTask();
+    }
 }
 
 function validateForm() {
@@ -12,116 +29,118 @@ function validateForm() {
     let selectedCategory = dropdownButton.getAttribute("data-selected");
     let requiredText = document.getElementById("required-text");
 
-    if (!selectedCategory) {
+    let isValid = !!selectedCategory;
+    if (!isValid) {
         dropdownButton.parentElement.classList.add("invalid");
-        requiredText.style.display = "unset"; 
-        return false; 
+        requiredText.style.display = "unset";
     } else {
         dropdownButton.parentElement.classList.remove("invalid");
-        requiredText.style.display = "none"; 
-        return true; 
+        requiredText.style.display = "none";
     }
+    return isValid;
 }
 
 function clearForm() {
     document.querySelector(".form-body").reset();
     document.getElementById("selected-initials").innerHTML = '';
     document.getElementById("textList").innerHTML = '';
-
-    // Reset category dropdown
-    let dropdownCategoryButton = document.getElementById("dropdownCategoryButton");
-    dropdownCategoryButton.innerHTML = "Select a category";
-    dropdownCategoryButton.removeAttribute("data-selected");
+    resetCategoryDropdown();
 }
 
+function resetCategoryDropdown() {
+    let dropdownButton = document.getElementById("dropdownCategoryButton");
+    dropdownButton.innerHTML = "Select a category";
+    dropdownButton.removeAttribute("data-selected");
+}
 
 function createTask() {
-    let title = document.getElementById("title").value;
-    let description = document.getElementById("description").value;
-    let date = document.getElementById("date").value;
-    let priority = document.querySelector('input[name="priority"]:checked').id;
-    let category = document.getElementById("dropdownCategoryButton").getAttribute("data-selected");
-    let assignedTo = [];
+    let newTask = {
+        title: getInputValue("title"),
+        description: getInputValue("description"),
+        dueDate: getInputValue("date"),
+        priority: getCheckedRadioButton("priority"),
+        category: getAttributeValue("dropdownCategoryButton", "data-selected"),
+        assignment: getAssignedContacts(),
+        subtasks: getSubtasks()
+    };
+
+    postTask(newTask)
+        .then(() => clearForm())
+}
+
+function getInputValue(elementId) {
+    return document.getElementById(elementId).value;
+}
+
+function getCheckedRadioButton(name) {
+    return document.querySelector(`input[name="${name}"]:checked`).id;
+}
+
+function getAttributeValue(elementId, attribute) {
+    return document.getElementById(elementId).getAttribute(attribute);
+}
+
+function getAssignedContacts() {
+    let assignedContacts = [];
     document.querySelectorAll('.dropdown-checkbox:checked').forEach(checkbox => {
-        assignedTo.push({
-            name: checkbox.parentNode.querySelector('span').innerText, 
+        assignedContacts.push({
+            name: checkbox.parentNode.querySelector('span').innerText,
             bgColor: checkbox.getAttribute('data-bgcolor'),
             initials: checkbox.getAttribute('data-initials')
         });
     });
+    return assignedContacts;
+}
 
+function getSubtasks() {
     let subtasks = [];
     document.querySelectorAll('#textList li').forEach(subtask => {
         subtasks.push(subtask.innerText.trim());
     });
+    return subtasks;
+}
 
-    let newTask = {
-        title: title,
-        description: description,
-        dueDate: date,
-        priority: priority,
-        category: category,
-        assignment: assignedTo,
-        subtasks: subtasks
-    };
-
-    fetch(`${BASE_URL}${TASK_PATH_SUFFIX}.json`, {
+function postTask(task) {
+    return fetch(`${BASE_URL}${TASK_PATH}.json`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(newTask)
-    })
-    .then(response => response.json())
-    .catch(error => {
-        console.error("Error creating task:", error);
-    });
-    clearForm();
-    return false; 
+        body: JSON.stringify(task)
+    }).then(response => response.json());
 }
 
-// Fetch contacts from Firebase
 function fetchContacts() {
-    fetch(`${BASE_URL}${CONTACT_PATH_SUFFIX}.json`)
+    fetch(`${BASE_URL}${CONTACT_PATH}.json`)
         .then(response => response.json())
-        .then(contacts => {
-            let dropdownContent = document.getElementById('dropdownContent');
-            dropdownContent.innerHTML = ''; 
-
-            for (let key in contacts) {
-                if (contacts.hasOwnProperty(key)) {
-                    let contact = contacts[key];
-                    let initials = contact.name.split(' ').map(word => word[0]).join('');
-                    let contactItem = `
-                        <a href="#" data-value="${key}">
-                            <div class="dropdown-item">
-                                <div class="dropdown-image" style="background-color: ${contact.bgColor};">
-                                    <p>${initials}</p>
-                                </div>
-                                <span>${contact.name}</span>
-                                <input type="checkbox" class="dropdown-checkbox" data-initials="${initials}" data-bgcolor="${contact.bgColor}">
-                            </div>
-                        </a>`;
-                    dropdownContent.innerHTML += contactItem;
-                }
-            }
-
-            
-            let checkboxes = document.querySelectorAll('.dropdown-checkbox');
-            checkboxes.forEach(function (checkbox) {
-                checkbox.addEventListener('change', function () {
-                    updateSelectedInitials();
-                });
-            });
-        })
+        .then(renderContacts)
         .catch(error => console.error('Error fetching contacts:', error));
+}
+
+function renderContacts(contacts) {
+    let dropdownContent = document.getElementById('dropdownContent');
+    dropdownContent.innerHTML = '';
+    for (let key in contacts) {
+        if (contacts.hasOwnProperty(key)) {
+            let contact = contacts[key];
+            let contactItem = createContactItem(contact, key);
+            dropdownContent.innerHTML += contactItem;
+        }
+    }
+    setupCheckboxListeners();
+}
+
+
+function setupCheckboxListeners() {
+    document.querySelectorAll('.dropdown-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', updateSelectedInitials);
+    });
 }
 
 function updateSelectedInitials() {
     let selectedInitialsContainer = document.getElementById('selected-initials');
     selectedInitialsContainer.innerHTML = '';
-    let checkboxes = document.querySelectorAll('.dropdown-checkbox:checked');
-    checkboxes.forEach(function (checkbox) {
+    document.querySelectorAll('.dropdown-checkbox:checked').forEach(checkbox => {
         let initials = checkbox.getAttribute('data-initials');
         let bgColor = checkbox.getAttribute('data-bgcolor');
         let initialsDiv = document.createElement('div');
@@ -132,9 +151,13 @@ function updateSelectedInitials() {
     });
 }
 
-// Dropdown handling
 function toggleDropdown(dropdownId) {
-    document.getElementById(dropdownId).classList.toggle("show");
+    let dropdown = document.getElementById(dropdownId);
+    if (dropdown.classList.contains("show")) {
+        dropdown.classList.remove("show");
+    } else {
+        dropdown.classList.add("show");
+    }
 }
 
 function selectCategory(category) {
@@ -188,69 +211,35 @@ function clearInput() {
 
 function displayText() {
     let input = document.getElementById("subtask-input");
-    let textList = document.getElementById("textList");
     if (input.value !== "") {
-        let newItem = document.createElement("li");
-        newItem.innerHTML = `
-            <span class="item-text">${input.value}</span>
-            <div class="feature-icons">
-                <span class="edit-icon" onclick="editItem(this)"><img src="/img/edit_icon.svg"></span>
-                <div class="separator-list"></div>
-                <span class="delete-icon" onclick="removeItem(this)"><img src="/img/delete_icon.svg"></span>
-            </div>
-        `;
+        let textList = document.getElementById("textList");
+        let newItem = createSubtaskItem(input.value);
         textList.appendChild(newItem);
         input.value = "";
         hideIconsIfEmpty();
     }
 }
 
+
 function editItem(element) {
     let listItem = element.closest('li');
     let currentText = listItem.querySelector('.item-text').textContent.trim();
-    listItem.innerHTML = `
-        <div class="edit-container">
-            <input type="text" class="edit-input" value="${currentText}" onblur="saveEdit(this)">
-            <div class="feature-icons">
-                <span class="edit-icon" onclick="saveEdit(this)"><img src="/img/check_black_icon.svg"></span>
-                <div class="separator-list"></div>
-                <span class="delete-icon" onclick="removeItem(this)"><img src="/img/delete_icon.svg"></span>
-            </div>
-        </div>
-    `;
+    listItem.innerHTML = createEditItemHTML(currentText);
     listItem.querySelector('.edit-input').focus();
 }
 
 function saveEdit(element) {
     let listItem = element.closest('li');
     let newText = element.value;
-    listItem.innerHTML = `
-        <span class="item-text">${newText}</span>
-        <div class="feature-icons">
-            <span class="edit-icon" onclick="editItem(this)"><img src="/img/edit_icon.svg"></span>
-            <div class="separator-list"></div>
-            <span class="delete-icon" onclick="removeItem(this)"><img src="/img/delete_icon.svg"></span>
-        </div>
-    `;
+    listItem.innerHTML = createSubtaskItemHTML(newText);
 }
+
 
 function removeItem(element) {
     element.closest('li').remove();
 }
 
-// Initialize
-document.addEventListener("DOMContentLoaded", function () {
-    fetchContacts();
-
-    let checkboxes = document.querySelectorAll('.dropdown-checkbox');
-    checkboxes.forEach(function (checkbox) {
-        checkbox.addEventListener('change', function () {
-            updateSelectedInitials();
-        });
-    });
-});
-
-window.onclick = function (event) {
+function closeDropdownOnClickOutside(event) {
     if (!event.target.matches('.dropbtn') && !event.target.closest('.dropdown-item')) {
         let dropdowns = document.getElementsByClassName("dropdown-content");
         for (let i = 0; i < dropdowns.length; i++) {
@@ -260,4 +249,4 @@ window.onclick = function (event) {
             }
         }
     }
-};
+}
