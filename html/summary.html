@@ -8,10 +8,12 @@
     <!-- css links -->
     <link rel="stylesheet" href="../css/summary-style.css" />
     <link rel="stylesheet" href="../css/global-style.css" />
+    <!-- <link rel="stylesheet" href="../css/media/template-nav-bar-media.css"> -->
+    <!-- <link rel="stylesheet" href="../css/media/template-status-bar-media.css"> -->
 
     <!-- js links -->
     <script src="../js/template-loader.js"></script>
-    <script src="../js/summary.js" defer></script>
+    <script src="../js/summary-script.js" type="module" defer></script>
 
     <title>JOIN Summary</title>
     <link
@@ -130,7 +132,8 @@
                     class="icon-tile-details tile-color tile-details"
                   >
                     <div id="urgent-left-container">
-                      <svg
+                      <div>
+                        <svg
                         class="icon-urgent"
                         width="59"
                         height="59"
@@ -158,8 +161,8 @@
                             />
                           </clipPath>
                         </defs>
-                      </svg>
-
+                        </svg>
+                      </div>
                       <div>
                         <p class="font-tiles" id="overview-urgent-amount">1</p>
                         <span id="overview-urgent-txt">Urgent</span>
@@ -176,6 +179,7 @@
                         >Upcoming Deadline</span
                       >
                     </div>
+                    
                   </div>
                 </div>
                 <div id="overview-line-ctr">
@@ -201,7 +205,7 @@
               </section>
               <section id="greeting-container">
                 <h4 id="greeting-user">Good Morning,</h4>
-                <p class="icon-tile-details" id="user-name">&lt;USER&gt;</p>
+                <p class="icon-tile-details" id="user-name"></p>
               </section>
             </div>
           </div>
