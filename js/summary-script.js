@@ -1,4 +1,6 @@
-
+/**
+ * The base URL for the Firebase database.
+ */
 const BASE_URL = "https://join-2c971-default-rtdb.europe-west1.firebasedatabase.app/";
 
 
@@ -39,6 +41,7 @@ const signatureColors = [
 
 /**
  * Holds the list of contacts and tasks in json.
+ * seperated per entries and as well as their value and key.
  */
 let contactList = [];
 let contactListIds = [];
@@ -71,8 +74,6 @@ function summaryInit() {
  * 
  * Object.value() - fills in contactList[] with the indexed-data, without the keys from Firebase
  */
-
-
 async function loadContactsData(path) {
   let resp = await fetch(BASE_URL + path + ".json");
   let respToJson = await resp.json();
@@ -85,6 +86,7 @@ async function loadContactsData(path) {
   }
   // Call updateUserName() after populating contactList
   updateUserName();
+
 }
 
 
@@ -103,11 +105,14 @@ async function loadTasksData(path) {
     taskList = Object.entries(taskList);
     taskListIds = Object.keys(taskList);
     taskListValues = Object.values(taskList);
+    console.log(taskListValues);
   }
   
+  showSumofTasks();
+  showSumofAllBoardTasks();
 
   // Call updateUserName() after populating taskList
-  updateUserName();
+  // updateUserName();
 }
 
 
@@ -123,3 +128,68 @@ function updateUserName() {
   userNameElement.innerHTML = userName; 
 }
 
+
+/**
+ * Shows the overall-sum of (open)tasks in the summary page.
+ * Source: Firebase-Db
+ */
+function showSumofTasks() {
+  const sumOfTasks = document.getElementById("amount-todo");
+  sumOfTasks.innerHTML = '';
+  sumOfTasks.textContent = taskListValues.length;
+}
+
+
+/**
+ * Shows the overall-sum of (done)tasks in the summary page.
+ * Source: Firebase-Db
+ */
+function showTasksDone() {
+  const tasksDone = document.getElementById("amount-done");
+  tasksDone.innerHTML = '';
+  // tasksDone.textContent = ;
+}
+
+
+/**
+ * Shows the sum of (progress)tasks in the summary page.
+ * Source: Firebase-Db
+ */
+function showTaskInProgress() {
+  const taskInProgress = document.getElementById("task-in-progress");
+  taskInProgress.innerHTML = '';
+  // taskInProgress.textContent = ;
+}
+
+
+/**
+ * Shows the sum of (feedback)tasks in the summary page.
+ * Source: Firebase-Db
+ */
+function showTaskInFeedback() {
+  const taskInFeedback= document.getElementById("task-feedback");
+  taskInFeedback.innerHTML = '';
+  // taskInFeedback.textContent = ;
+}
+
+
+/**
+ * Shows the overall-sum of (urgent)tasks in the summary page.
+ * Source: Firebase-Db
+ */
+function showUrgentTask() {
+  const urgentTask = document.getElementById("overview-urgent-amount");
+  urgentTask.innerHTML = '';
+  // urgentTask.textContent = ;
+}
+
+
+/**
+ * Shows the overall-sum of -all- tasks (at the board) in the summary page.
+ * Source: Firebase-Db
+ */
+function showSumofAllBoardTasks() {
+  const sumOfAllTasks = document.getElementById("task-on-board");
+  sumOfAllTasks.innerHTML = '';
+  sumOfAllTasks.textContent = taskListValues.length;
+}
