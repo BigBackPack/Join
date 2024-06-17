@@ -210,7 +210,7 @@ html {
 .column-3,
 .column-4 {
   width: 252px;
-  height: 100%;
+  height: 100vh;
   margin: 16px;
 }
 
@@ -219,7 +219,7 @@ html {
   display: flex;
   padding-right: 16px;
   gap: 16px;
-  top: -149px;
+  top: 199px;
 }
 
 .col-1 {
