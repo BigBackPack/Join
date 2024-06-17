@@ -22,4 +22,8 @@
         padding: 0;
         width: 100%
     }
+
+    .text-container{
+        padding: 120px 24px;
+    }
 }

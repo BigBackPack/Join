@@ -290,3 +290,8 @@ a{
 /* #endregion status-bar*/
 
 
+/* #region gnerics ---------------------------------*/
+.spacer-top-64{
+    margin-top: 64px;
+}
+/* #endregion status-bar*/
