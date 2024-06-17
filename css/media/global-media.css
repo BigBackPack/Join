@@ -1,0 +1,25 @@
+@media (max-width: 1200px){
+    .main-content-container{
+      flex-direction: column-reverse;
+    }
+
+    .left-content-container{
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .right-content-container{
+        margin: 0;
+        padding: 0;
+    }
+}
+
+
+@media (max-width: 800px){
+    .right-content-container{
+        margin: 0;
+        padding: 0;
+        width: 100%
+    }
+}

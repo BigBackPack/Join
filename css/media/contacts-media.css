@@ -1,21 +1,4 @@
 @media (max-width: 1200px){
-    .main-content-container{
-      flex-direction: column-reverse;
-      /* background-color: tomato; */
-    }
-
-    .left-content-container{
-        position: sticky;
-        bottom: 0;
-        width: 100%;
-    }
-
-    .right-content-container{
-        margin: 0;
-        /* width: 100vw; */
-        padding: 0;
-    }
-    
     .contacts-container{
         margin: 0;
     }
@@ -38,17 +21,10 @@
     .contacts-content-left{
         padding: 0;
     }
-
-    .right-content-container{
-        margin: 0;
-        padding: 0;
-        width: 100%
-    }
     
     .contacts-container{
         margin: 0;
         display: block;
         padding: 14px;
-
     }
 }
