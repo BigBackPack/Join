@@ -9,7 +9,7 @@ html{ overflow: hidden;}
     width: 30%;
     background-color: white;
     padding: 24px;
-    height: 100vh;
+    height: 100dvh;
 }
 
 .contacts-content-right{
@@ -30,9 +30,7 @@ html{ overflow: hidden;}
     align-items: center;
 }
 
-.full-with{
-    width: 100%;
-}
+.full-with{width: 100%;}
 
 
 /* #region sorted contact view ---------------------*/ 
@@ -63,6 +61,21 @@ html{ overflow: hidden;}
 }
 
 .sorted-contact-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    border-radius: 100%;
+    background-color: orange;
+    min-width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    margin-right: 24px;
+}
+
+.sorted-contact-icon-overlay{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -160,11 +173,27 @@ html{ overflow: hidden;}
     overflow: hidden;
 }
 
-.close-button-container{
-    width: 100%;
+.close-button-container-mobile{
+    display: none;
+    justify-content: right;
+    z-index: 120;
+    position: relative;
+    top: 0px;
+    right: 64px;
+}
+
+.close-button-container-desktop{
     display: flex;
     justify-content: right;
-    margin-bottom: 84px;
+    z-index: 120;
+    position: relative;
+    top: -32px;
+    right: 64px;
+    width: 100%;
+}
+
+.close-icon-svg{
+    fill: var(--mainColor);
 }
 
 .overlay-close-button{
@@ -178,7 +207,9 @@ html{ overflow: hidden;}
     cursor: pointer;
 }
 
-.overlay-close-button:hover{background-color: var(--borderColor);}
+.overlay-close-button:hover{background-color: var(--secondaryColor);}
+
+.overlay-close-button:hover .close-icon-svg{fill: var(--white);}
 
 /* info : right side */
 .add-contact-info-container{
@@ -224,7 +255,6 @@ html{ overflow: hidden;}
 }
 
 .persona-icon-container{
-    /* width: 300px; */
     display: flex;
     justify-content: center;
 }
@@ -261,3 +291,29 @@ html{ overflow: hidden;}
 .secondary-button:hover .svg-icon{fill: var(--secondaryColor);}
 
 /* #endregion add contact overlay*/
+
+
+/* #region add contact btn ----------------------------- */
+.toTopButton {
+    position: fixed; 
+    bottom: 150px;
+    right: 30px; 
+    z-index: 99; 
+    border: none;
+    outline: none; 
+    background-color: var(--mainColor);
+    color: var(--white); 
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 6px; 
+    font-size: 1.5rem;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+  }
+  
+  .toTopButton:hover {background-color: var(--secondaryColor);}
+/* #endregion add contact btn*/

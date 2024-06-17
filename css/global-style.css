@@ -262,7 +262,13 @@ a{
     z-index: 100;
 }
 
-.status-bar-container img{
+.help-icon{
+    display: block;
+    width: 32px;
+    height: auto;
+}
+
+.join-logo{
     display: none;
     width: 32px;
     height: auto;

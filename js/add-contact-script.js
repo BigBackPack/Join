@@ -220,8 +220,8 @@ function resetAllContactPreviewsToDefaultState() {
         if (contactList.hasOwnProperty(firebaseId )) {
             let contactPreviewContainer = document.getElementById("contact-preview-" + firebaseId );
             if (contactPreviewContainer) {
-                contactPreviewContainer.style.backgroundColor = "var(--white)";
-                contactPreviewContainer.style.color = "var(--black)";
+                contactPreviewContainer.style.backgroundColor = "";
+                contactPreviewContainer.style.color = "";
             }
         }
     }

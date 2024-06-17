@@ -5,10 +5,78 @@
 
     .contacts-content-left{
         width: 100%;
-        padding: 0;
         margin: 64px 0 0 0;
         padding: 14px;
         background-color: var(--white);
+    }
+
+    .alphabetic-sorting-container{max-height: 70%;}
+
+    .add-contact-form{
+        display: flex;
+        flex-direction: column;
+        max-width: 70%;
+        height: 70%;
+    }
+
+    .add-contact-info-container{
+        width: 100%;
+        padding-left: 64px;
+        padding-bottom: 64px;
+        justify-content: space-around;
+
+    }
+    
+    .add-contact-info-container img{
+        display: none;
+    }
+
+    .close-button-container-mobile{
+        display: flex;
+        width: 100%;
+    }
+
+    .close-button-container-desktop{
+        display: none;
+    }
+
+    .close-icon-svg{
+        fill: var(--white);
+    }
+
+    .add-input-info-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+    }
+
+    .persona-icon{
+        position: relative;
+        top: -50px;
+    }
+
+    .sorted-contact-icon-overlay{
+        position: relative;
+        top: -50px;
+    }
+
+    .contact-inputs{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-right: 0;
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    .contact-inputs input{
+        margin: 8px 0;
+        display: flex;
+        justify-content: center;
     }
 }
 
@@ -26,5 +94,52 @@
         margin: 0;
         display: block;
         padding: 14px;
+    }
+
+    .add-contact-form{
+        display: flex;
+        flex-direction: column;
+        max-width: 90%;
+        height: 90%;
+    }
+
+    .alphabetic-sorting-container{max-height: 80%;}
+
+    .toTopButton{display: flex;}
+
+    .desktop-btn{display: none;}
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button-container {justify-content: space-between;}
+    .button-container button {margin: 0;}
+}
+
+
+@media (max-width: 600px){
+    .contact-inputs input{
+        max-width: 250px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button-container button {
+        margin-bottom: 14px;
+        width: 50%;
+    }
+}
+
+
+@media (max-width: 400px){
+    .contact-inputs input{
+        max-width: 200px;
     }
 }
