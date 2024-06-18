@@ -1,9 +1,7 @@
-let BASE_URL = "https://join-2c971-default-rtdb.europe-west1.firebasedatabase.app/";
+let BASE = "https://join-2c971-default-rtdb.europe-west1.firebasedatabase.app/";
 let CONTACT_PATH = "/contacts";
 let TASK_PATH = "/tasks";
 let contactsData = {};
-
-document.addEventListener("DOMContentLoaded", initializeApp);
 
 /**
  * Initializes the application by fetching contacts and setting up event listeners.
@@ -155,7 +153,7 @@ function getSubtasks() {
  * @returns {Promise} - A promise that resolves to the server response.
  */
 async function postTask(task) {
-    let response = await fetch(`${BASE_URL}${TASK_PATH}.json`, {
+    let response = await fetch(`${BASE}${TASK_PATH}.json`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -169,7 +167,7 @@ async function postTask(task) {
  * Fetches contacts from the server and renders them in the dropdown.
  */
 function fetchContacts() {
-    fetch(`${BASE_URL}${CONTACT_PATH}.json`)
+    fetch(`${BASE}${CONTACT_PATH}.json`)
         .then(response => response.json())
         .then(data => {
             contactsData = data;

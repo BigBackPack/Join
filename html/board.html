@@ -7,11 +7,15 @@
     <!-- css links -->
     <link rel="stylesheet" href="../css/board-style.css" />
     <link rel="stylesheet" href="../css/global-style.css" />
+    <link rel="stylesheet" href="../css/board-task-overlay-style.css">
 
     <!-- js links -->
     <script src="../js/template-loader.js"></script>
     <script src="../js/board-scripts/board-dummy-card.js"></script>
     <script src="../js/board-scripts/board-overlay.js"></script>
+    <script src="../js/board-task-overlay-script.js"></script>
+    <script src="../js/add-task-script.js"></script>
+    <script src="../js/add-task-template.js"></script>
     <!-- js for drag-n-drop lib: sortable -->
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
 
@@ -24,7 +28,8 @@
     />
   </head>
 
-  <body onload="includeHTML()">
+  <body onload="includeHTML();">
+    
     <div class="main-content-container">
       <div class="left-content-container">
         <div w3-include-html="templates/nav-bar-template.html"></div>
@@ -33,7 +38,10 @@
       <div class="right-content-container">
         <div w3-include-html="templates/status-bar-template.html"></div>
 
+        
         <div class="individual-content-container container-css">
+          <div id="task-overlay" class="task-overlay d-none"></div>
+          
           <div>
             <div id="board-header">
               <h2>Board</h2>
@@ -52,7 +60,7 @@
                   type="text"
                   placeholder="Find Task ..."
                 />
-                <button id="add-task-btn" onclick="addTask()">
+                <button id="add-task-btn" onclick="addTask(); initializeApp()">
                   Add Task
                   <img
                     id="plus-icon"
