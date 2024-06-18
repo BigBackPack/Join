@@ -105,12 +105,11 @@ async function loadTasksData(path) {
     taskList = Object.entries(taskList);
     taskListIds = Object.keys(taskList);
     taskListValues = Object.values(taskList);
-    console.log(taskListValues);
   }
   
   showSumofTasks();
   showSumofAllBoardTasks();
-
+  countUrgentTasks();
   // Call updateUserName() after populating taskList
   // updateUserName();
 }
@@ -192,4 +191,21 @@ function showSumofAllBoardTasks() {
   const sumOfAllTasks = document.getElementById("task-on-board");
   sumOfAllTasks.innerHTML = '';
   sumOfAllTasks.textContent = taskListValues.length;
+}
+
+const priorityList = {
+  0: [{}, { priority: 'urgent' }],
+  1: [{}, { priority: 'low' }],
+  2: [{}, { priority: 'medium' }],
+};
+
+function countUrgentTasks() {
+  let countUrgent = 0;
+
+  for (let i = 0; i < taskList.length; i++) {
+    if (taskList[i][1].priority === 'urgent') {
+      countUrgent++;
+    }
+  }
+  document.getElementById('overview-urgent-amount').textContent = countUrgent;
 }

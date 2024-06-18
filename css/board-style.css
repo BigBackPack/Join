@@ -193,11 +193,11 @@ html {
   position: absolute;
   top: 326px;
   left: 60px;
-  width: 1038px;
+  /* width: 1038px; */
   height: 688px;
   display: flex;
   flex-direction: row;
-  align-items: end;
+  /* align-items: end; */
 }
 
 .column-1 {
@@ -210,7 +210,7 @@ html {
 .column-3,
 .column-4 {
   width: 252px;
-  height: 100vh;
+  height: 100%;
   margin: 16px;
 }
 
@@ -219,7 +219,9 @@ html {
   display: flex;
   padding-right: 16px;
   gap: 16px;
-  top: 196px;
+  /* top: 196px; */
+  top: -25px;
+  height: 100%;
 }
 
 .col-1 {
@@ -297,17 +299,22 @@ html {
 }
 
 .progress-container {
-  width: 220px;
+  width: 245px;
   height: 16px;
+  display: flex;
+  align-items: center;
 }
 
+
 .card-progress-bar {
-  width: 128px;
+  display: flex;
+  align-items: center;
+  /* width: 180px; */
   height: 8px;
   top: 4px;
   border-radius: 8px;
-  padding: 0 64px 0 0;
-  gap: 10px;
+  padding: 0 35px 0 0;
+  /* gap: 10px; */
 }
 
 .card-footer {
@@ -324,6 +331,32 @@ html {
 
 .profile-overlap {
   margin-left: -15px;
+}
+
+/* Design progress bar incl fill */
+
+.progress-bar {
+
+  /* width: 128px; */
+  height: 8px;
+  border-radius: 4px;
+  background-color: #F4F4F4;
+  /* position: relative; */
+}
+
+#done-bar-fill,
+#progress-bar-fill {
+  height: 8px;
+  border-radius: 4px;
+  background-color: #4589FF;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.bar-span {
+  display: flex;
+  gap: 2px;
 }
 
 /* OVERLAY CARD */
@@ -347,6 +380,7 @@ html {
 
 .ol-close-btn {
   cursor: pointer;
+  font-size: x-large;
 }
 
 .ol-board-card {
