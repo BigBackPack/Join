@@ -36,9 +36,23 @@ const signatureColors = [
 ];
 
 
+window.addEventListener("resize", checkWindowSize);
+
+
 function init() {
     addContactsToPreview();
     loadContactsData(CONTACT_PATH_SUFFIX);
+}
+
+
+function checkWindowSize(){
+    if(window.innerWidth  > 800){
+        document.getElementById("contacts-content-left").style.display = "block";
+    }
+
+    else if(window.innerWidth  < 800){
+        document.getElementById("contacts-content-right").style.display = "block";
+    }
 }
 
 
@@ -50,6 +64,33 @@ function turnOnAddContactOverlay() {
 function turnOffAllOverlays() {
     document.getElementById("fullscreen-overlay").style.display = "none";
     document.getElementById("fullscreen-overlay-edit-contact").style.display = "none";
+    document.getElementById("fullscreen-overlay-mobile-edit-options").style.display = "none";
+    turnOffEditContactOptions();
+}
+
+
+function turnOnDetailedContactView() {
+    if(window.innerWidth  < 800){
+        document.getElementById("contacts-content-right").style.display = "block";
+        document.getElementById("contacts-content-left").style.display = "none";
+    }
+}
+
+
+function turnOffDetailedContactView() {
+    document.getElementById("contacts-content-right").style.display = "none";
+    document.getElementById("contacts-content-left").style.display = "block";
+}
+
+
+function turnOnEditContactOptions() {
+    document.getElementById("edit-contact-options-popup").style.display = "flex";
+    document.getElementById("fullscreen-overlay-mobile-edit-options").style.display = "flex";
+}
+
+
+function turnOffEditContactOptions() {
+    document.getElementById("edit-contact-options-popup").style.display = "none";
 }
 
 
@@ -205,7 +246,8 @@ function pickBgColorInitials() {
 
 
 function selectContact(firebaseId) {
-    resetAllContactPreviewsToDefaultState()
+    resetAllContactPreviewsToDefaultState();
+    turnOnDetailedContactView(); 
 
     const contactPreviewContainer = document.getElementById("contact-preview-" + firebaseId );
     contactPreviewContainer.style.backgroundColor = "var(--mainColorSelect)";
@@ -231,6 +273,8 @@ function resetAllContactPreviewsToDefaultState() {
 function displayDetailedContactInfo(firebaseId ) {
     const editContactContainer = document.getElementById("edit-contact-container");
     const deleteContactContainer = document.getElementById("delete-contact-container");
+    const editContactMobileOption = document.querySelector(".edit");
+    const deleteContactMobileOption = document.querySelector(".delte");
     const contactSignatur = document.getElementById("signatur-display");
     const contactName = document.getElementById("name-display");
     const contactMail = document.getElementById("email-deisplay");
@@ -251,12 +295,20 @@ function displayDetailedContactInfo(firebaseId ) {
     editContactContainer.onclick = function() {
         editContact(firebaseId);
     };
+    
+    deleteContactMobileOption.onclick = function() {
+        deleteContact(firebaseId);
+    };
+
+    editContactMobileOption.onclick = function() {
+        editContact(firebaseId);
+    };
 }
 
 
 function editContact(firebaseId) {
-    console.log(firebaseId);
     document.getElementById("fullscreen-overlay-edit-contact").style.display = "flex";
+    document.getElementById("fullscreen-overlay-mobile-edit-options").style.display = "none";
     const deleteContactBtn = document.getElementById("delete-contact-btn");
     const saveEditedContactBtn = document.getElementById("save-edited-contact-btn");
     const contactSignatur = document.getElementById("edit-signatur-display");

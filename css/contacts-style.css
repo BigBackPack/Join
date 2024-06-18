@@ -12,9 +12,7 @@ html{ overflow: hidden;}
     height: 100dvh;
 }
 
-.contacts-content-right{
-    margin: 64px;
-}
+.contacts-content-right{margin: 64px;}
 
 .contacts-title-container{
     display: flex;
@@ -30,13 +28,13 @@ html{ overflow: hidden;}
     align-items: center;
 }
 
+.contacts-slogan-blue-line{display: none;}
+
 .full-with{width: 100%;}
 
 
 /* #region sorted contact view ---------------------*/ 
-.deatailed-contact-container{
-    display: block;
-}
+.deatailed-contact-container{display: block;}
 
 .contact-preview{
     display: flex;
@@ -144,6 +142,15 @@ html{ overflow: hidden;}
 }
 
 .contact-suptitle{padding-top: 24px;}
+
+.contacts-title-container{
+    display: flex;
+}
+
+.back-to-contacts-btn{
+    cursor: pointer;
+    display: none;
+}
 /* #endregion detailed contact view*/
 
 
@@ -157,7 +164,7 @@ html{ overflow: hidden;}
     height: 100%;
     background-color: var(--overlayBgColor);
     backdrop-filter: blur(3px);
-    z-index: 200;
+    z-index: 202;
     display: none; /*flex*/
     justify-content: center;
     align-items: center;
@@ -171,6 +178,7 @@ html{ overflow: hidden;}
     background-color: var(--bgColor);
     border-radius: 24px;
     overflow: hidden;
+    z-index: 300;
 }
 
 .close-button-container-mobile{
@@ -293,10 +301,10 @@ html{ overflow: hidden;}
 /* #endregion add contact overlay*/
 
 
-/* #region add contact btn ----------------------------- */
-.toTopButton {
+/* #region add contact radio btn ---------------------- */
+.add-contact-radio-btn{
     position: fixed; 
-    bottom: 150px;
+    bottom: 100px;
     right: 30px; 
     z-index: 99; 
     border: none;
@@ -315,5 +323,67 @@ html{ overflow: hidden;}
     border-radius: 50%;
   }
   
-  .toTopButton:hover {background-color: var(--secondaryColor);}
-/* #endregion add contact btn*/
+  .add-contact-radio-btn:hover{background-color: var(--secondaryColor);}
+/* #endregion add contact radio btn*/
+
+
+/* #region edit contact radio btn ---------------------- */
+.edit-contact-radio-btn{
+    position: fixed; 
+    bottom: 100px;
+    right: 30px; 
+    z-index: 201; 
+    border: none;
+    outline: none; 
+    background-color: var(--mainColor);
+    color: var(--white); 
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 6px; 
+    font-size: 1.5rem;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+  }
+  
+  .edit-contact-radio-btn:hover{background-color: var(--secondaryColor);}
+/* #endregion add contact radio btn*/
+
+
+/* #region edit contact options popup ----------------- */
+.edit-contact-options-popup{
+    position: fixed; 
+    bottom: 100px;
+    right: 30px; 
+    z-index: 300; 
+    border: none;
+    outline: none; 
+    background-color: var(--white);
+    color: var(--mainColor); 
+    cursor: pointer;
+    padding: 5px;
+    font-size: 1.5rem;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 100px;
+    height: 100px;
+    padding-left: 14px;
+    border-radius: 24px 24px 0 24px;
+    filter: drop-shadow(0 4px 2px #00000036);
+  }
+
+.edit-links-mobile{
+    font-size: 1rem;
+    margin: 0;
+    line-height: 0.5rem;
+  }
+
+.edit-links-mobile{cursor: pointer;}
+.edit-links-mobile:hover{color: var(--secondaryColor);}
+.edit-links-mobile:hover .svg-icon{fill: var(--secondaryColor);}
+/* #endregion add contact options popup */
