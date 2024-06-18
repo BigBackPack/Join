@@ -10,10 +10,12 @@
 
     <!-- js links -->
     <script src="../js/template-loader.js"></script>
-    <script src="../js/board-scripts/board-data.js" type="module"></script>
     <script src="../js/board-scripts/board-dummy-card.js"></script>
     <script src="../js/board-scripts/board-overlay.js"></script>
-    <script src="../js/board-script.js" type="module" defer></script>
+    <!-- js for drag-n-drop lib: sortable -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
+
+    <script src="../js/board-script.js" defer></script>
     <title>JOIN Board</title>
     <link
       rel="shortcut icon"
@@ -122,17 +124,17 @@
           </div>
 
           <div id="board-overview">
-            <div id="column-1" class="column-1">
+            <div id="column-1" class="board-columns column-1">
               <div class="empty-task">
                 <span id="empty-task-txt">No task To do</span>
               </div>
             </div>
             <div class="column-2-3-4">
-              <div id="column-2" class="column-2">
+              <div id="column-2" class="board-columns column-2">
               </div>
-              <div id="column-3" class="column-3">
+              <div id="column-3" class="board-columns column-3">
               </div>
-              <div id="column-4" class="column-4">
+              <div id="column-4" class="board-columns column-4">
               </div>
             </div>
           </div>

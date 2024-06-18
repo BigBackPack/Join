@@ -219,7 +219,7 @@ html {
   display: flex;
   padding-right: 16px;
   gap: 16px;
-  top: 199px;
+  top: 156px;
 }
 
 .col-1 {
@@ -481,15 +481,16 @@ html {
 .ol-sub-tasks-container {
   width: 445px;
   height: 68px;
-  gap: 4px;
+  /* gap: 4px; */
   display: flex;
   flex-direction: column;
+  margin-bottom: 76px;
 }
 
 .ol-sub-task {
   width: 344px;
   height: 32px;
-  padding: 6px 16px 6px 16px;
+  /* padding: 6px 16px 6px 16px; */
   gap: 16px;
 }
 
