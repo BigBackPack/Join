@@ -1,6 +1,7 @@
 let BASE_URL = "https://join-2c971-default-rtdb.europe-west1.firebasedatabase.app/";
 let CONTACT_PATH = "/contacts";
 let TASK_PATH = "/tasks";
+let contactsData = {};
 
 document.addEventListener("DOMContentLoaded", initializeApp);
 
@@ -10,6 +11,7 @@ document.addEventListener("DOMContentLoaded", initializeApp);
 function initializeApp() {
     fetchContacts();
     setupEventListeners();
+    setMinDate();
 }
 
 /**
@@ -126,11 +128,8 @@ function getAttributeValue(elementId, attribute) {
 function getAssignedContacts() {
     let assignedContacts = [];
     document.querySelectorAll('.dropdown-checkbox:checked').forEach(checkbox => {
-        assignedContacts.push({
-            name: checkbox.parentNode.querySelector('span').innerText,
-            bgColor: checkbox.getAttribute('data-bgcolor'),
-            initials: checkbox.getAttribute('data-initials')
-        });
+        let contactId = checkbox.getAttribute('data-id');
+        assignedContacts.push(contactId);
     });
     return assignedContacts;
 }
@@ -152,14 +151,15 @@ function getSubtasks() {
  * @param {Object} task - The task object to be posted.
  * @returns {Promise} - A promise that resolves to the server response.
  */
-function postTask(task) {
-    return fetch(`${BASE_URL}${TASK_PATH}.json`, {
+async function postTask(task) {
+    let response = await fetch(`${BASE_URL}${TASK_PATH}.json`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(task)
-    }).then(response => response.json());
+    });
+    return await response.json();
 }
 
 /**
@@ -168,7 +168,10 @@ function postTask(task) {
 function fetchContacts() {
     fetch(`${BASE_URL}${CONTACT_PATH}.json`)
         .then(response => response.json())
-        .then(renderContacts)
+        .then(data => {
+            contactsData = data;
+            renderContacts(data);
+        })
         .catch(error => console.error('Error fetching contacts:', error));
 }
 
@@ -354,4 +357,17 @@ function closeDropdownOnClickOutside(event) {
             }
         }
     }
+}
+
+/**
+* Sets the minimum date for the date picker to today's date.
+*/
+function setMinDate() {
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = (today.getMonth() + 1).toString().padStart(2, '0');
+    let day = today.getDate().toString().padStart(2, '0');
+    let todayString = `${year}-${month}-${day}`;
+
+    document.getElementById("date").setAttribute("min", todayString);
 }

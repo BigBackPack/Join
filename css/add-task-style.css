@@ -193,33 +193,33 @@ p {
 
 
 /* change color from prio buttons on focus */
-input[type="radio"]#prio-urgent:checked + label {
+input[type="radio"]#urgent:checked + label {
     background-color: var(--red);
     color: white;
     font-weight: bold;
 }
 
-input[type="radio"]#prio-urgent:checked + label .prio-icon {
+input[type="radio"]#urgent:checked + label .prio-icon {
     filter: brightness(0) invert(1);
 }
 
-input[type="radio"]#prio-medium:checked + label {
+input[type="radio"]#medium:checked + label {
     background-color: var(--orange);
     color: white;
     font-weight: bold;
 }
 
-input[type="radio"]#prio-medium:checked + label .prio-icon {
+input[type="radio"]#medium:checked + label .prio-icon {
     filter: brightness(0) invert(1);
 }
 
-input[type="radio"]#prio-low:checked + label {
+input[type="radio"]#low:checked + label {
     background-color: var(--green);
     color: white;
     font-weight: bold;
 }
 
-input[type="radio"]#prio-low:checked + label .prio-icon {
+input[type="radio"]#low:checked + label .prio-icon {
     filter: brightness(0) invert(1);
 }
 /* -------- */

@@ -65,7 +65,7 @@ function createContactItem(contact, key) {
                     <p>${initials}</p>
                 </div>
                 <span>${contact.name}</span>
-                <input type="checkbox" class="dropdown-checkbox" data-initials="${initials}" data-bgcolor="${contact.bgColor}">
+                <input type="checkbox" class="dropdown-checkbox" data-id="${key}" data-initials="${initials}" data-bgcolor="${contact.bgColor}">
             </div>
         </a>`;
 }

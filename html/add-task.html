@@ -7,7 +7,7 @@
     <meta name="robots" content="noindex" />
 
     <!-- css links -->
-    <link rel="stylesheet" href="../../css/global-style.css">
+    <link rel="stylesheet" href="../css/global-style.css">
     <link rel="stylesheet" href="../css/add-task-style.css">
 
     <!-- js links -->
@@ -59,21 +59,21 @@
                         <div class="right-form">
                             <div class="flex-form">
                                 <label for="date">Due date<span class="required-star">*</span></label>
-                                <input class="input-field" type="date" id="date" required>
+                                <input class="input-field" type="date" id="date" min="<?php echo date('Y-m-d'); ?>" required>
                             </div>
                             <div>
-                                <label for="prio-urgent">Priority</label>
+                                <label for="urgent">Priority</label>
                                 <div class="prio-buttons" id="prio-buttons">
-                                    <input type="radio" name="priority" id="prio-urgent">
-                                    <label for="prio-urgent">Urgent
+                                    <input type="radio" name="priority" id="urgent">
+                                    <label for="urgent">Urgent
                                         <img src="/img/prio_urgent_icon.svg" alt="Urgent Icon" class="prio-icon">
                                     </label>
-                                    <input type="radio" name="priority" id="prio-medium" checked>
-                                    <label for="prio-medium">Medium
+                                    <input type="radio" name="priority" id="medium" checked>
+                                    <label for="medium">Medium
                                         <img src="/img/prio_medium_icon.svg" alt="Medium Icon" class="prio-icon">
                                     </label>
-                                    <input type="radio" name="priority" id="prio-low">
-                                    <label for="prio-low">Low
+                                    <input type="radio" name="priority" id="low">
+                                    <label for="low">Low
                                         <img src="/img/prio_low_icon.svg" alt="Low Icon" class="prio-icon">
                                     </label>
                                 </div>
@@ -84,10 +84,11 @@
                                 <div class="dropdown">
                                     <div class="dropbtn" id="dropdownCategoryButton" onclick="toggleDropdown('dropdownCategoryContent')">Select a category</div>
                                     <div class="dropdown-content" id="dropdownCategoryContent">
-                                        <a href="#" data-value="option1" onclick="selectCategory('Option 1')">Option 1</a>
-                                        <a href="#" data-value="option2" onclick="selectCategory('Option 2')">Option 2</a>
-                                        <a href="#" data-value="option3" onclick="selectCategory('Option 3')">Option 3</a>
-                                        <a href="#" data-value="option4" onclick="selectCategory('Option 4')">Option 4</a>
+                                        <a href="#" data-value="code" onclick="selectCategory('Code')">Code</a>
+                                        <a href="#" data-value="art" onclick="selectCategory('Art')">Art</a>
+                                        <a href="#" data-value="management" onclick="selectCategory('Management')">Management</a>
+                                        <a href="#" data-value="pr & brand" onclick="selectCategory('Pr & Brand')">Pr & Brand</a>
+                                        <a href="#" data-value="design" onclick="selectCategory('Design')">Design</a>
                                     </div>
                                     <p id="required-text" class="required-text" style="display:none;">Please select a category.</p>
                                 </div>
