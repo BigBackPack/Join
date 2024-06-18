@@ -86,7 +86,8 @@ function createTask() {
         priority: getCheckedRadioButton("priority"),
         category: getAttributeValue("dropdownCategoryButton", "data-selected"),
         assignment: getAssignedContacts(),
-        subtasks: getSubtasks()
+        subtasks: getSubtasks(),
+        board: "todo"
     };
 
     postTask(newTask)
@@ -135,16 +136,18 @@ function getAssignedContacts() {
 }
 
 /**
- * Retrieves a list of subtasks from the task list.
- * @returns {Array} - An array of subtask strings.
+ * Retrieves a list of subtasks from the task list and adds a checked field to each subtask.
+ * @returns {Array} - An array of subtask objects with a checken field set to false.
  */
 function getSubtasks() {
     let subtasks = [];
     document.querySelectorAll('#textList li').forEach(subtask => {
-        subtasks.push(subtask.innerText.trim());
+        let subtaskText = subtask.innerText.trim();
+        subtasks.push({ text: subtaskText, checked: false });
     });
     return subtasks;
 }
+
 
 /**
  * Posts a new task to the server.
