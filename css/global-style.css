@@ -182,6 +182,9 @@ a{
 }
 
 .join-logo{
+    display: block;
+    height: 100px;
+    width: auto;
     padding: 120px 0 120px 0;
 }
 
@@ -272,7 +275,7 @@ a{
     height: auto;
 }
 
-.join-logo{
+.join-logo-status-bar{
     display: none;
     width: 32px;
     height: auto;
