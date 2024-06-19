@@ -3,10 +3,15 @@ let CONTACT_PATH = "/contacts";
 let TASK_PATH = "/tasks";
 let contactsData = {};
 
+let isInitialized = false;
+
+
 /**
  * Initializes the application by fetching contacts and setting up event listeners.
  */
 function initializeApp() {
+    if (isInitialized) return; // Verhindert mehrfaches Ausführen
+    isInitialized = true;
     fetchContacts();
     setupEventListeners();
     setMinDate();
@@ -16,7 +21,6 @@ function initializeApp() {
  * Sets up event listeners for the form submission, checkbox changes, and window click events.
  */
 function setupEventListeners() {
-    document.getElementById("add-task-form").addEventListener("submit", handleFormSubmit);
     document.querySelectorAll('.dropdown-checkbox').forEach(checkbox => {
         checkbox.addEventListener('change', updateSelectedInitials);
     });
