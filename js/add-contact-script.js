@@ -48,9 +48,8 @@ function init() {
 function checkWindowSize(){
     if(window.innerWidth  > 800){
         document.getElementById("contacts-content-left").style.display = "block";
-    }
-
-    else if(window.innerWidth  < 800){
+        document.querySelector(".edit-contact-radio-btn").style.display = "none";
+    } else if(window.innerWidth  < 800){
         document.getElementById("contacts-content-right").style.display = "block";
     }
 }
@@ -281,6 +280,8 @@ function displayDetailedContactInfo(firebaseId ) {
     const contactPhone = document.getElementById("phone-deisplay");
     const contact = contactList[firebaseId];
 
+    mamageEditContactRadioBtnVisability();
+
     detailedContactDisplay.style.display = "block";
     contactSignatur.innerHTML = createInitials(contact.name);
     contactSignatur.style.backgroundColor = contact.bgColor;
@@ -303,6 +304,13 @@ function displayDetailedContactInfo(firebaseId ) {
     editContactMobileOption.onclick = function() {
         editContact(firebaseId);
     };
+}
+
+
+function mamageEditContactRadioBtnVisability() {
+    if (window.innerWidth  < 800) {
+        document.querySelector(".edit-contact-radio-btn").style.display = "flex";
+    }
 }
 
 
