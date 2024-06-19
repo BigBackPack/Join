@@ -137,3 +137,8 @@ function showSumOfUrgent(taskList) {
     }
   }
 }
+
+
+function referUrlBoard() {
+  window.location.href = "board.html";
+}
