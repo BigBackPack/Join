@@ -67,6 +67,10 @@ a{
     margin-left: 15%;
 }
 
+.individual-content-conatiner{
+    height: 100dvh;
+}
+
 
 /* #region global inputs ------------------------*/
 .input{

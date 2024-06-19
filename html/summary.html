@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../css/media/global-media.css"/>
     <link rel="stylesheet" href="../css/media/template-nav-bar-media.css">
     <link rel="stylesheet" href="../css/media/template-status-bar-media.css">
-    <link rel="stylesheet" href="../css/media/summary-media.css">
+    <!-- <link rel="stylesheet" href="../css/media/summary-media.css"> -->
 
     <!-- js links -->
     <script src="../js/template-loader.js"></script>
@@ -36,191 +36,191 @@
       </div>
 
       <div class="right-content-container">
-        <!-- status bar template -->
-        <div w3-include-html="templates/status-bar-template.html"></div>
+          <!-- status bar template -->
+          <div w3-include-html="templates/status-bar-template.html"></div>
 
-        <div class="individual-content-conatiner">
-          <div id="content">
-            <section id="title">
-              <h2>Join 360</h2>
-              <span id="vert-line"></span>
-              <h3>Key Metrics at a Glance</h3>
-            </section>
-            <div id="dashboard">
-              <section id="login-overview">
-                <div id="overview-line-ctr">
-                  <div
-                    onclick="referUrlBoard()"
-                    id="todo-container"
-                    class="icon-tile-details tile-row tile-color tile-details"
-                  >
-                    <svg
-                      width="69"
-                      height="70"
-                      viewBox="0 0 69 70"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+          <div class="individual-content-conatiner">
+            <div id="content">
+              <section id="title">
+                <h2>Join 360</h2>
+                <span id="vert-line"></span>
+                <h3>Key Metrics at a Glance</h3>
+              </section>
+              <div id="dashboard">
+                <section id="login-overview">
+                  <div id="overview-line-ctr">
+                    <div
+                      onclick="referUrlBoard()"
+                      id="todo-container"
+                      class="icon-tile-details tile-row tile-color tile-details"
                     >
-                      <circle
-                        class="icon"
-                        cx="34.5"
-                        cy="35"
-                        r="34.5"
-                        fill="#2A3647"
-                      />
-                      <mask
-                        id="mask0_186119_6091"
-                        style="mask-type: alpha"
-                        maskUnits="userSpaceOnUse"
-                        x="18"
-                        y="19"
-                        width="33"
-                        height="32"
-                      >
-                        <rect
-                          x="18.5"
-                          y="19"
-                          width="32"
-                          height="32"
-                          fill="#D9D9D9"
-                        />
-                      </mask>
-                      <g mask="url(#mask0_186119_6091)">
-                        <path
-                          class="icon-pen"
-                          d="M25.1667 44.3332H27.0333L38.5333 32.8332L36.6667 30.9665L25.1667 42.4665V44.3332ZM44.2333 30.8998L38.5667 25.2998L40.4333 23.4332C40.9444 22.9221 41.5722 22.6665 42.3167 22.6665C43.0611 22.6665 43.6889 22.9221 44.2 23.4332L46.0667 25.2998C46.5778 25.8109 46.8444 26.4276 46.8667 27.1498C46.8889 27.8721 46.6444 28.4887 46.1333 28.9998L44.2333 30.8998ZM42.3 32.8665L28.1667 46.9998H22.5V41.3332L36.6333 27.1998L42.3 32.8665Z"
-                          fill="white"
-                        />
-                      </g>
-                    </svg>
-                    <div>
-                      <p class="font-tiles" id="amount-todo"></p>
-                      <span id="category-todo">To-do</span>
-                    </div>
-                  </div>
-
-                  <div
-                    onclick="referUrlBoard()"
-                    id="done-container"
-                    class="icon-tile-details tile-row tile-color tile-details"
-                  >
-                    <svg
-                      width="70"
-                      height="70"
-                      viewBox="0 0 70 70"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                        class="icon"
-                        cx="35"
-                        cy="35"
-                        r="34.5"
-                        fill="#2A3647"
-                      />
-                      <path
-                        class="icon-check"
-                        d="M20.0283 35.0001L31.2571 46.0662L49.9717 23.9341"
-                        stroke="white"
-                        stroke-width="7"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                    <div>
-                      <p class="font-tiles" id="amount-done">2</p>
-                      <span id="category-done">Done</span>
-                    </div>
-                  </div>
-                </div>
-                <div id="">
-                  <div
-                    onclick="referUrlBoard()"
-                    id="urgent-container"
-                    class="icon-tile-details tile-color tile-details"
-                  >
-                    <div id="urgent-left-container">
-                      <div>
-                        <svg
-                        class="icon-urgent"
-                        width="59"
-                        height="59"
-                        viewBox="0 0 20 15"
-                        fill="#FF3D00"
+                      <svg
+                        width="69"
+                        height="70"
+                        viewBox="0 0 69 70"
+                        fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <g clip-path="url(#clip0_44131_5787)">
-                          <path
-                            d="M18.9041 14.7547C18.6695 14.7551 18.441 14.6803 18.2521 14.5412L10 8.458L1.74797 14.5412C1.63212 14.6267 1.50054 14.6887 1.36073 14.7234C1.22093 14.7582 1.07565 14.7651 0.933183 14.7437C0.790715 14.7223 0.653851 14.6732 0.530406 14.599C0.406961 14.5247 0.299352 14.427 0.213723 14.3112C0.128094 14.1954 0.0661217 14.0639 0.031345 13.9243C-0.00343163 13.7846 -0.0103318 13.6394 0.0110384 13.497C0.0541974 13.2095 0.209888 12.9509 0.44386 12.7781L9.34797 6.20761C9.53667 6.06802 9.76524 5.99268 10 5.99268C10.2348 5.99268 10.4634 6.06802 10.6521 6.20761L19.5562 12.7781C19.7421 12.915 19.88 13.1071 19.9501 13.327C20.0203 13.5469 20.0191 13.7833 19.9468 14.0025C19.8745 14.2216 19.7348 14.4124 19.5475 14.5475C19.3603 14.6826 19.1351 14.7551 18.9041 14.7547Z"
-                            fill="white"
+                        <circle
+                          class="icon"
+                          cx="34.5"
+                          cy="35"
+                          r="34.5"
+                          fill="#2A3647"
+                        />
+                        <mask
+                          id="mask0_186119_6091"
+                          style="mask-type: alpha"
+                          maskUnits="userSpaceOnUse"
+                          x="18"
+                          y="19"
+                          width="33"
+                          height="32"
+                        >
+                          <rect
+                            x="18.5"
+                            y="19"
+                            width="32"
+                            height="32"
+                            fill="#D9D9D9"
                           />
+                        </mask>
+                        <g mask="url(#mask0_186119_6091)">
                           <path
-                            d="M18.9041 9.00568C18.6695 9.00609 18.441 8.93124 18.2521 8.79214L10 2.70898L1.74797 8.79214C1.514 8.96495 1.22091 9.0378 0.933188 8.99468C0.645461 8.95155 0.386663 8.79597 0.213727 8.56218C0.0407916 8.32838 -0.0321162 8.03551 0.0110429 7.74799C0.0542019 7.46048 0.209892 7.20187 0.443864 7.02906L9.34797 0.458588C9.53667 0.318997 9.76525 0.243652 10 0.243652C10.2348 0.243652 10.4634 0.318997 10.6521 0.458588L19.5562 7.02906C19.7421 7.16598 19.88 7.35809 19.9501 7.57797C20.0203 7.79785 20.0191 8.03426 19.9468 8.25344C19.8745 8.47262 19.7348 8.66338 19.5475 8.79847C19.3603 8.93356 19.1351 9.00608 18.9041 9.00568Z"
+                            class="icon-pen"
+                            d="M25.1667 44.3332H27.0333L38.5333 32.8332L36.6667 30.9665L25.1667 42.4665V44.3332ZM44.2333 30.8998L38.5667 25.2998L40.4333 23.4332C40.9444 22.9221 41.5722 22.6665 42.3167 22.6665C43.0611 22.6665 43.6889 22.9221 44.2 23.4332L46.0667 25.2998C46.5778 25.8109 46.8444 26.4276 46.8667 27.1498C46.8889 27.8721 46.6444 28.4887 46.1333 28.9998L44.2333 30.8998ZM42.3 32.8665L28.1667 46.9998H22.5V41.3332L36.6333 27.1998L42.3 32.8665Z"
                             fill="white"
                           />
                         </g>
-                        <defs>
-                          <clipPath id="clip0_44131_5787">
-                            <rect
-                              width="58"
-                              height="58.5098"
-                              fill=""
-                              transform="translate(0 0.245117)"
-                            />
-                          </clipPath>
-                        </defs>
-                        </svg>
-                      </div>
+                      </svg>
                       <div>
-                        <p class="font-tiles" id="overview-urgent-amount">1</p>
-                        <span id="overview-urgent-txt">Urgent</span>
+                        <p class="font-tiles" id="amount-todo"></p>
+                        <span id="category-todo">To-do</span>
                       </div>
                     </div>
 
-                    <span id="overview-urgent-vertical"></span>
-
-                    <div>
-                      <p class="font-date" id="overview-urgent-date">
-                        ACUAL DATE
-                      </p>
-                      <span id="urgent-subline" id="overview-urgent-title"
-                        >Upcoming Deadline</span
+                    <div
+                      onclick="referUrlBoard()"
+                      id="done-container"
+                      class="icon-tile-details tile-row tile-color tile-details"
+                    >
+                      <svg
+                        width="70"
+                        height="70"
+                        viewBox="0 0 70 70"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
+                        <circle
+                          class="icon"
+                          cx="35"
+                          cy="35"
+                          r="34.5"
+                          fill="#2A3647"
+                        />
+                        <path
+                          class="icon-check"
+                          d="M20.0283 35.0001L31.2571 46.0662L49.9717 23.9341"
+                          stroke="white"
+                          stroke-width="7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                      <div>
+                        <p class="font-tiles" id="amount-done">2</p>
+                        <span id="category-done">Done</span>
+                      </div>
                     </div>
-                    
                   </div>
-                </div>
-                <div id="overview-line-ctr">
-                  <div
-                    onclick="referUrlBoard()"
-                    class="urgent-gap flex-column icon-tile-details tile-row tile-color tile-details"
-                  >
-                    <p class="font-tiles" id="task-on-board">5</p>
-                    <span class="title-third-row">Tasks in Board</span>
+                  <div id="">
+                    <div
+                      onclick="referUrlBoard()"
+                      id="urgent-container"
+                      class="icon-tile-details tile-color tile-details"
+                    >
+                      <div id="urgent-left-container">
+                        <div>
+                          <svg
+                          class="icon-urgent"
+                          width="59"
+                          height="59"
+                          viewBox="0 0 20 15"
+                          fill="#FF3D00"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g clip-path="url(#clip0_44131_5787)">
+                            <path
+                              d="M18.9041 14.7547C18.6695 14.7551 18.441 14.6803 18.2521 14.5412L10 8.458L1.74797 14.5412C1.63212 14.6267 1.50054 14.6887 1.36073 14.7234C1.22093 14.7582 1.07565 14.7651 0.933183 14.7437C0.790715 14.7223 0.653851 14.6732 0.530406 14.599C0.406961 14.5247 0.299352 14.427 0.213723 14.3112C0.128094 14.1954 0.0661217 14.0639 0.031345 13.9243C-0.00343163 13.7846 -0.0103318 13.6394 0.0110384 13.497C0.0541974 13.2095 0.209888 12.9509 0.44386 12.7781L9.34797 6.20761C9.53667 6.06802 9.76524 5.99268 10 5.99268C10.2348 5.99268 10.4634 6.06802 10.6521 6.20761L19.5562 12.7781C19.7421 12.915 19.88 13.1071 19.9501 13.327C20.0203 13.5469 20.0191 13.7833 19.9468 14.0025C19.8745 14.2216 19.7348 14.4124 19.5475 14.5475C19.3603 14.6826 19.1351 14.7551 18.9041 14.7547Z"
+                              fill="white"
+                            />
+                            <path
+                              d="M18.9041 9.00568C18.6695 9.00609 18.441 8.93124 18.2521 8.79214L10 2.70898L1.74797 8.79214C1.514 8.96495 1.22091 9.0378 0.933188 8.99468C0.645461 8.95155 0.386663 8.79597 0.213727 8.56218C0.0407916 8.32838 -0.0321162 8.03551 0.0110429 7.74799C0.0542019 7.46048 0.209892 7.20187 0.443864 7.02906L9.34797 0.458588C9.53667 0.318997 9.76525 0.243652 10 0.243652C10.2348 0.243652 10.4634 0.318997 10.6521 0.458588L19.5562 7.02906C19.7421 7.16598 19.88 7.35809 19.9501 7.57797C20.0203 7.79785 20.0191 8.03426 19.9468 8.25344C19.8745 8.47262 19.7348 8.66338 19.5475 8.79847C19.3603 8.93356 19.1351 9.00608 18.9041 9.00568Z"
+                              fill="white"
+                            />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_44131_5787">
+                              <rect
+                                width="58"
+                                height="58.5098"
+                                fill=""
+                                transform="translate(0 0.245117)"
+                              />
+                            </clipPath>
+                          </defs>
+                          </svg>
+                        </div>
+                        <div>
+                          <p class="font-tiles" id="overview-urgent-amount">1</p>
+                          <span id="overview-urgent-txt">Urgent</span>
+                        </div>
+                      </div>
+
+                      <span id="overview-urgent-vertical"></span>
+
+                      <div>
+                        <p class="font-date" id="overview-urgent-date">
+                          ACUAL DATE
+                        </p>
+                        <span id="urgent-subline" id="overview-urgent-title"
+                          >Upcoming Deadline</span
+                        >
+                      </div>
+                      
+                    </div>
                   </div>
-                  <div
-                    onclick="referUrlBoard()"
-                    class="flex-column icon-tile-details tile-row tile-color tile-details"
-                  >
-                    <p class="font-tiles" id="task-in-progress">2</p>
-                    <span class="title-third-row">Tasks in Progress</span>
+                  <div id="overview-line-ctr">
+                    <div
+                      onclick="referUrlBoard()"
+                      class="urgent-gap flex-column icon-tile-details tile-row tile-color tile-details"
+                    >
+                      <p class="font-tiles" id="task-on-board">5</p>
+                      <span class="title-third-row">Tasks in Board</span>
+                    </div>
+                    <div
+                      onclick="referUrlBoard()"
+                      class="flex-column icon-tile-details tile-row tile-color tile-details"
+                    >
+                      <p class="font-tiles" id="task-in-progress">2</p>
+                      <span class="title-third-row">Tasks in Progress</span>
+                    </div>
+                    <div
+                      onclick="referUrlBoard()"
+                      class="flex-column icon-tile-details tile-row tile-color tile-details"
+                    >
+                      <p class="font-tiles" id="task-feedback">2</p>
+                      <span class="title-third-row">Awaiting Feedback</span>
+                    </div>
                   </div>
-                  <div
-                    onclick="referUrlBoard()"
-                    class="flex-column icon-tile-details tile-row tile-color tile-details"
-                  >
-                    <p class="font-tiles" id="task-feedback">2</p>
-                    <span class="title-third-row">Awaiting Feedback</span>
-                  </div>
-                </div>
-              </section>
-              <section id="greeting-container">
-                <h4 id="greeting-user">Good Morning,</h4>
-                <p class="icon-tile-details" id="user-name"></p>
-              </section>
+                </section>
+                <section id="greeting-container">
+                  <h4 id="greeting-user">Good Morning,</h4>
+                  <p class="icon-tile-details" id="user-name"></p>
+                </section>
+              </div>
             </div>
           </div>
-        </div>
       </div>
     </div>
   </body>

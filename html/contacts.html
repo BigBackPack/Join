@@ -9,6 +9,7 @@
     <!-- css style links -->
     <link rel="stylesheet" href="../css/global-style.css"/>
     <link rel="stylesheet" href="../css/contacts-style.css"/>
+
     <!-- css media queries -->
     <link rel="stylesheet" href="../css/media/contacts-media.css"/>
     
@@ -28,11 +29,14 @@
 <body onload="includeHTML(), init()">
     <div class="main-content-container">
         <div class="left-content-container">
+            <!-- nav bar template -->
             <div w3-include-html="templates/nav-bar-template.html"></div>
         </div>
 
         <div class="right-content-container">
+            <!-- status bar template -->
             <div w3-include-html="templates/status-bar-template.html"></div>
+            
             
             <div class="individual-content-conatiner">
 
@@ -40,7 +44,7 @@
                 <div id="fullscreen-overlay" class="fullscreen-overlay" onclick="turnOffAllOverlays()">
                     <div class="add-contact-form" onclick="stopPropagation(event)">
                         <div class="add-contact-info-container">
-                      
+                        
                             <div class="close-button-container-mobile">
                                 <div onclick="turnOffAllOverlays()" class="overlay-close-button" id="close-add-contact-overlay-button">
                                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -83,11 +87,11 @@
                                 <!-- input form -->
                                 <form>
                                     <input id="name-input" maxlength="20" type="text" placeholder="Name" class="input input-type-name" required>
-    
+
                                     <input id="mail-input" maxlength="20" type="email" placeholder="Email" class="input input-type-mail" required>
-    
+
                                     <input id="tel-input" maxlength="20" type="tel" placeholder="Phone" class="input input-type-phone" required>
-    
+
                                     <div class="button-container">
                                         <button onclick="turnOffAllOverlays()" class="secondary-button">
                                             Cancel
@@ -97,7 +101,7 @@
                                                     fill="var(--mainColor)"/>
                                             </svg>
                                         </button>
-    
+
                                         <button onclick="storeContactInputs(event)" class="primary-button">
                                             Create contact
                                             <img src="../img/check_icon.svg" alt="Check Icon">
@@ -150,14 +154,14 @@
                                 <!-- input form -->
                                 <form>
                                     <input id="name-edit-input" maxlength="30" type="text" placeholder="Name" class="input input-type-name" required>
-    
+
                                     <input id="mail-edit-input" maxlength="30" type="email" placeholder="Email" class="input input-type-mail" required>
-    
+
                                     <input id="tel-edit-input" maxlength="20" type="tel" placeholder="Phone" class="input input-type-phone" required>
-    
+
                                     <div class="button-container">
                                         <button id ="delete-contact-btn" class="secondary-button">Delete</button>
-    
+
                                         <button id="save-edited-contact-btn" class="primary-button">
                                             Save
                                             <img src="../img/check_icon.svg" alt="Check Icon">
