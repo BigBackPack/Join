@@ -2,19 +2,24 @@ let BASE = "https://join-2c971-default-rtdb.europe-west1.firebasedatabase.app/";
 let CONTACT_PATH = "/contacts";
 let TASK_PATH = "/tasks";
 let contactsData = {};
-
+let currentBoardStatus = "todo";
 let isInitialized = false;
 
+
+function setBoardStatus(boardStatus) {
+    currentBoardStatus = boardStatus;
+}
 
 /**
  * Initializes the application by fetching contacts and setting up event listeners.
  */
-function initializeApp() {
+function initializeApp(boardStatus) {
     if (isInitialized) return; // Verhindert mehrfaches Ausführen
     isInitialized = true;
     fetchContacts();
     setupEventListeners();
     setMinDate();
+    setBoardStatus(boardStatus);
 }
 
 /**
@@ -89,7 +94,7 @@ function createTask() {
         category: getAttributeValue("dropdownCategoryButton", "data-selected"),
         assignment: getAssignedContacts(),
         subtasks: getSubtasks(),
-        board: "todo"
+        board: currentBoardStatus
     };
 
     postTask(newTask)
