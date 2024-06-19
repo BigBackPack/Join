@@ -77,11 +77,8 @@ async function loadContactsData(path) {
   try {
     const response = await fetch(`${BASE_URL}${path}.json`);
     const data = await response.json();
-
     if (data) {
       contactList = Object.entries(data);
-      // startBoard(contactList);
-      console.log('contact-list: ', contactList);
     }
   } catch (error) {
     console.error('Error loading contacts data:', error);
@@ -98,17 +95,6 @@ async function loadContactsData(path) {
 // async function loadTasksData(path) {
 //   let resp = await fetch(BASE_URL + path + ".json");
 //   let respToJson = await resp.json();
-
-//   if (respToJson) {
-//     taskList = respToJson;
-//     taskList = Object.entries(taskList);
-//     taskListIds = Object.keys(taskList);
-//     taskListValues = Object.values(taskList);
-//     console.log('tasks: ', taskList);
-//   }
-  
-// }
-
 async function loadTasksData(path) {
   try {
     const response = await fetch(`${BASE_URL}${path}.json`);
@@ -128,18 +114,12 @@ async function loadTasksData(path) {
 summaryInit();
 
 
-
-
-// starting the board - displaying of cards in normal view
-
-
 /** - STARTING THE BOARD-DATA -
  * Initializes the board.
  * Loads the tasks data from Firebase.
  * Deciding, if data -> loads them , if not, loads dummyCards.
  */
 function startBoard(tasks) {
-  console.log('startBoard INIT');
   if (true) {
     // load dummy card
     // renderDummyCard();
@@ -173,7 +153,6 @@ function renderLive(taskList) {
  */
 function renderLiveProgressCard(tasks) {
   // how often - depends on - 
-  console.log('RenderLiveProgress - task-title: ', tasks);
   return `<div
                   draggable="true"
                   id="card-kochwelt"
@@ -313,7 +292,6 @@ function renderLiveProgressCard(tasks) {
  * @returns - the generated HTML/Css structure for set function.
  */
 function renderLiveFeedbackCard() {
-  console.log('renderLiveFeedbackCard INIT');
   // how often - depends on - 
   return `
     <div draggable="true" class="board-card small-card">
@@ -440,7 +418,6 @@ function renderLiveFeedbackCard() {
  * @returns - the generated HTML/Css structure for set function.
  */
 function renderLiveDoneCard() {
-  console.log('renderLiveDoneCard INIT');
   // how often - depends on - 
   return `
   <div
@@ -481,7 +458,12 @@ function renderLiveDoneCard() {
                             <rect x="0.5" y="0.5" width="127" height="7" rx="3.5" stroke="black"/>
                           </svg>
                         </div>
-                        <span>Subtasks</span>
+                        <span class='bar-span'> 
+                          <span class='subtask-checked'>0</span>
+                          <span>/</span>
+                          <span class='subtask-sum'>0</span>
+                          Subtasks
+                        </span>
                       </div>
                       <br />
                       <br />
@@ -575,9 +557,6 @@ function renderLiveOverlayCard(param, tasks) {
  * @returns - retrun of generated html/css for the respective overlay
  */
 function renderLiveOverlayCardProgress(tasks) {
-
-  console.log(tasks);
-  console.log('return f(LIVE OVERLAY-card) triggered');
   return `
     <div class="ol-board-card">
                 <div class="ol-main-card">
@@ -740,7 +719,6 @@ function renderLiveOverlayCardProgress(tasks) {
  * @returns - retrun of generated html/css for the respective overlay
  */
 function renderLiveOverlayCardDone() {
-  console.log('return f(LIVE Done - card) triggered');
   return `
     <div class="ol-board-card">
                 <div class="ol-main-card">
@@ -878,9 +856,7 @@ function renderLiveOverlayCardDone() {
 */
 document.addEventListener('DOMContentLoaded', function () {
   const columns = document.querySelectorAll('.board-columns');
-
   columns.forEach(function (column) {
-    console.log("Sortable initialized for column:", column.id)
       new Sortable(column, {
           group: 'shared',
           animation: 150
@@ -897,11 +873,9 @@ document.addEventListener('DOMContentLoaded', function () {
  * @param {string} param - The parameter indicating which card to render. Can be 'progress', 'feedback', or 'done'.
  */
 function renderDummyOverlayCard(param) {
-  console.log('param: ', param);
   document.getElementById('overlay-card').classList.remove('d-none');
   const content = document.getElementById('overlay-card');
   content.innerHTML = '';
-
   if (param == 'progress') {
     content.innerHTML = renderDummyOverlayProgress();
   } else if (param == 'done') {
@@ -909,13 +883,30 @@ function renderDummyOverlayCard(param) {
   } 
 }
 
-//#region PROGRESS-BAR change fill-up
 
+//#region SUBTASK-COUNT
+let total = 0;
+
+function showSubTaskCount() {
+  total = 0; 
+  for (let i = 0; i < taskList.length; i++) {
+    const task = taskList[i];
+    const subtasks = task[1]['subtasks'];
+    total += subtasks.length;
+  }
+  const sumSubTaskElements = document.getElementsByClassName('subtask-sum');
+  for (let elem of sumSubTaskElements) {
+    elem.innerHTML = total;
+  }
+}
+//#endregion
+
+//#region PROGRESS-BAR
 function updateBar(type) {
   const checkboxes = document.querySelectorAll('.ol-sub-task-checkbox');
   const total = checkboxes.length;
   let completed = 0;
-
+  
   checkboxes.forEach(checkbox => {
     if (checkbox.checked) {
       completed++;

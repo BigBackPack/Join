@@ -9,6 +9,8 @@ const BASE_URL = "https://join-2c971-default-rtdb.europe-west1.firebasedatabase.
 */
 const PATH_SUFFIX = ["/contacts", "/tasks"];
 
+
+/* Initializes the summary page - fetching the needed data */
 summaryInit();
 
 
@@ -55,7 +57,6 @@ let taskListValues = {};
  * Initializes the summary page.
  * Loads the contacts and tasks data from the server.
  * @returns {Promise<void>} returns the data from specified sources
- * 
  */
 function summaryInit() {
   loadContactsData(PATH_SUFFIX[0]);
@@ -68,50 +69,41 @@ function summaryInit() {
 /**
  * Fetches the data from the contacts section from Firebase.
  * async function - returns a promise
- * 
  * @param {string} path - The path to the JSON file, see CONTACT_PATH_SUFFIX 
  * @returns {Promise} - A promise that resolves to the server response.
- * 
+ * updateUserName() - updates the user-name shown at summary-page - greets user
  * Object.value() - fills in contactList[] with the indexed-data, without the keys from Firebase
  */
 async function loadContactsData(path) {
   let resp = await fetch(BASE_URL + path + ".json");
   let respToJson = await resp.json();
-
   if (respToJson) {
     contactList = respToJson;
     contactList = Object.entries(contactList);
     contactListIds = Object.keys(contactList);
     contactListValues = Object.values(contactList);
   }
-  // Call updateUserName() after populating contactList
   updateUserName();
-
 }
 
 
 /**
  * Fetches the data from the tasks section from Firebase.
  * async function - returns a promise
- * 
  * @param {string} path - The path to the JSON file, see CONTACT_PATH_SUFFIX 
  */
 async function loadTasksData(path) {
   let resp = await fetch(BASE_URL + path + ".json");
   let respToJson = await resp.json();
-
   if (respToJson) {
     taskList = respToJson;
     taskList = Object.entries(taskList);
     taskListIds = Object.keys(taskList);
     taskListValues = Object.values(taskList);
   }
-  
-  showSumofTasks();
+  showSumofTodos(taskList);
   showSumofAllBoardTasks();
   countUrgentTasks();
-  // Call updateUserName() after populating taskList
-  // updateUserName();
 }
 
 
@@ -120,8 +112,7 @@ async function loadTasksData(path) {
  * Source: Firebase-Db, but atm contactList{}
  */
 function updateUserName() { 
-  // contactList[1]['name'] 
-  // result: "Michael Jordan" 
+  // TODO - which user is logged in?
   const userNameElement = document.getElementById("user-name"); 
   const userName = contactListValues[2][1]["name"]; 
   userNameElement.innerHTML = userName; 
@@ -129,13 +120,23 @@ function updateUserName() {
 
 
 /**
- * Shows the overall-sum of (open)tasks in the summary page.
+ * Shows the overall-sum of (open)tasks (TO-DO) in the summary page.
  * Source: Firebase-Db
  */
-function showSumofTasks() {
-  const sumOfTasks = document.getElementById("amount-todo");
-  sumOfTasks.innerHTML = '';
-  sumOfTasks.textContent = taskListValues.length;
+function showSumofTodos(taskList) { 
+  let countTodo = 0;
+  const sumOfTodos = document.getElementById("amount-todo"); 
+  sumOfTodos.innerHTML = ''; 
+
+  for (let i = 0; i < taskList.length; i++) { 
+    const task = taskList[i]; 
+    if (taskList[i][1].board == 'todo') { 
+      countTodo++;
+      sumOfTodos.innerHTML = countTodo; 
+    } else {
+      sumOfTodos.innerHTML = 99;
+    }
+  } 
 }
 
 
@@ -168,7 +169,6 @@ function showTaskInProgress() {
 function showTaskInFeedback() {
   const taskInFeedback= document.getElementById("task-feedback");
   taskInFeedback.innerHTML = '';
-  // taskInFeedback.textContent = ;
 }
 
 
@@ -179,7 +179,6 @@ function showTaskInFeedback() {
 function showUrgentTask() {
   const urgentTask = document.getElementById("overview-urgent-amount");
   urgentTask.innerHTML = '';
-  // urgentTask.textContent = ;
 }
 
 
@@ -193,18 +192,17 @@ function showSumofAllBoardTasks() {
   sumOfAllTasks.textContent = taskListValues.length;
 }
 
-const priorityList = {
-  0: [{}, { priority: 'urgent' }],
-  1: [{}, { priority: 'low' }],
-  2: [{}, { priority: 'medium' }],
-};
 
+/**
+ * Counts the amount of urgent tasks in the summary page.
+ * Source: Firebase-Db
+ */
 function countUrgentTasks() {
   let countUrgent = 0;
-
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i][1].priority === 'urgent') {
       countUrgent++;
+      console.log(countUrgent);
     }
   }
   document.getElementById('overview-urgent-amount').textContent = countUrgent;
