@@ -1,17 +1,17 @@
-<div class="overlay-background" onclick="closeOverlay()">
-    <div class="overlay-content" onclick="event.stopPropagation()">
-        <div class="individual-content-container">
+
+    <div class="tol-overlay-content" onclick="event.stopPropagation()">
+        <div class="tol-individual-content-container">
             <h1>Add Task</h1>
             <form class="form-body" id="add-task-form" onsubmit="return handleFormSubmit(event)">
-                <div class="form-fields">
-                    <div class="left-form">
-                        <div class="flex-form">
-                            <label for="title">Title<span class="required-star">*</span></label>
-                            <input class="input-field" id="title" type="text" placeholder="Enter a title" required>
+                <div class="tol-form-fields">
+                    <div class="tol-left-form">
+                        <div class="tol-flex-form">
+                            <label for="title">Title<span class="tol-required-star">*</span></label>
+                            <input class="tol-input-field" id="title" type="text" placeholder="Enter a title" required>
                         </div>
-                        <div class="flex-form">
+                        <div class="tol-flex-form">
                             <label for="description">Description</label>
-                            <textarea class="input-field" id="description" rows="5"
+                            <textarea class="tol-input-field" id="description" rows="5"
                                 placeholder="Enter a Description"></textarea>
                         </div>
 
@@ -29,12 +29,12 @@
                         <div id="selected-initials"></div>
                     </div>
 
-                    <div class="separator"></div>
+                    <div class="tol-separator"></div>
 
-                    <div class="right-form">
-                        <div class="flex-form">
-                            <label for="date">Due date<span class="required-star">*</span></label>
-                            <input class="input-field" type="date" id="date" required>
+                    <div class="tol-right-form">
+                        <div class="tol-flex-form">
+                            <label for="date">Due date<span class="tol-required-star">*</span></label>
+                            <input class="tol-input-field" type="date" id="date" required>
                         </div>
                         <div>
                             <label for="urgent">Priority</label>
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="dropdown-container">
-                            <label for="dropdownCategory">Category<span class="required-star">*</span></label>
+                            <label for="dropdownCategory">Category<span class="tol-required-star">*</span></label>
                             <div class="dropdown">
                                 <div class="dropbtn" id="dropdownCategoryButton"
                                     onclick="toggleDropdown('dropdownCategoryContent')">Select a category</div>
@@ -68,7 +68,7 @@
                                         Brand</a>
                                     <a href="#" data-value="design" onclick="selectCategory('Design')">Design</a>
                                 </div>
-                                <p id="required-text" class="required-text" style="display:none;">Please select a
+                                <p id="required-text" class="tol-required-text" style="display:none;">Please select a
                                     category.</p>
                             </div>
                         </div>
@@ -95,9 +95,9 @@
                     </div>
                 </div>
 
-                <div class="form-footer">
-                    <div><span class="required-star">*</span> This field is required</div>
-                    <div class="form-buttons">
+                <div class="tol-form-footer">
+                    <div><span class="tol-required-star">*</span> This field is required</div>
+                    <div class="tol-form-buttons">
                         <button onclick="clearForm()" type="button" class="secondary-button">Clear</button>
                         <button class="primary-button">Create Task</button>
                     </div>
@@ -105,6 +105,5 @@
             </form>
         </div>
     </div>
-</div>
 </div>
 </div>

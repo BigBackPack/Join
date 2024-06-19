@@ -1,5 +1,5 @@
 function addTask() {
-    fetch('add-task.html')
+    fetch('board-task-overlay.html')
         .then(response => response.text())
         .then(html => {
             document.getElementById('task-overlay').innerHTML = html;
