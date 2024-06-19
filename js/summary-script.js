@@ -100,25 +100,6 @@ function showSumOfAllBoardTasks(taskList) {
   sumOfAllTasks.innerHTML = taskList.length;
 }
 
-/**
- * Shows the overall-sum of (urgent)tasks in the summary page.
- * Source: Firebase-Db
- */
-// function showSumOfUrgent(taskList) { 
-//   let countUrgent = 0;
-//   const urgentTask = document.getElementById("overview-urgent-amount");
-//   urgentTask.innerHTML = '';
-
-//   for (let i = 0; i < taskList.length; i++) { 
-//     const task = taskList[i]; 
-//     if (taskList[i][1].board == 'urgent') { 
-//       countUrgent++;
-//       console.log('countUrgent aus showUrgent - ', countUrgent);
-//       urgentTask.innerHTML = countUrgent; 
-//     } 
-//   } 
-// }
-
 
 /**
  * Counts the amount of urgent tasks in the summary page.
@@ -139,6 +120,10 @@ function showSumOfUrgent(taskList) {
 }
 
 
+/**
+ * Links to the board page. And closes the summary page.
+ * onClick-function in the HTML per tile.
+ */
 function referUrlBoard() {
   window.location.href = "board.html";
 }

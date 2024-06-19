@@ -7,7 +7,7 @@ function addTask() {
         });
 }
 
-function closeOverlay() {
+function closeOverlayAdd() {
     document.getElementById('task-overlay').classList.add('d-none');
     document.getElementById('task-overlay').innerHTML = '';
 }
