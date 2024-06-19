@@ -11,6 +11,10 @@ const nameEditInput = document.getElementById("name-edit-input");
 const mailEditInput = document.getElementById("mail-edit-input");
 const telEditInput = document.getElementById("tel-edit-input");
 
+let nameTaken = false;
+let mailTaken = false;
+let telTaken = false;
+
 let contactList = {};
 const signatureColors = [
     "#FF5733", // Red-Orange
@@ -130,22 +134,11 @@ function storeContactInputs(event) {
     const telValue = telInput.value.trim();
 
     if (nameValue && mailValue && telValue) {
-        let nameTaken = false;
-        let mailTaken = false;
-        let telTaken = false;
+        nameTaken = false;
+        mailTaken = false;
+        telTaken = false;
 
-        for(let firebaseId in contactList) {
-            if (contactList[firebaseId].name === nameValue) {
-                nameTaken = true;
-                break;
-            } else if (contactList[firebaseId].mail === mailValue) {
-                mailTaken = true;
-                break;
-            } else if (contactList[firebaseId].tel === telValue) {
-                telTaken = true;
-                break;
-            }
-        } 
+        checkIfContactAlreadyExists(nameValue, mailValue, telValue);
 
         if (nameTaken) {
             alert("This name is already taken. Please choose a different one.");
@@ -154,25 +147,45 @@ function storeContactInputs(event) {
         } else if (telTaken) {
             alert("This phone number is already taken. Please choose a different one.");
         } else {
-            postContactData("/contacts", {
-                "name": nameValue,
-                "mail": mailValue,
-                "tel": telValue,
-                "bgColor": bgColor
-            }).then(() => {
-                turnOffAllOverlays();
-                loadContactsData(CONTACT_PATH_SUFFIX); 
-                nameInput.value = "";
-                mailInput.value = "";
-                telInput.value = "";
-            }).catch(error => {
-                console.error("Error posting contact data:", error);
-            });
-        }
-            
+            saveNewContact(nameValue, mailValue, telValue, bgColor);
+        }        
     } else {
         alert("Your input is incomplete. Please fill out all of the input fields");
     }
+}
+
+
+function checkIfContactAlreadyExists(nameValue, mailValue, telValue) {
+    for(let firebaseId in contactList) {
+        if (contactList[firebaseId].name === nameValue) {
+            nameTaken = true;
+            break;
+        } else if (contactList[firebaseId].mail === mailValue) {
+            mailTaken = true;
+            break;
+        } else if (contactList[firebaseId].tel === telValue) {
+            telTaken = true;
+            break;
+        }
+    } 
+}
+
+
+function saveNewContact(nameValue, mailValue, telValue, bgColor) {
+    postContactData("/contacts", {
+        "name": nameValue,
+        "mail": mailValue,
+        "tel": telValue,
+        "bgColor": bgColor
+    }).then(() => {
+        turnOffAllOverlays();
+        loadContactsData(CONTACT_PATH_SUFFIX); 
+        nameInput.value = "";
+        mailInput.value = "";
+        telInput.value = "";
+    }).catch(error => {
+        console.error("Error posting contact data:", error);
+    });
 }
 
 
@@ -180,15 +193,7 @@ function addContactsToPreview() {
     contactsPreview.innerHTML = "";
     let contactsArray = Object.entries(contactList);
 
-    contactsArray.sort((a, b) => { // sort array alphabetically by name
-        let nameA = a[1].name.toUpperCase(); // Ignore upper and lowercase
-        let nameB = b[1].name.toUpperCase(); // Ignore upper and lowercase
-
-        if (nameA < nameB) {return -1;}
-        if (nameA > nameB) {return 1;}
-        
-        return 0; // Names must be equal
-    });
+    sortAlphabetically(contactsArray);
 
     let displayedInitials = new Set(); // Keep track of displayed initials
 
@@ -201,27 +206,20 @@ function addContactsToPreview() {
             displayedInitials.add(firstLetter);
         }
 
-        contactsPreview.innerHTML += /*html*/`
-            <!-- alphabetical identificator -->
-            <div id="aphabetical-indicator-${firebaseId}" class="aphabetical-indicator" style="display: ${displayIndicator ? 'block' : 'none'}">
-                <p>${firstLetter}</p>
-            </div>
-            
-            <!-- contact preview -->
-            <div id="contact-preview-${firebaseId}" class="contact-preview" onclick="selectContact('${firebaseId}')">
-                <div class="sorted-contact-icon" style="background-color: ${contact.bgColor}">
-                    ${contactInitials}
-                </div>
-                <div>
-                    <div class="contac-name-preview">
-                        ${contact.name}
-                    </div>
-                    <div>
-                        ${contact.mail}
-                    </div>
-                </div>    
-            </div>
-        `;
+        addNewContactEntry(firebaseId, displayIndicator, 
+                            firstLetter, contact, contactInitials);
+    });
+}
+
+function sortAlphabetically(contactsArray) {
+    contactsArray.sort((a, b) => { // sort array alphabetically by name
+        let nameA = a[1].name.toUpperCase(); // Ignore upper and lowercase
+        let nameB = b[1].name.toUpperCase(); // Ignore upper and lowercase
+
+        if (nameA < nameB) {return -1;}
+        if (nameA > nameB) {return 1;}
+        
+        return 0; // Names must be equal
     });
 }
 
