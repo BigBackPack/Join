@@ -682,8 +682,8 @@ function renderLiveOverlayCardProgress(tasks,i) {
                       </div>
                       <br>
                       <div class="ol-crud">
-                        <div>
-                          <svg width="81" height="24" viewBox="0 0 81 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <div class="ol-crud-edit-delete" onclick="deleteThisSubOverlay()">
+                          <svg  width="81" height="24" viewBox="0 0 81 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <mask id="mask0_187493_4275" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                             <rect width="24" height="24" fill="#D9D9D9"/>
                             </mask>
@@ -694,7 +694,7 @@ function renderLiveOverlayCardProgress(tasks,i) {
                           </svg>
                         </div>
                         <span class="ol-vertical"></span>
-                        <div>
+                        <div class="ol-crud-edit-delete" onclick="openTaskOverlay(${i}, 'crud')">
                           <svg width="62" height="24" viewBox="0 0 62 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <mask id="mask0_187493_4281" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                             <rect width="24" height="24" fill="#D9D9D9"/>
@@ -929,7 +929,15 @@ function updateBar(type) {
 }
 //#endregion
 
+
+/**
+ * Shows the number of subtasks in the task list.
+ */
 showSubTaskCount(taskList);
 
-//id=display-sub-task
-//--------------------------------------------------------------------------------
+
+function editSubOverlay() {
+
+
+  openTaskOverlay();
+}

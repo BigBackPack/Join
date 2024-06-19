@@ -1,7 +1,10 @@
 
     <div class="tol-overlay-content" onclick="event.stopPropagation()">
         <div class="tol-individual-content-container">
-            <h1>Add Task</h1>
+            <div class="tol-individual-content-header-box">
+                <h1>Add Task</h1>
+                <span title="close overlay" id="overlay-close-btn" class="ol-close-btn" onclick="closeOverlayAdd()">X</span>
+            </div>
             <form class="form-body" id="add-task-form" onsubmit="return handleFormSubmit(event)">
                 <div class="tol-form-fields">
                     <div class="tol-left-form">

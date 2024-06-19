@@ -361,6 +361,10 @@ html {
 
 /* OVERLAY CARD */
 
+.ol-crud-edit-delete{
+  cursor: pointer;
+}
+
 .ol-kochwelt {
   position: relative;
   top: -188px;
@@ -385,7 +389,7 @@ html {
 
 .ol-board-card {
   width: 525px;
-  height: 871px;
+  height: 911px;
   border-radius: 30px;
   padding: 16px;
   margin: 10px;
