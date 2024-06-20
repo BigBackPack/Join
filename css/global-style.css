@@ -270,6 +270,19 @@ a{
     z-index: 100;
 }
 
+.indie-status-bar-container{
+    background-color: white;
+    box-shadow: 0 6px 4px #0000001e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 64px;
+    position: fixed;
+    width: 100%;
+    height: 64px;
+    z-index: 100;
+}
+
 .help-icon{
     display: block;
     width: 32px;
