@@ -1,6 +1,31 @@
 p {
     margin: 0;
 }
+/* neu */
+label{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.page-title{
+    font-size: 61px;
+    font-weight: 700;
+    padding-bottom: 40px;
+}
+
+textarea::placeholder {
+    color: var(--borderColor);
+}
+
+input::placeholder {
+    color: var(--borderColor);
+}
+
+.dropdown input::placeholder {
+    color: black;
+}
+
+/* neu */
 
 .individual-content-container {
     padding-top: 150px;
@@ -24,14 +49,14 @@ p {
     display: flex;
     flex-direction: column;
     width: 50%;
-    gap: 20px;
+    gap: 30px;
 }
 
 .right-form {
     display: flex;
     flex-direction: column;
     width: 50%;
-    gap: 20px;
+    gap: 30px;
 }
 
 .flex-form {
@@ -49,6 +74,28 @@ p {
     color: var(--red);
     font-size: small;
     padding-top: 10px;
+    display: none;
+}
+
+.color-grey{
+    color: var(--borderColor);
+}
+
+.secondary-button img{
+    margin-left: 14px;
+    width: 24px;
+    height: auto;
+}
+
+.secondary-button:hover .black-close-icon{
+    display: none;
+}
+
+.secondary-button:hover .blue-close-icon{
+    display: unset;
+}
+
+.blue-close-icon{
     display: none;
 }
 /* dropdown */
@@ -81,6 +128,8 @@ p {
     background-position: calc(100% - 20px) center;
     z-index: 2;
     position: relative;
+    font-size: 20px;
+
 }
 
 .dropbtn:hover {
@@ -165,7 +214,7 @@ p {
 .prio-buttons {
     display: flex;
     justify-content: space-between;
-    gap: 5px;
+    gap: 15px;
     padding-top: 10px;
 }
 
@@ -181,8 +230,13 @@ p {
     cursor: pointer;
     width: 33.33%;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
+    transition: box-shadow 0.3s, background-color 0.3s;
 }
+
+.prio-buttons input[type="radio"]:not(:checked) + label:hover {
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.317);
+  }
 
 .prio-icon {
     width: 20px; 
@@ -235,6 +289,8 @@ input[type="radio"]#low:checked + label .prio-icon {
     border-radius: 10px;
     border: 1px solid var(--borderColor);
     padding: 12px 21px 12px 21px;
+    font-family: 'Inter', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
 }
 
 .form-footer {
@@ -269,6 +325,8 @@ input[type="radio"]#low:checked + label .prio-icon {
     border: 1px solid var(--borderColor);
     border-radius: 10px;
     box-sizing: border-box;
+    font-family: 'Inter', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
 }
 
 .icon {

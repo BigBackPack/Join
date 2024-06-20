@@ -33,7 +33,7 @@
         <div class="right-content-container">
             <div w3-include-html="templates/status-bar-template.html"></div>
             <div class="individual-content-container">
-                <h1>Add Task</h1>
+                <p class="page-title">Add Task</p>
                 <form class="form-body" id="add-task-form" onsubmit="return handleFormSubmit(event)">
 
                     <div class="form-fields">
@@ -65,7 +65,7 @@
                         <div class="right-form">
                             <div class="flex-form">
                                 <label for="date">Due date<span class="required-star">*</span></label>
-                                <input class="input-field" type="date" id="date" min="<?php echo date('Y-m-d'); ?>" required>
+                                <input class="input-field color-grey" type="date" id="date" required>
                             </div>
                             <div>
                                 <label for="urgent">Priority</label>
@@ -122,8 +122,8 @@
                     <div class="form-footer">
                         <div><span class="required-star">*</span> This field is required</div>
                         <div class="form-buttons">
-                            <button onclick="clearForm()" type="button" class="secondary-button">Clear</button>
-                            <button class="primary-button">Create Task</button>
+                            <button onclick="clearForm()" type="button" class="secondary-button">Clear <img class="black-close-icon" src="/img/close_icon.svg"> <img class="blue-close-icon" src="/img/blue_close_icon.svg"></button>
+                            <button class="primary-button">Create Task<img src="/img/check_icon.svg"></button>
                         </div>
                     </div>
                 </form>
