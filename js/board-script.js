@@ -43,9 +43,7 @@ const signatureColors = [
  * seperated per entries and as well as their value and key.
  */
 let contactList = [];
-
 let taskList = {};
-
 
 
 /**
@@ -164,7 +162,7 @@ function renderLiveProgressCard(tasks,i) {
   // tasks = taskList;
   return `<div
                   draggable="true"
-                  id="card-kochwelt"
+                  id="card-progress"
                   onclick="renderLiveOverlayCard('progress', taskList, ${i})"
                   class="board-card"
                 >
@@ -847,7 +845,6 @@ function renderLiveOverlayCardDone() {
               </div>
     `;
 }
-
 //#endregion
 
 //#region EVENT-LISTENER
@@ -856,7 +853,7 @@ function renderLiveOverlayCardDone() {
 ** Event-Listener - drag-n-drop 
 */
 document.addEventListener('DOMContentLoaded', function () {
-  const columns = document.querySelectorAll('.board-columns');
+  const columns = document.querySelectorAll('.all-columns');
   columns.forEach(function (column) {
       new Sortable(column, {
           group: 'shared',
@@ -864,7 +861,6 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   });
 });
-
 //#endregion
 
 
@@ -936,8 +932,30 @@ function updateBar(type) {
 showSubTaskCount(taskList);
 
 
-function editSubOverlay() {
+// function editSubOverlay() {
 
 
-  openTaskOverlay();
+//   openTaskOverlay();
+// }
+
+
+function searchCards() {
+  const searchInput = document
+    .getElementById('search-task')
+    .value.toLowerCase();
+  const cardContent = document.getElementById('board-overview');
+  cardContent.innerHTML = '';
+
+  if (taskList.length > 0) {
+    for (let i = 0; i < taskList.length; i++) {
+      const task = taskList[i];
+      const taskName = task[1]['title'].toLowerCase();
+
+      if (taskName.startsWith(searchInput)) {
+
+       // load the result
+        cardContent.innerHTML += renderTaskCard(taskList[i]);
+      }
+    }
+  }
 }
