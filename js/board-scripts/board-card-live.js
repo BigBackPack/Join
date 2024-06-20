@@ -145,8 +145,8 @@ function renderLiveProgressCard(tasks,i) {
 function renderLiveFeedbackCard(tasks,i) {
   // how often - depends on - 
   return `
-    <div draggable="true" class="board-card small-card" onclick="renderLiveOverlayCard('feedback', tasks, ${i})">
-                <div id="card-feedback-${i}" class="main-card">
+    <div draggable="true" class="board-card small-card">
+                <div id="" class="main-card">
                   <svg
                     width="144"
                     height="27"
@@ -163,12 +163,12 @@ function renderLiveFeedbackCard(tasks,i) {
 
                   <div class="card-info">
                     <span class="card-title"
-                      >${tasks[1]['title']}</span
+                      >LIVE (will dissapear if its working)</span
                     >
                     <br />
                     <br />
                     <span class="card-sub-title"
-                      >${tasks[1]['description']}</span
+                      >LIVE (will dissapear if its working)</span
                     >
                     <br />
                     <br />
