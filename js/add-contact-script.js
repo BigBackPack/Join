@@ -211,6 +211,7 @@ function addContactsToPreview() {
     });
 }
 
+
 function sortAlphabetically(contactsArray) {
     contactsArray.sort((a, b) => { // sort array alphabetically by name
         let nameA = a[1].name.toUpperCase(); // Ignore upper and lowercase
@@ -278,7 +279,7 @@ function displayDetailedContactInfo(firebaseId ) {
     const contactPhone = document.getElementById("phone-deisplay");
     const contact = contactList[firebaseId];
 
-    mamageEditContactRadioBtnVisability();
+    manageEditContactRadioBtnVisability();
 
     detailedContactDisplay.style.display = "block";
     contactSignatur.innerHTML = createInitials(contact.name);
@@ -305,7 +306,7 @@ function displayDetailedContactInfo(firebaseId ) {
 }
 
 
-function mamageEditContactRadioBtnVisability() {
+function manageEditContactRadioBtnVisability() {
     if (window.innerWidth  < 800) {
         document.querySelector(".edit-contact-radio-btn").style.display = "flex";
     }

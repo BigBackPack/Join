@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="../css/login-style.css">
     <link rel="stylesheet" href="../css/global-style.css">
 
+    <!-- css media queries -->
+    <link rel="stylesheet" href="../css/media/login-media.css">
+
     <!-- js-links -->
     <script src="../js/login-script.js"></script>
 
@@ -24,14 +27,14 @@
             <img src="../img/join_logo_dark.svg">
             <div class="login-header-signup">
                 <a href="help.html">Not a Join user?</a>
-                <Button onclick="window.location.href='signup.html'"  class="signup-button">Sign up</Button>
+                <Button onclick="window.location.href='signup.html'"  class="primary-button">Sign up</Button>
             </div>
         </div>
 
         <div class="login-card" id="login-card">
             <p class="login-card-title">Log in</p>
             <form>
-                <div class="login-card-input">
+                <div class="login-card-inputs">
                     <input type="email" placeholder="Email" class="email-input" required>
                     <input type="password" placeholder="Password" class="password-input" required>
                 </div>
@@ -39,11 +42,16 @@
                     <input type="checkbox">
                     <p>Remember me</p>
                 </div>
-                <div class="login-card-button">
-                    <button class="login-button">Log in</button>
-                    <button class="guest-button" onclick="window.location.href='summary.html'"  >Guest Log in</button>
+                <div class="login-card-buttons">
+                    <button class="primary-button">Log in</button>
+                    <button class="secondary-button" onclick="window.location.href='summary.html'"  >Guest Log in</button>
                 </div>
             </form>
+        </div>
+
+        <div class="login-header-signup only-mobile">
+            <a href="help.html">Not a Join user?</a>
+            <Button onclick="window.location.href='signup.html'"  class="primary-button">Sign up</Button>
         </div>
 
         <div class="login-footer">

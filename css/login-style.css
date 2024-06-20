@@ -1,10 +1,11 @@
+body{margin: 0;}
 
-body{
-    margin: 0;
-}
+p{margin: 0;}
 
-p{
-    margin: 0;
+form{
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
 }
 
 .login-body{
@@ -12,8 +13,8 @@ p{
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100dvh;
     background-color: var(--bgColor);
 }
 
@@ -41,29 +42,18 @@ p{
     text-decoration: none;
     color: var(--mainColor);
     cursor: pointer;
+    display: block;
 }
-
-.signup-button{
-    border: 0;
-    background-color: var(--mainColor);
-    color: var(--white);
-    border-radius: 8px;
-    height: 48px;
-    padding: 12px 21px 12px 21px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
 
 .login-card {
     background-color: var(--white);
-    padding: 48px 115px 48px 115px;
+    padding: 48px 0;
+    width: 50%;
     border-radius: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 30px;
+    filter: drop-shadow(0 4px 2px var(--dropShadowColor));
 }
 
 .login-card-title {
@@ -74,19 +64,18 @@ p{
     border-bottom: 3px solid var(--secondaryColor);
 }
 
-.login-card-input{
+.login-card-inputs{
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.login-card-input input{
+.login-card-inputs input{
     width: 400px;
     height: 28px;
     border-radius: 10px;
     border: 1px solid var(--borderColor);
     padding: 12px 21px 12px 21px;
-    padding-right: 50px; 
 }
 
 .email-input{
@@ -104,38 +93,16 @@ p{
 .login-card-checkbox{
     display: flex;
     gap: 5px;
-    padding-left: 39px;
     padding-top: 25px;
+    width: 100%;
 }
 
-.login-card-button{
+.login-card-buttons{
     display: flex;
+    flex-direction: row;
     justify-content: center;
     gap: 20px;
     padding-top: 25px;
-}
-
-.login-button {
-    border: 0;
-    background-color: var(--mainColor);
-    color: var(--white);
-    border-radius: 8px;
-    padding: 12px 21px 12px 21px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-
-}
-
-.guest-button {
-    border: 1px solid var(--mainColor);
-    color: var(--mainColor);
-    background-color: var(--white);
-    border-radius: 8px;
-    padding: 12px 21px 12px 21px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
 }
 
 .login-footer{
@@ -150,4 +117,8 @@ p{
     color: var(--borderColor);
     font-size: 14px;
     cursor: pointer;
+}
+
+.only-mobile{
+    display: none;
 }
