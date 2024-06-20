@@ -16,8 +16,6 @@
     --orange: #FFA800;
     --green: #7AE229;
 
-    --dropShadowColor: #00000036;
-
 }
 
 body{
@@ -116,7 +114,7 @@ a{
 
 .primary-button:hover{
     background-color: var(--secondaryColor);
-    filter: drop-shadow(0 4px 2px var(--dropShadowColor));
+    filter: drop-shadow(0 4px 2px #00000036);
 }
 
 .secondary-button {
@@ -142,7 +140,7 @@ a{
 .secondary-button:hover{
     border: 2px solid var(--secondaryColor);
     color: var(--secondaryColor);
-    filter: drop-shadow(0 4px 2px var(--dropShadowColor));
+    filter: drop-shadow(0 4px 2px #00000036);
 }
 /* #endregion global buttons*/
 
@@ -268,19 +266,6 @@ a{
     padding: 0 64px;
     position: fixed;
     width: 80%;
-    height: 64px;
-    z-index: 100;
-}
-
-.indie-status-bar-container{
-    background-color: white;
-    box-shadow: 0 6px 4px #0000001e;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 64px;
-    position: fixed;
-    width: 100%;
     height: 64px;
     z-index: 100;
 }

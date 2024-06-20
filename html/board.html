@@ -21,11 +21,14 @@
     <script src="../js/board-scripts/board-task-overlay-script.js"></script>
     <script src="../js/add-task-script.js"></script>
     <script src="../js/add-task-template.js"></script>
+    <script src="../js/board-scripts/board-card-live.js"></script>
+    <script src="../js/board-scripts/board-ol-card.js"></script>
+    <script src="../js/board-script.js" defer></script>
+    <script src="../js/board-scripts/board-data.js"></script>
 
     <!-- js for drag-n-drop lib: sortable -->
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
 
-    <script src="../js/board-script.js" defer></script>
     <title>JOIN Board</title>
     <link
       rel="shortcut icon"
@@ -48,7 +51,7 @@
         <div class="individual-content-container container-css">
           <div id="task-overlay" class="task-overlay d-none"></div>
           
-          <div>
+          <div style="width: 75%;">
             <div id="board-header">
               <h2>Board</h2>
               <div id="search-btn-container">
@@ -153,14 +156,6 @@
 
             <div id="column-4" class="all-columns columns-margin"></div> 
 
-            <!-- <div class="column-2-3-4">
-              <div id="column-2" class="all-columns columns-margin">
-              </div>
-              <div id="column-3" class="all-columns columns-margin">
-              </div>
-              <div id="column-4" class="all-columns columns-margin">
-              </div>
-            </div> -->
           </div>
         </div>
         
