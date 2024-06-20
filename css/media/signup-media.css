@@ -1,0 +1,57 @@
+@media (max-width: 1200px){
+    .signup-card{
+        width: 70%;
+    }
+
+    .signup-header img{
+        height: 60px;
+        padding-top: 80px;
+        padding-left: 80px;
+    }
+}
+
+
+@media (max-width: 800px){
+    .signup-card{
+        width: 90%;
+    }
+
+    .signup-header img{
+        height: 60px;
+        padding-top: 24px;
+        padding-left: 24px;
+        margin-bottom: 24px;
+    }
+}
+
+
+@media (max-width: 600px){
+    .login-card-buttons{
+        flex-direction: column;
+        align-items: center;
+        width: 200px;
+    }
+
+    .login-card-inputs input{
+        width: 200px;
+        height: 28px;
+    }
+
+    .signup-card-input input{
+        width: 200px;
+    }
+
+    .login-header-signup{display: none;}
+
+    .only-mobile{
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+
+    .signup-card-title{font-size: 2rem;}
+
+    .signup-card-head img{
+        margin-right: 24px;
+    }
+}

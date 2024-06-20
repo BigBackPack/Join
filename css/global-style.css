@@ -16,6 +16,8 @@
     --orange: #FFA800;
     --green: #7AE229;
 
+    --dropShadowColor: #00000036;
+
 }
 
 body{
@@ -114,7 +116,7 @@ a{
 
 .primary-button:hover{
     background-color: var(--secondaryColor);
-    filter: drop-shadow(0 4px 2px #00000036);
+    filter: drop-shadow(0 4px 2px var(--dropShadowColor));
 }
 
 .secondary-button {
@@ -140,7 +142,7 @@ a{
 .secondary-button:hover{
     border: 2px solid var(--secondaryColor);
     color: var(--secondaryColor);
-    filter: drop-shadow(0 4px 2px #00000036);
+    filter: drop-shadow(0 4px 2px var(--dropShadowColor));
 }
 /* #endregion global buttons*/
 
