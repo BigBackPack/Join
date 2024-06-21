@@ -14,7 +14,7 @@ function setBoardStatus(boardStatus) {
  * Initializes the application by fetching contacts and setting up event listeners.
  */
 function initializeApp(boardStatus) {
-    if (isInitialized) return; // Verhindert mehrfaches Ausführen
+    if (isInitialized) return;
     isInitialized = true;
     fetchContacts();
     setupEventListeners();
@@ -407,35 +407,27 @@ function restorePlaceholder() {
  * @param {string} key - The key of the contact.
  */
 function toggleCheckbox(event, key) {
-    // Prevent the default action of the <a> tag
     event.preventDefault();
     event.stopPropagation();
 
-    // Find the checkbox inside the clicked div
     let checkbox = event.currentTarget.querySelector(`input[data-id='${key}']`);
     let customCheckbox = event.currentTarget.querySelector(`.custom-checkbox[data-id='${key}']`);
 
-    // Toggle the checkbox state
     checkbox.checked = !checkbox.checked;
-
-    // Toggle the 'checked' class on the custom checkbox
     if (checkbox.checked) {
         customCheckbox.classList.add('checked');
     } else {
         customCheckbox.classList.remove('checked');
     }
 
-    // Find the parent a element
     let parentA = event.currentTarget.closest('.dropdown-link');
 
-    // Toggle the 'checked' class on the parent a element
     if (checkbox.checked) {
         parentA.classList.add('checked');
     } else {
         parentA.classList.remove('checked');
     }
 
-    // Update the selected initials display
     updateSelectedInitials();
 }
 

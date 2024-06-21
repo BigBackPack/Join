@@ -19,7 +19,7 @@ textarea::placeholder {
 
 textarea:focus{
     outline: none;
-    border: 2px solid var(--secondaryColor)
+    border: 2px solid var(--secondaryColor);
 }
 
 input:focus{
@@ -34,8 +34,6 @@ input::placeholder {
 .dropdown input::placeholder {
     color: black;
 }
-
-/* neu */
 
 .individual-content-container {
     padding-top: 150px;
@@ -109,7 +107,6 @@ input::placeholder {
 .blue-close-icon{
     display: none;
 }
-/* dropdown */
 
 
 .dropdown.invalid .dropbtn {
@@ -420,6 +417,8 @@ input[type="radio"]#low:checked + label .prio-icon {
 
 .text-display {
     font-size: 16px;
+    max-height: 150px;
+    overflow-y: scroll;
 }
 
 .text-display ul {
@@ -487,4 +486,20 @@ input[type="radio"]#low:checked + label .prio-icon {
     padding-left: 20px;
     padding-bottom: 10px;
     padding-top: 10px;
+}
+
+
+.category-options{
+    font-size: 20px;
+}
+
+#date{
+    cursor:text;
+}
+
+.edit-icon{
+    cursor: pointer;
+}
+.delete-icon{
+    cursor: pointer;
 }
