@@ -15,13 +15,12 @@
     <link rel="stylesheet" href="../css/media/login-media.css">
 
     <!-- js-links -->
-    <script src="../js/login-script.js"></script>
+    <script src="../js/register-script.js"></script>
 
     <title>Login</title>
 </head>
 
-<body>
-
+<body onload="init()">
     <div class="login-body">
         <div class="login-header">
             <img src="../img/join_logo_dark.svg">
@@ -33,7 +32,7 @@
 
         <div class="login-card" id="login-card">
             <p class="login-card-title">Log in</p>
-            <form>
+            <form id="login-form">
                 <div class="login-card-inputs">
                     <input type="email" placeholder="Email" class="email-input" required>
                     <input type="password" placeholder="Password" class="password-input" required>
