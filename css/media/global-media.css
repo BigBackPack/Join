@@ -3,6 +3,8 @@
       flex-direction: column-reverse;
     }
 
+    .hide-mobile{display: none;}
+
     .left-content-container{
         position: sticky;
         bottom: 0;

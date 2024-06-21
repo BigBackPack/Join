@@ -15,26 +15,47 @@
 
     <!-- js links -->
     <script src="../js/template-loader.js"></script>
-    <script src="../js/indie-template-handler-script.js"></script>
 
     <title>JOIN Legal Notice</title>
 </head>
 
 
-<body onload="includeHTML(), handleTemplates()">
+<body onload="includeHTML()">
     <div class="main-content-container">
-        <div class="left-content-container">
-            <div w3-include-html="templates/nav-bar-template.html"></div>
+        <div class="left-content-container hide-mobile">
+            <!-- nav bar -->
+            <div class="nav-bar-container">
+                <a href="login.html">
+                <img class="join-logo" src="../img/join_logo_white.svg" alt="Join Logo"></a>
+
+                <div class="indie-nav-spacer"></div>
+
+                <div class="legal-links-container">
+                    <a href="indie-privacy.html">Privacy Policy</a>
+                    <a href="indie-legal.html">Legal Notice</a>
+                </div>
+            </div>
         </div>
 
         <div class="right-content-container">
-            <div w3-include-html="templates/status-bar-template.html"></div>
+            <!-- status bar -->
+            <div class="status-bar-container">
+                <h1>Kanban Project mangement Tool</h1>
+    
+                <!-- logo : only visible in mobile view -->
+                <a href="summary.html">
+                <img class="join-logo-status-bar" src="../img/join_logo_dark.svg" alt="Join Logo"></a>
+    
+                <div class="profile-container">
+                    <div id="provile-icon" class="provile-icon">PK</div>
+                </div>
+            </div>
 
             <div class="individual-content-conatainer">
                 <div class="text-container">                   
                     <div class="text-header-container">
                         <h2>Legal Notice</h2>
-                        <a href="summary.html"><img src="../img/arrow_left_icon.svg" alt="Go back Button"></a>
+                        <a href="login.html"><img src="../img/arrow_left_icon.svg" alt="Go back Button"></a>
                     </div>
 
                     <h3>Imprint</h3>
