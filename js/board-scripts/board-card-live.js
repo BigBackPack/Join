@@ -3,6 +3,8 @@
  * @returns - the generated HTML/Css structure for set function.
  */
 function renderLiveTodoCard(tasks, i) {
+  let labelSrc = ((tasks[1].category == 'User Story') ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png');
+
   return `<div
                   draggable="true"
                   id="card-todo"
@@ -10,7 +12,7 @@ function renderLiveTodoCard(tasks, i) {
                   class="board-card"
                 >
                   <div class="main-card">
-                    <img class='label-img' src="../img/png/label-user-story-blue.png" alt="user-stoy Icon" />
+                    <img class='label-img' src="${labelSrc}" alt="user-stoy Icon" />
                     <div class="card-info">
                       <span class="card-title"
                         >${tasks[1]['title']}</span
@@ -115,7 +117,7 @@ function renderLiveTodoCard(tasks, i) {
  * @returns - the generated HTML/Css structure for set function.
  */
 function renderLiveProgressCard(tasks,i) {
-
+  let labelSrc = ((tasks[1].category == 'User Story') ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png');
   // tasks = taskList;
   return `<div
                   draggable="true"
@@ -124,7 +126,7 @@ function renderLiveProgressCard(tasks,i) {
                   class="board-card"
                 >
                   <div class="main-card">
-                    <img class="label-img" src="../img/png/label-user-story-blue.png" alt="blue label - user stories">
+                    <img class="label-img" src="${labelSrc}" alt="blue label - user stories">
                     <div class="card-info">
                       <span class="card-title"
                         >${tasks[1]['title']}</span
@@ -229,11 +231,12 @@ function renderLiveProgressCard(tasks,i) {
  * @returns - the generated HTML/Css structure for set function.
  */
 function renderLiveFeedbackCard(tasks,i) {
-  // how often - depends on - 
+  let labelSrc = ((tasks[1].category == 'User Story') ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png'); 
+
   return `
     <div draggable="true" class="board-card small-card" onclick="renderLiveOverlayCard('feedback', taskList, ${i})">
                 <div id="" class="main-card">
-                  <img class="label-img" src="../img/png/label-techn-task-green.png" alt="blue label - user stories">
+                  <img class="label-img" src="${labelSrc}" alt="blue label - user stories">
                   <div class="card-info">
                     <span class="card-title"
                       >${tasks[1]['title']}</span
@@ -327,7 +330,8 @@ function renderLiveFeedbackCard(tasks,i) {
  * @returns - the generated HTML/Css structure for set function.
  */
 function renderLiveDoneCard(tasks,i) {
-  // how often - depends on - 
+  let labelSrc = ((tasks[1].category == 'User Story') ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png');
+
   return `
   <div
                   draggable="true"
@@ -336,7 +340,7 @@ function renderLiveDoneCard(tasks,i) {
                   class="board-card"
                 >
                   <div class="main-card">
-                    <img class="label-img" src="../img/png/label-techn-task-green.png" alt="blue label - user stories">
+                    <img class="label-img" src="${labelSrc}" alt="blue label - user stories">
                     <div class="card-info">
                       <span class="card-title">${tasks[1]['title']}</span>
                       <br />

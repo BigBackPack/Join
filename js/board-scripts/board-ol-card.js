@@ -33,12 +33,14 @@ function renderLiveOverlayCardToDo(tasks,i) {
 
   tasks = taskList;
 
+  let labelSrc = ((tasks[1].category == 'User Story') ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png');
+
   return `
     <div class="ol-board-card">
                 <div class="ol-main-card">
                   <div class="ol-card-header">
                     <div class="ol-header-btn">
-                      <img class="ol-label-img" src="../img/png/label-user-story-blue.png" alt="blue label - user stories">
+                      <img class="ol-label-img" src="${labelSrc}" alt="blue label - user stories">
                     </div>
                     <span title="close overlay" id="overlay-close-btn" class="ol-close-btn" onclick="closeOverlay()">X</span>
                   </div>
@@ -160,12 +162,14 @@ function renderLiveOverlayCardProgress(tasks,i) {
 
   tasks = taskList;
 
+  let labelSrc = ((tasks[1].category == 'User Story') ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png');
+
   return `
     <div class="ol-board-card">
                 <div class="ol-main-card">
                   <div class="ol-card-header">
                     <div class="ol-header-btn">
-                      <img class="ol-label-img" src="../img/png/label-user-story-blue.png" alt="blue label - user stories">
+                      <img class="ol-label-img" src="${labelSrc}" alt="blue label - user stories">
                     </div>
                     <span title="close overlay" id="overlay-close-btn" class="ol-close-btn" onclick="closeOverlay()">X</span>
                   </div>
@@ -283,12 +287,14 @@ function renderLiveOverlayCardDone(tasks,i) {
     `;
   }).join('');
 
+  let labelSrc = ((tasks[1].category == 'User Story') ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png');
+
   return `
     <div class="ol-board-card">
                 <div class="ol-main-card">
                   <div class="ol-card-header">
                     <div class="ol-header-btn">
-                      <img class="ol-label-img" src="../img/png/label-techn-task-green.png" alt="blue label - user stories">
+                      <img class="ol-label-img" src="${labelSrc}" alt="blue label - user stories">
                     </div>
                     <span title="close overlay" id="overlay-close-btn" class="ol-close-btn" onclick="closeOverlay()">X</span>
                   </div>
