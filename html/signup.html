@@ -15,13 +15,12 @@
     <link rel="stylesheet" href="../css/media/signup-media.css">
 
     <!-- js-links -->
-    <script src="../js/signup-script.js"></script>
+    <script src="../js/register-script.js" defer></script>
 
     <title>Sign up</title>
 </head>
 
-<body>
-
+<body onload="init()">
     <div class="signup-body">
         <div class="signup-header">
             <img src="/img/join_logo_dark.svg">
@@ -34,19 +33,19 @@
                 <div class="spacer"></div>
             </div>
            
-            <form>
+            <form id="signup-form">
                 <div class="signup-card-input">
-                    <input type="text" placeholder="Name" class="name-input" required>
-                    <input type="email" placeholder="Email" class="email-input" required>
-                    <input type="password" placeholder="Password" class="password-input" required>
-                    <input type="password" placeholder="Confirm Password" class="password-input" required>
+                    <input id="nameInput" type="text" placeholder="Name" class="name-input" required>
+                    <input id="mailInput" type="email" placeholder="Email" class="email-input" required>
+                    <input id="passwordInput" type="password" placeholder="Password" class="password-input" required>
+                    <input id="confirmPasswordInput" type="password" placeholder="Confirm Password" class="password-input" required>
                 </div>
                 <div class="signup-card-checkbox">
                     <input type="checkbox" required>
                     <p>I accept the <a href="indie-privacy.html">Privacy policy</a></p>
                 </div>
                 <div class="signup-card-button">
-                    <button class="primary-button">Sign up</button>
+                    <button type="submit" class="primary-button">Sign up</button>
                 </div>
             </form>
         </div>

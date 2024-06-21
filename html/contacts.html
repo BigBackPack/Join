@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../css/media/template-status-bar-media.css"/>
 
     <!-- js links -->
+    <script src="../js/check-login-status-script.js"></script>
     <script src="../js/template-loader.js"></script>
     <script src="../js/add-contact-script.js" defer></script>
     <script src="../js/new-contact-entry-script.js" defer></script>
@@ -27,7 +28,7 @@
 </head>
 
 
-<body onload="includeHTML(), init()">
+<body onload="includeHTML(), init(), loaduserLoginStatus()">
     <div class="main-content-container">
         <div class="left-content-container">
             <!-- nav bar template -->
