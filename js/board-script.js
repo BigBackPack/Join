@@ -31,13 +31,16 @@ function renderLive(tasks) {
   for (let i = 0; i < tasks.length; i++) {
     const element = tasks[i];
     if (element[1].board == 'progress') {
+      document.getElementById('empty-task-col-2').classList.add('d-none');
       cardLiveDiv2.innerHTML += renderLiveProgressCard(element,i);
     } if (element[1].board == 'feedback') {
+      document.getElementById('empty-task-col-3').classList.add('d-none');
       cardLiveDiv3.innerHTML += renderLiveFeedbackCard(element,i);
     } if (element[1].board == 'done') {
+      document.getElementById('empty-task-col-4').classList.add('d-none');
       cardLiveDiv4.innerHTML += renderLiveDoneCard(element,i);
     } if (element[1].board == 'todo') {
-      document.getElementById('empty-task').classList.add('d-none');
+      document.getElementById('empty-task-col-1').classList.add('d-none');
       cardLiveDiv1.innerHTML +=   renderLiveTodoCard(element, i);
 
     }

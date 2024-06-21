@@ -284,14 +284,6 @@ function renderDummyOverlayDone() {
 
 //#endregion
 
-/** - CLOSE OVERLAY -
- * This function is used to close the overlay once the X in the upper right corner of the overlay * is clicked.
- */
-function closeOverlay() {
-  console.log('closeOverlay f() - triggered');
-  document.getElementById('overlay-card').classList.add('d-none');
-  const content = document.getElementById('overlay-card');
-  content.innerHTML = '';
-}
+
 
 //#endregion

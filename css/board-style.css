@@ -320,6 +320,15 @@ html {
   margin-left: -15px;
 }
 
+.ol-label-img {
+  width: 164px;
+  height: 36px;
+}
+
+.label-img {
+  width: 113px;
+  height: 27px;
+}
 /* Design progress bar incl fill */
 
 .progress-bar {
