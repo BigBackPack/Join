@@ -381,3 +381,22 @@ function setMinDate() {
 
     document.getElementById("date").setAttribute("min", todayString);
 }
+
+/**
+ * Removes the placeholder text when the input is focused.
+ */
+function removePlaceholder() {
+    let input = document.getElementById('dropdown');
+    input.setAttribute('data-placeholder', input.getAttribute('placeholder'));
+    input.setAttribute('placeholder', '');
+}
+
+/**
+ * Restores the placeholder text when the input loses focus.
+ */
+function restorePlaceholder() {
+    let input = document.getElementById('dropdown');
+    if (input.value === '') {
+        input.setAttribute('placeholder', input.getAttribute('data-placeholder'));
+    }
+}

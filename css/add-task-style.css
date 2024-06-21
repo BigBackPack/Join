@@ -17,6 +17,16 @@ textarea::placeholder {
     color: var(--borderColor);
 }
 
+textarea:focus{
+    outline: none;
+    border: 2px solid var(--secondaryColor)
+}
+
+input:focus{
+    outline: none;
+    border: 2px solid var(--secondaryColor)
+}
+
 input::placeholder {
     color: var(--borderColor);
 }
@@ -129,7 +139,15 @@ input::placeholder {
     z-index: 2;
     position: relative;
     font-size: 20px;
+}
 
+.dropbtn:focus{
+    outline: none;
+    border: 2px solid var(--secondaryColor);
+}
+
+.dropbtn:focus:hover{
+    border: 2px solid var(--secondaryColor) !important;
 }
 
 .dropbtn:hover {
@@ -137,11 +155,13 @@ input::placeholder {
     background-image: url(/img/small-arrow-down_bg_icon.svg);
 }
 
+
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: white;
     width: 100%;
+    max-height: 300px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     border-radius: 0px 0px 10px 10px;
     overflow: hidden;
@@ -150,6 +170,7 @@ input::placeholder {
     margin-top: -10px;
     padding-top: 10px;
     z-index: 1;
+    overflow-y: auto;
 }
 
 .dropdown-content a {
@@ -157,6 +178,9 @@ input::placeholder {
     padding: 10px 20px;
     text-decoration: none;
     display: block;
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .dropdown-content a:hover {
@@ -171,6 +195,7 @@ input::placeholder {
     display: flex;
     align-items: center;
 }
+
 
 .dropdown-image {
     width: 40px;

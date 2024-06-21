@@ -51,7 +51,7 @@
                             <div class="dropdown-container">
                                 <label class="dropdown-label" for="dropdown">Assigned to</label>
                                 <div class="dropdown">
-                                    <input type="text" class="dropbtn" id="dropdown" placeholder="Select contacts to assign" onkeyup="filterDropdown('dropdownContent')" onclick="toggleDropdown('dropdownContent')">
+                                    <input type="text" class="dropbtn" id="dropdown" placeholder="Select contacts to assign" onkeyup="filterDropdown('dropdownContent')" onclick="toggleDropdown('dropdownContent')" onfocus="removePlaceholder()" onblur="restorePlaceholder()">
                                     <div class="dropdown-content" id="dropdownContent">
                                         <!-- dynamic content for contacts -->
                                     </div>
