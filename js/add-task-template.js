@@ -59,13 +59,14 @@ function createSubtaskItemHTML(text) {
 function createContactItem(contact, key) {
     let initials = contact.name.split(' ').map(word => word[0]).join('');
     return `
-        <a href="#" data-value="${key}">
-            <div class="dropdown-item">
+        <a href="#" class="dropdown-link" data-value="${key}">
+            <div class="dropdown-item" onclick="toggleCheckbox(event, '${key}')">
                 <div class="dropdown-image" style="background-color: ${contact.bgColor};">
                     <p>${initials}</p>
                 </div>
-                <span>${contact.name}</span>
+                <span class="contact-name">${contact.name}</span>
                 <input type="checkbox" class="dropdown-checkbox" data-id="${key}" data-initials="${initials}" data-bgcolor="${contact.bgColor}">
+                <div class="custom-checkbox" data-id="${key}"></div>
             </div>
         </a>`;
 }

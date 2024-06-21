@@ -358,7 +358,7 @@ function removeItem(element) {
  * @param {Event} event - The window click event.
  */
 function closeDropdownOnClickOutside(event) {
-    if (!event.target.matches('.dropbtn') && !event.target.closest('.dropdown-item')) {
+    if (!event.target.matches('.dropbtn') && !event.target.closest('.dropdown-content')) {
         let dropdowns = document.getElementsByClassName("dropdown-content");
         for (let i = 0; i < dropdowns.length; i++) {
             let openDropdown = dropdowns[i];
@@ -398,5 +398,57 @@ function restorePlaceholder() {
     let input = document.getElementById('dropdown');
     if (input.value === '') {
         input.setAttribute('placeholder', input.getAttribute('data-placeholder'));
+    }
+}
+
+/**
+ * Toggles the checkbox when the containing div is clicked.
+ * @param {Event} event - The click event.
+ * @param {string} key - The key of the contact.
+ */
+function toggleCheckbox(event, key) {
+    // Prevent the default action of the <a> tag
+    event.preventDefault();
+    event.stopPropagation();
+
+    // Find the checkbox inside the clicked div
+    let checkbox = event.currentTarget.querySelector(`input[data-id='${key}']`);
+    let customCheckbox = event.currentTarget.querySelector(`.custom-checkbox[data-id='${key}']`);
+
+    // Toggle the checkbox state
+    checkbox.checked = !checkbox.checked;
+
+    // Toggle the 'checked' class on the custom checkbox
+    if (checkbox.checked) {
+        customCheckbox.classList.add('checked');
+    } else {
+        customCheckbox.classList.remove('checked');
+    }
+
+    // Find the parent a element
+    let parentA = event.currentTarget.closest('.dropdown-link');
+
+    // Toggle the 'checked' class on the parent a element
+    if (checkbox.checked) {
+        parentA.classList.add('checked');
+    } else {
+        parentA.classList.remove('checked');
+    }
+
+    // Update the selected initials display
+    updateSelectedInitials();
+}
+
+/**
+ * Updates the dropdown content background based on the state of checkboxes.
+ */
+function updateDropdownContentState() {
+    let dropdownContent = document.getElementById('dropdownContent');
+    let anyChecked = Array.from(dropdownContent.querySelectorAll('.dropdown-checkbox')).some(checkbox => checkbox.checked);
+    
+    if (anyChecked) {
+        dropdownContent.classList.add('checked');
+    } else {
+        dropdownContent.classList.remove('checked');
     }
 }
