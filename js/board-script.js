@@ -90,6 +90,7 @@ function showSubTaskCount(sumTotal) {
 }
 //#endregion
 
+
 //#region PROGRESS-BAR
 /**
  * Checkes the status of the checkbox at the subtask (in overlay only)
@@ -106,6 +107,7 @@ function updateBar(type) {
     }
   });
 
+
   const progressPercentage = (completed / total) * 100;
 
   if (type === 'progress') {
@@ -121,27 +123,45 @@ function updateBar(type) {
 
 /**
  * Searches for a task in the task list.
- */
-function searchCards() {
-  const searchInput = document
-    .getElementById('search-task')
-    .value.toLowerCase();
+ */function searchCards() {
+  const searchInput = document.getElementById('search-task').value.trim().toLowerCase();
   const cardContent = document.getElementById('board-overview');
   cardContent.innerHTML = '';
 
-  if (taskList.length > 0) {
+  if (searchInput.length >= 3) {
     for (let i = 0; i < taskList.length; i++) {
       const task = taskList[i];
       const taskName = task[1]['title'].toLowerCase();
+      const taskDescription = task[1]['description'].toLowerCase();
 
-      if (taskName.startsWith(searchInput)) {
-
-       // load the result
-        cardContent.innerHTML += renderTaskCard(taskList[i]);
+      if ((taskName.startsWith(searchInput) || taskDescription.startsWith(searchInput)) && (task[1]['board'] == 'todo')) {
+        cardContent.innerHTML += renderLiveTodoCard(taskList, i);
+      } else if ((taskName.startsWith(searchInput) || taskDescription.startsWith(searchInput)) && (task[1]['board'] == 'progress')) {
+        cardContent.innerHTML += renderLiveProgressCard(taskList, i);
+      } else if ((taskName.startsWith(searchInput) || taskDescription.startsWith(searchInput)) && (task[1]['board'] == 'feedback')) {
+        cardContent.innerHTML += renderLiveFeedbackCard(taskList, i);
+      } else if ((taskName.startsWith(searchInput) || taskDescription.startsWith(searchInput)) && (task[1]['board'] == 'done')) {
+        cardContent.innerHTML += renderLiveDoneCard(taskList, i);
       }
     }
   }
 }
+
+
+const searchInput = document.getElementById('search-task');
+
+searchInput.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    const searchValue = searchInput.value.trim();
+    
+    if (searchValue == '') {
+      location.reload();
+    } else {
+      // Search for matching cards/tasks when the search input is not empty
+      searchCards();
+    }
+  }
+});
 
 
 /**
