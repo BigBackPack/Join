@@ -87,9 +87,6 @@ async function loadContactsData(path) {
  * 
  * @param {string} path - The path to the JSON file, see CONTACT_PATH_SUFFIX 
  */
-// async function loadTasksData(path) {
-//   let resp = await fetch(BASE_URL + path + ".json");
-//   let respToJson = await resp.json();
 async function loadTasksData(path) {
   try {
     const response = await fetch(`${BASE_URL}${path}.json`);
