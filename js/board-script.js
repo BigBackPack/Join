@@ -110,7 +110,6 @@ function updateBar(type) {
     }
   });
 
-
   const progressPercentage = (completed / total) * 100;
 
   if (type === 'progress') {
@@ -123,9 +122,10 @@ function updateBar(type) {
 }
 //#endregion
 
-
+//#region SEARCH-TASKS
 /**
  * Searches for a task in the task list.
+ * Triggered through EL under this function.
  */function searchCards() {
   const searchInput = document.getElementById('search-task').value.trim().toLowerCase();
   const cardContent = document.getElementById('board-overview');
@@ -150,7 +150,6 @@ function updateBar(type) {
   }
 }
 
-
 const searchInput = document.getElementById('search-task');
 
 searchInput.addEventListener('keydown', function(event) {
@@ -165,9 +164,26 @@ searchInput.addEventListener('keydown', function(event) {
     }
   }
 });
-
+//#endregion
 
 /**
  * Shows the number of subtasks in the task list.
  */
 showSubTaskCount(taskList);
+
+
+// ------------- v1 - throws FUCKING CORS ------------------------
+function delTaskInDb(i) {
+  const taskRef = `${BASE_URL}${PATH_SUFFIX[1]}${taskList[i][0]}`;
+  console.log(taskRef);
+  fetch(taskRef, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(data => console.log('Task deleted!'))
+  .catch(error => console.error('Error deleting task:', error));
+}
+

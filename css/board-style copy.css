@@ -239,7 +239,7 @@ html {
 /* BOARD-CARDS */
 
 .board-card {
-  width: 252px;
+  /* width: 252px; */
   height: 263px;
   border-radius: 24px;
   padding: 16px;
@@ -274,10 +274,10 @@ html {
 /* CARD ITSELF/CONTENT */
 
 .main-card {
-  width: 220px;
+  /* width: 220px; */
   /* height: 231px; */
   border-radius: 24px;
-  padding: 3px;
+  /* padding: 3px; */
   gap: 24px;
   background-color: var(--white);
   display: flex;
@@ -299,8 +299,8 @@ html {
 }
 
 .progress-container {
-  width: 245px;
-  height: 16px;
+  /* width: 245px; */
+  /* height: 16px; */
   display: flex;
   align-items: center;
 }

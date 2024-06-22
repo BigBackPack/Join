@@ -264,7 +264,7 @@ html {
   width: 220px;
   /* height: 231px; */
   border-radius: 24px;
-  padding: 3px;
+  /* padding: 3px; */
   gap: 24px;
   background-color: var(--white);
   display: flex;
@@ -305,7 +305,7 @@ html {
 }
 
 .card-footer {
-  width: 220px;
+  width: 210px;
   height: 32px;
   display: flex;
   justify-content: space-between;

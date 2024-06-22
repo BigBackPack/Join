@@ -8,11 +8,13 @@
 //         });
 // }
 
-function openTaskOverlay(boardStatus, i, param = '') {
+function openTaskOverlay(boardStatus, i, param='') {
+    const taskRef = `${BASE_URL}${PATH_SUFFIX[1]}${taskList[i][0]}`;
+    console.log(taskRef);
     // param=crud coming from overlay - edit-btn
     if (param == 'crud') {
         let task = taskList[i];
-    
+        console.log('task inside IF - ',task);
         document.getElementById('title').value = task[1]['title'];
         document.getElementById('description').value = task.description;
         document.getElementById('date').value = task.dueDate;
@@ -24,6 +26,8 @@ function openTaskOverlay(boardStatus, i, param = '') {
         fetchAddOverlay(boardStatus);
     }
 }
+
+
 
 function fetchAddOverlay(status) {
     fetch('board-task-overlay.html')

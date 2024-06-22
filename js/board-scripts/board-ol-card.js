@@ -128,7 +128,7 @@ function renderLiveOverlayCardToDo(tasks,i) {
                       </div>
                       <br>
                       <div class="ol-crud">
-                        <div class="ol-crud-edit-delete" onclick="deleteThisSubOverlay()">
+                        <div class="ol-crud-edit-delete" onclick="delTaskInDb(${i})">
                           <img class='ol-crud-img' src="../img/png/overlay-delete.png" alt="Delete Icon">
                         </div>
                         <span class="ol-vertical"></span>

@@ -7,7 +7,7 @@ const BASE_URL = "https://join-2c971-default-rtdb.europe-west1.firebasedatabase.
 /*
 * Array of paths for the contacts and tasks for the load-functions.
 */
-const PATH_SUFFIX = ["/contacts", "/tasks"];
+const PATH_SUFFIX = ["contacts/", "tasks/"];
 
 
 /**

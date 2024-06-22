@@ -26,7 +26,7 @@ function renderLiveTodoCard(tasks, i) {
                       <br />
                       <div class="progress-container">
                         <div class="card-progress-bar">
-                          <svg width="128" height="8" viewBox="0 0 128 8" fill="none" xmlns="http://   www.w3.org/2000/svg" class="progress-bar">
+                          <svg width="118" height="8" viewBox="0 0 128 8" fill="none" xmlns="http://   www.w3.org/2000/svg" class="progress-bar">
                             <rect width="128" height="8" rx="4" fill="#F4F4F4"/>
                             <rect id="progress-bar-fill" width="0" height="8" rx="4" fill="#4589FF"/>
                             <rect x="0.5" y="0.5" width="127" height="7" rx="3.5" stroke="black"/>
@@ -140,7 +140,7 @@ function renderLiveProgressCard(tasks,i) {
                       <br />
                       <div class="progress-container">
                         <div class="card-progress-bar">
-                          <svg width="128" height="8" viewBox="0 0 128 8" fill="none" xmlns="http://   www.w3.org/2000/svg" class="progress-bar">
+                          <svg width="118" height="8" viewBox="0 0 128 8" fill="none" xmlns="http://   www.w3.org/2000/svg" class="progress-bar">
                             <rect width="128" height="8" rx="4" fill="#F4F4F4"/>
                             <rect id="progress-bar-fill" width="0" height="8" rx="4" fill="#4589FF"/>
                             <rect x="0.5" y="0.5" width="127" height="7" rx="3.5" stroke="black"/>
@@ -352,7 +352,7 @@ function renderLiveDoneCard(tasks,i) {
                       <br />
                       <div class="progress-container">
                         <div class="card-progress-bar">
-                          <svg width="128" height="8" viewBox="0 0 128 8" fill="none" xmlns="http://   www.w3.org/2000/svg" class="progress-bar">
+                          <svg width="118" height="8" viewBox="0 0 128 8" fill="none" xmlns="http://   www.w3.org/2000/svg" class="progress-bar">
                             <rect width="128" height="8" rx="4" fill="#F4F4F4"/>
                             <rect id="done-bar-fill" width="0" height="8" rx="4" fill="#4589FF"/>
                             <rect x="0.5" y="0.5" width="127" height="7" rx="3.5" stroke="black"/>
