@@ -1,4 +1,7 @@
-let remberMeChecked = false;
+let rememberMeChecked = false;
+let rememberedUserMail;
+let rememberedUserPsw;
+
 let loggedIn = false;
 let policyAccepted = false;
 
@@ -127,6 +130,14 @@ function checkIfMailIsRegitered(event) {
 
 function checkIfPasswordIsCorrect(passwordInput, savedPassword) {
     if(savedPassword == passwordInput) {
+        const remberMeCheckbox = document.querySelector(".login-card-checkbox input[type='checkbox']");
+
+        if (remberMeCheckbox.checked) {
+            rememberMeChecked = true;
+            console.log("worked!");
+        } 
+        loggedIn = true;
+        saveUserLoginData();
         window.location = "summary.html";
     } else {
         alert("Either the password and/or the email adress is incorrect! Please try again.");

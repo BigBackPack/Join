@@ -11,3 +11,9 @@ function checkUserLoginStatus(loggedInStatus) {
     window.location = "login.html";
     }
 }
+
+
+// logges user out if window was closed
+window.addEventListener("beforeunload", function () {
+    localStorage.setItem("loggedIn", "false");
+});
