@@ -3,12 +3,14 @@
  * @returns - the generated HTML/Css structure for set function.
  */
 function renderLiveTodoCard(tasks, i) {
-  let labelSrc = ((tasks[1].category == 'User Story') ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png');
+  console.log('tasks from start renderTodoLive(): ',tasks);
+  let labelSrc = tasks[1].category == 'User Story' ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png';
 
   return `<div
                   draggable="true"
-                  id="card-todo"
+                  id="todo"
                   onclick="renderLiveOverlayCard('todo', taskList, ${i})"
+                  ondragstart="startDragging(${i})"
                   class="board-card"
                 >
                   <div class="main-card">
@@ -28,7 +30,7 @@ function renderLiveTodoCard(tasks, i) {
                         <div class="card-progress-bar">
                           <svg width="118" height="8" viewBox="0 0 128 8" fill="none" xmlns="http://   www.w3.org/2000/svg" class="progress-bar">
                             <rect width="128" height="8" rx="4" fill="#F4F4F4"/>
-                            <rect id="progress-bar-fill" width="0" height="8" rx="4" fill="#4589FF"/>
+                            <rect id="progress-bar-fill-to" width="0" height="8" rx="4" fill="#4589FF"/>
                             <rect x="0.5" y="0.5" width="127" height="7" rx="3.5" stroke="black"/>
                           </svg>
                         </div>
@@ -121,8 +123,9 @@ function renderLiveProgressCard(tasks,i) {
   // tasks = taskList;
   return `<div
                   draggable="true"
-                  id="card-progress"
+                  id="progress"
                   onclick="renderLiveOverlayCard('progress', taskList, ${i})"
+                  ondragstart="startDragging(${i})"
                   class="board-card"
                 >
                   <div class="main-card">
@@ -142,7 +145,7 @@ function renderLiveProgressCard(tasks,i) {
                         <div class="card-progress-bar">
                           <svg width="118" height="8" viewBox="0 0 128 8" fill="none" xmlns="http://   www.w3.org/2000/svg" class="progress-bar">
                             <rect width="128" height="8" rx="4" fill="#F4F4F4"/>
-                            <rect id="progress-bar-fill" width="0" height="8" rx="4" fill="#4589FF"/>
+                            <rect id="progress-bar-fill-pr" width="0" height="8" rx="4" fill="#4589FF"/>
                             <rect x="0.5" y="0.5" width="127" height="7" rx="3.5" stroke="black"/>
                           </svg>
                         </div>
@@ -234,8 +237,8 @@ function renderLiveFeedbackCard(tasks,i) {
   let labelSrc = ((tasks[1].category == 'User Story') ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png'); 
 
   return `
-    <div draggable="true" class="board-card small-card" onclick="renderLiveOverlayCard('feedback', taskList, ${i})">
-                <div id="" class="main-card">
+    <div draggable="true" class="board-card small-card" onclick="renderLiveOverlayCard('feedback', taskList, ${i})" ondragstart="startDragging(${i})">
+                <div id="feedback" class="main-card">
                   <img class="label-img" src="${labelSrc}" alt="blue label - user stories">
                   <div class="card-info">
                     <span class="card-title"
@@ -335,8 +338,9 @@ function renderLiveDoneCard(tasks,i) {
   return `
   <div
                   draggable="true"
-                  id="card-css"
+                  id="done"
                   onclick="renderLiveOverlayCard('done', taskList, ${i})"
+                  ondragstart="startDragging(${i})"
                   class="board-card"
                 >
                   <div class="main-card">
@@ -354,7 +358,7 @@ function renderLiveDoneCard(tasks,i) {
                         <div class="card-progress-bar">
                           <svg width="118" height="8" viewBox="0 0 128 8" fill="none" xmlns="http://   www.w3.org/2000/svg" class="progress-bar">
                             <rect width="128" height="8" rx="4" fill="#F4F4F4"/>
-                            <rect id="done-bar-fill" width="0" height="8" rx="4" fill="#4589FF"/>
+                            <rect id="done-bar-fill-do" width="0" height="8" rx="4" fill="#4589FF"/>
                             <rect x="0.5" y="0.5" width="127" height="7" rx="3.5" stroke="black"/>
                           </svg>
                         </div>

@@ -49,19 +49,98 @@ function renderLive(tasks) {
 }
 
 
-//#region EVENT-LISTENER
+//#region DRAG-n-DRP - EVENT-LISTENER
+
 /*
 ** Event-Listener - drag-n-drop 
 */
-document.addEventListener('DOMContentLoaded', function () {
-  const columns = document.querySelectorAll('.all-columns');
-  columns.forEach(function (column) {
-      new Sortable(column, {
-          group: 'shared',
-          animation: 150
-      });
-  });
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//   const columns = document.querySelectorAll('.all-columns');
+//   columns.forEach(function (column) {
+//       new Sortable(column, {
+//           group: 'shared',
+//           animation: 150
+//       });
+//   });
+// });
+
+let currentDraggedElement;
+
+
+function updateHTML(taskList) {
+
+  addTodo(taskList);
+
+  // addProgress();
+
+  // addFeedback();
+  
+  // addDone();
+
+}
+function addTodo(tasks) {
+  let todo = tasks.filter(t => t['category'] == 'todo');
+
+  document.querySelector('#column-1').innerHTML = '';
+
+  for (let i = 0; i < tasks.length; i++) {
+      const element = todo[i];
+      document.querySelector('#column-1').innerHTML += renderLiveTodoCard(tasks,i);
+  }
+}
+function addProgress() {
+  let progress = taskList.filter(t => t['category'] == 'progress');
+
+  document.querySelector('#column-2').innerHTML = '';
+
+  for (let index = 0; index < taskList.length; index++) {
+      const element = progress[index];
+      document.querySelector('#column-2').innerHTML += renderLiveProgressCard(element);
+  }
+}
+function addFeedback() {
+  let feedback = taskList.filter(t => t['category'] == 'feedback');
+
+  document.querySelector('#column-3').innerHTML = '';
+
+  for (let index = 0; index < taskList.length; index++) { 
+      const element = feedback[index];
+      document.getElementById('column-3').innerHTML += renderLiveFeedbackCard(element);
+  }
+}
+function addDone() {
+
+  let done = taskList.filter(t => t['category'] == 'done');
+
+  document.querySelector('#column-4').innerHTML = '';
+
+  for (let index = 0; index < taskList.length; index++) {
+      const element = done[index];
+      document.querySelector('#column-4').innerHTML += renderLiveDoneCard(element);
+  }
+}
+
+function startDragging(id) {
+  console.log('startDragging - Id: ', currentDraggedElement);
+  currentDraggedElement = id;
+}
+
+function generateTodoHTML(element) {
+  return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="todo">${element['title']}</div>`;
+}
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function moveTo(param) {
+  let tasks = taskList;
+  console.log('param: ',param);
+  tasks[currentDraggedElement][1]['category'] = param;
+  //updateHTML();
+  
+}
+
 //#endregion
 
 
@@ -100,6 +179,7 @@ function showSubTaskCount(sumTotal) {
  * @param {boolean} type - is checkbox on subtask checked or not
  */
 function updateBar(type) {
+  console.log('type: ',type);
   const checkboxes = document.querySelectorAll('.ol-sub-task-checkbox');
   const total = checkboxes.length;
   let completed = 0;
@@ -112,13 +192,13 @@ function updateBar(type) {
 
   const progressPercentage = (completed / total) * 100;
 
-  if (type === 'progress') {
-    document.getElementById('progress-bar-fill').setAttribute('width', `${progressPercentage}%`);
-  } else if (type === 'done') {
-    document.getElementById('done-bar-fill').setAttribute('width', `${progressPercentage}%`);
-  } else {
-    console.error('Invalid type parameter');
-  }
+  if (type == 'progress') {
+    document.getElementById('progress-bar-fill-pr').setAttribute('width', `${progressPercentage}%`);
+  } else if (type == 'done') {
+    document.getElementById('progress-bar-fill-do').setAttribute('width', `${progressPercentage}%`);
+  } else if (type == 'todo') {
+    document.getElementById('progress-bar-fill-to').setAttribute('width', `${progressPercentage}%`);
+  } 
 }
 //#endregion
 
@@ -186,5 +266,3 @@ function delTaskInDb(i) {
   .then(data => console.log('Task deleted!'))
   .catch(error => console.error('Error deleting task:', error));
 }
-
-
