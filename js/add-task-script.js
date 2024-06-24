@@ -98,8 +98,26 @@ function createTask() {
     };
 
     postTask(newTask)
-        .then(() => clearForm())
+        .then(() => {
+            clearForm();
+            showSuccessPopup();
+        });
 }
+
+/**
+ * Shows the success popup.
+ */
+function showSuccessPopup() {
+    let popup = document.getElementById("addtask-success-popup");
+    popup.style.display = "block";
+    popup.style.animation = "slide-up 0.5s forwards"; // Apply the slide-up animation
+
+    setTimeout(() => {
+        popup.style.display = "none";
+        window.location.href = 'board.html';
+    }, 2000); // Hide the popup after 2 seconds
+}
+
 
 /**
  * Gets the value of an input field by its ID.
