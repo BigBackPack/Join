@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="../css/add-task-style.css">
 
     <!-- css media queries -->
-    <link rel="stylesheet" href="../css/media/global-media.css"/>
-    <link rel="stylesheet" href="../css/media/template-nav-bar-media.css"/>
-    <link rel="stylesheet" href="../css/media/template-status-bar-media.css"/>
+    <link rel="stylesheet" href="../css/media/global-media.css" />
+    <link rel="stylesheet" href="../css/media/template-nav-bar-media.css" />
+    <link rel="stylesheet" href="../css/media/template-status-bar-media.css" />
 
     <!-- js links -->
     <script src="../js/template-loader.js"></script>
@@ -47,11 +47,15 @@
                                 <textarea class="input-field" id="description" rows="5"
                                     placeholder="Enter a Description"></textarea>
                             </div>
-                            
+
                             <div class="dropdown-container">
                                 <label class="dropdown-label" for="dropdown">Assigned to</label>
                                 <div class="dropdown">
-                                    <input type="text" class="dropbtn" id="dropdown" placeholder="Select contacts to assign" onkeyup="filterDropdown('dropdownContent')" onclick="toggleDropdown('dropdownContent')" onfocus="removePlaceholder()" onblur="restorePlaceholder()">
+                                    <input type="text" class="dropbtn" id="dropdown"
+                                        placeholder="Select contacts to assign"
+                                        onkeyup="filterDropdown('dropdownContent')"
+                                        onclick="toggleDropdown('dropdownContent')" onfocus="removePlaceholder()"
+                                        onblur="restorePlaceholder()">
                                     <div class="dropdown-content" id="dropdownContent">
                                         <!-- dynamic content for contacts -->
                                     </div>
@@ -88,12 +92,16 @@
                             <div class="dropdown-container">
                                 <label for="dropdownCategory">Category<span class="required-star">*</span></label>
                                 <div class="dropdown">
-                                    <div class="dropbtn" id="dropdownCategoryButton" onclick="toggleDropdown('dropdownCategoryContent')">Select a category</div>
+                                    <div class="dropbtn" id="dropdownCategoryButton"
+                                        onclick="toggleDropdown('dropdownCategoryContent')">Select a category</div>
                                     <div class="dropdown-content" id="dropdownCategoryContent">
-                                        <a href="#" class="category-options" data-value="code" onclick="selectCategory('User Story')">User Story</a>
-                                        <a href="#" class="category-options" data-value="art" onclick="selectCategory('Technical Task')">Technical Task</a>
+                                        <a href="#" class="category-options" data-value="code"
+                                            onclick="selectCategory('User Story')">User Story</a>
+                                        <a href="#" class="category-options" data-value="art"
+                                            onclick="selectCategory('Technical Task')">Technical Task</a>
                                     </div>
-                                    <p id="required-text" class="required-text" style="display:none;">Please select a category.</p>
+                                    <p id="required-text" class="required-text" style="display:none;">Please select a
+                                        category.</p>
                                 </div>
                             </div>
 
@@ -120,9 +128,11 @@
                     </div>
 
                     <div class="form-footer">
-                        <div><span class="required-star">*</span> This field is required</div>
+                        <div><span class="required-star margin-left-100">*</span> This field is required</div>
                         <div class="form-buttons">
-                            <button onclick="clearForm()" type="button" class="secondary-button">Clear <img class="black-close-icon" src="/img/close_icon.svg"> <img class="blue-close-icon" src="/img/blue_close_icon.svg"></button>
+                            <button onclick="clearForm()" type="button" class="secondary-button">Clear <img
+                                    class="black-close-icon" src="/img/close_icon.svg"> <img class="blue-close-icon"
+                                    src="/img/blue_close_icon.svg"></button>
                             <button class="primary-button">Create Task<img src="/img/check_icon.svg"></button>
                         </div>
                     </div>

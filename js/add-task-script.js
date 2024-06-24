@@ -253,12 +253,17 @@ function updateSelectedInitials() {
  */
 function toggleDropdown(dropdownId) {
     let dropdown = document.getElementById(dropdownId);
+    let formFields = document.querySelector('.form-fields');
+
     if (dropdown.classList.contains("show")) {
         dropdown.classList.remove("show");
+        formFields.style.paddingBottom = "";
     } else {
         dropdown.classList.add("show");
+        formFields.style.paddingBottom = "250px";
     }
 }
+
 
 /**
  * Selects a category and updates the category button.
