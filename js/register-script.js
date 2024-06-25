@@ -5,43 +5,105 @@ let rememberedUserPsw;
 let loggedIn = false;
 let policyAccepted = false;
 
+let timestampOut;
+let timestampIn;
 
 let userLoginData = [];
 
 
 function init() {
+    console.log("Initializing..."); // DEBUG
     if (localStorage.getItem("userLoginData") == null) {
         saveUserLoginData();
     }
     loadUserLoginData();
-    console.log(userLoginData);
 
     if (window.location.href.includes("signup")) {
         document.getElementById('signup-form').addEventListener('submit', checkUserInput);
     } else if (window.location.href.includes("login")) {
         document.getElementById('login-form').addEventListener('submit', checkIfMailIsRegitered);
     }
+    
+
+    timestampOutData = localStorage.getItem("timestampOut");
+    timestampOut = Number(timestampOutData);
+
 }
 
 
 function saveUserLoginData() {
+    console.log("Saving loggedIn:", loggedIn); // DEBUG
+
     let loggedInStatus = JSON.stringify(loggedIn);
     localStorage.setItem("loggedIn", loggedInStatus);
 
     let localUserLoginData = JSON.stringify(userLoginData);
     localStorage.setItem("userLoginData", localUserLoginData);
+
+    let timestampOutData = JSON.stringify(timestampOut);
+    localStorage.setItem("timestampOut", timestampOutData);
+
+    let timestampInData = JSON.stringify(timestampIn);
+    localStorage.setItem("timestampIn", timestampInData);
 }
 
 
 function loadUserLoginData() {
     let localUserLoginData = localStorage.getItem("userLoginData");
+    const loggedInStatus = localStorage.getItem("loggedIn");
+
     if (localUserLoginData) {
         userLoginData = JSON.parse(localUserLoginData);
     }
+
+    if (loggedInStatus) {
+        loggedIn = JSON.parse(loggedInStatus);
+    }
+
+    console.log("Loaded loggedIn:", loggedIn); // DEBUG
 }
 
 
-// #region : creating new user login data
+// Listen for page show event to handle refresh
+window.addEventListener("pageshow", function (event) {
+    if (event.persisted) {
+        loadUserLoginData();
+    }
+    setTimestempIn();
+});
+
+
+window.addEventListener("beforeunload", function () {
+    setTimestempOut();
+});
+
+
+function setTimestempOut() {
+    timestampOut = Date.now(); 
+    saveUserLoginData();
+}
+
+
+function setTimestempIn() {
+    timestampIn = Date.now(); 
+    saveUserLoginData();
+    compareTimeStamps();
+}
+
+
+function compareTimeStamps() {
+    if (timestampOut && timestampIn)
+        if (timestampOut + 1000 > timestampIn) {
+            console.log("same session:", timestampOut + 100, timestampIn);        
+        } else {
+            console.log("new session");
+            loggedIn = false;
+            localStorage.setItem("loggedIn", false);
+        }
+}
+
+
+// #region : sign-up feature
 function checkUserInput(event) {
     event.preventDefault();
 
@@ -99,10 +161,10 @@ function checkIfPassordIsTheSame(inputMail) {
 function loadLoginPage() {
     window.location = "login.html";
 }
-// #endregion : creating new user login data
+// #endregion : sign-up feature
 
 
-// #region : login feature
+// #region : log-in feature
 function checkIfMailIsRegitered(event) {
     event.preventDefault();
 
@@ -133,16 +195,17 @@ function checkIfPasswordIsCorrect(passwordInput, savedPassword) {
         const remberMeCheckbox = document.querySelector(".login-card-checkbox input[type='checkbox']");
 
         if (remberMeCheckbox.checked) {
+            console.log("Setting loggedIn to true"); // DEBUG
             rememberMeChecked = true;
             console.log("worked!");
         } 
         loggedIn = true;
         saveUserLoginData();
-        window.location = "summary.html";
+        console.log(loggedIn);
+        setTimestempOut();
+        window.location = "contacts.html";
     } else {
         alert("Either the password and/or the email adress is incorrect! Please try again.");
     }
-
 }
-
-// #endregion : login feature
+// #endregion : log-in feature
