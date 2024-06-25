@@ -724,4 +724,56 @@ input[type="radio"]#low:checked + label .prio-icon {
     .tol-secondary-button{
         display: none;
     }
+    .prio-buttons label{
+        font-size: 16px;
+        padding: 10px;
+    }
+    .page-title{
+        font-size: 47px;
+    }
+    .tol-label{
+        font-size: 16px;
+    }
+    .dropdown-label{
+        font-size: 16px;
+    }
+    .tol-input-field{
+        font-size: 16px;
+    }
+    .dropbtn{
+        font-size: 16px;
+    }
+    .contact-name{
+        font-size: 16px;
+    }
+    .category-options{
+        font-size: 16px;
+    }
+    .input-container input{
+        font-size: 16px;
+    }
+    .tol-primary-button{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 425px){
+    .prio-buttons label{
+        font-size: 0px;
+        padding: 20px;
+    }
+    .prio-icon{
+        margin-left: 0;
+    }
+    .form-footer{
+        flex-direction: column;
+        gap: 15px;
+    }
+    .margin-left-100{
+        margin-left: 0;
+    }
+    .tol-primary-button{
+        margin-right: 0;
+        width: 90vw;
+    }
 }

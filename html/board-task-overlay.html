@@ -10,11 +10,11 @@
             <div class="form-fields">
                 <div class="left-form">
                     <div class="flex-form">
-                        <label for="title">Title<span class="required-star">*</span></label>
+                        <label class="tol-label" for="title">Title<span class="required-star">*</span></label>
                         <input class="tol-input-field" id="title" type="text" placeholder="Enter a title" required>
                     </div>
                     <div class="flex-form">
-                        <label for="description">Description</label>
+                        <label class="tol-label"for="description">Description</label>
                         <textarea class="tol-input-field" id="description" rows="5"
                             placeholder="Enter a Description"></textarea>
                     </div>
@@ -37,11 +37,11 @@
 
                 <div class="right-form">
                     <div class="flex-form">
-                        <label for="date">Due date<span class="required-star">*</span></label>
+                        <label class="tol-label" for="date">Due date<span class="required-star">*</span></label>
                         <input class="tol-input-field color-grey" type="date" id="date" required>
                     </div>
                     <div>
-                        <label for="urgent">Priority</label>
+                        <label class="tol-label" for="urgent">Priority</label>
                         <div class="prio-buttons" id="prio-buttons">
                             <input type="radio" name="priority" id="urgent">
                             <label for="urgent">Urgent
@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="dropdown-container">
-                        <label for="dropdownCategory">Category<span class="required-star">*</span></label>
+                        <label class="tol-label" for="dropdownCategory">Category<span class="required-star">*</span></label>
                         <div class="dropdown">
                             <div class="dropbtn" id="dropdownCategoryButton"
                                 onclick="toggleDropdown('dropdownCategoryContent')">Select a category</div>
@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="subtask-label">
-                        <label for="subtask-input">Subtask</label>
+                        <label class="tol-label" for="subtask-input">Subtask</label>
                         <div class="input-container">
                             <input type="text" id="subtask-input" placeholder="Add new subtask" onfocus="showIcons()"
                                 onblur="hideIconsIfEmpty()">
