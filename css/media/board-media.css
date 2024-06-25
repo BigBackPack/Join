@@ -338,7 +338,7 @@
   }
 
   #search-task {
-    width: 21%;
+    width: 17%;
     margin-right: 0;
     position: relative;
     top: 5px;
@@ -366,7 +366,7 @@
     display: none;
   }
 
-  #column-1, .column-3 {
+  #column-1, #column-3 {
     margin-top: 36px;
     margin-bottom: 32px;
   }
