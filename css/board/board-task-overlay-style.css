@@ -637,4 +637,31 @@ input[type="radio"]#low:checked + label .prio-icon {
 
 
 
+@media (max-width: 1400px){
+    .prio-buttons label{
+        font-size: 16px;
+    }
+}
 
+@media (max-width: 1300px){
+    .prio-buttons label{
+        padding: 10px;
+    }
+}
+
+@media (max-width: 1200px){
+    .form-fields{
+        flex-direction: column;
+        gap: unset;
+    }
+    .left-form{
+        width: 100%;
+    }
+    .right-form{
+        width: 100%;
+    }
+    .prio-buttons label{
+        font-size: 20px;
+        padding: 15px;
+    }
+}

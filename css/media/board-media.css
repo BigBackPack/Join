@@ -1,6 +1,6 @@
 @media screen and (max-width: 1200px) {
   .scroll-css {
-    width: fit-content;
+    overflow-x: auto;
   }
 
   #board-header {
