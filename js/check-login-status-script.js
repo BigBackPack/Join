@@ -7,7 +7,7 @@ function start() {
     timestampOutData = localStorage.getItem("timestampOut");
     timestampOut = Number(timestampOutData);
 
-    console.log(timestampOut);
+    // generateInitiasl();
 }
 
 
@@ -67,13 +67,57 @@ function compareTimeStamps() {
         } else {
             console.log("new session", "in:"+ (timestampOut + 100), "out:" + timestampIn);
 
-            localStorage.setItem("loggedIn", false);
+            logOut();
         }
 }
 // #endregion : time stamp management
 
 
 // #region : generate user initial
+document.addEventListener('DOMContentLoaded', function() {
+    function checkElement() {
+        const profileIcon = document.getElementById("profile-icon");
+        if (profileIcon) {
+            generateInitiasl(profileIcon);
+        } else {
+            setTimeout(checkElement, 100); // Check again after 100ms
+        }
+    }
+    checkElement();
+});
 
+
+function generateInitiasl(profileIcon) {
+    let userFullName = localStorage.getItem("rememberedUserName");
+    userFullName = userFullName.replace(/["']/g, '');
+
+    const nameParts = userFullName.trim().split(' ');
+    let initials = '';
+    for (let i = 0; i < 2; i++) {
+        if (nameParts[i]) { // Check if nameParts[i] exists
+            initials += nameParts[i].charAt(0).toUpperCase();
+        }
+    }
+
+    console.log(initials);
+
+    profileIcon.innerHTML = initials;
+}
 
 // #endregion : generate user initial
+
+
+// #region : log out UI
+function testConnection() {
+    logOut();
+
+}
+
+
+function logOut() {
+    localStorage.setItem("loggedIn", false);
+    window.location = "index.html";
+}
+// #endregion : generate user initial
+
+
