@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/global-style.css" />
 
     <!-- css media queries -->
+     <link rel="stylesheet" href="../css/media/summary-media.css">
     <link rel="stylesheet" href="../css/media/global-media.css"/>
     <link rel="stylesheet" href="../css/media/template-nav-bar-media.css">
     <link rel="stylesheet" href="../css/media/template-status-bar-media.css">
@@ -31,7 +32,7 @@
     />
   </head>
 
-  <body onload="includeHTML(); loaduserLoginStatus()">
+  <body onload="includeHTML()">
     <div class="main-content-container">
       <div class="left-content-container">
         <!-- nav bar template -->
@@ -96,7 +97,7 @@
                           />
                         </g>
                       </svg>
-                      <div>
+                      <div class="mobile-tile-left">
                         <p class="font-tiles" id="amount-todo"></p>
                         <span id="category-todo">To-do</span>
                       </div>
@@ -130,7 +131,7 @@
                           stroke-linejoin="round"
                         />
                       </svg>
-                      <div>
+                      <div class="mobile-tile-right">
                         <p class="font-tiles" id="amount-done">2</p>
                         <span id="category-done">Done</span>
                       </div>
@@ -182,7 +183,7 @@
 
                       <span id="overview-urgent-vertical"></span>
 
-                      <div>
+                      <div id="urgent-right-container">
                         <p class="font-date" id="overview-urgent-date">
                           ACUAL DATE
                         </p>
@@ -203,14 +204,14 @@
                     </div>
                     <div
                       onclick="referUrlBoard()"
-                      class="flex-column icon-tile-details tile-row tile-color tile-details"
+                      class="urgent-gap flex-column icon-tile-details tile-row tile-color tile-details"
                     >
                       <p class="font-tiles" id="task-in-progress">2</p>
                       <span class="title-third-row">Tasks in Progress</span>
                     </div>
                     <div
                       onclick="referUrlBoard()"
-                      class="flex-column icon-tile-details tile-row tile-color tile-details"
+                      class="urgent-gap flex-column icon-tile-details tile-row tile-color tile-details"
                     >
                       <p class="font-tiles" id="task-feedback">2</p>
                       <span class="title-third-row">Awaiting Feedback</span>

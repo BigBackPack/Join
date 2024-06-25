@@ -1,6 +1,8 @@
 /* MEDIA QUERIES */
 
-@media screen and (max-width: 320px) {
+/* @media screen and (max-width: 320px) {
+
+
   h1 {
     font-size: 30px;
   }
@@ -108,4 +110,443 @@
   #overview-line-ctr {
     gap: 0;
   }
+} */
+
+
+/* For screens less than 1200px */
+@media screen and (max-width: 1200px) {
+  h1 {
+    font-size: 50px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  h4 {
+    font-size: 40px;
+  }
+
+  .font-date {
+    font-size: 18px;
+  }
+
+  #header {
+    width: 85%;
+    right: 50px;
+  }
+
+  #sidebar {
+    width: 20%;
+  }
+
+  #greeting-container {
+    left: 600px;
+  }
+
+  #title {
+    width: 80%;
+  }
+
+  #login-overview {
+    left: 60px;
+    width: 500px;
+  }
+
+  #user-name {
+    font-size: 50px;
+  }
+
+  .tile-row,
+  .third-row {
+    width: 230px;
+    height: 80px;
+  }
+
+  .tile-details {
+    padding: 30px 16px;
+  }
+
+  #urgent-container {
+    width: 500px;
+  }
+
+  .icon-urgent {
+    width: 50px;
+    height: 50px;
+  }
+
+  .font-tiles {
+    font-size: 50px;
+  }
+
+  .title-third-row {
+    font-size: 18px;
+  }
 }
+
+/* For screens less than 800px */
+@media screen and (max-width: 800px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 30px;
+  }
+
+  .font-date {
+    font-size: 16px;
+  }
+
+  #header {
+    width: 90%;
+    right: 30px;
+  }
+
+  #sidebar {
+    width: 25%;
+  }
+
+  #greeting-container {
+    display: none;
+    /* left: 400px;
+    top: 300px; */
+  }
+
+  #title {
+    width: 90%;
+  }
+
+  #login-overview {
+    left: 40px;
+    width: 450px;
+  }
+
+  #user-name {
+    font-size: 40px;
+  }
+
+  .tile-row,
+  .third-row {
+    width: 200px;
+    height: 70px;
+  }
+
+  .tile-details {
+    padding: 25px 14px;
+  }
+
+  #urgent-container {
+    width: 420px;
+  }
+
+  .icon-urgent {
+    width: 40px;
+    height: 40px;
+  }
+
+  .font-tiles {
+    font-size: 40px;
+  }
+
+  .title-third-row {
+    font-size: 16px;
+  }
+}
+
+/* For screens less than 600px */
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 35px;
+  }
+
+  h2 {
+    width: min-content;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  h4 {
+    font-size: 25px;
+  }
+
+  .font-date {
+    font-size: 14px;
+  }
+
+  #header {
+    width: 95%;
+    right: 20px;
+  }
+
+  #sidebar {
+    width: 30%;
+  }
+
+  #greeting-container {
+    left: 200px;
+    top: 250px;
+  }
+
+  #title {
+    width: 95%;
+  }
+
+  #login-overview {
+    left: 10px;
+    width: 400px;
+  }
+
+  #user-name {
+    font-size: 35px;
+  }
+
+  .tile-row,
+  .third-row {
+    width: 180px;
+    height: 60px;
+  }
+
+  .tile-details {
+    padding: 20px 12px;
+  }
+
+  #urgent-container {
+    width: 380px;
+  }
+
+  .icon-urgent {
+    width: 35px;
+    height: 35px;
+  }
+
+  .font-tiles {
+    font-size: 35px;
+  }
+
+  .title-third-row {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width:500px) {
+  #login-overview {
+    left: -16%;
+  }  
+
+  #title {
+    width: 95%;
+    flex-direction: column;
+    padding-top: 100px;
+  }
+
+  h2 {
+    width: unset;
+  }
+
+  #vert-line {
+    border-top: 3px solid var(--blue);
+    width: 85px;
+    position: relative;
+    top: -30px;
+    left: -55px;
+  }
+
+  h3 {
+    position: relative;
+    top: -118px;
+    left: -1px;
+    font-weight: 400;
+  }
+}
+
+/* For screens less than 400px */
+@media screen and (max-width: 400px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 16px;
+    left: -12px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+
+  .font-date {
+    font-size: 12px;
+  }
+
+  #header {
+    width: 100%;
+    right: 10px;
+  }
+
+  #sidebar {
+    width: 35%;
+  }
+
+  #greeting-container {
+    left: 100px;
+    top: 200px;
+  }
+
+  #title {
+    width: 100%;
+  }
+
+  #login-overview {
+    left: -35px;
+    width: 300px;
+  }
+
+  #vert-line {
+    top: -38px;
+  }
+
+  #user-name {
+    font-size: 30px;
+  }
+
+  .tile-row,
+  .third-row {
+    width: 150px;
+    height: 50px;
+  }
+
+  .tile-details {
+    padding: 15px 10px;
+  }
+
+  #urgent-container {
+    width: 280px;
+  }
+
+  .icon-urgent {
+    width: 30px;
+    height: 30px;
+  }
+
+  .font-tiles {
+    font-size: 30px;
+  }
+
+  .title-third-row {
+    font-size: 12px;
+  }
+}
+
+/* For screens less than 320px */
+@media screen and (max-width: 320px) {
+  h1 {
+    font-size: 25px;
+  }
+
+  h3 {
+    font-size: 14px;
+    left: -22px;
+  }
+
+  h4 {
+    font-size: 18px;
+  }
+
+  .font-date {
+    font-size: 10px;
+  }
+
+  #header {
+    width: 100%;
+    right: 5px;
+  }
+
+  #sidebar {
+    width: 40%;
+  }
+
+  #title {
+    width: 100%;
+  }
+
+  #login-overview {
+    left: -36px;
+    width: 300px;
+  }
+
+  #user-name {
+    font-size: 25px;
+  }
+
+  .tile-row,
+  .third-row {
+    width: 120px;
+    height: 40px;
+  }
+
+  .tile-details {
+    padding: 10px 9px;
+    height: 70px;
+  }
+
+  #urgent-container {
+    width: 285px;
+  }
+
+  .icon-urgent {
+    width: 25px;
+    height: 25px;
+  }
+
+  .font-tiles {
+    font-size: 25px;
+  }
+
+  .title-third-row {
+    font-size: 14px;
+  }
+
+  #urgent-left-container {
+    position: relative;
+    left: 24px;
+  }
+
+  .urgent-gap {
+    gap: 10px;
+  }
+
+  #overview-urgent-vertical {
+    height: 80px;
+    border: 2px solid var(--light-grey);
+  }
+
+  #urgent-right-container {
+    position: relative;
+    right: 30px;
+  }
+
+  .mobile-tile-left {
+    width: 64px;
+  }
+
+  .mobile-tile-right {
+    width: 42px;
+  }
+
+  .mobile-tile-left, .mobile-tile-right {        
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+  }
+}
+
+
+
