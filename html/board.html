@@ -19,13 +19,15 @@
     <script src="../js/template-loader.js"></script>
     <script src="../js/board-scripts/board-dummy-card.js"></script>
     <!-- <script src="../js/board-scripts/board-dummy-overlay.js"></script> -->
-    <script src="../js/board-scripts/board-task-overlay-script.js"></script>
-    <script src="../js/add-task-script.js"></script>
-    <script src="../js/add-task-template.js"></script>
     <script src="../js/board-scripts/board-card-live.js"></script>
     <script src="../js/board-scripts/board-ol-card.js"></script>
     <script src="../js/board-script.js" defer ></script>
     <script src="../js/board-scripts/board-data.js" ></script>
+
+    <!-- js links for task overlay-->
+    <script src="../js/board-scripts/board-task-overlay-script.js"></script>
+    <script src="../js/add-task-script.js"></script>
+    <script src="../js/add-task-template.js"></script>
 
     <!-- js for drag-n-drop lib: sortable -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script> -->
@@ -73,7 +75,7 @@
                   type="text"
                   placeholder="Find Task ..."
                 />
-                <button id="add-task-btn" onclick="openTaskOverlay('todo')">
+                <button id="add-task-btn" onclick="openAddTaskOverlay('todo')">
                   Add Task
                   <img
                     id="plus-icon"
@@ -86,7 +88,7 @@
             <section id="board-title">
               <div class="column-name col-1">
                 <span class="column-txt">To Do</span>
-                <button class="task-plus-btn">
+                <button class="task-plus-btn" onclick="openAddTaskOverlay('todo')">
                   <svg
                     width="20"
                     height="20"
@@ -104,7 +106,7 @@
               </div>
               <div class="column-name col-2">
                 <span class="column-txt">In progress</span>
-                <button class="task-plus-btn" onclick="openTaskOverlay('progress')">
+                <button class="task-plus-btn" onclick="openAddTaskOverlay('progress')">
                   <svg
                     width="20"
                     height="20"
@@ -122,7 +124,7 @@
               </div>
               <div class="column-name col-3">
                 <span class="column-txt">Await feedback</span>
-                <button class="task-plus-btn" onclick="openTaskOverlay('feedback')">
+                <button class="task-plus-btn" onclick="openAddTaskOverlay('feedback')">
                   <svg
                     width="20"
                     height="20"

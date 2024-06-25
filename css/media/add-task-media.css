@@ -1,0 +1,121 @@
+@media (max-width: 1400px){
+    .prio-buttons label{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1300px){
+    .prio-buttons label{
+        padding: 10px;
+    }
+}
+
+@media (max-width: 1200px){
+    .right-content-container{
+        width: 100%;
+    }
+    .individual-content-container{
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-bottom: 16px;
+        height: 100vh;
+    }
+    .form-fields{
+        gap: 24px;
+    }
+    .form-footer{
+        width: 100vw;
+        left: 0;
+        bottom: 80px;
+    }
+    .primary-button{
+        margin-right: 24px;
+    }
+    .margin-left-100{
+        margin-left: 24px;
+    }
+
+}
+
+@media (max-width: 875px){
+    .form-fields{
+        flex-direction: column;
+        gap: unset;
+    }
+    .left-form{
+        width: 100%;
+    }
+    .right-form{
+        width: 100%;
+    }
+    .prio-buttons label{
+        font-size: 20px;
+        padding: 15px;
+    }
+    .individual-content-container{
+        padding-bottom: 150px;
+    }
+    .separator{
+        display: none;
+    }
+}
+
+@media (max-width: 550px){
+    .prio-buttons label{
+        font-size: 16px;
+        padding: 10px;
+    }
+    label{
+        font-size: 16px;
+    }
+    .input-field{
+        font-size: 16px;
+    }
+    .dropbtn{
+        font-size: 16px;
+    }
+    .input-container input{
+        font-size: 16px;
+    }
+    .page-title{
+        font-size: 47px;
+    }
+    .secondary-button{
+        display: none;
+    }
+    .primary-button{
+        font-size: 20px;
+    }
+    .form-footer{
+        align-items: center;
+    }
+    .contact-name{
+        font-size: 16px;
+    }
+    .category-options{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 450px){
+    .prio-buttons label{
+        font-size: 0px;
+    }
+    .prio-icon{
+        margin: 0;
+    }
+    .addtask-success-popup p{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 400px){
+   .form-footer{
+    flex-direction: column;
+    gap: 15px;
+   }
+   .primary-button{
+    width: 90vw;
+    margin-right: 0;
+   }
+}

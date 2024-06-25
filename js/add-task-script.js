@@ -254,13 +254,19 @@ function updateSelectedInitials() {
 function toggleDropdown(dropdownId) {
     let dropdown = document.getElementById(dropdownId);
     let formFields = document.querySelector('.form-fields');
+    let tolOverlayContent = document.querySelector('.tol-overlay-content');
+    let formFooter = document.querySelector('.form-footer');
 
     if (dropdown.classList.contains("show")) {
         dropdown.classList.remove("show");
         formFields.style.paddingBottom = "";
+        tolOverlayContent.style.height = "80%"
+        formFooter.style.bottom = "10vh"
     } else {
         dropdown.classList.add("show");
         formFields.style.paddingBottom = "250px";
+        tolOverlayContent.style.height = "95%"
+        formFooter.style.bottom = "2.5vh"
     }
 }
 

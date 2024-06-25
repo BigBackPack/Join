@@ -1,15 +1,37 @@
-// function openTaskOverlay(boardStatus) {
-//     fetch('board-task-overlay.html')
-//         .then(response => response.text())
-//         .then(html => {
-//             document.getElementById('task-overlay').innerHTML = html;
-//             document.getElementById('task-overlay').classList.remove('d-none');
-//             initializeApp(boardStatus);
-//         });
-// }
+function openAddTaskOverlay(boardStatus) {
+    fetch('board-task-overlay.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('task-overlay').innerHTML = html;
+            document.getElementById('task-overlay').classList.remove('d-none');
+            initializeApp(boardStatus);
+        });
+}
 
 
-function openTaskOverlay(i, param='') {
+function fetchAddTaskOverlay(status) {
+    fetch('board-task-overlay.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('task-overlay').innerHTML = html;
+                document.getElementById('task-overlay').classList.remove('d-none');
+                initializeApp(status);
+            });
+}
+
+function closeAddTaskOverlay() {
+    document.getElementById('task-overlay').classList.add('d-none');
+    document.getElementById('task-overlay').innerHTML = '';
+}
+
+
+
+
+
+
+
+//code von Johannes (habe dem funktionsnamen ein "Backup" hinzugefügt)
+function openTaskOverlayBackup(i, param='') {
     const taskRef = `${BASE_URL}${PATH_SUFFIX[1]}${taskList[i][0]}`;
     console.log('url ref from start openTaskOverlay: ', taskRef);
     // param=crud coming from overlay - edit-btn
@@ -35,26 +57,8 @@ function openTaskOverlay(i, param='') {
         document.getElementById('priority').value = '';
         document.getElementById('category').value = '';
         
-        fetchAddOverlay();
+        fetchTaskOverlay();
     } else {
-        fetchAddOverlay(boardStatus);
+        fetchTaskOverlay(boardStatus);
     }
-}
-
-
-function fetchAddOverlay(status) {
-    fetch('board-task-overlay.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('task-overlay').innerHTML = html;
-                document.getElementById('task-overlay').classList.remove('d-none');
-                initializeApp(status);
-            });
-}
-
-
-// name changed due to problems with existent one
-function closeOverlayAdd() {
-    document.getElementById('task-overlay').classList.add('d-none');
-    document.getElementById('task-overlay').innerHTML = '';
 }
