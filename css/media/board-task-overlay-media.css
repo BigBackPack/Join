@@ -1,0 +1,140 @@
+@media (max-width: 1400px){
+    .prio-buttons label{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1300px){
+    .prio-buttons label{
+        padding: 10px;
+    }
+}
+
+@media (max-width: 1200px){
+    .form-fields{
+        flex-direction: column;
+        gap: unset;
+    }
+    .left-form{
+        width: 100%;
+    }
+    .right-form{
+        width: 100%;
+    }
+    .prio-buttons label{
+        font-size: 20px;
+        padding: 15px;
+    }
+    .tol-separator{
+        display: none;
+    }
+}
+
+@media (max-width: 800px){
+    .tol-header{
+        background-color: var(--bgColor);
+    }
+    .left-form{
+        padding-top: 25px;
+    }
+    .form-footer{
+        bottom: 80px !important;
+        border-radius: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--bgColor);
+    }
+    .tol-overlay-content{
+        width: 100%;
+        height: 100% !important;
+        border-radius: 0;
+    }
+    .task-overlay{
+        z-index: 99;
+    }
+    .nav-bar-container{
+        z-index: 99;
+    }
+    .tol-individual-content-container{
+        padding-top: 100px;
+        background-color: var(--bgColor);
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    .left-content-container {
+        z-index: 100;
+    }
+    .right-form{
+        padding-bottom: 100px;
+    }
+    .tol-close-icon:hover{
+        background-color: var(--borderColor);
+    }
+    .tol-primary-button{
+        margin-right: 24px;
+    }
+    .margin-left-100{
+        margin-left: 24px;
+    }
+    .form-fields{
+        padding-bottom: 0 !important; 
+    }
+}
+
+@media (max-width: 550px){
+    .tol-secondary-button{
+        display: none;
+    }
+    .prio-buttons label{
+        font-size: 16px;
+        padding: 10px;
+    }
+    .page-title{
+        font-size: 47px;
+    }
+    .tol-label{
+        font-size: 16px;
+    }
+    .dropdown-label{
+        font-size: 16px;
+    }
+    .tol-input-field{
+        font-size: 16px;
+    }
+    .dropbtn{
+        font-size: 16px;
+    }
+    .contact-name{
+        font-size: 16px;
+    }
+    .category-options{
+        font-size: 16px;
+    }
+    .input-container input{
+        font-size: 16px;
+    }
+    .tol-primary-button{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 425px){
+    .prio-buttons label{
+        font-size: 0px;
+        padding: 20px;
+    }
+    .prio-icon{
+        margin-left: 0;
+    }
+    .form-footer{
+        flex-direction: column;
+        gap: 15px;
+    }
+    .margin-left-100{
+        margin-left: 0;
+    }
+    .tol-primary-button{
+        margin-right: 0;
+        width: 90vw;
+    }
+}
