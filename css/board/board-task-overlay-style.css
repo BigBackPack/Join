@@ -664,4 +664,64 @@ input[type="radio"]#low:checked + label .prio-icon {
         font-size: 20px;
         padding: 15px;
     }
+    .tol-separator{
+        display: none;
+    }
+}
+
+@media (max-width: 800px){
+    .tol-header{
+        background-color: var(--bgColor);
+    }
+    .left-form{
+        padding-top: 25px;
+    }
+    .form-footer{
+        bottom: 80px !important;
+        border-radius: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--bgColor);
+    }
+    .tol-overlay-content{
+        width: 100%;
+        height: 100% !important;
+        border-radius: 0;
+    }
+    .task-overlay{
+        z-index: 99;
+    }
+    .nav-bar-container{
+        z-index: 99;
+    }
+    .tol-individual-content-container{
+        padding-top: 100px;
+        background-color: var(--bgColor);
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    .left-content-container {
+        z-index: 100;
+    }
+    .right-form{
+        padding-bottom: 100px;
+    }
+    .tol-close-icon:hover{
+        background-color: var(--borderColor);
+    }
+    .tol-primary-button{
+        margin-right: 24px;
+    }
+    .margin-left-100{
+        margin-left: 24px;
+    }
+    .form-fields{
+        padding-bottom: 0 !important; 
+    }
+}
+
+@media (max-width: 550px){
+    .tol-secondary-button{
+        display: none;
+    }
 }
