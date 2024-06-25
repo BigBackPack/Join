@@ -4,25 +4,27 @@ function openAddTaskOverlay(boardStatus) {
         .then(html => {
             document.getElementById('task-overlay').innerHTML = html;
             document.getElementById('task-overlay').classList.remove('d-none');
+            document.getElementById('task-overlay').classList.remove('slide-out');
             initializeApp(boardStatus);
         });
 }
 
-
 function fetchAddTaskOverlay(status) {
     fetch('board-task-overlay.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('task-overlay').innerHTML = html;
-                document.getElementById('task-overlay').classList.remove('d-none');
-                initializeApp(status);
-            });
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('task-overlay').innerHTML = html;
+            document.getElementById('task-overlay').classList.remove('d-none');
+            document.getElementById('task-overlay').classList.remove('slide-out');
+            initializeApp(status);
+        });
 }
 
 function closeAddTaskOverlay() {
-    document.getElementById('task-overlay').classList.add('d-none');
-    document.getElementById('task-overlay').innerHTML = '';
+    let overlay = document.getElementById('task-overlay');
+    overlay.classList.add('slide-out');
 }
+
 
 
 

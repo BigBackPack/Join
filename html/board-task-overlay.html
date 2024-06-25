@@ -1,6 +1,9 @@
 <div class="tol-overlay-content" onclick="event.stopPropagation()">
     <div class="tol-individual-content-container">
-        <p class="page-title" onclick="closeAddTaskOverlay()">Add Task</p>
+        <div class="tol-header">
+            <p class="page-title">Add Task</p>
+            <div onclick="closeAddTaskOverlay()" class="tol-close-icon"><img src="/img/close_icon.svg"></div>
+        </div>
 
         <form class="form-body" id="add-task-form" onsubmit="return handleFormSubmit(event)">
 
@@ -99,7 +102,8 @@
                     <button onclick="clearForm()" type="button" class="secondary-button">Clear <img
                             class="black-close-icon" src="/img/close_icon.svg"> <img class="blue-close-icon"
                             src="/img/blue_close_icon.svg"></button>
-                    <button class="primary-button tol-primary-button">Create Task<img src="/img/check_icon.svg"></button>
+                    <button class="primary-button tol-primary-button">Create Task<img
+                            src="/img/check_icon.svg"></button>
                 </div>
             </div>
         </form>
