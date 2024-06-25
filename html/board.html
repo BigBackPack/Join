@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../css/media/global-media.css"/>
     <link rel="stylesheet" href="../css/media/template-nav-bar-media.css"/>
     <link rel="stylesheet" href="../css/media/template-status-bar-media.css"/>
+    <link rel="stylesheet" href="../css/media/board-media.css">
 
     <!-- js links -->
     <script src="../js/template-loader.js"></script>
@@ -54,12 +55,19 @@
         <!-- status bar template -->
         <div w3-include-html="templates/status-bar-template.html"></div>
 
-        <div class="individual-content-container container-css">
+        <div class="individual-content-container container-css scroll-css">
           <div id="task-overlay" class="task-overlay d-none"></div>
           
           <div style="width: 75%;">
             <div id="board-header">
               <h2>Board</h2>
+              <img
+                onclick="openTaskOverlay('todo')"
+                id="mobile-add-task-btn"
+                class="mobile-add-btn d-none"
+                src="../img/png/add-btn-mobile.png"
+                alt="mobile - plus icon"
+              />
               <div id="search-btn-container">
                 <div id="search-right-container">
                   <span id="vert-line"></span>
@@ -87,8 +95,8 @@
             </div>
             <section id="board-title">
               <div class="column-name col-1">
-                <span class="column-txt">To Do</span>
-                <button class="task-plus-btn" onclick="openAddTaskOverlay('todo')">
+                <span class="column-txt  col-1-txt">To Do</span>
+                <button class="task-plus-btn task-btn-1">
                   <svg
                     width="20"
                     height="20"
@@ -105,8 +113,8 @@
                 </button>
               </div>
               <div class="column-name col-2">
-                <span class="column-txt">In progress</span>
-                <button class="task-plus-btn" onclick="openAddTaskOverlay('progress')">
+                <span class="column-txt  col-2-txt">In progress</span>
+                <button class="task-plus-btn task-btn-2" onclick="openTaskOverlay('progress')">
                   <svg
                     width="20"
                     height="20"
@@ -123,8 +131,8 @@
                 </button>
               </div>
               <div class="column-name col-3">
-                <span class="column-txt">Await feedback</span>
-                <button class="task-plus-btn" onclick="openAddTaskOverlay('feedback')">
+                <span class="column-txt col-3-txt">Await feedback</span>
+                <button class="task-plus-btn task-btn-3" onclick="openTaskOverlay('feedback')">
                   <svg
                     width="20"
                     height="20"
@@ -141,7 +149,7 @@
                 </button>
               </div>
               <div class="column-name col-4">
-                <span class="column-txt">Done</span>
+                <span class="column-txt col-4-txt">Done</span>
               </div>
             </section>
           </div>
@@ -179,6 +187,7 @@
         
       </div>
     </div>
+    
     <div id="overlay-card" class="ol-progress d-none"></div>
   </body>
 </html>
