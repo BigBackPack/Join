@@ -1,6 +1,7 @@
 let rememberMeChecked = false;
 let rememberedUserMail;
 let rememberedUserPsw;
+let rememberedUserName;
 
 let loggedIn = false;
 let policyAccepted = false;
@@ -179,6 +180,8 @@ function checkIfMailIsRegitered(event) {
             if (mailInput === userLoginData[i].mail) {
                 mailRegistered = true;
                 savedPassword = userLoginData[i].password;
+
+                updateTemopraryUserData(i);
             }
         }
         if (mailRegistered) {
@@ -201,11 +204,32 @@ function checkIfPasswordIsCorrect(passwordInput, savedPassword) {
         } 
         loggedIn = true;
         saveUserLoginData();
-        console.log(loggedIn);
         setTimestempOut();
         window.location = "contacts.html";
     } else {
         alert("Either the password and/or the email adress is incorrect! Please try again.");
     }
 }
+
+
+function updateTemopraryUserData(i) {
+    rememberedUserMail = userLoginData[i].mail;
+    rememberedUserName = userLoginData[i].name;
+
+    let temporaryMail = JSON.stringify(rememberedUserMail);
+    localStorage.setItem("rememberedUserMail", temporaryMail);
+    
+    let temporaryName = JSON.stringify(rememberedUserName);
+    localStorage.setItem("rememberedUserName", temporaryName);
+}
 // #endregion : log-in feature
+
+
+// #region : guest login feature
+function guestLogin() {
+    loggedIn = true;
+    saveUserLoginData();
+    setTimestempOut();
+    window.location = "contacts.html";
+}
+// #endregion : guest login featur

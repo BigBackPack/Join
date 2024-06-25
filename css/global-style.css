@@ -306,11 +306,12 @@ a{
     width: 100px;
 }
 
-.provile-icon{
+.profile-icon{
     font-weight: bold;
     border: 2px solid var(--mainColor);
     border-radius: 100%;
     padding: 8px;
+    cursor: pointer;
 }
 /* #endregion status-bar*/
 
