@@ -29,3 +29,24 @@
         padding: 120px 24px;
     }
 }
+
+
+/* Landscape mode */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+
+    body::before {
+        content: "Please switch to portrait mode to view this website.";
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--mainColor);
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 1.6em;
+        position: fixed;
+        z-index: 9999;
+    }
+}

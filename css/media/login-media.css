@@ -39,6 +39,6 @@
     .only-mobile{
         display: flex;
         margin: 0;
-        padding: 0;
+        padding: 24px 0;
     }
 }

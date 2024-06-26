@@ -228,6 +228,9 @@ function updateTemopraryUserData(i) {
 // #region : guest login feature
 function guestLogin() {
     loggedIn = true;
+
+    localStorage.setItem("rememberedUserName", "Guest");
+
     saveUserLoginData();
     setTimestempOut();
     window.location = "contacts.html";

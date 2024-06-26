@@ -32,6 +32,7 @@ html{ overflow: hidden;}
 
 .full-with{width: 100%;}
 
+.individual-content-container{overflow-y: hidden;}
 
 /* #region sorted contact view ---------------------*/ 
 .deatailed-contact-container{display: block;}
@@ -111,7 +112,7 @@ html{ overflow: hidden;}
 
 /* #region detailed contact view ---------------------*/ 
 .deatailed-contact-container{
-    display: none; /*blck*/
+    display: none; /*block*/
 }
 
 .flex-center{

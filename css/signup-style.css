@@ -42,7 +42,8 @@ a{text-decoration: none;}
 
 .signup-header img{
     height: 100px;
-    padding: 0 80px;
+    padding-top: 80px;
+    padding-left: 80px;
 }
 
 .signup-header-signup{
