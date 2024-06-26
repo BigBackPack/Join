@@ -15,14 +15,8 @@
     <link rel="stylesheet" href="../css/media/template-nav-bar-media.css"/>
     <link rel="stylesheet" href="../css/media/template-status-bar-media.css"/>
     <link rel="stylesheet" href="../css/media/board-media.css">
-    <link rel="stylesheet" href="../css/media/board-task-overlay-media.css">
 
     <!-- js links -->
-
-    <!-- JS for login-script -->
-    <script src="../js/check-login-status-script.js"></script>
-
-    <!-- JS scripts -->
     <script src="../js/template-loader.js"></script>
     <script src="../js/board-scripts/board-dummy-card.js"></script>
     <!-- <script src="../js/board-scripts/board-dummy-overlay.js"></script> -->
@@ -36,7 +30,11 @@
     <script src="../js/add-task-script.js"></script>
     <script src="../js/add-task-template.js"></script>
 
+    <!-- js for drag-n-drop lib: sortable -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script> -->
 
+    <!-- JS for login-script -->
+    <!-- <script src="../js/check-login-status-script.js"></script> -->
 
     <title>JOIN Board</title>
     <link
@@ -46,7 +44,7 @@
     />
   </head>
 
-  <body onload="includeHTML(); ">
+  <body onload="includeHTML()">
     <div class="main-content-container">
       <div class="left-content-container">
         <!-- nav bar template -->
@@ -98,7 +96,7 @@
             <section id="board-title">
               <div class="column-name col-1">
                 <span class="column-txt  col-1-txt">To Do</span>
-                <button class="task-plus-btn task-btn-1" onclick="openAddTaskOverlay('todo')">
+                <button class="task-plus-btn task-btn-1">
                   <svg
                     width="20"
                     height="20"
@@ -116,7 +114,7 @@
               </div>
               <div class="column-name col-2">
                 <span class="column-txt  col-2-txt">In progress</span>
-                <button class="task-plus-btn task-btn-2" onclick="openAddTaskOverlay('progress')">
+                <button class="task-plus-btn task-btn-2" onclick="openTaskOverlay('progress')">
                   <svg
                     width="20"
                     height="20"
@@ -134,7 +132,7 @@
               </div>
               <div class="column-name col-3">
                 <span class="column-txt col-3-txt">Await feedback</span>
-                <button class="task-plus-btn task-btn-3" onclick="openAddTaskOverlay('feedback')">
+                <button class="task-plus-btn task-btn-3" onclick="openTaskOverlay('feedback')">
                   <svg
                     width="20"
                     height="20"
