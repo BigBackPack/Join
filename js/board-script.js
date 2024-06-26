@@ -98,18 +98,18 @@ function addProgress() {
 }
 
 function addFeedback() {
-  let feedback = taskList.filter(t => t['category'] == 'feedback');
+  let feedback = taskList.filter(t => t[1]['board'] == 'feedback');
   document.querySelector('#column-3').innerHTML = '';
-  for (let i = 0; i < taskList.length; i++) { 
+  for (let i = 0; i < feedback.length; i++) { 
       const task = feedback[i];
       document.getElementById('column-3').innerHTML += renderLiveFeedbackCard(task, i);
   }
 }
 
 function addDone() {
-  let done = taskList.filter(t => t['category'] == 'done');
+  let done = taskList.filter(t => t[1]['board'] == 'done');
   document.querySelector('#column-4').innerHTML = '';
-  for (let i = 0; i < taskList.length; i++) {
+  for (let i = 0; i < done.length; i++) {
       const task = done[i];
       document.querySelector('#column-4').innerHTML += renderLiveDoneCard(task, i);
   }
