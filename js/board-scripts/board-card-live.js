@@ -15,8 +15,8 @@ function renderLiveTodoCard(task, i) {
                 >
                   <img class='label-img main-card' src="${labelSrc}" alt="user-stoy Icon" />
                   <div class="card-info">
-                    <span class="card-title"
-                      >${task[1]['title']}</span
+                    <div class="card-title"
+                      >${task[1]['title']}</div
                     >
                     <br />
                     <br />
@@ -33,12 +33,12 @@ function renderLiveTodoCard(task, i) {
                           <rect x="0.5" y="0.5" width="127" height="7" rx="3.5" stroke="black"/>
                         </svg>
                       </div>
-                      <span class='bar-span'> 
+                      <div class='bar-span'> 
                         <span class='subtask-checked'>0</span>
                         <span>/</span>
                         <span class='subtask-sum'>0</span>
                         Subtasks
-                      </span>
+                      </div>
                     </div>
                     <br />
                     <div class="card-footer">
@@ -129,8 +129,8 @@ function renderLiveProgressCard(task, i) {
                 >
                   <img class="label-img main-card" src="${labelSrc}" alt="blue label - user stories">
                   <div class="card-info">
-                    <span class="card-title"
-                      >${task[1]['title']}</span
+                    <div class="card-title"
+                      >${task[1]['title']}</div
                     >
                     <br />
                     <br />
@@ -147,12 +147,12 @@ function renderLiveProgressCard(task, i) {
                           <rect x="0.5" y="0.5" width="127" height="7" rx="3.5" stroke="black"/>
                         </svg>
                       </div>
-                      <span class='bar-span'> 
+                      <div class='bar-span'> 
                         <span class='subtask-checked'>0</span>
                         <span>/</span>
                         <span class='subtask-sum'>0</span>
                         Subtasks
-                      </span>
+                      </div>
                     </div>
                     <br />
                     <div class="card-footer">
@@ -239,8 +239,8 @@ function renderLiveFeedbackCard(task,i) {
                 <div class="main-card">
                   <img class="label-img" src="${labelSrc}" alt="blue label - user stories">
                   <div class="card-info">
-                    <span class="card-title"
-                      >${task[1]['title']}</span
+                    <div class="card-title"
+                      >${task[1]['title']}</div
                     >
                     <br />
                     <br />
@@ -343,7 +343,7 @@ function renderLiveDoneCard(task,i) {
                 >
                   <img class="label-img main-card" src="${labelSrc}" alt="blue label - user stories">
                   <div class="card-info">
-                    <span class="card-title">${task[1]['title']}</span>
+                    <div class="card-title">${task[1]['title']}</div>
                     <br />
                     <br />
                     <div class="card-sub-title"
