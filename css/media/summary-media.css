@@ -113,7 +113,6 @@
 } */
 
 
-/* For screens less than 1200px */
 @media screen and (max-width: 1200px) {
   h1 {
     font-size: 50px;
@@ -185,7 +184,6 @@
   }
 }
 
-/* For screens less than 800px */
 @media screen and (max-width: 800px) {
   h1 {
     font-size: 40px;
@@ -259,7 +257,6 @@
   }
 }
 
-/* For screens less than 600px */
 @media screen and (max-width: 600px) {
   h1 {
     font-size: 35px;
@@ -367,7 +364,6 @@
   }
 }
 
-/* For screens less than 400px */
 @media screen and (max-width: 400px) {
   h1 {
     font-size: 30px;
@@ -445,7 +441,6 @@
   }
 }
 
-/* For screens less than 320px */
 @media screen and (max-width: 320px) {
   h1 {
     font-size: 25px;

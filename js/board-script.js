@@ -11,7 +11,7 @@ function startBoard(tasks) {
   if (true) {
     // load dummy card
     // renderDummyCard();
-    renderLive(tasks);
+    // renderLive(tasks);
   } else {
     // data in firebase, loading respective data 
     // renderLive();
@@ -67,66 +67,56 @@ function renderLive(tasks) {
 let currentDraggedElement;
 
 
-function updateHTML(taskList) {
+function updateHTML() {
+  // console.log('taskList from start updateHTML(): ', taskList) - CHECK
+  addTodo();
 
-  addTodo(taskList);
+  addProgress();
 
-  // addProgress();
-
-  // addFeedback();
+  addFeedback();
   
-  // addDone();
+  addDone();
 
 }
-function addTodo(tasks) {
-  let todo = tasks.filter(t => t['category'] == 'todo');
 
+function addTodo() {
+  let todo = taskList.filter(t => t[1]['board'] == 'todo');
   document.querySelector('#column-1').innerHTML = '';
-
-  for (let i = 0; i < tasks.length; i++) {
-      const element = todo[i];
-      document.querySelector('#column-1').innerHTML += renderLiveTodoCard(tasks,i);
+  for (let i = 0; i < todo.length; i++) {
+      const task = todo[i];
+      document.querySelector('#column-1').innerHTML += renderLiveTodoCard(task, i);
   }
 }
+
 function addProgress() {
-  let progress = taskList.filter(t => t['category'] == 'progress');
-
+  let progress = taskList.filter(t => t[1]['board'] == 'progress');
   document.querySelector('#column-2').innerHTML = '';
-
-  for (let index = 0; index < taskList.length; index++) {
-      const element = progress[index];
-      document.querySelector('#column-2').innerHTML += renderLiveProgressCard(element);
+  for (let i = 0; i < progress.length; i++) {
+      const task = progress[i];
+      document.querySelector('#column-2').innerHTML += renderLiveProgressCard(task, i);
   }
 }
+
 function addFeedback() {
   let feedback = taskList.filter(t => t['category'] == 'feedback');
-
   document.querySelector('#column-3').innerHTML = '';
-
-  for (let index = 0; index < taskList.length; index++) { 
-      const element = feedback[index];
-      document.getElementById('column-3').innerHTML += renderLiveFeedbackCard(element);
+  for (let i = 0; i < taskList.length; i++) { 
+      const task = feedback[i];
+      document.getElementById('column-3').innerHTML += renderLiveFeedbackCard(task, i);
   }
 }
+
 function addDone() {
-
   let done = taskList.filter(t => t['category'] == 'done');
-
   document.querySelector('#column-4').innerHTML = '';
-
-  for (let index = 0; index < taskList.length; index++) {
-      const element = done[index];
-      document.querySelector('#column-4').innerHTML += renderLiveDoneCard(element);
+  for (let i = 0; i < taskList.length; i++) {
+      const task = done[i];
+      document.querySelector('#column-4').innerHTML += renderLiveDoneCard(task, i);
   }
 }
 
 function startDragging(id) {
-  console.log('startDragging - Id: ', currentDraggedElement);
   currentDraggedElement = id;
-}
-
-function generateTodoHTML(element) {
-  return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="todo">${element['title']}</div>`;
 }
 
 function allowDrop(ev) {
@@ -135,9 +125,8 @@ function allowDrop(ev) {
 
 function moveTo(param) {
   let tasks = taskList;
-  console.log('param: ',param);
-  tasks[currentDraggedElement][1]['category'] = param;
-  //updateHTML();
+  tasks[currentDraggedElement][1]['board'] = param;
+  updateHTML();
   
 }
 
