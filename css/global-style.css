@@ -310,8 +310,16 @@ a{
     font-weight: bold;
     border: 2px solid var(--mainColor);
     border-radius: 100%;
-    padding: 8px;
     cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-icon:hover{
+    background-color: var(--borderColor);
 }
 /* #endregion status-bar*/
 

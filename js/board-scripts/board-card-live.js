@@ -2,13 +2,13 @@
  * This function returns the html/css for a card.
  * @returns - the generated HTML/Css structure for set function.
  */
-function renderLiveTodoCard(tasks, i) {
-  console.log('tasks from start renderTodoLive(): ',tasks);
-  let labelSrc = tasks[1].category == 'User Story' ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png';
+function renderLiveTodoCard(task, i) {
+  console.log('task[i] from renderTodo(): ',task);
+  let labelSrc = task[1]['category'] == 'User Story' ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png';
 
   return `<div
                   draggable="true"
-                  id="todo"
+                  id="todo-${i}"
                   onclick="renderLiveOverlayCard('todo', taskList, ${i})"
                   ondragstart="startDragging(${i})"
                   class="board-card"
@@ -16,12 +16,12 @@ function renderLiveTodoCard(tasks, i) {
                   <img class='label-img main-card' src="${labelSrc}" alt="user-stoy Icon" />
                   <div class="card-info">
                     <span class="card-title"
-                      >${tasks[1]['title']}</span
+                      >${task[1]['title']}</span
                     >
                     <br />
                     <br />
                     <span class="card-sub-title"
-                      >${tasks[1]['description']}</span
+                      >${task[1]['description']}</span
                     >
                     <br />
                     <br />
@@ -104,7 +104,7 @@ function renderLiveTodoCard(tasks, i) {
                         </svg>
                       </div>
                       <div class="card-burger">
-                        <img id='priority-icon' src="../img/png/prio-${tasks[1]['priority']}.png" />
+                        <img id='priority-icon' src="../img/png/prio-${task[1]['priority']}.png" />
                       </div>
                     </div>
                   </div>
@@ -117,12 +117,12 @@ function renderLiveTodoCard(tasks, i) {
  * This function returns the html/css for a card.
  * @returns - the generated HTML/Css structure for set function.
  */
-function renderLiveProgressCard(tasks,i) {
-  let labelSrc = ((tasks[1].category == 'User Story') ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png');
-  // tasks = taskList;
+function renderLiveProgressCard(task, i) {
+  console.log('task[i] from renderProgress(): ',task);
+  let labelSrc = task[1]['category'] == 'User Story' ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png';
   return `<div
                   draggable="true"
-                  id="progress"
+                  id="progress-${i}"
                   onclick="renderLiveOverlayCard('progress', taskList, ${i})"
                   ondragstart="startDragging(${i})"
                   class="board-card"
@@ -130,12 +130,12 @@ function renderLiveProgressCard(tasks,i) {
                   <img class="label-img main-card" src="${labelSrc}" alt="blue label - user stories">
                   <div class="card-info">
                     <span class="card-title"
-                      >${tasks[1]['title']}</span
+                      >${task[1]['title']}</span
                     >
                     <br />
                     <br />
                     <span class="card-sub-title"
-                      >${tasks[1]['description']}</span
+                      >${task[1]['description']}</span
                     >
                     <br />
                     <br />
@@ -218,7 +218,7 @@ function renderLiveProgressCard(tasks,i) {
                         </svg>
                       </div>
                       <div class="card-burger">
-                        <img id='priority-icon' src="../img/png/prio-${tasks[1]['priority']}.png" />
+                        <img id='priority-icon' src="../img/png/prio-${task[1]['priority']}.png" />
                       </div>
                     </div>
                   </div>
@@ -230,8 +230,9 @@ function renderLiveProgressCard(tasks,i) {
  * This function returns the html/css for a card.
  * @returns - the generated HTML/Css structure for set function.
  */
-function renderLiveFeedbackCard(tasks,i) {
-  let labelSrc = ((tasks[1].category == 'User Story') ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png'); 
+function renderLiveFeedbackCard(task,i) {
+  console.log('task[i] from renderFeedback(): ',task);
+  let labelSrc = task[1]['category'] == 'User Story' ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png'; 
 
   return `
     <div draggable="true" class="board-card small-card" onclick="renderLiveOverlayCard('feedback', taskList, ${i})" ondragstart="startDragging(${i})">
@@ -239,12 +240,12 @@ function renderLiveFeedbackCard(tasks,i) {
                   <img class="label-img" src="${labelSrc}" alt="blue label - user stories">
                   <div class="card-info">
                     <span class="card-title"
-                      >${tasks[1]['title']}</span
+                      >${task[1]['title']}</span
                     >
                     <br />
                     <br />
                     <span class="card-sub-title"
-                      >${tasks[1]['description']}</span
+                      >${task[1]['description']}</span
                     >
                     <br />
                     <br />
@@ -315,7 +316,7 @@ function renderLiveFeedbackCard(tasks,i) {
                         </svg>
                       </div>
                       <div class="card-burger">
-                        <img id='priority-icon' src="../img/png/prio-${tasks[1]['priority']}.png" />
+                        <img id='priority-icon' src="../img/png/prio-${task[1]['priority']}.png" />
                       </div>
                     </div>
                   </div>
@@ -329,24 +330,24 @@ function renderLiveFeedbackCard(tasks,i) {
  * This function returns the html/css for a card.
  * @returns - the generated HTML/Css structure for set function.
  */
-function renderLiveDoneCard(tasks,i) {
-  let labelSrc = ((tasks[1].category == 'User Story') ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png');
+function renderLiveDoneCard(task,i) {
+  let labelSrc = task[1]['category'] == 'User Story' ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png';
 
   return `
   <div
                   draggable="true"
-                  id="done"
+                  id="done-${i}"
                   onclick="renderLiveOverlayCard('done', taskList, ${i})"
                   ondragstart="startDragging(${i})"
                   class="board-card"
                 >
                   <img class="label-img main-card" src="${labelSrc}" alt="blue label - user stories">
                   <div class="card-info">
-                    <span class="card-title">${tasks[1]['title']}</span>
+                    <span class="card-title">${task[1]['title']}</span>
                     <br />
                     <br />
                     <span class="card-sub-title"
-                      >${tasks[1]['description']}</span
+                      >${task[1]['description']}</span
                     >
                     <br />
                     <br />
@@ -411,7 +412,7 @@ function renderLiveDoneCard(tasks,i) {
                         </svg>
                       </div>
                       <div class="card-burger">
-                        <img id='priority-icon' src="../img/png/prio-${tasks[1]['priority']}.png" />
+                        <img id='priority-icon' src="../img/png/prio-${task[1]['priority']}.png" />
                       </div>
                     </div>
                   </div>

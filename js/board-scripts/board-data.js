@@ -42,7 +42,7 @@ const signatureColors = [
  * seperated per entries and as well as their value and key.
  */
 let contactList = [];
-let taskList = {};
+let taskList = [];
 
 
 /**
@@ -94,9 +94,9 @@ async function loadTasksData(path) {
 
     if (data) {
       taskList = Object.entries(data);
-      startBoard(taskList);
-      // updateHTML(taskList);
-      console.log('task-list: ', taskList);
+      // startBoard(taskList);
+      updateHTML(taskList);
+      // console.log('task-list: ', taskList); - CHECK
     }
   } catch (error) {
     console.error('Error loading tasks data:', error);

@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="../css/media/template-nav-bar-media.css"/>
     <link rel="stylesheet" href="../css/media/template-status-bar-media.css"/>
     <link rel="stylesheet" href="../css/media/board-media.css">
-    <link rel="stylesheet" href="../css/media/board-task-overlay-media.css">
 
     <!-- js links -->
     <script src="../js/template-loader.js"></script>
@@ -97,7 +96,7 @@
             <section id="board-title">
               <div class="column-name col-1">
                 <span class="column-txt  col-1-txt">To Do</span>
-                <button class="task-plus-btn task-btn-1" onclick="openAddTaskOverlay('todo')">
+                <button class="task-plus-btn task-btn-1">
                   <svg
                     width="20"
                     height="20"
@@ -115,7 +114,7 @@
               </div>
               <div class="column-name col-2">
                 <span class="column-txt  col-2-txt">In progress</span>
-                <button class="task-plus-btn task-btn-2" onclick="openAddTaskOverlay('progress')">
+                <button class="task-plus-btn task-btn-2" onclick="openTaskOverlay('progress')">
                   <svg
                     width="20"
                     height="20"
@@ -133,7 +132,7 @@
               </div>
               <div class="column-name col-3">
                 <span class="column-txt col-3-txt">Await feedback</span>
-                <button class="task-plus-btn task-btn-3" onclick="openAddTaskOverlay('feedback')">
+                <button class="task-plus-btn task-btn-3" onclick="openTaskOverlay('feedback')">
                   <svg
                     width="20"
                     height="20"
