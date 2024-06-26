@@ -604,6 +604,10 @@ input[type="radio"]#low:checked + label .prio-icon {
     font-size: 20px;
 }
 
+.ok-button{
+    display: none;
+}
+
 @keyframes slide-up {
     from {
         top: 100%;
