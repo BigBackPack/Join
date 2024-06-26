@@ -3,7 +3,7 @@
  * @returns - the generated HTML/Css structure for set function.
  */
 function renderLiveTodoCard(task, i) {
-  console.log('task[i] from renderTodo(): ',task);
+  // console.log('task[i] from renderTodo(): ',task);
   let labelSrc = task[1]['category'] == 'User Story' ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png';
 
   return `<div
@@ -20,8 +20,8 @@ function renderLiveTodoCard(task, i) {
                     >
                     <br />
                     <br />
-                    <span class="card-sub-title"
-                      >${task[1]['description']}</span
+                    <div class="card-sub-title"
+                      >${task[1]['description']}</div
                     >
                     <br />
                     <br />
@@ -118,7 +118,7 @@ function renderLiveTodoCard(task, i) {
  * @returns - the generated HTML/Css structure for set function.
  */
 function renderLiveProgressCard(task, i) {
-  console.log('task[i] from renderProgress(): ',task);
+  // console.log('task[i] from renderProgress(): ',task);
   let labelSrc = task[1]['category'] == 'User Story' ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png';
   return `<div
                   draggable="true"
@@ -134,8 +134,8 @@ function renderLiveProgressCard(task, i) {
                     >
                     <br />
                     <br />
-                    <span class="card-sub-title"
-                      >${task[1]['description']}</span
+                    <div class="card-sub-title"
+                      >${task[1]['description']}</div
                     >
                     <br />
                     <br />
@@ -231,7 +231,7 @@ function renderLiveProgressCard(task, i) {
  * @returns - the generated HTML/Css structure for set function.
  */
 function renderLiveFeedbackCard(task,i) {
-  console.log('task[i] from renderFeedback(): ',task);
+  // console.log('task[i] from renderFeedback(): ',task);
   let labelSrc = task[1]['category'] == 'User Story' ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png'; 
 
   return `
@@ -244,8 +244,8 @@ function renderLiveFeedbackCard(task,i) {
                     >
                     <br />
                     <br />
-                    <span class="card-sub-title"
-                      >${task[1]['description']}</span
+                    <div class="card-sub-title"
+                      >${task[1]['description']}</div
                     >
                     <br />
                     <br />
@@ -346,8 +346,8 @@ function renderLiveDoneCard(task,i) {
                     <span class="card-title">${task[1]['title']}</span>
                     <br />
                     <br />
-                    <span class="card-sub-title"
-                      >${task[1]['description']}</span
+                    <div class="card-sub-title"
+                      >${task[1]['description']}</div
                     >
                     <br />
                     <br />

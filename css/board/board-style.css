@@ -255,7 +255,7 @@ html {
 }
 
 .small-card {
-  height: 219px;
+  height: 244px;
 }
 
 /* CARD ITSELF/CONTENT */
@@ -283,6 +283,8 @@ html {
   font-weight: 400;
   color: var(--grey);
   font-family: 'Inter', sans-serif;
+  height: 50px;
+  overflow: scroll;
 }
 
 .progress-container {

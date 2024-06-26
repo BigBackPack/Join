@@ -1,6 +1,7 @@
 @media screen and (max-width: 1200px) {
   .scroll-css {
-    overflow-x: auto;
+    /* overflow-x: auto; */
+    scrollbar-width: none;
   }
 
   #board-header {
@@ -167,7 +168,7 @@
   }
 
   .column-name {
-    width: 10%;
+    width: 40%;
     justify-content: space-between;
   }
 
@@ -199,8 +200,50 @@
     width: 70px;
   }
 
-  #column-1 {
+  #column-1,
+  #column-2,
+  #column-3,
+  #column-4 {
     overflow-x: scroll;
+  }
+
+  .task-btn-1 {
+    top: -6px;
+    left: 211px;
+    position: relative;
+  }
+
+  .task-btn-2 {
+    top: -4px;
+    left: 199px;
+    position: relative;
+  }
+
+  .task-btn-3 {
+    top: 9px;
+    left: 229px;
+    position: relative;
+
+  }
+
+  .col-2 {
+    width: 190px;
+    
+    position: absolute;
+    top: 297px;
+    left: -20px;
+  }
+
+  .col-3 {
+    position: absolute;
+    top: 592px;
+    left: -26px;
+  }
+
+  .col-4 {
+    position: absolute;
+    top: 924px;
+    left: -22px;
   }
 
   #1column-1 {
@@ -223,10 +266,13 @@
 
 @media screen and (min-width: 400px) and (max-width: 590px) {
   #board-header {
-    /* left: 84px; */
+    left: -106px;
+    flex-direction: column;
     display: flex;
     /* align-items: baseline; */
-    width: 966px;
+    width: 756px;
+    justify-content: center;
+    align-items: center;
   }
 
   .all-columns {
@@ -256,7 +302,7 @@
 
 @media screen and (max-width: 400px) {
   h2 {
-    margin-left: 32px;
+    margin-left: 122px;
     /* font-size: 5rem; */
     padding: 0;
   }
@@ -277,7 +323,15 @@
 
   #add-task-btn {
     /* width: 90px; */
-    padding: 4px 8px;
+    /* padding: 4px 8px; */
+    display: none;
+  }
+
+  #mobile-add-task-btn {
+    display: unset;
+    position: absolute;
+    top: 8px;
+    left: 288px;
   }
 
   #board-overview {
@@ -311,11 +365,23 @@
   .label-img {
     width: 60px;
   }
+
+  #search-task {
+    width: 50%;
+  }
 }
 
 @media screen and (max-width:322px) and (max-width:399px) {
     #board-header {
       top: 90px;
+    }
+
+    h2 {
+      margin-left: 112px;
+    }
+
+    #add-task-btn {
+      display: none;
     }
 }
 
@@ -323,8 +389,8 @@
   #mobile-add-task-btn {
     display: unset;
     position: absolute;
-    top: 3px;
-    left: 340px;
+    top: 8px;
+    left: 220px;
   }
 
   #board-header {
@@ -338,7 +404,7 @@
   }
 
   #search-task {
-    width: 17%;
+    width: 103%;
     margin-right: 0;
     position: relative;
     top: 5px;
@@ -407,7 +473,7 @@
   }
 
   .column-name {
-    width: 14%;
+    width: 87%;
     justify-content: space-between;
   }
 
@@ -417,18 +483,18 @@
   }
 
   .task-btn-1 {
-    top: 25px;
-    left: 404px;
+    top: 27px;
+    left: 272px;
   }
 
   .task-btn-2 {
-    top: 33px;
-    left: 350px;
+    top: 31px;
+    left: 234px;
   }
 
   .task-btn-3 {
     top: 31px;
-    left: 358px;
+    left: 239px;
   }
 
   .main-card {
