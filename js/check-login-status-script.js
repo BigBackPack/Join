@@ -98,9 +98,6 @@ function generateInitiasl(profileIcon) {
             initials += nameParts[i].charAt(0).toUpperCase();
         }
     }
-
-    console.log(initials);
-
     profileIcon.innerHTML = initials;
 }
 
@@ -108,10 +105,21 @@ function generateInitiasl(profileIcon) {
 
 
 // #region : log out UI
-function testConnection() {
-    logOut();
-
+function toggleProfileMenuOn() {
+    const profileMenu = document.getElementById("profile-menu-container");
+    const profileMenuOverlay = document.querySelector(".full-screen-overlay-profile-menu");
+    profileMenu.style.display = "flex"
+    profileMenuOverlay.style.display = "block"
 }
+
+
+function toggleProfileMenuOff() {
+    const profileMenu = document.getElementById("profile-menu-container");
+    const profileMenuOverlay = document.querySelector(".full-screen-overlay-profile-menu");
+    profileMenu.style.display = "none"
+    profileMenuOverlay.style.display = "none"
+}
+
 
 
 function logOut() {

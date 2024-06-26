@@ -7,8 +7,16 @@
 
     <div class="profile-container">
         <a href="help.html"><img src="../img/help_icon.svg" alt="Help Icon" class="help-icon"></a>
-        <div onclick="testConnection()" id="profile-icon" class="profile-icon">PK</div>
+        <div onclick="toggleProfileMenuOn()" id="profile-icon" class="profile-icon">PK</div>
     </div>
+
+    <div class="profile-menu-container" id="profile-menu-container">
+        <a href="legal.html">Legal Notice</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="" onclick="logOut()">Log out</a>
+    </div>
+
+    <div class="full-screen-overlay-profile-menu" onclick="toggleProfileMenuOff()"></div>
 </div>
 
 

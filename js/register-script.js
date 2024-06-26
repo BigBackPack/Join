@@ -135,9 +135,9 @@ function checkIfMailIstaken() {
 
 
 function checkIfPassordIsTheSame(inputMail) {
-    const inputName = document.getElementById("nameInput").value;
-    const inputPassword = document.getElementById("passwordInput").value;
-    const inputConfirmPassword = document.getElementById("confirmPasswordInput").value;
+    const inputName = document.getElementById("nameInput").value.trim();
+    const inputPassword = document.getElementById("passwordInput").value.trim();
+    const inputConfirmPassword = document.getElementById("confirmPasswordInput").value.trim();
 
     if (inputPassword === inputConfirmPassword) {
         const newUserData = {
@@ -158,6 +158,41 @@ function checkIfPassordIsTheSame(inputMail) {
 function loadLoginPage() {
     window.location = "login.html";
 }
+
+
+// handle sign-up button activation
+document.addEventListener('DOMContentLoaded', function () {
+    const nameInput = document.getElementById('nameInput');
+    const mailInput = document.getElementById('mailInput');
+    const passwordInput = document.getElementById('passwordInput');
+    const confirmPasswordInput = document.getElementById('confirmPasswordInput');
+    const checkbox = document.querySelector('.signup-card-checkbox input[type="checkbox"]');
+    const submitButton = document.getElementById("sign-up-btn");
+
+    if (submitButton) {
+        submitButton.style.backgroundColor = "var(--mainColorInactive)";
+    }
+
+    function validateForm() {
+        if (nameInput.value 
+            && mailInput.value 
+            && passwordInput.value 
+            && confirmPasswordInput.value 
+            && checkbox.checked) {
+                submitButton.style.backgroundColor = "var(--mainColor)";
+        } else {
+            submitButton.style.backgroundColor = "var(--mainColorInactive)";
+        }
+    }
+
+    if (submitButton) {
+        nameInput.addEventListener('input', validateForm);
+        mailInput.addEventListener('input', validateForm);
+        passwordInput.addEventListener('input', validateForm);
+        confirmPasswordInput.addEventListener('input', validateForm);
+        checkbox.addEventListener('change', validateForm);
+    }
+});
 // #endregion : sign-up feature
 
 
@@ -267,13 +302,13 @@ function rememberMe() {
 
 
 // #region : guest login feature
-function guestLogin() {
+function guestLogin(event) {
+    event.preventDefault();
     loggedIn = true;
 
     localStorage.setItem("rememberedUserName", "Guest");
-
-    saveUserLoginData();
+    console.log("guest log in");
     setTimestempOut();
-    window.location = "contacts.html";
+    window.location = "summary.html";
 }
 // #endregion : guest login featur
