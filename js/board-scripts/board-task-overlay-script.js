@@ -32,14 +32,14 @@ function closeAddTaskOverlay() {
 
 
 
-async function openAndFillTaskOverlay(task) {
+async function openAndFillTaskOverlay(task, isEditMode = false) {
     await openAddTaskOverlay();
-    fillTaskOverlayForm(task);
+    fillTaskOverlayForm(task, isEditMode);
 }
 
 
 
-function fillTaskOverlayForm(task) {
+function fillTaskOverlayForm(task, isEditMode) {
     document.getElementById('title').value = task.title;
     document.getElementById('description').value = task.description;
     document.getElementById('date').value = task.dueDate;
@@ -60,8 +60,18 @@ function fillTaskOverlayForm(task) {
         let newItem = createSubtaskItem(subtask.text);
         document.getElementById('textList').appendChild(newItem);
     });
+
+    // Anpassungen für den Edit-Modus
+    if (isEditMode) {
+        document.querySelector('.tol-primary-button').style.display = 'none';
+        document.querySelector('.tol-secondary-button').style.display = 'none';
+        document.querySelector('.tol-secondary-button').style.display = 'none';
+    }
 }
 
+function escapeTaskData(task) {
+    return JSON.stringify(task).replace(/"/g, '&quot;');
+}
 
 
 
