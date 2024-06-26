@@ -13,7 +13,6 @@ let userLoginData = [];
 
 
 function init() {
-    console.log("Initializing..."); // DEBUG
     if (localStorage.getItem("userLoginData") == null) {
         saveUserLoginData();
     }
@@ -23,12 +22,11 @@ function init() {
         document.getElementById('signup-form').addEventListener('submit', checkUserInput);
     } else if (window.location.href.includes("login")) {
         document.getElementById('login-form').addEventListener('submit', checkIfMailIsRegitered);
+        checkIfRemembeMeState();
     }
-    
 
     timestampOutData = localStorage.getItem("timestampOut");
     timestampOut = Number(timestampOutData);
-
 }
 
 
@@ -60,8 +58,6 @@ function loadUserLoginData() {
     if (loggedInStatus) {
         loggedIn = JSON.parse(loggedInStatus);
     }
-
-    console.log("Loaded loggedIn:", loggedIn); // DEBUG
 }
 
 
@@ -195,17 +191,10 @@ function checkIfMailIsRegitered(event) {
 
 function checkIfPasswordIsCorrect(passwordInput, savedPassword) {
     if(savedPassword == passwordInput) {
-        const remberMeCheckbox = document.querySelector(".login-card-checkbox input[type='checkbox']");
-
-        if (remberMeCheckbox.checked) {
-            console.log("Setting loggedIn to true"); // DEBUG
-            rememberMeChecked = true;
-            console.log("worked!");
-        } 
         loggedIn = true;
         saveUserLoginData();
         setTimestempOut();
-        window.location = "contacts.html";
+        window.location = "summary.html";
     } else {
         alert("Either the password and/or the email adress is incorrect! Please try again.");
     }
@@ -215,12 +204,64 @@ function checkIfPasswordIsCorrect(passwordInput, savedPassword) {
 function updateTemopraryUserData(i) {
     rememberedUserMail = userLoginData[i].mail;
     rememberedUserName = userLoginData[i].name;
+    rememberedUserPsw = userLoginData[i].password;
 
     let temporaryMail = JSON.stringify(rememberedUserMail);
     localStorage.setItem("rememberedUserMail", temporaryMail);
     
     let temporaryName = JSON.stringify(rememberedUserName);
     localStorage.setItem("rememberedUserName", temporaryName);
+
+    let temporaryPsw = JSON.stringify(rememberedUserPsw);
+    localStorage.setItem("rememberedUserPsw", temporaryPsw);
+}
+
+
+function checkIfRemembeMeState() {
+    let localRememberMeCheck = localStorage.getItem("rememberMeChecked");
+    console.log("localRememberMeCheck: "+ localRememberMeCheck);
+
+    if (localRememberMeCheck) {
+        rememberMeChecked = localRememberMeCheck;
+        console.log("rememberMeChecked: "+ rememberMeChecked);
+    }
+
+    rememberedLogin()
+}
+
+
+function rememberedLogin() {
+    const remberedUser = localStorage.getItem("rememberMeChecked");
+    const remberedUserMail = localStorage.getItem("rememberedUserMail");
+    const remberedUserName = localStorage.getItem("rememberedUserName");
+    const rememberedUserPsw = localStorage.getItem("rememberedUserPsw");
+
+    console.log("user rembered: " + remberedUser);
+    console.log(remberedUserMail);
+    console.log(remberedUserName);
+
+    if (remberedUser == "true" && remberedUserName != "Guest") {
+        document.getElementById("rememberMeCheckbox").checked = true;
+        localStorage.setItem("rememberMeChecked", true);
+        document.querySelector(".email-input").value = remberedUserMail.replace(/["']/g, '');
+        document.querySelector(".password-input").value = rememberedUserPsw.replace(/["']/g, '');
+    } else if (remberedUser == "false" && remberedUserName == "Guest")  {
+        alert("the last user was a Guest user. There are no login data saved.")
+    }
+}
+
+
+function rememberMe() {
+    if (rememberMeChecked == "true") {
+        console.log("dont remember");
+        rememberMeChecked = false;
+        localStorage.setItem("rememberMeChecked", false);
+    } else if (rememberMeChecked == "false") {
+        rememberMeChecked = true;
+        console.log("remember");
+        localStorage.setItem("rememberMeChecked", true);
+        localStorage.setItem("rememberedUserPsw", rememberedUserPsw);
+    }
 }
 // #endregion : log-in feature
 
