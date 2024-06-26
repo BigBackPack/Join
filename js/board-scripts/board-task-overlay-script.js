@@ -1,12 +1,16 @@
 function openAddTaskOverlay(boardStatus) {
-    fetch('board-task-overlay.html')
-        .then(response => response.text())
-        .then(html => {
-            document.getElementById('task-overlay').innerHTML = html;
-            document.getElementById('task-overlay').classList.remove('d-none');
-            document.getElementById('task-overlay').classList.remove('slide-out');
-            initializeApp(boardStatus);
-        });
+    return new Promise((resolve, reject) => {
+        fetch('board-task-overlay.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('task-overlay').innerHTML = html;
+                document.getElementById('task-overlay').classList.remove('d-none');
+                document.getElementById('task-overlay').classList.remove('slide-out');
+                initializeApp(boardStatus);
+                resolve();
+            })
+            .catch(error => reject(error));
+    });
 }
 
 function fetchAddTaskOverlay(status) {
@@ -23,6 +27,39 @@ function fetchAddTaskOverlay(status) {
 function closeAddTaskOverlay() {
     let overlay = document.getElementById('task-overlay');
     overlay.classList.add('slide-out');
+}
+
+
+
+
+async function openAndFillTaskOverlay(task) {
+    await openAddTaskOverlay();
+    fillTaskOverlayForm(task);
+}
+
+
+
+function fillTaskOverlayForm(task) {
+    document.getElementById('title').value = task.title;
+    document.getElementById('description').value = task.description;
+    document.getElementById('date').value = task.dueDate;
+    document.getElementById(task.priority).checked = true;
+    selectCategory(task.category);
+
+    // Setze die zugewiesenen Kontakte
+    task.assignment.forEach(contactId => {
+        let checkbox = document.querySelector(`.dropdown-checkbox[data-id="${contactId}"]`);
+        if (checkbox) {
+            checkbox.checked = true;
+        }
+    });
+    updateSelectedInitials();
+
+    // Setze die Subtasks
+    task.subtasks.forEach(subtask => {
+        let newItem = createSubtaskItem(subtask.text);
+        document.getElementById('textList').appendChild(newItem);
+    });
 }
 
 

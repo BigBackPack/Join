@@ -135,7 +135,7 @@ function renderLiveOverlayCardToDo(tasks,i) {
                           <img class='ol-crud-img' src="../img/png/overlay-delete.png" alt="Delete Icon">
                         </div>
                         <span class="ol-vertical"></span>
-                        <div class="ol-crud-edit-delete" onclick="openTaskOverlay(${i}, 'crud')">
+                        <div class="ol-crud-edit-delete" onclick="openAndFillTaskOverlay(${JSON.stringify(tasks[i][1]).replace(/"/g, '&quot;')})">
                           <img class='ol-crud-img' src="../img/png/overlay-edit.png" alt="Edit Icon">
                   
                         </div>

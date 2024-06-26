@@ -473,3 +473,4 @@ function updateDropdownContentState() {
         dropdownContent.classList.remove('checked');
     }
 }
+
