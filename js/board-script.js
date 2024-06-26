@@ -144,7 +144,7 @@ let total = 0;
  * Calc and displays the width/length of the progress bar in comp. to the qty of subtasks.
  * @param {number} sumTotal - The total amount of subtasks.
  */
-function showSubTaskCount(sumTotal) {
+function showSubTaskCount1(sumTotal) {
   total = sumTotal; 
   // for (let i = 0; i < tasks.length; i++) {
   //   console.log('showSubCount - start FOR');
@@ -162,21 +162,41 @@ function showSubTaskCount(sumTotal) {
 //#endregion
 
 
+
+
+
+
 //#region PROGRESS-BAR
 /**
  * Checkes the status of the checkbox at the subtask (in overlay only)
  * @param {boolean} type - is checkbox on subtask checked or not
  */
-function updateBar(type) {
-  console.log('type: ',type);
+function updateBar(type, task) {
+  // console.log('type: ',type);
+  console.log('task from updateBar: ',task);
   const checkboxes = document.querySelectorAll('.ol-sub-task-checkbox');
   const total = checkboxes.length;
   let completed = 0;
-  
+  let subTaskChecked = 0;
   checkboxes.forEach(checkbox => {
     if (checkbox.checked) {
       completed++;
+      //console.log('total of check checked (after): ', completed);
+     
+
     }
+    // console.log('task from updateBar, outside IF: ',tasks);
+    //subTaskIsChecked(task);
+    // console.log('Db path: ',task);
+    let path = `taskList[${task}][1]['subtasks'][0]['checked']`;
+    // console.log("path BEFORE: ", path);
+    taskList[task][1]['subtasks'][0]['checked'] = 'true';
+    // console.log("path AFTER: ", path);
+    // console.log('sub checked BEFORE: ',subTaskChecked);
+    subTaskChecked++;
+    // console.log('sub checked AFTER: ',subTaskChecked);
+    console.log('completed: ',completed);
+    subTaskIsChecked(task, completed);
   });
 
   const progressPercentage = (completed / total) * 100;
@@ -188,8 +208,17 @@ function updateBar(type) {
   } else if (type == 'todo') {
     document.getElementById('progress-bar-fill-to').setAttribute('width', `${progressPercentage}%`);
   } 
+
 }
 //#endregion
+
+function subTaskIsChecked(param, subQty) {
+  console.log('subTask: ',param);
+  console.log('subQty: ',subQty);
+  let showSubQty = document.getElementsByClassName('.subtask-checked');
+  showSubQty.textContent = subQty;
+  updateHTML();
+}
 
 //#region SEARCH-TASKS
 /**
@@ -235,13 +264,6 @@ searchInput.addEventListener('keydown', function(event) {
 });
 //#endregion
 
-/**
- * Shows the number of subtasks in the task list.
- */
-showSubTaskCount(taskList);
-
-
-// ------------- v1 - throws FUCKING CORS ------------------------
 function delTaskInDb(i) {
   const taskRef = `${BASE_URL}${PATH_SUFFIX[1]}${taskList[i][0]}`;
   console.log(taskRef);

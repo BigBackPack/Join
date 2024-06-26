@@ -22,14 +22,17 @@ function renderLiveOverlayCard(param, tasks,i) {
  * @returns - retrun of generated html/css for the respective overlay
  */
 function renderLiveOverlayCardToDo(tasks,i) {
+  console.log('ol-todo - subtasks: ',tasks[i][1]['subtasks']);
+  let subTaskId = tasks[i][1]['subtasks'];
+  console.log('subTaskId: ',subTaskId);
   let subtasksHtml = tasks[i][1]['subtasks'].map(subtasks => {
     return `
         <div class="ol-sub-task">
             <input class="ol-sub-task-checkbox" type="checkbox" 
             
-            onclick="updateBar('todo')">
+            onclick="updateBar('todo', ${i})">
             
-            <span>${subtasks['text']}</span>
+            <div>${subtasks['text']}</div>
         </div>
     `;
   }).join('');
@@ -129,6 +132,8 @@ function renderLiveOverlayCardToDo(tasks,i) {
                         ${subtasksHtml}
                         
                       </div>
+                    </div>
+                    
                       <br>
                       <div class="ol-crud">
                         <div class="ol-crud-edit-delete" onclick="delTaskInDb(${i})">
@@ -158,7 +163,7 @@ function renderLiveOverlayCardProgress(tasks,i) {
     return `
         <div class="ol-sub-task">
             <input class="ol-sub-task-checkbox" type="checkbox"  onclick="updateBar('progress')">
-            <span>${subtasks['text']}</span>
+            <div>${subtasks['text']}</div>
         </div>
     `;
   }).join('');
@@ -167,6 +172,11 @@ function renderLiveOverlayCardProgress(tasks,i) {
 
   let labelSrc = ((tasks[1].category == 'User Story') ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png');
 
+  // Update the overlay HTML with the generated subtasks HTML
+  //document.getElementById('display-sub-task').textContent = subtasksHtml;
+
+  // Initialize the subtask count
+  //updateSubTaskCount();
   return `
     <div class="ol-board-card">
                 <div class="ol-main-card">
@@ -281,11 +291,12 @@ function renderLiveOverlayCardProgress(tasks,i) {
  * @returns - retrun of generated html/css for the respective overlay
  */
 function renderLiveOverlayCardDone(tasks,i) {
+  console.log('ol-done - subtasks: ',tasks[i][1]['subtasks']);
   let subtasksHtml = tasks[i][1]['subtasks'].map(subtasks => {
     return `
         <div class="ol-sub-task">
             <input class="ol-sub-task-checkbox" type="checkbox"  onclick="updateBar('done')">
-            <span>${subtasks['text']}</span>
+            <div>${subtasks['text']}</div>
         </div>
     `;
   }).join('');

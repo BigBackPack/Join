@@ -3,7 +3,9 @@
  * @returns - the generated HTML/Css structure for set function.
  */
 function renderLiveTodoCard(task, i) {
+  let SubTaskAmount = task[1]['subtasks'].length;
   // console.log('task[i] from renderTodo(): ',task);
+  // console.log('renderTodo() - subtasks: ',task[1]['subtasks']);
   let labelSrc = task[1]['category'] == 'User Story' ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png';
 
   return `<div
@@ -34,9 +36,9 @@ function renderLiveTodoCard(task, i) {
                         </svg>
                       </div>
                       <div class='bar-span'> 
-                        <span class='subtask-checked'>0</span>
+                        <span class='subtask-checked'>X</span>
                         <span>/</span>
-                        <span class='subtask-sum'>0</span>
+                        <span class='subtask-sum'>${SubTaskAmount}</span>
                         Subtasks
                       </div>
                     </div>
@@ -118,7 +120,9 @@ function renderLiveTodoCard(task, i) {
  * @returns - the generated HTML/Css structure for set function.
  */
 function renderLiveProgressCard(task, i) {
+  let SubTaskAmount = task[1]['subtasks'].length;
   // console.log('task[i] from renderProgress(): ',task);
+  // console.log('renderProgress() - subtasks: ',task[1]['subtasks']);
   let labelSrc = task[1]['category'] == 'User Story' ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png';
   return `<div
                   draggable="true"
@@ -150,7 +154,7 @@ function renderLiveProgressCard(task, i) {
                       <div class='bar-span'> 
                         <span class='subtask-checked'>0</span>
                         <span>/</span>
-                        <span class='subtask-sum'>0</span>
+                        <span class='subtask-sum'>${SubTaskAmount}</span>
                         Subtasks
                       </div>
                     </div>
@@ -231,7 +235,9 @@ function renderLiveProgressCard(task, i) {
  * @returns - the generated HTML/Css structure for set function.
  */
 function renderLiveFeedbackCard(task,i) {
+  let SubTaskAmount = task[1]['subtasks'].length;
   // console.log('task[i] from renderFeedback(): ',task);
+  // console.log('renderFeedback() - subtasks: ',task[1]['subtasks']);
   let labelSrc = task[1]['category'] == 'User Story' ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png'; 
 
   return `
@@ -331,6 +337,11 @@ function renderLiveFeedbackCard(task,i) {
  * @returns - the generated HTML/Css structure for set function.
  */
 function renderLiveDoneCard(task,i) {
+  // console.log('renderDone() - title: ',task[1]['title']);
+
+  // console.log('renderDone() - subtasks: ',task[1]['subtasks']);
+  let SubTaskAmount = task[1]['subtasks'].length;
+  // console.log('renderDone() - subtasks QTY: ',SubTaskAmount);
   let labelSrc = task[1]['category'] == 'User Story' ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png';
 
   return `
@@ -359,12 +370,12 @@ function renderLiveDoneCard(task,i) {
                           <rect x="0.5" y="0.5" width="127" height="7" rx="3.5" stroke="black"/>
                         </svg>
                       </div>
-                      <span class='bar-span'> 
+                      <div class='bar-span'> 
                         <span class='subtask-checked'>0</span>
                         <span>/</span>
-                        <span class='subtask-sum'>0</span>
+                        <span class='subtask-sum'>${SubTaskAmount}</span>
                         Subtasks
-                      </span>
+                      </div>
                     </div>
                     <br />
                     <br />
