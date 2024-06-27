@@ -149,4 +149,31 @@ function displayCurrentDate() {
 
   const formattedDate = `${day}-${month}-${year}`;
   dateElement.textContent = formattedDate;
+
+  displayUrgentDeadline();
+}
+
+/**
+ * This function displays the nearest urgent deadline as a date.
+ * @returns - a date
+ */
+function displayUrgentDeadline() {
+  const urgentTasks = Object.values(taskList).filter(task => task[1].priority === 'urgent');
+  if (urgentTasks.length === 0) {
+    document.getElementById('urgent-subline').textContent = 'No urgent tasks';
+    return;
+  }
+  let nearestDueDate = new Date(urgentTasks[0][1].dueDate);
+  for (let i = 1; i < urgentTasks.length; i++) {
+    const currentDueDate = new Date(urgentTasks[i][1].dueDate);
+    if (currentDueDate < nearestDueDate) {
+      nearestDueDate = currentDueDate;
+    }
+  }
+  const formattedDate = nearestDueDate.toLocaleDateString('de-DE', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  });
+  document.getElementById('urgent-subline').textContent = formattedDate;
 }
