@@ -271,3 +271,28 @@ function delTaskInDb(i) {
   .then(data => console.log('Task deleted!'))
   .catch(error => console.error('Error deleting task:', error));
 }
+
+function getInitials(name) {
+  return name.split(' ').map(word => word[0]).join('');
+}
+
+function generateContactBadge(contact) {
+  let initials = getInitials(contact.name);
+  return `
+      <div class="profile-badge" style="background-color: ${contact.bgColor};">
+          <span class="initials">${initials}</span>
+      </div>
+  `;
+}
+
+function getAssignedContactsHtml(assignment = []) {
+  return assignment.map(contactId => {
+      const contactEntry = contactList.find(contact => contact[0] === contactId);
+      if (contactEntry) {
+          const contactData = contactEntry[1];
+          return generateContactBadge(contactData);
+      }
+      return '';
+  }).join('');
+}
+

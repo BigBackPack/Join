@@ -356,3 +356,24 @@ html {
   display: flex;
   gap: 2px;
 }
+
+.profile-badge-container {
+  display: flex;
+  align-items: center;
+}
+
+.profile-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-right: -10px;
+}
+
+.initials {
+  font-size: 14px;
+}
