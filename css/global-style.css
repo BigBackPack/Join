@@ -289,9 +289,50 @@ a{
 }
 
 .help-icon{
-    display: block;
-    width: 32px;
-    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--borderColor);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    color: var(--borderColor);
+    position: relative;
+}
+
+.help-icon:hover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--borderColor);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    background-color: var(--borderColor);
+    color: var(--white);
+}
+
+.help-icon::after {
+    content: attr(aria-label);
+    position: absolute;
+    background-color: var(--mainColor);
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    bottom: -180%;
+    left: 50%; 
+    transform: translateX(-50%);
+    pointer-events: none; 
+}
+
+.help-icon:hover::after {
+    visibility: visible;
+    opacity: 1;
 }
 
 .join-logo-status-bar{
@@ -307,7 +348,7 @@ a{
     width: 100px;
 }
 
-.profile-icon{
+.profile-icon {
     font-weight: bold;
     border: 2px solid var(--mainColor);
     border-radius: 100%;
@@ -317,11 +358,36 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative; 
 }
 
-.profile-icon:hover{
+.profile-icon:hover {
     background-color: var(--borderColor);
 }
+
+.profile-icon::after {
+    content: attr(aria-label);
+    position: absolute;
+    background-color: var(--mainColor);
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    bottom: -120%;
+    left: 50%; 
+    transform: translateX(-50%);
+    pointer-events: none; 
+}
+
+.profile-icon:hover::after {
+    visibility: visible;
+    opacity: 1;
+}
+
 
 .profile-menu-container {
     width: 120px;
