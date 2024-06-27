@@ -148,6 +148,8 @@ function storeContactInputs(event) {
             alert("This phone number is already taken. Please choose a different one.");
         } else {
             saveNewContact(nameValue, mailValue, telValue, bgColor);
+            const message = "contact added..."
+            showToastMessage(message);
         }        
     } else {
         alert("Your input is incomplete. Please fill out all of the input fields");
@@ -389,6 +391,8 @@ async function overrideContactData(event, firebaseId) {
     } else {
         alert("Your input is incomplete. Please fill out all of the input fields");
     }
+    const message = "contact edited..."
+    showToastMessage(message);
 }
 
 
@@ -406,6 +410,8 @@ async function deleteContact(firebaseId) {
         }
         loadContactsData(CONTACT_PATH_SUFFIX); // Refresh contact list
         detailedContactDisplay.style.display = "none";
+        const message = "contact deleted..."
+        showToastMessage(message);
     } catch (error) {
         console.error("Error deleting contact data:", error);
     }

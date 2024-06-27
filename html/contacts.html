@@ -22,6 +22,7 @@
     <script src="../js/template-loader.js"></script>
     <script src="../js/add-contact-script.js" defer></script>
     <script src="../js/new-contact-entry-script.js" defer></script>
+    <script src="../js/toast-message-handler-script.js" defer></script>
 
 
     <title>JOIN Contacts</title>
@@ -40,6 +41,9 @@
             <div w3-include-html="templates/status-bar-template.html"></div>
                     
             <div class="individual-content-container">
+
+                <!-- toast -->
+                <div class="toast-message" id="toast-message">...</div>
 
                 <!-- overlay add contact -->
                 <div id="fullscreen-overlay" class="fullscreen-overlay" onclick="turnOffAllOverlays()">
