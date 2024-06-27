@@ -53,9 +53,6 @@
     width: 220px;
   }
 
-  .profile-badge {
-    width: 90px;
-  }
 
   .label-img {
     width: 100px;
@@ -110,10 +107,6 @@
 
   .progress-container {
     width: 90%;
-  }
-
-  .profile-badge {
-    width: 90px;
   }
 
   .label-img {
@@ -190,10 +183,6 @@
 
   .card-progress-bar {
     width: unset;
-  }
-
-  .profile-badge {
-    width: 115px;
   }
 
   .label-img {
@@ -358,10 +347,6 @@
     width: 100%;
   }
 
-  .profile-badge {
-    width: 85px;
-  }
-
   .label-img {
     width: 60px;
   }
@@ -507,10 +492,6 @@
 
   .progress-container {
     width: 100%;
-  }
-
-  .profile-badge {
-    width: 110px;
   }
 
   .label-img {
