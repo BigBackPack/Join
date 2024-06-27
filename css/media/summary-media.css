@@ -52,7 +52,11 @@
   }
 
   #urgent-container {
-    width: 500px;
+    width: 467px;
+  }
+
+  .urgent-gap {
+    gap: 5px;
   }
 
   .icon-urgent {

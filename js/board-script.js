@@ -154,7 +154,7 @@ function showSubTaskCount1(sumTotal) {
   //   console.log('showSubCount - total - ',total);
   //   console.log('showSubCount - totalTasks - ',subtasks);
   // }
-  const sumSubTaskElements = document.getElementsByClassName('subtask-sum');
+  const sumSubTaskElements = document.getElementById('subtask-sum-todo');
   for (let elem of sumSubTaskElements) {
     elem.innerHTML = total;
   }
@@ -180,21 +180,12 @@ function updateBar(type, task) {
   let subTaskChecked = 0;
   checkboxes.forEach(checkbox => {
     if (checkbox.checked) {
-      completed++;
-      //console.log('total of check checked (after): ', completed);
-     
+      completed++;     
 
     }
-    // console.log('task from updateBar, outside IF: ',tasks);
-    //subTaskIsChecked(task);
-    // console.log('Db path: ',task);
     let path = `taskList[${task}][1]['subtasks'][0]['checked']`;
-    // console.log("path BEFORE: ", path);
     taskList[task][1]['subtasks'][0]['checked'] = 'true';
-    // console.log("path AFTER: ", path);
-    // console.log('sub checked BEFORE: ',subTaskChecked);
     subTaskChecked++;
-    // console.log('sub checked AFTER: ',subTaskChecked);
     console.log('completed: ',completed);
     subTaskIsChecked(task, completed);
   });
@@ -213,12 +204,15 @@ function updateBar(type, task) {
 //#endregion
 
 function subTaskIsChecked(param, subQty) {
-  console.log('subTask: ',param);
-  console.log('subQty: ',subQty);
-  let showSubQty = document.getElementsByClassName('.subtask-checked');
-  showSubQty.textContent = subQty;
-  updateHTML();
+  console.log('param subTask: ',param);
+  console.log('param subQty: ',subQty);
+  let showSubQty = document.getElementById('subtask-checked-todo');
+  showSubQty.innerHTML = subQty;
+  // path - taskList[0][1]['subtasks'][0]['checked']
+  //updateHTML();
 }
+
+
 
 //#region SEARCH-TASKS
 /**

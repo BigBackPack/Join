@@ -4,7 +4,7 @@
 
 .ol-progress {
   position: relative;
-  top: -841px;
+  top: -1011px;
   margin-left: auto;
   left: 0;
   width: 100%;
@@ -26,7 +26,7 @@
 
 .ol-board-card {
   width: 525px;
-  height: 911px;
+  height: 1061px;
   border-radius: 30px;
   padding: 16px;
   margin: 10px;
@@ -87,6 +87,8 @@
   width: 445px;
   height: 24px;
   gap: 25px;
+  display: flex;
+  margin-top: 86px;
 }
 
 .ol-due-date-txt {
@@ -101,6 +103,7 @@
   width: 445px;
   height: 32px;
   gap: 25px;
+  display: flex;
 }
 
 .ol-priority-txt {
@@ -119,8 +122,8 @@
 
 .ol-assigned-container {
   width: 445px;
-  height: 208px;
-  gap: 8px;
+  height: 178px;
+  /* gap: 8px; */
   display: flex;
   flex-direction: column;
 }
@@ -142,8 +145,10 @@
 
 .ol-sub-tasks {
   width: 445px;
-  height: 100px;
+  height: 300px;
   gap: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
 .ol-sub-tasks-txt {
@@ -155,18 +160,21 @@
 
 .ol-sub-tasks-container {
   width: 445px;
-  height: 68px;
+  height: 248px;
   /* gap: 4px; */
   display: flex;
   flex-direction: column;
-  margin-bottom: 76px;
+  /* margin-bottom: 76px; */
 }
 
 .ol-sub-task {
-  width: 344px;
-  height: 32px;
+  width: 434px;
+  height: 92px;
   /* padding: 6px 16px 6px 16px; */
   gap: 16px;
+  display: flex;
+  overflow: auto;
+  word-wrap: normal;
 }
 
 .ol-sub-task-checkbox {
