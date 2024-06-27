@@ -5,13 +5,23 @@ summaryInit();
  * Updates the user name at the summary page.
  * Source: Firebase-Db, but atm contactList{}
  */
-function updateUserName() { 
-  // TODO - which user is logged in?
-  const userNameElement = document.getElementById("user-name"); 
-  const userName = contactListValues[2][1]["name"]; 
-  userNameElement.innerHTML = userName; 
-}
+// function updateUserName() { 
+//   const userNameElement = document.getElementById("user-name"); 
+//   const userName = contactListValues[2][1]["name"]; 
+//   userNameElement.innerHTML = userName; 
+// }
 
+function updateUserName() {
+  const userNameElement = document.getElementById("user-name"); 
+  let userFullName = localStorage.getItem("rememberedUserName");
+  console.log('userFull from localStorage: ',userFullName);
+  if (userFullName) {
+    userFullName = userFullName.replace(/["']/g, '').trim();
+    userNameElement.textContent = userFullName;
+  } else {
+    console.error("User");
+  }
+}
 
 /**
  * Shows the overall-sum of (open)tasks (TO-DO) in the summary page.
