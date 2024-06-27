@@ -100,7 +100,6 @@ function generateInitiasl(profileIcon) {
     }
     profileIcon.innerHTML = initials;
 }
-
 // #endregion : generate user initial
 
 
