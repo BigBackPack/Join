@@ -3,20 +3,15 @@
 }
 
 .ol-progress {
-  position: relative;
-  top: -1011px;
+  position: absolute;
   margin-left: auto;
-  left: 0;
   width: 100%;
   height: 100%;
-  background-color: color(srgb 0 0 0 / 0.5);
-  backdrop-filter: blur(8px);
-  /* z-index: 200; */
+  background-color: color(srgb 0 0 0 / 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: auto;
-  /* padding-top: 24px; */
+  z-index: 100;
 }
 
 .ol-close-btn {
@@ -26,11 +21,13 @@
 
 .ol-board-card {
   width: 525px;
-  height: 1061px;
+  height: 90vh;
   border-radius: 30px;
   padding: 16px;
-  margin: 10px;
+  padding-bottom: 0;
   background-color: var(--white);
+  overflow: auto;
+  scrollbar-width: none;
 }
 
 .ol-main-card {
@@ -184,11 +181,15 @@
 }
 
 .ol-crud {
-  /* width: 159px; */
+  width: 100%;
   height: 24px;
   gap: 8px;
   display: flex;
   justify-content: end;
+  background: rgb(255, 255, 255);
+  position: sticky;
+  bottom: 0px;
+  padding: 20px;
 }
 
 .ol-vertical {
