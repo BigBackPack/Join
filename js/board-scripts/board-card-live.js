@@ -15,9 +15,9 @@ function renderLiveTodoCard(task, index) {
           <img class="label-img main-card" src="${labelSrc}" alt="user-story Icon" />
           <div class="card-info">
               <div class="card-title">${taskData.title}</div>
-              <br /><br />
+              
               <div class="card-sub-title">${taskData.description}</div>
-              <br /><br />
+              
               <div class="progress-container">
                   <div class="card-progress-bar">
                       <svg width="118" height="8" viewBox="0 0 128 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="progress-bar">
@@ -27,7 +27,7 @@ function renderLiveTodoCard(task, index) {
                       </svg>
                   </div>
                   <div class="bar-span"> 
-                      <span id="subtask-checked-todo">X</span>
+                      <span id="subtask-checked-todo">0</span>
                       <span>/</span>
                       <span id="subtask-sum-todo">${subTaskAmount}</span>
                       Subtasks
@@ -65,9 +65,9 @@ function renderLiveProgressCard(task, index) {
           <img class="label-img main-card" src="${labelSrc}" alt="user-story Icon" />
           <div class="card-info">
               <div class="card-title">${taskData.title}</div>
-              <br /><br />
+              
               <div class="card-sub-title">${taskData.description}</div>
-              <br /><br />
+              
               <div class="progress-container">
                   <div class="card-progress-bar">
                       <svg width="118" height="8" viewBox="0 0 128 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="progress-bar">
@@ -83,7 +83,7 @@ function renderLiveProgressCard(task, index) {
                       Subtasks
                   </div>
               </div>
-              <br />
+              
               <div class="card-footer">
                   <div class="profile-badge-container">
                       ${assignedContactsHtml}
@@ -121,7 +121,7 @@ function renderLiveFeedbackCard(task, index) {
           <img class="label-img main-card" src="${labelSrc}" alt="blue label - user stories">
           <div class="card-info">
               <div class="card-title">${taskData.title}</div>
-              <br/><br/>
+              
               <div class="card-sub-title">${taskData.description}</div>
               
               <div class="card-footer">
@@ -160,9 +160,9 @@ function renderLiveDoneCard(task, index) {
           <img class="label-img main-card" src="${labelSrc}" alt="blue label - user stories">
           <div class="card-info">
               <div class="card-title">${taskData.title}</div>
-              <br /><br />
+              
               <div class="card-sub-title">${taskData.description}</div>
-              <br /><br />
+             
               <div class="progress-container">
                   <div class="card-progress-bar">
                       <svg width="118" height="8" viewBox="0 0 128 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="progress-bar">
@@ -178,7 +178,7 @@ function renderLiveDoneCard(task, index) {
                       Subtasks
                   </div>
               </div>
-              <br /><br />
+              
               <div class="card-footer">
                   <div class="profile-badge-container">
                       ${assignedContactsHtml}

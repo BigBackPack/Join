@@ -195,16 +195,20 @@ html {
   top: 326px;
   left: 60px;
   margin-left: 56px;
-  width: 67%;
   /* height: 688px; */
   display: flex;
   flex-direction: row;
   align-items: baseline;
 }
 
-.all-columns { width: 25%; height: 100%; } 
+.all-columns { 
+  width: 250px; 
+  height: 100%; 
+  margin-right: 16px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+} 
 
-.columns-margin { margin: 16px; }
 
 .col-1 {
   padding-left: 62px;
@@ -226,11 +230,9 @@ html {
 /* BOARD-CARDS */
 
 .board-card {
-  /* width: 252px; */
-  height: 243px;
   border-radius: 24px;
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 20px;
+  margin-bottom: 16px;
   background-color: var(--white);
   cursor: pointer;
 }
@@ -276,6 +278,8 @@ html {
   font-weight: 700;
   color: var(--black);
   font-family: 'Inter', sans-serif;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
 .card-sub-title {
@@ -283,15 +287,16 @@ html {
   font-weight: 400;
   color: var(--grey);
   font-family: 'Inter', sans-serif;
-  height: 50px;
   overflow: scroll;
+  padding-bottom: 20px;
 }
 
 .progress-container {
-  width: 245px;
   height: 16px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
 }
 
 
@@ -307,10 +312,9 @@ html {
 }
 
 .card-footer {
-  width: 210px;
-  height: 32px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .profile-badge {
@@ -355,11 +359,13 @@ html {
 .bar-span {
   display: flex;
   gap: 2px;
+  font-size: 14px;
 }
 
 .profile-badge-container {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .profile-badge {
