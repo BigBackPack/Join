@@ -97,11 +97,11 @@ function turnOffEditContactOptions() {
 }
 
 
-async function loadContactsData(path) {
+async function loadContactsData(path, editedContactFirebaseId) {
     let response = await fetch(BASE_URL + path + ".json");
     let responseToJson = await response.json();
     contactList = responseToJson;
-    addContactsToPreview();
+    addContactsToPreview(editedContactFirebaseId);
 }
 
 
@@ -189,7 +189,7 @@ function saveNewContact(nameValue, mailValue, telValue, bgColor) {
 }
 
 
-function addContactsToPreview() {
+function addContactsToPreview(editedContactFirebaseId) {
     contactsPreview.innerHTML = "";
     let contactsArray = Object.entries(contactList);
 
@@ -209,6 +209,16 @@ function addContactsToPreview() {
         addNewContactEntry(firebaseId, displayIndicator, 
                             firstLetter, contact, contactInitials);
     });
+
+    selectLastEditedContact(editedContactFirebaseId);
+}
+
+
+function selectLastEditedContact(editedContactFirebaseId) {
+    console.log("last edited contact is: " + editedContactFirebaseId);
+    if(editedContactFirebaseId){
+        selectContact(editedContactFirebaseId);
+    }
 }
 
 
@@ -371,8 +381,8 @@ async function overrideContactData(event, firebaseId) {
             console.log("Contact updated successfully");
             turnOffAllOverlays();
             detailedContactDisplay.style.display = "none";
-
-            loadContactsData(CONTACT_PATH_SUFFIX); // Refresh contact list
+            
+            loadContactsData(CONTACT_PATH_SUFFIX, firebaseId); // Refresh contact list
         } catch (error) {
             console.error("Error updating contact data:", error);
         }
