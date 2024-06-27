@@ -25,15 +25,19 @@
   }
 
   #greeting-container {
-    left: 600px;
+    display: none;
   }
 
   #title {
     width: 80%;
   }
 
+  #content {
+    left: 25%;
+  }
+
   #login-overview {
-    left: 60px;
+    left: -4px;
     width: 500px;
   }
 
@@ -110,7 +114,7 @@
   }
 
   #login-overview {
-    left: 40px;
+    left: -40px;
     width: 450px;
   }
 
@@ -186,7 +190,7 @@
   }
 
   #login-overview {
-    left: 10px;
+    /* left: 10px; */
     width: 400px;
   }
 
@@ -224,7 +228,7 @@
 
 @media screen and (max-width:500px) {
   #login-overview {
-    left: -17%;
+    left: -21%;
   }  
 
   #title {
@@ -250,6 +254,11 @@
     top: -118px;
     left: -1px;
     font-weight: 400;
+  }
+
+  #urgent-icon-img{
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -290,7 +299,7 @@
   }
 
   #login-overview {
-    left: -35px;
+    left: -45px;
     width: 300px;
   }
 
@@ -339,10 +348,10 @@
     width: 110px;
   }
 }
-@media screen and (min-width:322px) {
+@media screen and (min-width:322px) and (max-width: 800px) {
   #urgent-left-container {
     position: relative;
-    left: 24px;
+    left: 34px;
   }
   
   #urgent-right-container {
@@ -350,6 +359,9 @@
     right: 30px;
   }
 
+  .mobile-tile-left {
+
+  }
 }
 
 @media screen and (max-width: 320px) {
@@ -366,6 +378,11 @@
     font-size: 18px;
   }
 
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+  
   .font-date {
     font-size: 10px;
   }
@@ -384,7 +401,7 @@
   }
 
   #login-overview {
-    left: -40px;
+    left: -56px;
     width: 300px;
   }
 
@@ -423,7 +440,7 @@
 
   #urgent-left-container {
     position: relative;
-    left: 24px;
+    left: 41px;
   }
 
   .urgent-gap {
