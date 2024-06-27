@@ -10,9 +10,6 @@ const BASE_URL = "https://join-2c971-default-rtdb.europe-west1.firebasedatabase.
 const PATH_SUFFIX = ["/contacts", "/tasks"];
 
 
-
-
-
 /**
  * Array of colors for the signatures from users.
  */

@@ -5,12 +5,6 @@ summaryInit();
  * Updates the user name at the summary page.
  * Source: Firebase-Db, but atm contactList{}
  */
-// function updateUserName() { 
-//   const userNameElement = document.getElementById("user-name"); 
-//   const userName = contactListValues[2][1]["name"]; 
-//   userNameElement.innerHTML = userName; 
-// }
-
 function updateUserName() {
   const userNameElement = document.getElementById("user-name"); 
   let userFullName = localStorage.getItem("rememberedUserName");

@@ -322,7 +322,7 @@
   }
 
   #urgent-container {
-    width: 268px;
+    width: 281px;
   }
 
   .icon-urgent {
@@ -332,6 +332,7 @@
 
   .font-tiles {
     font-size: 30px;
+    text-align: center;
   }
 
   .title-third-row {
@@ -342,10 +343,12 @@
 @media screen and (min-width: 321px) and (max-width: 398px) {
   #done-container {
     width: 110px;
+    gap: 22px;
   }
 
   #todo-container {
     width: 110px;
+    gap: 22px;
   }
 }
 @media screen and (min-width:322px) and (max-width: 800px) {
@@ -359,8 +362,9 @@
     right: 30px;
   }
 
-  .mobile-tile-left {
-
+  .mobile-tile-left,
+  .mobile-tile-right {
+    width: 80px;
   }
 }
 

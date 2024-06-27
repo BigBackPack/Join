@@ -6,10 +6,8 @@ function renderLiveTodoCard(task, index) {
   let taskData = task[1];
   let subTaskAmount = taskData.subtasks.length;
   let labelSrc = taskData.category === 'User Story' ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png';
-  
   // Generiere HTML für zugewiesene Kontakte
   let assignedContactsHtml = getAssignedContactsHtml(taskData.assignment);
-
   return `
       <div draggable="true" id="todo-${index}" onclick="renderLiveOverlayCard('todo', taskList, ${index})" ondragstart="startDragging(${index})" class="board-card">
           <img class="label-img main-card" src="${labelSrc}" alt="user-story Icon" />
@@ -47,7 +45,6 @@ function renderLiveTodoCard(task, index) {
 }
 
 
-
 /** - RETURN FUNCTION TO GENERATE HTML -
  * This function returns the html/css for a card.
  * @returns - the generated HTML/Css structure for set function.
@@ -56,10 +53,8 @@ function renderLiveProgressCard(task, index) {
   let taskData = task[1];
   let subTaskAmount = taskData.subtasks.length;
   let labelSrc = taskData.category === 'User Story' ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png';
-  
   // Generiere HTML für zugewiesene Kontakte
   let assignedContactsHtml = getAssignedContactsHtml(taskData.assignment);
-
   return `
       <div draggable="true" id="progress-${index}" onclick="renderLiveOverlayCard('progress', taskList, ${index})" ondragstart="startDragging(${index})" class="board-card">
           <img class="label-img main-card" src="${labelSrc}" alt="user-story Icon" />
@@ -97,7 +92,6 @@ function renderLiveProgressCard(task, index) {
 }
 
 
-
 /** - RETURN FUNCTION TO GENERATE HTML -
  * This function returns the html/css for a card.
  * @returns - the generated HTML/Css structure for set function.
@@ -106,10 +100,8 @@ function renderLiveFeedbackCard(task, index) {
   let taskData = task[1];
   let subTaskAmount = taskData.subtasks.length;
   let labelSrc = taskData.category === 'User Story' ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png';
-  
   // Generiere HTML für zugewiesene Kontakte
   let assignedContactsHtml = getAssignedContactsHtml(taskData.assignment);
-
   return `
       <div
           draggable="true"
@@ -145,10 +137,8 @@ function renderLiveDoneCard(task, index) {
   let taskData = task[1];
   let subTaskAmount = taskData.subtasks.length;
   let labelSrc = taskData.category === 'User Story' ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png';
-  
   // Generiere HTML für zugewiesene Kontakte
   let assignedContactsHtml = getAssignedContactsHtml(taskData.assignment);
-
   return `
       <div
           draggable="true"

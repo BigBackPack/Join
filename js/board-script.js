@@ -1,7 +1,6 @@
 // this calls the board-data -> summaryInit : loading the data from firebase */
 summaryInit();
 
-
 /** - STARTING THE BOARD-DATA -
  * Initializes the board.
  * Loads the tasks data from Firebase.
@@ -17,7 +16,6 @@ function startBoard(tasks) {
     // renderLive();
   }
 }
-
 
 /**
  * This function will display(starting the resp. render-f() ) the respective cards.
@@ -42,43 +40,29 @@ function renderLive(tasks) {
     } if (element[1].board == 'todo') {
       document.getElementById('empty-task-col-1').classList.add('d-none');
       cardLiveDiv1.innerHTML +=   renderLiveTodoCard(element, i);
-
     }
-    
   }
 }
 
-
-//#region DRAG-n-DRP - EVENT-LISTENER
-
-/*
-** Event-Listener - drag-n-drop 
-*/
-// document.addEventListener('DOMContentLoaded', function () {
-//   const columns = document.querySelectorAll('.all-columns');
-//   columns.forEach(function (column) {
-//       new Sortable(column, {
-//           group: 'shared',
-//           animation: 150
-//       });
-//   });
-// });
-
+/**
+ * This variable stores the id of the dragged element.
+ */
 let currentDraggedElement;
 
-
+/**
+ * This function updates the HTML of the board.
+ */
 function updateHTML() {
   // console.log('taskList from start updateHTML(): ', taskList) - CHECK
   addTodo();
-
   addProgress();
-
-  addFeedback();
-  
+  addFeedback(); 
   addDone();
-
 }
 
+/**
+ * This function will render the todo tasks in column-1
+ */
 function addTodo() {
   let todo = taskList.filter(t => t[1]['board'] == 'todo');
   document.querySelector('#column-1').innerHTML = '';
@@ -86,8 +70,25 @@ function addTodo() {
       const task = todo[i];
       document.querySelector('#column-1').innerHTML += renderLiveTodoCard(task, i);
   }
+  if (todo.length === 0) {
+    document.querySelector('#column-1').innerHTML = renderEmptyRow();
+  }
 }
 
+/**
+ * This function will render an empty row.
+ * @returns {string} - empty row
+ */
+function renderEmptyRow() {
+  return `
+          <div id="empty-task-col-1" class="empty-task">
+            <div id="empty-task-txt-col-1" class="">No task To do</div>
+          </div>`;
+}
+
+/**
+ * This function will render the progress tasks in column-2
+ */
 function addProgress() {
   let progress = taskList.filter(t => t[1]['board'] == 'progress');
   document.querySelector('#column-2').innerHTML = '';
@@ -95,8 +96,14 @@ function addProgress() {
       const task = progress[i];
       document.querySelector('#column-2').innerHTML += renderLiveProgressCard(task, i);
   }
+  if (progress.length === 0) {
+    document.querySelector('#column-2').innerHTML = renderEmptyRow();
+  }
 }
 
+/**
+ * This function will render the feedback tasks in column-3
+ */
 function addFeedback() {
   let feedback = taskList.filter(t => t[1]['board'] == 'feedback');
   document.querySelector('#column-3').innerHTML = '';
@@ -104,8 +111,14 @@ function addFeedback() {
       const task = feedback[i];
       document.getElementById('column-3').innerHTML += renderLiveFeedbackCard(task, i);
   }
+  if (feedback.length === 0) {
+    document.querySelector('#column-3').innerHTML = renderEmptyRow();
+  }
 }
 
+/**
+ * This function will render the done tasks in column-4
+ */
 function addDone() {
   let done = taskList.filter(t => t[1]['board'] == 'done');
   document.querySelector('#column-4').innerHTML = '';
@@ -113,25 +126,38 @@ function addDone() {
       const task = done[i];
       document.querySelector('#column-4').innerHTML += renderLiveDoneCard(task, i);
   }
+  if (done.length === 0) {
+    document.querySelector('#column-4').innerHTML = renderEmptyRow();
+  }
 }
 
+/**
+ * This function starts the drag-n-drop
+ * @param {*} id - id of dragged element
+ */
 function startDragging(id) {
   currentDraggedElement = id;
 }
 
+/**
+ * This function allows the drag-n-drop, otherwise it  will not work as intended
+ * @param {*} ev - event parameter - activating listening of event.Listener 
+ */
 function allowDrop(ev) {
   ev.preventDefault();
 }
 
+/**
+ * This function moves a task from one category to another, needed for Drag-n-Drop
+ * @param {string} param - name of specific category of task, i.e. todo or done 
+ */
 function moveTo(param) {
   let tasks = taskList;
   tasks[currentDraggedElement][1]['board'] = param;
   updateHTML();
-  
 }
 
 //#endregion
-
 
 //#region SUBTASK-COUNT
 /**
@@ -146,25 +172,12 @@ let total = 0;
  */
 function showSubTaskCount1(sumTotal) {
   total = sumTotal; 
-  // for (let i = 0; i < tasks.length; i++) {
-  //   console.log('showSubCount - start FOR');
-  //   const task = tasks[i];
-  //   const subtasks = task[1]['subtasks'];
-  //   total = subtasks.length;
-  //   console.log('showSubCount - total - ',total);
-  //   console.log('showSubCount - totalTasks - ',subtasks);
-  // }
   const sumSubTaskElements = document.getElementById('subtask-sum-todo');
   for (let elem of sumSubTaskElements) {
     elem.innerHTML = total;
   }
 }
 //#endregion
-
-
-
-
-
 
 //#region PROGRESS-BAR
 /**
@@ -203,6 +216,11 @@ function updateBar(type, task) {
 }
 //#endregion
 
+/**
+ * This function checks if the subtask is checked or not
+ * @param {string} param - specific category of task, i.e. todo or done
+ * @param {number} subQty - total amount of subtasks 
+ */
 function subTaskIsChecked(param, subQty) {
   console.log('param subTask: ',param);
   console.log('param subQty: ',subQty);
@@ -211,8 +229,6 @@ function subTaskIsChecked(param, subQty) {
   // path - taskList[0][1]['subtasks'][0]['checked']
   //updateHTML();
 }
-
-
 
 //#region SEARCH-TASKS
 /**
@@ -242,8 +258,14 @@ function subTaskIsChecked(param, subQty) {
   }
 }
 
+/**
+ * variable for the search input
+ */
 const searchInput = document.getElementById('search-task');
 
+/**
+ * Event listener for the search input
+ */
 searchInput.addEventListener('keydown', function(event) {
   if (event.key === 'Enter') {
     const searchValue = searchInput.value.trim();
@@ -258,6 +280,10 @@ searchInput.addEventListener('keydown', function(event) {
 });
 //#endregion
 
+/**
+ * Lets the user delete a task in the Db from the overlay
+ * @param {*} i - index of specific task
+ */
 function delTaskInDb(i) {
   const taskRef = `${BASE_URL}${PATH_SUFFIX[1]}${taskList[i][0]}`;
   console.log(taskRef);
@@ -272,10 +298,20 @@ function delTaskInDb(i) {
   .catch(error => console.error('Error deleting task:', error));
 }
 
+/**
+ * Generates html - Helper-f() for the generateContactBar()
+ * @param {string} name of user
+ * @returns 
+ */
 function getInitials(name) {
   return name.split(' ').map(word => word[0]).join('');
 }
 
+/**
+ * Generate a name badge/profile-icon with the initials of user
+ * @param {string} contact - name of contact 
+ * @returns 
+ */
 function generateContactBadge(contact) {
   let initials = getInitials(contact.name);
   return `
@@ -285,6 +321,11 @@ function generateContactBadge(contact) {
   `;
 }
 
+/**
+ * Gets the respective user to be displayed
+ * @param {Id} assignment - index-value 
+ * @returns 
+ */
 function getAssignedContactsHtml(assignment = []) {
   return assignment.map(contactId => {
       const contactEntry = contactList.find(contact => contact[0] === contactId);
@@ -295,4 +336,3 @@ function getAssignedContactsHtml(assignment = []) {
       return '';
   }).join('');
 }
-

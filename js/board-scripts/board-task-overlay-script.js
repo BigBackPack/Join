@@ -1,3 +1,8 @@
+/**
+ * This function opens the overlay and initializes the application - openAddTask for Overlay
+ * @param {*} boardStatus - the status of the board
+ * @returns 
+ */
 function openAddTaskOverlay(boardStatus) {
     return new Promise((resolve, reject) => {
         fetch('board-task-overlay.html')
@@ -13,6 +18,10 @@ function openAddTaskOverlay(boardStatus) {
     });
 }
 
+/**
+ * This function opens the overlay and initializes the application - fetching data- openAddTask
+ * @param {*} status - the status of the board 
+ */
 function fetchAddTaskOverlay(status) {
     fetch('board-task-overlay.html')
         .then(response => response.text())
@@ -24,21 +33,29 @@ function fetchAddTaskOverlay(status) {
         });
 }
 
+/**
+ * This function closes the overlay
+ */
 function closeAddTaskOverlay() {
     let overlay = document.getElementById('task-overlay');
     overlay.classList.add('slide-out');
 }
 
-
-
-
+/**
+ * This function opens the overlay and initializes the application - openAddTask
+ * @param {*} task  
+ * @param {*} isEditMode 
+ */
 async function openAndFillTaskOverlay(task, isEditMode = false) {
     await openAddTaskOverlay();
     fillTaskOverlayForm(task, isEditMode);
 }
 
-
-
+/**
+ * This function fills the overlay form
+ * @param {*} task 
+ * @param {*} isEditMode 
+ */
 function fillTaskOverlayForm(task, isEditMode) {
     document.getElementById('title').value = task.title;
     document.getElementById('description').value = task.description;
@@ -72,6 +89,11 @@ function fillTaskOverlayForm(task, isEditMode) {
     }
 }
 
+/**
+ * This function escapes the task data
+ * @param {*} task 
+ * @returns 
+ */
 function escapeTaskData(task) {
     return JSON.stringify(task).replace(/"/g, '&quot;');
 }
