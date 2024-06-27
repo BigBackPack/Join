@@ -1,3 +1,8 @@
+/**
+ * Calling that function for to display the actual date
+ */
+displayCurrentDate();
+
 /* Initializes the summary page - fetching the needed data */
 summaryInit();
 
@@ -130,4 +135,18 @@ function showSumOfUrgent(taskList) {
  */
 function referUrlBoard() {
   window.location.href = "board.html";
+}
+
+/**
+ * Displays the current date in the summary page.
+ */
+function displayCurrentDate() {
+  const dateElement = document.getElementById('overview-urgent-date');
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0');
+  const month = String(today.getMonth() + 1).padStart(2, '0'); 
+  const year = today.getFullYear();
+
+  const formattedDate = `${day}-${month}-${year}`;
+  dateElement.textContent = formattedDate;
 }
