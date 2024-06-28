@@ -20,7 +20,7 @@ function renderLiveTodoCard(task, index) {
                   <div class="card-progress-bar">
                       <svg width="118" height="8" viewBox="0 0 128 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="progress-bar">
                           <rect width="128" height="8" rx="4" fill="#F4F4F4"/>
-                          <rect id="progress-bar-fill-to" width="0" height="8" rx="4" fill="#4589FF"/>
+                          <rect id="progress-bar-fill-to-${index}" width="0" height="8" rx="4" fill="#4589FF"/>
                           <rect x="0.5" y="0.5" width="127" height="7" rx="3.5" stroke="black"/>
                       </svg>
                   </div>
@@ -56,7 +56,9 @@ function renderLiveProgressCard(task, index) {
   // Generiere HTML für zugewiesene Kontakte
   let assignedContactsHtml = getAssignedContactsHtml(taskData.assignment);
   return `
-      <div draggable="true" id="progress-${index}" onclick="renderLiveOverlayCard('progress', taskList, ${index})" ondragstart="startDragging(${index})" class="board-card">
+      <div draggable="true" id="progress-${index}" 
+        onclick="renderLiveOverlayCard('progress', taskList, ${index})" 
+        ondragstart="startDragging(${index})" class="board-card">
           <img class="label-img main-card" src="${labelSrc}" alt="user-story Icon" />
           <div class="card-info">
               <div class="card-title">${taskData.title}</div>
@@ -67,7 +69,7 @@ function renderLiveProgressCard(task, index) {
                   <div class="card-progress-bar">
                       <svg width="118" height="8" viewBox="0 0 128 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="progress-bar">
                           <rect width="128" height="8" rx="4" fill="#F4F4F4"/>
-                          <rect id="progress-bar-fill-pr" width="0" height="8" rx="4" fill="#4589FF"/>
+                          <rect id="progress-bar-fill-pr-${index}" width="0" height="8" rx="4" fill="#4589FF"/>
                           <rect x="0.5" y="0.5" width="127" height="7" rx="3.5" stroke="black"/>
                       </svg>
                   </div>
@@ -157,7 +159,7 @@ function renderLiveDoneCard(task, index) {
                   <div class="card-progress-bar">
                       <svg width="118" height="8" viewBox="0 0 128 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="progress-bar">
                           <rect width="128" height="8" rx="4" fill="#F4F4F4"/>
-                          <rect id="done-bar-fill-do" width="0" height="8" rx="4" fill="#4589FF"/>
+                          <rect id="done-bar-fill-do-${index}" width="0" height="8" rx="4" fill="#4589FF"/>
                           <rect x="0.5" y="0.5" width="127" height="7" rx="3.5" stroke="black"/>
                       </svg>
                   </div>

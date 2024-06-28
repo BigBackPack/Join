@@ -37,7 +37,8 @@ function renderLiveOverlayCardToDo(tasks,i) {
     `;
   }).join('');
 
-  tasks = taskList;
+  let progressTasks = taskList.filter(t=> t[1]['board'] == 'todo');
+  tasks = progressTasks;
 
   let labelSrc = ((tasks[1].category == 'User Story') ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png');
 
@@ -152,7 +153,8 @@ function renderLiveOverlayCardProgress(tasks,i) {
     `;
   }).join('');
 
-  tasks = taskList;
+  let progressTasks = taskList.filter(t=> t[1]['board'] == 'progress');
+  tasks = progressTasks;
 
   let labelSrc = ((tasks[1].category == 'User Story') ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png');
 
@@ -286,6 +288,9 @@ function renderLiveOverlayCardDone(tasks,i) {
   }).join('');
 
   let labelSrc = ((tasks[1].category == 'User Story') ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png');
+
+  let progressTasks = taskList.filter(t=> t[1]['board'] == 'done');
+  tasks = progressTasks;
 
   return `
     <div class="ol-board-card">
