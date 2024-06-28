@@ -184,38 +184,38 @@ function showSubTaskCount1(sumTotal) {
  * Checkes the status of the checkbox at the subtask (in overlay only)
  * @param {boolean} type - is checkbox on subtask checked or not
  */
-function updateBar(type, event, i) {
-  //const taskIndex = event.target.taskIndex;
-  const task = taskList.findIndex(t => t[1]['board'] === type);
-  // console.log('type: ',type);
-  console.log('task from updateBar: ',task);
-  const checkboxes = document.querySelectorAll('.ol-sub-task-checkbox');
-  const total = checkboxes.length;
-  let completed = 0;
-  let subTaskChecked = 0;
-  checkboxes.forEach(checkbox => {
-    if (checkbox.checked) {
-      completed++;     
+// function updateBar(type, event, i) {
+//   //const taskIndex = event.target.taskIndex;
+//   const task = taskList.findIndex(t => t[1]['board'] === type);
+//   // console.log('type: ',type);
+//   // console.log('task from updateBar: ',task);
+//   const checkboxes = document.querySelectorAll('.ol-sub-task-checkbox');
+//   const total = checkboxes.length;
+//   let completed = 0;
+//   let subTaskChecked = 0;
+//   checkboxes.forEach(checkbox => {
+//     if (checkbox.checked) {
+//       completed++;     
 
-    }
-    //let path = `taskList[${task}][1]['subtasks'][0]['checked']`;
-    taskList[task][1]['subtasks'][0]['checked'] = 'true';
-    subTaskChecked++;
-    console.log('completed: ',completed);
-    subTaskIsChecked(task, completed);
-  });
+//     }
+//     //let path = `taskList[${task}][1]['subtasks'][0]['checked']`;
+//     taskList[task][1]['subtasks'][0]['checked'] = 'true';
+//     subTaskChecked++;
+//     // console.log('completed: ',completed);
+//     subTaskIsChecked(type, task, completed, i);
+//   });
 
-  const progressPercentage = (completed / total) * 100;
+//   const progressPercentage = (completed / total) * 100;
 
-  if (type == 'progress') {
-    document.getElementById(`progress-bar-fill-pr-${i}`).setAttribute('width', `${progressPercentage}%`);
-  } else if (type == 'done') {
-    document.getElementById(`progress-bar-fill-do-${i}`).setAttribute('width', `${progressPercentage}%`);
-  } else if (type == 'todo') {
-    document.getElementById(`progress-bar-fill-to-${i}`).setAttribute('width', `${progressPercentage}%`);
-  } 
+//   if (type == 'progress') {
+//     document.getElementById(`progress-bar-fill-pr-${i}`).setAttribute('width', `${progressPercentage}%`);
+//   } else if (type == 'done') {
+//     document.getElementById(`progress-bar-fill-do-${i}`).setAttribute('width', `${progressPercentage}%`);
+//   } else if (type == 'todo') {
+//     document.getElementById(`progress-bar-fill-to-${i}`).setAttribute('width', `${progressPercentage}%`);
+//   } 
   
-}
+// }
   // const progressBarId = `progress-bar-fill-${type}-${i}`;
   // const progressBar = document.getElementById(progressBarId);
   // if (progressBar) {
@@ -224,7 +224,21 @@ function updateBar(type, event, i) {
   // } else {
   //   console.error(`Element with ID ${progressBarId} not found in the DOM.`);
   // }
-
+function updateBar(type, event, i) {
+  const task = taskList.findIndex(t => t[1]['board'] === type);
+  const checkboxes = document.querySelectorAll('.ol-sub-task-checkbox');
+  const total = checkboxes.length;
+  let completed = 0;
+  checkboxes.forEach((checkbox, index) => {
+    if (checkbox.checked) {
+      completed++;
+    }
+    taskList[task][1]['subtasks'][0]['checked'] = 'true';
+    subTaskIsChecked(type, completed, index, i);
+  });
+  const progressPercentage = (completed / total) * 100;
+  document.getElementById(`progress-bar-fill-pr-${i}`).setAttribute('width', `${progressPercentage}%`);
+}
 
 
 
@@ -235,11 +249,11 @@ function updateBar(type, event, i) {
  * @param {string} param - specific category of task, i.e. todo or done
  * @param {number} subQty - total amount of subtasks 
  */
-function subTaskIsChecked(param, subQty) {
-  console.log('param subTask: ',param);
+function subTaskIsChecked(type, param, subQty, index) {
+  // console.log('param type: ',type);
   console.log('param subQty: ',subQty);
-  let showSubQty = document.getElementById('subtask-checked-todo');
-  showSubQty.innerHTML = subQty;
+  let showSubQty = document.querySelector(`.subtask-checked-${type}-${index}`);
+  showSubQty.innerHTML = param;
   // path - taskList[0][1]['subtasks'][0]['checked']
   //updateHTML();
 }
