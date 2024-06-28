@@ -48,13 +48,13 @@ function closeAddTaskOverlay() {
  */
 async function openAndFillTaskOverlay(task, isEditMode = false) {
     await openAddTaskOverlay();
-    fillTaskOverlayForm(task, isEditMode);
+    setTimeout(() => fillTaskOverlayForm(task, isEditMode), 500);
 }
 
 /**
- * This function fills the overlay form
- * @param {*} task 
- * @param {*} isEditMode 
+ * Füllt das Overlay-Formular mit den Task-Daten und aktiviert die entsprechenden Checkboxen.
+ * @param {*} task - Die Task-Daten.
+ * @param {*} isEditMode - Ob der Edit-Modus aktiviert ist.
  */
 function fillTaskOverlayForm(task, isEditMode) {
     document.getElementById('title').value = task.title;
@@ -63,13 +63,23 @@ function fillTaskOverlayForm(task, isEditMode) {
     document.getElementById(task.priority).checked = true;
     selectCategory(task.category);
 
-    // Setze die zugewiesenen Kontakte // funktioniert noch nicht weil die karte keine kontakte beinhaltet(?)
+    // Prüfe, ob die Checkboxen vorhanden sind
+    let allCheckboxes = document.querySelectorAll('.dropdown-checkbox');
+    if (allCheckboxes.length === 0) {
+        console.warn('Keine Checkboxen gefunden. Stellen Sie sicher, dass die Kontakt-Elemente generiert wurden.');
+    }
+
+    // Setze die zugewiesenen Kontakte
     task.assignment.forEach(contactId => {
         let checkbox = document.querySelector(`.dropdown-checkbox[data-id="${contactId}"]`);
         if (checkbox) {
             checkbox.checked = true;
+        } else {
+            console.warn(`Checkbox mit data-id="${contactId}" nicht gefunden.`);
         }
     });
+
+    // Aktualisiere die Anzeige der ausgewählten Initialen
     updateSelectedInitials();
 
     // Setze die Subtasks
@@ -88,6 +98,7 @@ function fillTaskOverlayForm(task, isEditMode) {
         document.querySelector('.ok-button').style.display = 'flex';
     }
 }
+
 
 /**
  * This function escapes the task data
