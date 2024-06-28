@@ -23,7 +23,7 @@ function renderLiveOverlayCard(param, tasks,i) {
  * @returns - retrun of generated html/css for the respective overlay
  */
 function renderLiveOverlayCardToDo(tasks,i) {
-  console.log('ol-todo - subtasks: ',tasks[i][1]['subtasks']);
+  console.log('start - renderLiverOverlayTodo: ',tasks);
   let subTaskId = tasks[i][1]['subtasks'];
   console.log('subTaskId: ',subTaskId);
   let subtasksHtml = tasks[i][1]['subtasks'].map(subtasks => {
@@ -31,7 +31,7 @@ function renderLiveOverlayCardToDo(tasks,i) {
         <div class="ol-sub-task">
             <input class="ol-sub-task-checkbox" type="checkbox" 
             
-            onclick="updateBar('todo', ${i})">
+            onclick="updateBar('todo', this, ${i})">
             
             <div>${subtasks['text']}</div>
         </div>
@@ -120,7 +120,9 @@ function renderLiveOverlayCardProgress(tasks,i) {
   let subtasksHtml = tasks[i][1]['subtasks'].map(subtasks => {
     return `
         <div class="ol-sub-task">
-            <input class="ol-sub-task-checkbox" type="checkbox"  onclick="updateBar('progress')">
+            <input class="ol-sub-task-checkbox" 
+            type="checkbox"  
+            onclick="updateBar('progress', this, ${i})">
             <div>${subtasks['text']}</div>
         </div>
     `;
@@ -213,7 +215,9 @@ function renderLiveOverlayCardDone(tasks,i) {
   let subtasksHtml = tasks[i][1]['subtasks'].map(subtasks => {
     return `
         <div class="ol-sub-task">
-            <input class="ol-sub-task-checkbox" type="checkbox"  onclick="updateBar('done')">
+            <input class="ol-sub-task-checkbox" 
+            type="checkbox"  
+            onclick="updateBar('done', this, ${i})">
             <div>${subtasks['text']}</div>
         </div>
     `;

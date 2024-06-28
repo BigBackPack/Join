@@ -184,7 +184,9 @@ function showSubTaskCount1(sumTotal) {
  * Checkes the status of the checkbox at the subtask (in overlay only)
  * @param {boolean} type - is checkbox on subtask checked or not
  */
-function updateBar(type, task) {
+function updateBar(type, event, i) {
+  //const taskIndex = event.target.taskIndex;
+  const task = taskList.findIndex(t => t[1]['board'] === type);
   // console.log('type: ',type);
   console.log('task from updateBar: ',task);
   const checkboxes = document.querySelectorAll('.ol-sub-task-checkbox');
@@ -196,7 +198,7 @@ function updateBar(type, task) {
       completed++;     
 
     }
-    let path = `taskList[${task}][1]['subtasks'][0]['checked']`;
+    //let path = `taskList[${task}][1]['subtasks'][0]['checked']`;
     taskList[task][1]['subtasks'][0]['checked'] = 'true';
     subTaskChecked++;
     console.log('completed: ',completed);
@@ -206,14 +208,26 @@ function updateBar(type, task) {
   const progressPercentage = (completed / total) * 100;
 
   if (type == 'progress') {
-    document.getElementById('progress-bar-fill-pr').setAttribute('width', `${progressPercentage}%`);
+    document.getElementById(`progress-bar-fill-pr-${i}`).setAttribute('width', `${progressPercentage}%`);
   } else if (type == 'done') {
-    document.getElementById('progress-bar-fill-do').setAttribute('width', `${progressPercentage}%`);
+    document.getElementById(`progress-bar-fill-do-${i}`).setAttribute('width', `${progressPercentage}%`);
   } else if (type == 'todo') {
-    document.getElementById('progress-bar-fill-to').setAttribute('width', `${progressPercentage}%`);
+    document.getElementById(`progress-bar-fill-to-${i}`).setAttribute('width', `${progressPercentage}%`);
   } 
-
+  
 }
+  // const progressBarId = `progress-bar-fill-${type}-${i}`;
+  // const progressBar = document.getElementById(progressBarId);
+  // if (progressBar) {
+  //   const progressPercentage = (completed / total) * 100;
+  //   progressBar.setAttribute('width', `${progressPercentage}%`);
+  // } else {
+  //   console.error(`Element with ID ${progressBarId} not found in the DOM.`);
+  // }
+
+
+
+
 //#endregion
 
 /**

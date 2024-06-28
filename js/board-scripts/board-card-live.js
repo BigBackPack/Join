@@ -25,7 +25,7 @@ function renderLiveTodoCard(task, index) {
                       </svg>
                   </div>
                   <div class="bar-span"> 
-                      <span id="subtask-checked-todo">0</span>
+                      <span id="subtask-checked-todo-${index}">0</span>
                       <span>/</span>
                       <span id="subtask-sum-todo">${subTaskAmount}</span>
                       Subtasks
@@ -74,7 +74,7 @@ function renderLiveProgressCard(task, index) {
                       </svg>
                   </div>
                   <div class="bar-span"> 
-                      <span class="subtask-checked">0</span>
+                      <span class="subtask-checked-progress-${index}">0</span>
                       <span>/</span>
                       <span class="subtask-sum">${subTaskAmount}</span>
                       Subtasks
@@ -164,7 +164,7 @@ function renderLiveDoneCard(task, index) {
                       </svg>
                   </div>
                   <div class='bar-span'> 
-                      <span class='subtask-checked'>0</span>
+                      <span class='subtask-checked-done-${index}'>0</span>
                       <span>/</span>
                       <span class='subtask-sum'>${subTaskAmount}</span>
                       Subtasks
