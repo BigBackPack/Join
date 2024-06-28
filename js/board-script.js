@@ -308,18 +308,22 @@ function getInitials(name) {
 }
 
 /**
- * Generate a name badge/profile-icon with the initials of user
- * @param {string} contact - name of contact 
- * @returns 
+ * Generate a name badge/profile-icon with the initials and full name of user
+ * @param {string} contact - contact data 
+ * @returns {string} - HTML for the contact badge
  */
 function generateContactBadge(contact) {
   let initials = getInitials(contact.name);
   return `
+    <div class="profile-badge-container">
       <div class="profile-badge" style="background-color: ${contact.bgColor};">
           <span class="initials">${initials}</span>
       </div>
+          <span id="fullName" class="full-name">${contact.name}</span>
+    </div>
   `;
 }
+
 
 /**
  * Gets the respective user to be displayed

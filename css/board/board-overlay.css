@@ -119,16 +119,17 @@
 
 .ol-assigned-container {
   width: 445px;
-  height: 178px;
-  /* gap: 8px; */
   display: flex;
   flex-direction: column;
 }
 
 .ol-assigned-user {
   width: 445px;
-  height: 176px;
-  gap: 4px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .ol-user {

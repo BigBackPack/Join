@@ -383,3 +383,12 @@ html {
 .initials {
   font-size: 14px;
 }
+
+.full-name {
+  display: none;
+  padding-left: 20px;
+}
+
+.show-full-name .full-name {
+  display: inline;
+}
