@@ -224,7 +224,7 @@ function showSubTaskCount1(sumTotal) {
   // } else {
   //   console.error(`Element with ID ${progressBarId} not found in the DOM.`);
   // }
-function updateBar(type, event, i) {
+function updateBar(type, event, i, subIndex) {
   const task = taskList.findIndex(t => t[1]['board'] === type);
   const checkboxes = document.querySelectorAll('.ol-sub-task-checkbox');
   const total = checkboxes.length;
@@ -234,7 +234,7 @@ function updateBar(type, event, i) {
       completed++;
     }
     taskList[task][1]['subtasks'][0]['checked'] = 'true';
-    subTaskIsChecked(type, completed, index, i);
+    subTaskIsChecked(type, completed, index, i, subIndex);
   });
   const progressPercentage = (completed / total) * 100;
   document.getElementById(`progress-bar-fill-pr-${i}`).setAttribute('width', `${progressPercentage}%`);
@@ -249,10 +249,10 @@ function updateBar(type, event, i) {
  * @param {string} param - specific category of task, i.e. todo or done
  * @param {number} subQty - total amount of subtasks 
  */
-function subTaskIsChecked(type, param, subQty, index) {
+function subTaskIsChecked(type, param, subQty, index, subIndex) {
   // console.log('param type: ',type);
-  console.log('param subQty: ',subQty);
-  let showSubQty = document.querySelector(`.subtask-checked-${type}-${index}`);
+  console.log('start subTaskCheck: param subInd: ',subIndex);
+  let showSubQty = document.querySelector(`.subtask-checked-${type}-${index}-${subIndex}`);
   showSubQty.innerHTML = param;
   // path - taskList[0][1]['subtasks'][0]['checked']
   //updateHTML();

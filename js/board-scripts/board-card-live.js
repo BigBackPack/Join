@@ -25,9 +25,9 @@ function renderLiveTodoCard(task, index) {
                       </svg>
                   </div>
                   <div class="bar-span"> 
-                      <div id="subtask-checked-todo-${index}">0</div>
+                      <div class="subtask-checked-todo-${index}">0</div>
                       <span>/</span>
-                      <div id="subtask-sum-todo">${subTaskAmount}</div>
+                      <div class="subtask-sum-todo">${subTaskAmount}</div>
                       Subtasks
                   </div>
               </div>

@@ -23,23 +23,24 @@ function renderLiveOverlayCard(param, tasks,i) {
  * @returns - retrun of generated html/css for the respective overlay
  */
 function renderLiveOverlayCardToDo(tasks,i) {
+  let todoTasks = taskList.filter(t=> t[1]['board'] == 'todo');
+  tasks = todoTasks;
+
   console.log('start - renderLiverOverlayTodo: ',tasks);
   let subTaskId = tasks[i][1]['subtasks'];
   console.log('subTaskId: ',subTaskId);
-  let subtasksHtml = tasks[i][1]['subtasks'].map(subtasks => {
+  // let subtasksHtml = tasks[i][1]['subtasks'].map(subtasks => {
+  let subtasksHtml = todoTasks[i][1]['subtasks'].map((subtasks, subIndex) => {
     return `
         <div class="ol-sub-task">
             <input class="ol-sub-task-checkbox" type="checkbox" 
             
-            onclick="updateBar('todo', this, ${i})">
+            onclick="updateBar('todo', this, ${i}, ${subIndex})">
             
             <div>${subtasks['text']}</div>
         </div>
     `;
   }).join('');
-
-  let progressTasks = taskList.filter(t=> t[1]['board'] == 'todo');
-  tasks = progressTasks;
 
   let labelSrc = ((tasks[1].category == 'User Story') ? '../img/png/label-user-story-blue.png' : '../img/png/label-techn-task-green.png');
   let assignedContactsHtml = getAssignedContactsHtml(tasks[i][1]['assignment']);
@@ -117,12 +118,13 @@ function renderLiveOverlayCardProgress(tasks,i) {
   let progressTasks = taskList.filter(t=> t[1]['board'] == 'progress');
   tasks = progressTasks;
 
-  let subtasksHtml = tasks[i][1]['subtasks'].map(subtasks => {
+  // let subtasksHtml = tasks[i][1]['subtasks'].map(subtasks => {
+  let subtasksHtml = progressTasks[i][1]['subtasks'].map((subtasks, subIndex) => {
     return `
         <div class="ol-sub-task">
             <input class="ol-sub-task-checkbox" 
             type="checkbox"  
-            onclick="updateBar('progress', this, ${i})">
+            onclick="updateBar('progress', this, ${i}, ${subIndex})">
             <div>${subtasks['text']}</div>
         </div>
     `;
@@ -208,16 +210,17 @@ function renderLiveOverlayCardProgress(tasks,i) {
  * @returns - retrun of generated html/css for the respective overlay
  */
 function renderLiveOverlayCardDone(tasks,i) {
-  let progressTasks = taskList.filter(t=> t[1]['board'] == 'done');
-  tasks = progressTasks;
+  let doneTasks = taskList.filter(t=> t[1]['board'] == 'done');
+  tasks = doneTasks;
 
   console.log('ol-done - subtasks: ',tasks[i][1]['subtasks']);
-  let subtasksHtml = tasks[i][1]['subtasks'].map(subtasks => {
+  // let subtasksHtml = tasks[i][1]['subtasks'].map(subtasks => {
+  let subtasksHtml = doneTasks[i][1]['subtasks'].map((subtasks, subIndex) => {
     return `
         <div class="ol-sub-task">
             <input class="ol-sub-task-checkbox" 
             type="checkbox"  
-            onclick="updateBar('done', this, ${i})">
+            onclick="updateBar('done', this, ${i}, ${subIndex})">
             <div>${subtasks['text']}</div>
         </div>
     `;
@@ -300,6 +303,9 @@ function closeOverlay() {
   content.innerHTML = '';
 }
 
+/**
+ * This function shows the full name of the user in the header.
+ */
 function showProfileBadgeName(){
   document.getElementById('fullName').style.display = 'unset';
 }
