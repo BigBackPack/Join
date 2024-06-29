@@ -249,10 +249,10 @@ function updateBar(type, event, i, subIndex) {
  * @param {string} param - specific category of task, i.e. todo or done
  * @param {number} subQty - total amount of subtasks 
  */
-function subTaskIsChecked(type, param, subQty, index, subIndex) {
+function subTaskIsChecked(type, param, subQty, index) {
   // console.log('param type: ',type);
-  console.log('start subTaskCheck: param subInd: ',subIndex);
-  let showSubQty = document.querySelector(`.subtask-checked-${type}-${index}-${subIndex}`);
+  // console.log('start subTaskCheck: param subInd: ',subIndex);
+  let showSubQty = document.querySelector(`.subtask-checked-${type}-${index}`);
   showSubQty.innerHTML = param;
   // path - taskList[0][1]['subtasks'][0]['checked']
   //updateHTML();
