@@ -237,7 +237,13 @@ function updateBar(type, event, i, subIndex) {
     subTaskIsChecked(type, completed, index, i, subIndex);
   });
   const progressPercentage = (completed / total) * 100;
-  document.getElementById(`progress-bar-fill-pr-${i}`).setAttribute('width', `${progressPercentage}%`);
+  if (type == 'progress') {
+    document.getElementById(`progress-bar-fill-pr-${i}`).setAttribute('width', `${progressPercentage}%`);
+  } else if (type == 'done') {
+    document.getElementById(`progress-bar-fill-do-${i}`).setAttribute('width', `${progressPercentage}%`);
+  } else if (type == 'todo') {
+    document.getElementById(`progress-bar-fill-to-${i}`).setAttribute('width', `${progressPercentage}%`);
+  }
 }
 
 
