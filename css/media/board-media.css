@@ -130,6 +130,7 @@
   .board-card {
     width: 252px;
     margin-left: 5px;
+    margin-bottom: 32px;
   }
 
   #board-header {
@@ -196,42 +197,47 @@
     overflow-x: scroll;
   }
 
+  .column-txt {
+    font-size: 32px;
+    width: 244px;
+  }
+
   .task-btn-1 {
     top: -6px;
-    left: 211px;
+    left: 156px;
     position: relative;
   }
 
   .task-btn-2 {
-    top: -4px;
-    left: 199px;
+    top: 2px;
+    left: 174px;
     position: relative;
   }
 
   .task-btn-3 {
     top: 9px;
-    left: 229px;
+    left: 118px;
     position: relative;
 
   }
 
   .col-2 {
-    width: 190px;
-    
+    width: 205px;
     position: absolute;
-    top: 297px;
+    top: 387px;
     left: -20px;
   }
 
   .col-3 {
+    width: 271px;
     position: absolute;
-    top: 592px;
+    top: 765px;
     left: -26px;
   }
 
   .col-4 {
     position: absolute;
-    top: 924px;
+    top: 1110px;
     left: -22px;
   }
 
@@ -371,17 +377,21 @@
 }
 
 @media screen and (max-width: 320px) {
+  h2 {
+    margin-left: 9px;
+  }
+
   #mobile-add-task-btn {
     display: unset;
     position: absolute;
     top: 8px;
-    left: 220px;
+    left: 267px;
   }
 
   #board-header {
-    width: 100%;
+    width: 86%;
     top: 119px;
-    left: 32px;
+    /* left: 32px; */
     flex-direction: column;
     align-items: flex-start;
     margin: 0;
@@ -423,10 +433,11 @@
   }
 
   .col-1 {
-    width: 190px;
+    /* width: 190px; */
     display: flex;
     align-items: baseline;
     justify-content: center;
+    margin-left: -21px;
   }
 
   .col-2 {
@@ -435,24 +446,25 @@
     align-items: baseline;
     justify-content: center;
     position: absolute;
-    top: 325px;
+    top: 415px;
     left: -20px;
   }
 
   .col-3 {
     position: absolute;
-    top: 662px;
+    top: 835px;
     left: -26px;
   }
 
   .col-4 {
     position: absolute;
-    top: 971px;
+    top: 1321px;
     left: -22px;
   }
 
   .column-txt {
     margin-top: 26px;
+    margin-left: -24px;
     font-size: 28px;
     width: 205px;
   }
@@ -469,17 +481,17 @@
 
   .task-btn-1 {
     top: 27px;
-    left: 272px;
+    left: 282px;
   }
 
   .task-btn-2 {
     top: 31px;
-    left: 234px;
+    left: 245px;
   }
 
   .task-btn-3 {
     top: 31px;
-    left: 239px;
+    left: 245px;
   }
 
   .main-card {
