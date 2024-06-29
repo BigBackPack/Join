@@ -9,7 +9,7 @@ function renderLiveTodoCard(task, index) {
   // Generiere HTML für zugewiesene Kontakte
   let assignedContactsHtml = getAssignedContactsHtml(taskData.assignment);
   return `
-      <div draggable="true" id="todo-${index}" onclick="renderLiveOverlayCard('todo', taskList, ${index})" ondragstart="startDragging(${index})" class="board-card">
+      <div draggable="true" id="todo-${index}" onclick="renderLiveOverlayCard('todo', taskList, ${index})" ondragstart="startDragging('todo-${index}')" class="board-card">
           <img class="label-img main-card" src="${labelSrc}" alt="user-story Icon" />
           <div class="card-info">
               <div class="card-title">${taskData.title}</div>
@@ -58,7 +58,7 @@ function renderLiveProgressCard(task, index) {
   return `
       <div draggable="true" id="progress-${index}" 
         onclick="renderLiveOverlayCard('progress', taskList, ${index})" 
-        ondragstart="startDragging(${index})" class="board-card">
+        ondragstart="startDragging('progress-${index}')" class="board-card">
           <img class="label-img main-card" src="${labelSrc}" alt="user-story Icon" />
           <div class="card-info">
               <div class="card-title">${taskData.title}</div>
@@ -109,7 +109,7 @@ function renderLiveFeedbackCard(task, index) {
           draggable="true"
           id="feedback-${index}"
           onclick="renderLiveOverlayCard('feedback', taskList, ${index})"
-          ondragstart="startDragging(${index})"
+          ondragstart="startDragging('feedback-${index}')"
           class="board-card"
       >
           <img class="label-img main-card" src="${labelSrc}" alt="blue label - user stories">
@@ -146,7 +146,7 @@ function renderLiveDoneCard(task, index) {
           draggable="true"
           id="done-${index}"
           onclick="renderLiveOverlayCard('done', taskList, ${index})"
-          ondragstart="startDragging(${index})"
+          ondragstart="startDragging('done-${index}')"
           class="board-card"
       >
           <img class="label-img main-card" src="${labelSrc}" alt="blue label - user stories">

@@ -129,12 +129,13 @@ function addDone() {
 }
 //#endregion
 
-//#region DRAG-DROP
+//#region DRAG-n-DROP
 /**
  * This variable stores the id of the dragged element.
  */
 let currentDraggedElement;
-
+let type;
+let place;
 /**
  * This function starts the drag-n-drop
  * @param {*} id - id of dragged element
@@ -142,6 +143,17 @@ let currentDraggedElement;
 function startDragging(id) {
   console.log('start startDragging - id: ', id);
   currentDraggedElement = id;
+  let parts = id.split('-');
+  type = parts[0];
+  place = parseInt(parts[1], 10);  
+  console.log('type =', type);  
+  console.log('place =', place); 
+  // if (parts.length === 2) {
+  //   type = parts[0];
+  //   place = parseInt(parts[1], 10);  
+  //   console.log('type =', type);  
+  //   console.log('place =', place);  
+  // }
 }
 
 /**
@@ -152,15 +164,60 @@ function allowDrop(ev) {
   ev.preventDefault();
 }
 
+function dropHandler(event) {
+  event.preventDefault();
+  // Call moveTo with the stored type and place
+  moveTo(type, place);
+}
+
 /**
  * This function moves a task from one category to another, needed for Drag-n-Drop
  * @param {string} param - name of specific category of task, i.e. todo or done 
  */
-function moveTo(param) {
-  let tasks = taskList;
-  tasks[currentDraggedElement][1]['board'] = param;
-  updateHTML();
+function moveTo(type, place) {
+  console.log('moveTo triggered!');
+  console.log('moveTo() - type, place: ', type, place);
+  let tasks = taskList.filter(t => t[1]['board'] == type);
+  console.log('var tasks - moveTo(): ',tasks[place]);
+  if (tasks[place]) {
+    console.log('moveTo - IF - tasks[place]: ', tasks[place]);
+    tasks[place][1]['board'] = type;
+    updateHTML();
+  }
 }
+
+// thE long versioN:
+// function moveTo(param, place) {
+//  console.log('moveTo triggered!');
+
+//  if ( param == 'todo') {
+//   let todoTasks = taskList.filter(t=> t[1]['board'] == 'todo');
+//   tasks = todoTasks;
+//   tasks[place][1]['board'] = param;
+//   updateHTML();
+//  } else if ( param == 'progress') {
+//   let progressTasks = taskList.filter(t=> t[1]['board'] == 'progress');
+//   tasks = progressTasks;
+//   tasks[place][1]['board'] = param;
+//   updateHTML();
+//  } else if ( param == 'feedback') {
+//   let feedbackTasks = taskList.filter(t=> t[1]['board'] == 'feedback');
+//   tasks = feedbackTasks;
+//   tasks[place][1]['board'] = param;
+//   updateHTML();
+//  } else if ( param == 'done') {
+//   let doneTasks = taskList.filter(t=> t[1]['board'] == 'done');
+//   tasks = doneTasks;
+//   tasks[place][1]['board'] = param;
+//   updateHTML();
+//  }
+
+//   //tasks[currentDraggedElement][1]['board'] = param;
+//   //updateHTML();
+// }
+
+  
+
 //#endregion
 
 //#region SUBTASK-COUNT
