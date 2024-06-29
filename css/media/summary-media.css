@@ -280,6 +280,8 @@
     font-size: 12px;
   }
 
+  #content {left: -1%;}
+
   #header {
     width: 100%;
     right: 10px;
@@ -299,7 +301,7 @@
   }
 
   #login-overview {
-    left: -45px;
+    left: 35px;
     width: 300px;
   }
 
@@ -322,7 +324,7 @@
   }
 
   #urgent-container {
-    width: 281px;
+    width: 275px;
   }
 
   .icon-urgent {
@@ -354,12 +356,13 @@
 @media screen and (min-width:322px) and (max-width: 800px) {
   #urgent-left-container {
     position: relative;
-    left: 34px;
+    left: 37px;
   }
   
   #urgent-right-container {
     position: relative;
-    right: 30px;
+    right: 40px;
+    text-align: center;
   }
 
   .mobile-tile-left,
@@ -405,7 +408,7 @@
   }
 
   #login-overview {
-    left: -56px;
+    left: 19px;
     width: 300px;
   }
 
