@@ -105,7 +105,6 @@ function showSumOfFeedback(taskList) {
 function showSumOfAllBoardTasks(taskList) {
   const sumOfAllTasks = document.getElementById("task-on-board");
   sumOfAllTasks.innerHTML = '';
-  console.log('taskList from SumAll: ',taskList);
   sumOfAllTasks.innerHTML = taskList.length;
 }
 
@@ -114,7 +113,7 @@ function showSumOfAllBoardTasks(taskList) {
  * Counts the amount of urgent tasks in the summary page.
  * Source: Firebase-Db
  */
-function showSumOfUrgent(taskList) {
+function showSumOfUrgent() {
   let countUrgent = 0;
   const urgentTask = document.getElementById("overview-urgent-amount");
   urgentTask.innerHTML = '';
@@ -122,7 +121,6 @@ function showSumOfUrgent(taskList) {
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i][1].priority == 'urgent') {
       countUrgent++;
-      console.log(countUrgent);
       urgentTask.innerHTML = countUrgent;
     }
   }
@@ -137,6 +135,7 @@ function referUrlBoard() {
   window.location.href = "board.html";
 }
 
+//#region URGENT-DATE
 /**
  * Displays the current date in the summary page.
  */
@@ -150,30 +149,85 @@ function displayCurrentDate() {
   const formattedDate = `${day}-${month}-${year}`;
   dateElement.textContent = formattedDate;
 
-  displayUrgentDeadline();
 }
 
 /**
  * This function displays the nearest urgent deadline as a date.
  * @returns - a date
  */
-function displayUrgentDeadline() {
-  const urgentTasks = Object.values(taskList).filter(task => task[1].priority === 'urgent');
-  if (urgentTasks.length === 0) {
-    document.getElementById('urgent-subline').textContent = 'No urgent tasks';
-    return;
-  }
-  let nearestDueDate = new Date(urgentTasks[0][1].dueDate);
-  for (let i = 1; i < urgentTasks.length; i++) {
-    const currentDueDate = new Date(urgentTasks[i][1].dueDate);
-    if (currentDueDate < nearestDueDate) {
-      nearestDueDate = currentDueDate;
+// function displayUrgentDeadline() {
+//   console.log('displayUrgentDeadline triggered!');
+//   let urgentList = [];  
+//   let dateList = [];
+//   for (let i = 0; i < taskList.length; i++) {
+//     if (taskList[i][1].priority == 'urgent') {
+//       urgentList.push(taskList[i]);
+//       for (let j = 0; j < urgentList.length; j++) {
+//         const element = urgentList[j];
+//         dateList.push(element[1].dueDate);
+//       }
+//     }
+//   } 
+//   if (urgentList.length > 0) {
+//     findNearestDate(dateList);
+//   }
+// }
+
+// function findNearestDate(dateList) {
+//   console.log('findNearestDate triggered!');
+//   let today = new Date();
+//   let nearestDate;
+//   let minDiff = Infinity;
+
+//   dateList.forEach(dateStr => {
+//     let date = new Date(dateStr);
+//     let diff = Math.abs(date - today);   
+//     if (diff < minDiff) {
+//       minDiff = diff;
+//       nearestDate = date;
+//     }
+//   });
+//   if (nearestDate) {
+//     const formattedDate = nearestDate.toLocaleDateString('de-DE', {
+//       day: '2-digit',
+//       month: '2-digit',
+//       year: 'numeric'
+//     });
+//     document.getElementById('urgent-subline').textContent = formattedDate;
+//   } else {
+//     document.getElementById('urgent-subline').textContent = 'No nearest date found';
+//   }
+// }
+function displayNearestDeadline() {
+  let today = new Date();
+  let nearestDate;
+  let minDiff = Infinity;
+  let dateList = [];
+  for (let i = 0; i < taskList.length; i++) {
+    if (taskList[i][1].priority === 'urgent' && taskList[i][1].dueDate) {
+      dateList.push(taskList[i][1].dueDate);
     }
   }
-  const formattedDate = nearestDueDate.toLocaleDateString('de-DE', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric'
+  dateList.forEach(dateStr => {
+    let date = new Date(dateStr);
+    let diff = Math.abs(date - today);
+
+    if (diff < minDiff) {
+      minDiff = diff;
+      nearestDate = date;
+    }
   });
-  document.getElementById('urgent-subline').textContent = formattedDate;
+  if (nearestDate) {
+    const formattedDate = nearestDate.toLocaleDateString('de-DE', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+    document.getElementById('urgent-subline').textContent = formattedDate;
+  } else {
+    document.getElementById('urgent-subline').textContent = 'No nearest date found';
+  }
 }
+
+//#endregion
+
