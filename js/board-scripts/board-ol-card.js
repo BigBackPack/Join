@@ -53,7 +53,7 @@ function renderLiveOverlayCardToDo(tasks,i) {
                     <div class="ol-header-btn">
                       <img class="ol-label-img" src="${labelSrc}" alt="blue label - user stories">
                     </div>
-                    <span title="close overlay" id="overlay-close-btn" class="ol-close-btn" onclick="closeOverlay()">X</span>
+                    <div title="close overlay" id="overlay-close-btn" class="ol-close-btn" onclick="closeOverlay()">X</div>
                   </div>
                   <div class="ol-card-info">
                     <div class="ol-card-title"
@@ -147,7 +147,7 @@ function renderLiveOverlayCardProgress(tasks,i) {
                     <div class="ol-header-btn">
                       <img class="ol-label-img" src="${labelSrc}" alt="blue label - user stories">
                     </div>
-                    <span title="close overlay" id="overlay-close-btn" class="ol-close-btn" onclick="closeOverlay()">X</span>
+                    <div title="close overlay" id="overlay-close-btn" class="ol-close-btn" onclick="closeOverlay()">X</div>
                   </div>
                   <div class="ol-card-info">
                     <span class="ol-card-title"
@@ -237,7 +237,7 @@ function renderLiveOverlayCardDone(tasks,i) {
                     <div class="ol-header-btn">
                       <img class="ol-label-img" src="${labelSrc}" alt="blue label - user stories">
                     </div>
-                    <span title="close overlay" id="overlay-close-btn" class="ol-close-btn" onclick="closeOverlay()">X</span>
+                    <div title="close overlay" id="overlay-close-btn" class="ol-close-btn" onclick="closeOverlay()">X</div>
                   </div>
                   <div class="ol-card-info">
                     <span class="ol-card-title"

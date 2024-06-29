@@ -1,201 +1,3 @@
-/* Default styles */
-.ol-crud-edit-delete {
-  cursor: pointer;
-}
-
-.ol-progress {
-  position: absolute;
-  margin-left: auto;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
-}
-
-.ol-close-btn {
-  cursor: pointer;
-  font-size: x-large;
-}
-
-.ol-board-card {
-  width: 525px;
-  height: 90vh;
-  border-radius: 30px;
-  padding: 16px;
-  padding-bottom: 0;
-  background-color: var(--white);
-  overflow: auto; /* Enable scrolling for taller content */
-  scrollbar-width: none; /* Firefox specific - hide scrollbar */
-}
-
-.ol-main-card {
-  border-radius: 24px;
-  padding: 3px;
-  gap: 24px;
-  background-color: var(--white);
-  display: flex;
-  flex-direction: column;
-  margin-left: 16px;
-}
-
-.ol-card-header {
-  width: 445px;
-  height: 36px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.ol-header-btn {
-  width: 164px;
-  height: 36px;
-}
-
-.ol-card-info {
-  width: 445px;
-  height: 219px;
-}
-
-.ol-card-sub {
-  width: 445px;
-  height: 24px;
-}
-
-.ol-card-title {
-  font-size: 61px;
-  font-weight: 700;
-  color: var(--black);
-  font-family: 'Inter', sans-serif;
-}
-
-.ol-card-sub-title {
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--black);
-  font-family: 'Inter', sans-serif;
-}
-
-.ol-due-date {
-  width: 445px;
-  height: 24px;
-  gap: 25px;
-  display: flex;
-  margin-top: 86px;
-}
-
-.ol-due-date-txt {
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--black);
-  font-family: 'Inter', sans-serif;
-  margin-left: 32px;
-}
-
-.ol-priority {
-  width: 445px;
-  height: 32px;
-  gap: 25px;
-  display: flex;
-}
-
-.ol-priority-txt {
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--black);
-  font-family: 'Inter', sans-serif;
-  margin-left: 42px;
-  margin-right: 8px;
-}
-
-.ol-priority-icon {
-  width: 17px;
-  height: 8px;
-}
-
-.ol-assigned-container {
-  width: 445px;
-  display: flex;
-  flex-direction: column;
-}
-
-.ol-assigned-user {
-  width: 445px;
-  gap: 10px;
-  display: flex;
-  flex-direction: column;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-.ol-user {
-  width: 445px;
-  height: 56px;
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  padding-left: 32px;
-}
-
-.ol-sub-tasks {
-  width: 445px;
-  height: 300px;
-  gap: 8px;
-  display: flex;
-  flex-direction: column;
-}
-
-.ol-sub-tasks-txt {
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--black);
-  font-family: 'Inter', sans-serif;
-}
-
-.ol-sub-tasks-container {
-  width: 445px;
-  height: 248px;
-  display: flex;
-  flex-direction: column;
-}
-
-.ol-sub-task {
-  width: 434px;
-  height: 92px;
-  gap: 16px;
-  display: flex;
-  overflow: auto; /* Enable scrolling for taller content */
-  word-wrap: normal;
-}
-
-.ol-sub-task-checkbox {
-  width: 24px;
-  height: 24px;
-  border-radius: 5px;
-}
-
-.ol-crud {
-  width: 100%;
-  height: 24px;
-  gap: 8px;
-  display: flex;
-  justify-content: end;
-  background: rgb(255, 255, 255);
-  position: sticky;
-  bottom: 0px;
-  padding: 20px;
-}
-
-.ol-vertical {
-  height: 24px;
-  border-left: 1px solid var(--borderColor);
-}
-
-/* Media queries for different screen sizes */
-
-/* For screens up to 1200px */
 @media (max-width: 1200px) {
   .ol-board-card {
     width: 90%;
@@ -204,16 +6,20 @@
   }
 }
 
-/* For screens up to 800px */
+
 @media (max-width: 800px) {
   .ol-board-card {
-    width: 90%;
+    width: 80%;
     height: 80vh;
     margin: 0 auto;
   }
+
+  .ol-main-card {
+    margin-left: 86px;
+  }
 }
 
-/* For screens up to 600px */
+
 @media (max-width: 600px) {
   .ol-board-card {
     width: 90%;
@@ -222,11 +28,75 @@
   }
 }
 
-/* For screens up to 400px */
+
 @media (max-width: 400px) {
   .ol-board-card {
     width: 90%;
     height: 80vh;
     margin: 0 auto;
+  }
+
+  .ol-card-header {
+    width: 325px;
+  }
+
+  .ol-card-title {
+    font-size: 51px;
+  }
+
+  .ol-card-sub-title {
+    width: 340px;
+  }
+
+  .ol-due-date {
+    margin-top: 106px;
+  }
+
+  .ol-priority {
+    margin-top: 16px;
+  }
+
+  .ol-crud {
+    margin-left: -128px;
+  }
+
+  .ol-sub-task {
+    width: 342px;
+  }
+
+  .ol-sub-tasks-container {width: 335px;}
+}
+
+@media screen and (max-width: 320px) {
+  .ol-main-card {
+    margin-left: -3px;
+  }
+
+  .ol-card-header {
+    width: 281px;
+  }
+
+  .ol-card-title {
+    font-size: 31px;
+    word-wrap: break-word;
+    word-break: break-all;
+    width: 49%;
+  }
+
+  .ol-card-sub-title {
+    width: 290px;
+    margin-top: 16px;
+  }
+
+  .ol-due-date {
+    margin-top: 136px;
+  }
+
+  .ol-sub-task {
+    width: 292px;
+  }
+
+  .ol-crud {
+    margin-left: -178px;
   }
 }

@@ -141,12 +141,13 @@
 
   #search-btn-container {
     /* width: 440px; */
-    /* margin-right: 240px; */
+    margin-left: 110px;
     margin-right: 1300px;
   }
 
   #search-right-container {
-    right: -270px;
+    /* right: -270px; */
+    display: none;
   }
 
   #add-task-btn {
@@ -164,6 +165,7 @@
   .column-name {
     width: 40%;
     justify-content: space-between;
+    margin-left: -35px;
   }
 
   .main-card {
@@ -203,20 +205,20 @@
   }
 
   .task-btn-1 {
-    top: -6px;
-    left: 156px;
+    top: 2px;
+    left: 306px;
     position: relative;
   }
 
   .task-btn-2 {
     top: 2px;
-    left: 174px;
+    left: 322px;
     position: relative;
   }
 
   .task-btn-3 {
-    top: 9px;
-    left: 118px;
+    top: 7px;
+    left: 256px;
     position: relative;
 
   }
@@ -224,21 +226,33 @@
   .col-2 {
     width: 205px;
     position: absolute;
-    top: 387px;
-    left: -20px;
+    top: 440px;
+    left: 46px;
   }
 
   .col-3 {
     width: 271px;
     position: absolute;
-    top: 765px;
-    left: -26px;
+    top: 895px;
+    left: 44px;
   }
 
   .col-4 {
     position: absolute;
-    top: 1110px;
-    left: -22px;
+    top: 1298px;
+    left: 41px;
+  }
+
+  #column-2 {
+    margin-top: 57px;
+  }
+
+  #column-3 {
+    margin-top: 77px;
+  }
+
+  #column-4 {
+    margin-top: 37px;
   }
 
   #1column-1 {
@@ -261,7 +275,7 @@
 
 @media screen and (min-width: 400px) and (max-width: 590px) {
   #board-header {
-    left: -106px;
+    left: -136px;
     flex-direction: column;
     display: flex;
     /* align-items: baseline; */
@@ -284,6 +298,7 @@
 
   h2 {
     font-size: 5rem;
+    margin-left: -178px;
   }
 }
   
@@ -297,14 +312,14 @@
 
 @media screen and (max-width: 400px) {
   h2 {
-    margin-left: 122px;
+    margin-left: 116px;
     /* font-size: 5rem; */
     padding: 0;
   }
 
   #board-header {
-    /* width: 70%; */
-    left: 5px;
+    width: 220%;
+    left: -105px;
     top: 112px;
     flex-direction: column;
     align-items: flex-start;
@@ -326,7 +341,7 @@
     display: unset;
     position: absolute;
     top: 8px;
-    left: 288px;
+    left: 445px;
   }
 
   #board-overview {
@@ -358,7 +373,30 @@
   }
 
   #search-task {
-    width: 50%;
+    width: 72%;
+  }
+
+  .col-3 {
+    top: 955px;
+  }
+
+  .col-4 {
+    top: 1446px;
+    left: 43px;
+  }
+
+  .task-btn-1 {
+    left: -7px;
+  }
+
+  .task-btn-2 {
+    top: 4px;
+    left: -18px;
+  }
+
+  .task-btn-3 {
+    top: 5px;
+    left: -16px;
   }
 }
 
@@ -378,14 +416,14 @@
 
 @media screen and (max-width: 320px) {
   h2 {
-    margin-left: 9px;
+    margin-left: 111px;
   }
 
   #mobile-add-task-btn {
     display: unset;
     position: absolute;
     top: 8px;
-    left: 267px;
+    left: 377px;
   }
 
   #board-header {
@@ -432,12 +470,15 @@
     margin-bottom: 32px;
   }
 
+  #column-2 {
+    margin-top: 27px;
+  }
   .col-1 {
     /* width: 190px; */
     display: flex;
     align-items: baseline;
     justify-content: center;
-    margin-left: -21px;
+    margin-left: -60px;
   }
 
   .col-2 {
@@ -446,25 +487,25 @@
     align-items: baseline;
     justify-content: center;
     position: absolute;
-    top: 415px;
-    left: -20px;
+    top: 445px;
+    left: 37px;
   }
 
   .col-3 {
     position: absolute;
-    top: 835px;
-    left: -26px;
+    top: 922px;
+    left: 34px;
   }
 
   .col-4 {
     position: absolute;
-    top: 1321px;
-    left: -22px;
+    top: 1431px;
+    left: 34px;
   }
 
   .column-txt {
     margin-top: 26px;
-    margin-left: -24px;
+    margin-left: 6px;
     font-size: 28px;
     width: 205px;
   }
@@ -486,12 +527,12 @@
 
   .task-btn-2 {
     top: 31px;
-    left: 245px;
+    left: 282px;
   }
 
   .task-btn-3 {
     top: 31px;
-    left: 245px;
+    left: 288px;
   }
 
   .main-card {
