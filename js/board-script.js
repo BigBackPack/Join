@@ -44,11 +44,8 @@ function renderLive(tasks) {
   }
 }
 
-/**
- * This variable stores the id of the dragged element.
- */
-let currentDraggedElement;
 
+//#region UPDATE-HTML
 /**
  * This function updates the HTML of the board.
  */
@@ -130,12 +127,20 @@ function addDone() {
     document.querySelector('#column-4').innerHTML = renderEmptyRow();
   }
 }
+//#endregion
+
+//#region DRAG-DROP
+/**
+ * This variable stores the id of the dragged element.
+ */
+let currentDraggedElement;
 
 /**
  * This function starts the drag-n-drop
  * @param {*} id - id of dragged element
  */
 function startDragging(id) {
+  console.log('start startDragging - id: ', id);
   currentDraggedElement = id;
 }
 
@@ -156,7 +161,6 @@ function moveTo(param) {
   tasks[currentDraggedElement][1]['board'] = param;
   updateHTML();
 }
-
 //#endregion
 
 //#region SUBTASK-COUNT
@@ -164,7 +168,6 @@ function moveTo(param) {
  * Shows the total amount of subtasks. Needed for the progress bar.
  */
 let total = 0;
-
 
 /**
  * Calc and displays the width/length of the progress bar in comp. to the qty of subtasks.
@@ -176,6 +179,20 @@ function showSubTaskCount1(sumTotal) {
   for (let elem of sumSubTaskElements) {
     elem.innerHTML = total;
   }
+}
+
+/**
+ * This function checks if the subtask is checked or not
+ * @param {string} param - specific category of task, i.e. todo or done
+ * @param {number} subQty - total amount of subtasks 
+ */
+function subTaskIsChecked(type, param, subQty, index) {
+  // console.log('param type: ',type);
+  // console.log('start subTaskCheck: param subInd: ',subIndex);
+  let showSubQty = document.querySelector(`.subtask-checked-${type}-${index}`);
+  showSubQty.innerHTML = param;
+  // path - taskList[0][1]['subtasks'][0]['checked']
+  //updateHTML();
 }
 //#endregion
 
@@ -224,6 +241,7 @@ function showSubTaskCount1(sumTotal) {
   // } else {
   //   console.error(`Element with ID ${progressBarId} not found in the DOM.`);
   // }
+
 function updateBar(type, event, i, subIndex) {
   const task = taskList.findIndex(t => t[1]['board'] === type);
   const checkboxes = document.querySelectorAll('.ol-sub-task-checkbox');
@@ -245,24 +263,7 @@ function updateBar(type, event, i, subIndex) {
     document.getElementById(`progress-bar-fill-to-${i}`).setAttribute('width', `${progressPercentage}%`);
   }
 }
-
-
-
 //#endregion
-
-/**
- * This function checks if the subtask is checked or not
- * @param {string} param - specific category of task, i.e. todo or done
- * @param {number} subQty - total amount of subtasks 
- */
-function subTaskIsChecked(type, param, subQty, index) {
-  // console.log('param type: ',type);
-  // console.log('start subTaskCheck: param subInd: ',subIndex);
-  let showSubQty = document.querySelector(`.subtask-checked-${type}-${index}`);
-  showSubQty.innerHTML = param;
-  // path - taskList[0][1]['subtasks'][0]['checked']
-  //updateHTML();
-}
 
 //#region SEARCH-TASKS
 /**
@@ -314,6 +315,7 @@ searchInput.addEventListener('keydown', function(event) {
 });
 //#endregion
 
+//#region CRUD-TASK
 /**
  * Lets the user delete a task in the Db from the overlay
  * @param {*} i - index of specific task
@@ -331,7 +333,9 @@ function delTaskInDb(i) {
   .then(data => console.log('Task deleted!'))
   .catch(error => console.error('Error deleting task:', error));
 }
+//#endregion
 
+//#region USER-DETAILS
 /**
  * Generates html - Helper-f() for the generateContactBar()
  * @param {string} name of user
@@ -358,7 +362,6 @@ function generateContactBadge(contact) {
   `;
 }
 
-
 /**
  * Gets the respective user to be displayed
  * @param {Id} assignment - index-value 
@@ -374,3 +377,4 @@ function getAssignedContactsHtml(assignment = []) {
       return '';
   }).join('');
 }
+//#endregion
