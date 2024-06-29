@@ -103,4 +103,7 @@ async function loadTasksData(path) {
   showSumOfFeedback(taskList);
   showSumOfUrgent(taskList);
   showSumOfAllBoardTasks(taskList);
+
+  displayNearestDeadline();
+
 }
