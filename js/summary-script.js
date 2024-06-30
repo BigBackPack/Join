@@ -3,6 +3,11 @@
  */
 displayCurrentDate();
 
+/**
+ * Calling that function for to greet the user.
+ */
+displayHelloDayTime();
+
 /* Initializes the summary page - fetching the needed data */
 summaryInit();
 
@@ -231,3 +236,20 @@ function displayNearestDeadline() {
 
 //#endregion
 
+//#region Hello Day Time
+/**
+ * Displays a greeting depending on the time of the day.
+ */
+function displayHelloDayTime() {
+  const greeting = document.getElementById('greeting-user');
+  const time = new Date();
+  const hour = time.getHours();
+  if (hour < 12) {
+    greeting.textContent = 'Good Morning';
+  } else if (hour < 18) {
+    greeting.textContent = 'Good Afternoon';
+  } else {
+    greeting.textContent = 'Good Evening';
+  }
+}
+//endregion
