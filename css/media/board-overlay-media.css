@@ -1,33 +1,92 @@
 @media (max-width: 1200px) {
   .ol-board-card {
-    width: 90%;
+    width: 45%;
     height: 80vh;
     margin: 0 auto;
   }
 }
 
+@media screen and (min-width: 900px) and (max-width: 1100px) {
+  .ol-board-card {
+    
+  }
+
+  .ol-card-title {
+    font-size: 48px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .ol-card-title {
+    font-size: 48px;
+  }
+
+  .ol-priority {
+    margin-top: 8px;
+  }
+}
 
 @media (max-width: 800px) {
   .ol-board-card {
-    width: 80%;
+    width: 65%;
     height: 80vh;
     margin: 0 auto;
   }
 
   .ol-main-card {
-    margin-left: 86px;
+    margin-left: 1px;
+    /* margin-left: 40px; */
+  }
+
+
+}
+
+@media screen and (max-width: 700px) {
+  .ol-crud {
+    margin-left: -38px;
+  }
+
+  .ol-card-header {
+    width: 430px;
   }
 }
 
-
 @media (max-width: 600px) {
   .ol-board-card {
-    width: 90%;
+    width: 80%;
     height: 80vh;
     margin: 0 auto;
   }
 }
 
+@media screen and (max-width: 500px) {
+  .ol-card-header {
+    width: 320px;
+  }  
+
+  .ol-card-title {
+    font-size: 38px;
+    width: 77%;
+    margin-bottom: 8px;
+  }
+
+  .ol-card-sub {
+    width: 345px;
+  }
+
+  .ol-due-date {
+    margin-top: 106px;
+  }
+
+  .ol-sub-task {
+    width: 324px;
+    margin-bottom: 8px;
+  }
+
+  .ol-crud {
+    margin-left: -138px;
+  }
+}
 
 @media (max-width: 400px) {
   .ol-board-card {
@@ -41,7 +100,8 @@
   }
 
   .ol-card-title {
-    font-size: 51px;
+    font-size: 48px;
+    width: 90%;
   }
 
   .ol-card-sub-title {
@@ -61,11 +121,12 @@
   }
 
   .ol-sub-task {
-    width: 342px;
+    width: 320px;
   }
 
   .ol-sub-tasks-container {width: 335px;}
 }
+
 
 @media screen and (max-width: 320px) {
   .ol-main-card {
@@ -94,6 +155,7 @@
 
   .ol-sub-task {
     width: 292px;
+    margin-top: 16px;
   }
 
   .ol-crud {

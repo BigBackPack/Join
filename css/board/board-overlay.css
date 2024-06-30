@@ -101,6 +101,7 @@
   height: 32px;
   gap: 25px;
   display: flex;
+  margin-top: 8px;
 }
 
 .ol-priority-txt {

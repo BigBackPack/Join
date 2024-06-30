@@ -59,6 +59,11 @@
   }
 }
 
+@media screen and (min-width: 800px) and (max-width: 1000px) {
+  .ol-board-card {
+    width: 60%;
+  }
+}
 @media screen and (max-width: 800px) {
  
   
@@ -73,7 +78,7 @@
     /* flex-direction: column; */
     /* align-items: flex-start; */
     gap: 16px;
-    margin-right: -22%;
+    margin-right: 6%;
   }
 
   #search-task {
@@ -141,8 +146,8 @@
 
   #search-btn-container {
     /* width: 440px; */
-    margin-left: 110px;
-    margin-right: 1300px;
+    margin-left: 50px;
+    margin-right: 30px;
   }
 
   #search-right-container {
@@ -151,7 +156,7 @@
   }
 
   #add-task-btn {
-    width: 290px;
+    width: 220px;
     padding: 6px 12px;
   }
 
@@ -293,12 +298,18 @@
 
   #search-btn-container {
     margin-right: 3%;
-
+    width: 60%;
   }
 
   h2 {
     font-size: 5rem;
-    margin-left: -178px;
+    margin-left: -218px;
+    /* margin-left: -178px; */
+  }
+
+  #add-task-btn {
+    width: 182px;
+
   }
 }
   
@@ -400,6 +411,18 @@
   }
 }
 
+@media screen and (max-width: 360px) {
+  #mobile-add-task-btn {
+    left: 419px;
+  }
+
+  #search-task {
+    margin-left: 65px;
+    width: 65%;
+  }
+  
+}
+
 @media screen and (max-width:322px) and (max-width:399px) {
     #board-header {
       top: 90px;
@@ -442,11 +465,13 @@
     position: relative;
     top: 5px;
     padding: 12px;
+    margin-left: 4px;
   }
 
   #search-btn-container {
     width: 100%;
     flex-direction: column;
+    margin-left: 109px;
   }
 
   #search-right-container {
