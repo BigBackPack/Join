@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: summary-script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: summary-script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Calling that function for to display the actual date
+ */
+displayCurrentDate();
+
+/**
+ * Calling that function for to greet the user.
+ */
+displayHelloDayTime();
+
+/* Initializes the summary page - fetching the needed data */
+summaryInit();
+
+/**
+ * Updates the user name at the summary page.
+ * Source: Firebase-Db, but atm contactList{}
+ */
+function updateUserName() {
+  const userNameElement = document.getElementById("user-name"); 
+  let userFullName = localStorage.getItem("rememberedUserName");
+  console.log('userFull from localStorage: ',userFullName);
+  if (userFullName) {
+    userFullName = userFullName.replace(/["']/g, '').trim();
+    userNameElement.textContent = userFullName;
+  } else {
+    console.error("User");
+  }
+}
+
+/**
+ * Shows the overall-sum of (open)tasks (TO-DO) in the summary page.
+ * Source: Firebase-Db
+ */
+function showSumOfTodos(taskList) { 
+  let countTodo = 0;
+  const sumOfTodos = document.getElementById("amount-todo"); 
+  sumOfTodos.innerHTML = ''; 
+
+  for (let i = 0; i &lt; taskList.length; i++) { 
+    const task = taskList[i]; 
+    if (taskList[i][1].board == 'todo') { 
+      countTodo++;
+      sumOfTodos.innerHTML = countTodo; 
+    } 
+  } 
+}
+
+
+/**
+ * Shows the overall-sum of (done)tasks in the summary page.
+ * Source: Firebase-Db
+ */
+function showSumOfDone(taskList) { 
+  let countDone = 0;
+  const tasksDone = document.getElementById("amount-done"); 
+  tasksDone.innerHTML = '';
+
+  for (let i = 0; i &lt; taskList.length; i++) { 
+    const task = taskList[i]; 
+    if (taskList[i][1].board == 'done') { 
+      countDone++;
+      tasksDone.innerHTML = countDone; 
+    } 
+  } 
+}
+
+
+/**
+ * Shows the sum of (progress)tasks in the summary page.
+ * Source: Firebase-Db
+ */
+function showSumOfProgress(taskList) { 
+  let countProgress = 0;
+  const taskInProgress = document.getElementById("task-in-progress");
+  taskInProgress.innerHTML = '';
+
+  for (let i = 0; i &lt; taskList.length; i++) { 
+    const task = taskList[i]; 
+    if (taskList[i][1].board == 'progress') { 
+      countProgress++;
+      taskInProgress.innerHTML = countProgress; 
+    } 
+  } 
+}
+
+
+/**
+ * Shows the sum of (feedback)tasks in the summary page.
+ * Source: Firebase-Db
+ */
+function showSumOfFeedback(taskList) { 
+  let countFeedback = 0;
+  const taskInFeedback= document.getElementById("task-feedback");
+  taskInFeedback.innerHTML = '';
+
+  for (let i = 0; i &lt; taskList.length; i++) { 
+    const task = taskList[i]; 
+    if (taskList[i][1].board == 'feedback') { 
+      countFeedback++;
+      taskInFeedback.innerHTML = countFeedback; 
+    } 
+  } 
+}
+
+
+/**
+ * Shows the overall-sum of -all- tasks (at the board) in the summary page.
+ * Source: Firebase-Db
+ */
+function showSumOfAllBoardTasks(taskList) {
+  const sumOfAllTasks = document.getElementById("task-on-board");
+  sumOfAllTasks.innerHTML = '';
+  sumOfAllTasks.innerHTML = taskList.length;
+}
+
+
+/**
+ * Counts the amount of urgent tasks in the summary page.
+ * Source: Firebase-Db
+ */
+function showSumOfUrgent() {
+  let countUrgent = 0;
+  const urgentTask = document.getElementById("overview-urgent-amount");
+  urgentTask.innerHTML = '';
+
+  for (let i = 0; i &lt; taskList.length; i++) {
+    if (taskList[i][1].priority == 'urgent') {
+      countUrgent++;
+      urgentTask.innerHTML = countUrgent;
+    }
+  }
+}
+
+
+/**
+ * Links to the board page. And closes the summary page.
+ * onClick-function in the HTML per tile.
+ */
+function referUrlBoard() {
+  window.location.href = "board.html";
+}
+
+//#region URGENT-DATE
+/**
+ * Displays the current date in the summary page.
+ */
+function displayCurrentDate() {
+  const dateElement = document.getElementById('overview-urgent-date');
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0');
+  const month = String(today.getMonth() + 1).padStart(2, '0'); 
+  const year = today.getFullYear();
+
+  const formattedDate = `${day}-${month}-${year}`;
+  dateElement.textContent = formattedDate;
+
+}
+
+/**
+ * This function displays the nearest urgent deadline as a date.
+ * @returns - a date
+ */
+// function displayUrgentDeadline() {
+//   console.log('displayUrgentDeadline triggered!');
+//   let urgentList = [];  
+//   let dateList = [];
+//   for (let i = 0; i &lt; taskList.length; i++) {
+//     if (taskList[i][1].priority == 'urgent') {
+//       urgentList.push(taskList[i]);
+//       for (let j = 0; j &lt; urgentList.length; j++) {
+//         const element = urgentList[j];
+//         dateList.push(element[1].dueDate);
+//       }
+//     }
+//   } 
+//   if (urgentList.length > 0) {
+//     findNearestDate(dateList);
+//   }
+// }
+
+// function findNearestDate(dateList) {
+//   console.log('findNearestDate triggered!');
+//   let today = new Date();
+//   let nearestDate;
+//   let minDiff = Infinity;
+
+//   dateList.forEach(dateStr => {
+//     let date = new Date(dateStr);
+//     let diff = Math.abs(date - today);   
+//     if (diff &lt; minDiff) {
+//       minDiff = diff;
+//       nearestDate = date;
+//     }
+//   });
+//   if (nearestDate) {
+//     const formattedDate = nearestDate.toLocaleDateString('de-DE', {
+//       day: '2-digit',
+//       month: '2-digit',
+//       year: 'numeric'
+//     });
+//     document.getElementById('urgent-subline').textContent = formattedDate;
+//   } else {
+//     document.getElementById('urgent-subline').textContent = 'No nearest date found';
+//   }
+// }
+function displayNearestDeadline() {
+  let today = new Date();
+  let nearestDate;
+  let minDiff = Infinity;
+  let dateList = [];
+  for (let i = 0; i &lt; taskList.length; i++) {
+    if (taskList[i][1].priority === 'urgent' &amp;&amp; taskList[i][1].dueDate) {
+      dateList.push(taskList[i][1].dueDate);
+    }
+  }
+  dateList.forEach(dateStr => {
+    let date = new Date(dateStr);
+    let diff = Math.abs(date - today);
+
+    if (diff &lt; minDiff) {
+      minDiff = diff;
+      nearestDate = date;
+    }
+  });
+  if (nearestDate) {
+    const formattedDate = nearestDate.toLocaleDateString('de-DE', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+    document.getElementById('urgent-subline').textContent = formattedDate;
+  } else {
+    document.getElementById('urgent-subline').textContent = 'No nearest date found';
+  }
+}
+
+//#endregion
+
+//#region Hello Day Time
+/**
+ * Displays a greeting depending on the time of the day.
+ */
+function displayHelloDayTime() {
+  const greeting = document.getElementById('greeting-user');
+  const time = new Date();
+  const hour = time.getHours();
+  if (hour &lt; 12) {
+    greeting.textContent = 'Good Morning';
+  } else if (hour &lt; 18) {
+    greeting.textContent = 'Good Afternoon';
+  } else {
+    greeting.textContent = 'Good Evening';
+  }
+}
+//endregion</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addDone">addDone</a></li><li><a href="global.html#addFeedback">addFeedback</a></li><li><a href="global.html#addProgress">addProgress</a></li><li><a href="global.html#addTodo">addTodo</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#clearForm">clearForm</a></li><li><a href="global.html#clearInput">clearInput</a></li><li><a href="global.html#closeDropdownOnClickOutside">closeDropdownOnClickOutside</a></li><li><a href="global.html#createContactItem">createContactItem</a></li><li><a href="global.html#createEditItemHTML">createEditItemHTML</a></li><li><a href="global.html#createSubtaskItem">createSubtaskItem</a></li><li><a href="global.html#createSubtaskItemHTML">createSubtaskItemHTML</a></li><li><a href="global.html#createTask">createTask</a></li><li><a href="global.html#currentDraggedElement">currentDraggedElement</a></li><li><a href="global.html#delTaskInDb">delTaskInDb</a></li><li><a href="global.html#displayCurrentDate">displayCurrentDate</a></li><li><a href="global.html#displayHelloDayTime">displayHelloDayTime</a></li><li><a href="global.html#displayNearestDeadline">displayNearestDeadline</a></li><li><a href="global.html#displayText">displayText</a></li><li><a href="global.html#editItem">editItem</a></li><li><a href="global.html#fetchContacts">fetchContacts</a></li><li><a href="global.html#filterDropdown">filterDropdown</a></li><li><a href="global.html#focusInput">focusInput</a></li><li><a href="global.html#generateContactBadge">generateContactBadge</a></li><li><a href="global.html#getAssignedContacts">getAssignedContacts</a></li><li><a href="global.html#getAssignedContactsHtml">getAssignedContactsHtml</a></li><li><a href="global.html#getAttributeValue">getAttributeValue</a></li><li><a href="global.html#getCheckedRadioButton">getCheckedRadioButton</a></li><li><a href="global.html#getInitials">getInitials</a></li><li><a href="global.html#getInputValue">getInputValue</a></li><li><a href="global.html#getSubtasks">getSubtasks</a></li><li><a href="global.html#handleFormSubmit">handleFormSubmit</a></li><li><a href="global.html#hideIconsIfEmpty">hideIconsIfEmpty</a></li><li><a href="global.html#initializeApp">initializeApp</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#postTask">postTask</a></li><li><a href="global.html#referUrlBoard">referUrlBoard</a></li><li><a href="global.html#removeItem">removeItem</a></li><li><a href="global.html#removePlaceholder">removePlaceholder</a></li><li><a href="global.html#renderContacts">renderContacts</a></li><li><a href="global.html#renderEmptyRow">renderEmptyRow</a></li><li><a href="global.html#renderLive">renderLive</a></li><li><a href="global.html#resetCategoryDropdown">resetCategoryDropdown</a></li><li><a href="global.html#restorePlaceholder">restorePlaceholder</a></li><li><a href="global.html#saveEdit">saveEdit</a></li><li><a href="global.html#searchCards">searchCards</a></li><li><a href="global.html#searchInput">searchInput</a></li><li><a href="global.html#selectCategory">selectCategory</a></li><li><a href="global.html#setMinDate">setMinDate</a></li><li><a href="global.html#setupCheckboxListeners">setupCheckboxListeners</a></li><li><a href="global.html#setupEventListeners">setupEventListeners</a></li><li><a href="global.html#showIcons">showIcons</a></li><li><a href="global.html#showSubTaskCount1">showSubTaskCount1</a></li><li><a href="global.html#showSuccessPopup">showSuccessPopup</a></li><li><a href="global.html#showSumOfAllBoardTasks">showSumOfAllBoardTasks</a></li><li><a href="global.html#showSumOfDone">showSumOfDone</a></li><li><a href="global.html#showSumOfFeedback">showSumOfFeedback</a></li><li><a href="global.html#showSumOfProgress">showSumOfProgress</a></li><li><a href="global.html#showSumOfTodos">showSumOfTodos</a></li><li><a href="global.html#showSumOfUrgent">showSumOfUrgent</a></li><li><a href="global.html#startBoard">startBoard</a></li><li><a href="global.html#startDragging">startDragging</a></li><li><a href="global.html#subTaskIsChecked">subTaskIsChecked</a></li><li><a href="global.html#toggleCheckbox">toggleCheckbox</a></li><li><a href="global.html#toggleDropdown">toggleDropdown</a></li><li><a href="global.html#total">total</a></li><li><a href="global.html#updateBar">updateBar</a></li><li><a href="global.html#updateDropdownContentState">updateDropdownContentState</a></li><li><a href="global.html#updateHTML">updateHTML</a></li><li><a href="global.html#updateSelectedInitials">updateSelectedInitials</a></li><li><a href="global.html#updateUserName">updateUserName</a></li><li><a href="global.html#validateForm">validateForm</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Mon Jul 01 2024 08:47:35 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

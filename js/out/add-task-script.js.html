@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: add-task-script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: add-task-script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let BASE = "https://join-2c971-default-rtdb.europe-west1.firebasedatabase.app/";
+let CONTACT_PATH = "/contacts";
+let TASK_PATH = "/tasks";
+let contactsData = {};
+let currentBoardStatus = "todo";
+let isInitialized = false;
+
+
+function setBoardStatus(boardStatus) {
+    currentBoardStatus = boardStatus;
+}
+
+/**
+ * Initializes the application by fetching contacts and setting up event listeners.
+ */
+function initializeApp(boardStatus) {
+    if (isInitialized) return;
+    isInitialized = true;
+    fetchContacts();
+    setupEventListeners();
+    setMinDate();
+    setBoardStatus(boardStatus);
+}
+
+/**
+ * Sets up event listeners for the form submission, checkbox changes, and window click events.
+ */
+function setupEventListeners() {
+    document.querySelectorAll('.dropdown-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', updateSelectedInitials);
+    });
+    window.onclick = closeDropdownOnClickOutside;
+}
+
+/**
+ * Handles the form submission event.
+ * @param {Event} event - The form submission event.
+ */
+function handleFormSubmit(event) {
+    event.preventDefault();
+    if (validateForm()) {
+        createTask();
+    }
+}
+
+/**
+ * Validates the form by checking if a category is selected.
+ * @returns {boolean} - True if the form is valid, false otherwise.
+ */
+function validateForm() {
+    let dropdownButton = document.getElementById("dropdownCategoryButton");
+    let selectedCategory = dropdownButton.getAttribute("data-selected");
+    let requiredText = document.getElementById("required-text");
+
+    let isValid = !!selectedCategory;
+    if (!isValid) {
+        dropdownButton.parentElement.classList.add("invalid");
+        requiredText.style.display = "unset";
+    } else {
+        dropdownButton.parentElement.classList.remove("invalid");
+        requiredText.style.display = "none";
+    }
+    return isValid;
+}
+
+/**
+ * Clears the form by resetting all inputs and selected values.
+ */
+function clearForm() {
+    document.querySelector(".form-body").reset();
+    document.getElementById("selected-initials").innerHTML = '';
+    document.getElementById("textList").innerHTML = '';
+    resetCategoryDropdown();
+}
+
+/**
+ * Resets the category dropdown to its default state.
+ */
+function resetCategoryDropdown() {
+    let dropdownButton = document.getElementById("dropdownCategoryButton");
+    dropdownButton.innerHTML = "Select a category";
+    dropdownButton.removeAttribute("data-selected");
+}
+
+/**
+ * Creates a new task by gathering form data and posting it to the server.
+ */
+function createTask() {
+    let newTask = {
+        title: getInputValue("title"),
+        description: getInputValue("description"),
+        dueDate: getInputValue("date"),
+        priority: getCheckedRadioButton("priority"),
+        category: getAttributeValue("dropdownCategoryButton", "data-selected"),
+        assignment: getAssignedContacts(),
+        subtasks: getSubtasks(),
+        board: currentBoardStatus
+    };
+
+    postTask(newTask)
+        .then(() => {
+            clearForm();
+            showSuccessPopup();
+        });
+}
+
+/**
+ * Shows the success popup.
+ */
+function showSuccessPopup() {
+    let popup = document.getElementById("addtask-success-popup");
+    popup.style.display = "block";
+    popup.style.animation = "slide-up 0.5s forwards"; // Apply the slide-up animation
+
+    setTimeout(() => {
+        popup.style.display = "none";
+        window.location.href = 'board.html';
+    }, 2000); // Hide the popup after 2 seconds
+}
+
+
+/**
+ * Gets the value of an input field by its ID.
+ * @param {string} elementId - The ID of the input element.
+ * @returns {string} - The value of the input field.
+ */
+function getInputValue(elementId) {
+    return document.getElementById(elementId).value;
+}
+
+/**
+ * Gets the ID of the selected radio button within a named group.
+ * @param {string} name - The name of the radio button group.
+ * @returns {string} - The ID of the selected radio button.
+ */
+function getCheckedRadioButton(name) {
+    return document.querySelector(`input[name="${name}"]:checked`).id;
+}
+
+/**
+ * Gets the value of a specified attribute from an element by its ID.
+ * @param {string} elementId - The ID of the element.
+ * @param {string} attribute - The attribute to retrieve.
+ * @returns {string} - The value of the specified attribute.
+ */
+function getAttributeValue(elementId, attribute) {
+    return document.getElementById(elementId).getAttribute(attribute);
+}
+
+/**
+ * Retrieves a list of assigned contacts based on checked checkboxes.
+ * @returns {Array} - An array of assigned contact objects.
+ */
+function getAssignedContacts() {
+    let assignedContacts = [];
+    document.querySelectorAll('.dropdown-checkbox:checked').forEach(checkbox => {
+        let contactId = checkbox.getAttribute('data-id');
+        assignedContacts.push(contactId);
+    });
+    return assignedContacts;
+}
+
+/**
+ * Retrieves a list of subtasks from the task list and adds a checked field to each subtask.
+ * @returns {Array} - An array of subtask objects with a checken field set to false.
+ */
+function getSubtasks() {
+    let subtasks = [];
+    document.querySelectorAll('#textList li').forEach(subtask => {
+        let subtaskText = subtask.innerText.trim();
+        subtasks.push({ text: subtaskText, checked: false });
+    });
+    return subtasks;
+}
+
+
+/**
+ * Posts a new task to the server.
+ * @param {Object} task - The task object to be posted.
+ * @returns {Promise} - A promise that resolves to the server response.
+ */
+async function postTask(task) {
+    let response = await fetch(`${BASE}${TASK_PATH}.json`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(task)
+    });
+    return await response.json();
+}
+
+/**
+ * Fetches contacts from the server and renders them in the dropdown.
+ */
+function fetchContacts() {
+    fetch(`${BASE}${CONTACT_PATH}.json`)
+        .then(response => response.json())
+        .then(data => {
+            contactsData = data;
+            renderContacts(data);
+        })
+        .catch(error => console.error('Error fetching contacts:', error));
+}
+
+/**
+ * Renders contacts in the dropdown.
+ * @param {Object} contacts - The contacts object fetched from the server.
+ */
+function renderContacts(contacts) {
+    let dropdownContent = document.getElementById('dropdownContent');
+    dropdownContent.innerHTML = '';
+    for (let key in contacts) {
+        if (contacts.hasOwnProperty(key)) {
+            let contact = contacts[key];
+            let contactItem = createContactItem(contact, key);
+            dropdownContent.innerHTML += contactItem;
+        }
+    }
+    setupCheckboxListeners();
+}
+
+
+/**
+ * Sets up event listeners for the checkboxes in the dropdown.
+ */
+function setupCheckboxListeners() {
+    document.querySelectorAll('.dropdown-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', updateSelectedInitials);
+    });
+}
+
+/**
+ * Updates the display of selected initials based on checked checkboxes.
+ */
+function updateSelectedInitials() {
+    let selectedInitialsContainer = document.getElementById('selected-initials');
+    selectedInitialsContainer.innerHTML = '';
+    document.querySelectorAll('.dropdown-checkbox:checked').forEach(checkbox => {
+        let initials = checkbox.getAttribute('data-initials');
+        let bgColor = checkbox.getAttribute('data-bgcolor');
+        let initialsDiv = document.createElement('div');
+        initialsDiv.className = 'selected-initials-item';
+        initialsDiv.innerText = initials;
+        initialsDiv.style.backgroundColor = bgColor;
+        selectedInitialsContainer.appendChild(initialsDiv);
+    });
+}
+
+/**
+ * Toggles the visibility of a dropdown menu.
+ * @param {string} dropdownId - The ID of the dropdown element.
+ */
+function toggleDropdown(dropdownId) {
+    let dropdown = document.getElementById(dropdownId);
+    let formFields = document.querySelector('.form-fields');
+    let tolOverlayContent = document.querySelector('.tol-overlay-content');
+    let formFooter = document.querySelector('.form-footer');
+
+    if (dropdown.classList.contains("show")) {
+        dropdown.classList.remove("show");
+        formFields.style.paddingBottom = "";
+        tolOverlayContent.style.height = "80%"
+        formFooter.style.bottom = "10vh"
+    } else {
+        dropdown.classList.add("show");
+        formFields.style.paddingBottom = "250px";
+        tolOverlayContent.style.height = "95%"
+        formFooter.style.bottom = "2.5vh"
+    }
+}
+
+
+/**
+ * Selects a category and updates the category button.
+ * @param {string} category - The selected category.
+ */
+function selectCategory(category) {
+    let dropdownButton = document.getElementById("dropdownCategoryButton");
+    dropdownButton.innerHTML = category;
+    dropdownButton.setAttribute("data-selected", category);
+    document.getElementById("dropdownCategoryContent").classList.remove("show");
+    validateForm();
+}
+
+/**
+ * Filters the items in a dropdown menu based on the input value.
+ * @param {string} dropdownContentId - The ID of the dropdown content element.
+ */
+function filterDropdown(dropdownContentId) {
+    let input = document.getElementById("dropdown");
+    let filter = input.value.toLowerCase();
+    let div = document.getElementById(dropdownContentId);
+    let a = div.getElementsByTagName("a");
+    for (let i = 0; i &lt; a.length; i++) {
+        let txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toLowerCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+
+/**
+ * Shows the icons for adding, clearing, and confirming subtasks.
+ */
+function showIcons() {
+    document.getElementById("plus-icon").classList.add("hidden");
+    document.getElementById("x-icon").classList.remove("hidden");
+    document.getElementById("tick-icon").classList.remove("hidden");
+}
+
+/**
+ * Hides the icons if the subtask input is empty.
+ */
+function hideIconsIfEmpty() {
+    let input = document.getElementById("subtask-input");
+    if (input.value === "") {
+        document.getElementById("plus-icon").classList.remove("hidden");
+        document.getElementById("x-icon").classList.add("hidden");
+        document.getElementById("tick-icon").classList.add("hidden");
+    }
+}
+
+/**
+ * Focuses the subtask input field.
+ */
+function focusInput() {
+    document.getElementById("subtask-input").focus();
+}
+
+/**
+ * Clears the subtask input field and focuses it.
+ */
+function clearInput() {
+    let input = document.getElementById("subtask-input");
+    input.value = "";
+    input.focus();
+}
+
+/**
+ * Displays the entered subtask in the subtask list.
+ */
+function displayText() {
+    let input = document.getElementById("subtask-input");
+    if (input.value !== "") {
+        let textList = document.getElementById("textList");
+        let newItem = createSubtaskItem(input.value);
+        textList.appendChild(newItem);
+        input.value = "";
+        hideIconsIfEmpty();
+    }
+}
+
+/**
+ * Edits a subtask item.
+ * @param {HTMLElement} element - The edit icon element.
+ */
+function editItem(element) {
+    let listItem = element.closest('li');
+    let currentText = listItem.querySelector('.item-text').textContent.trim();
+    listItem.innerHTML = createEditItemHTML(currentText);
+    listItem.querySelector('.edit-input').focus();
+}
+
+/**
+ * Saves the edited subtask item.
+ * @param {HTMLElement} element - The input element containing the new text.
+ */
+function saveEdit(element) {
+    let listItem = element.closest('li');
+    let newText = element.value;
+    listItem.innerHTML = createSubtaskItemHTML(newText);
+}
+
+/**
+ * Removes a subtask item.
+ * @param {HTMLElement} element - The delete icon element.
+ */
+function removeItem(element) {
+    element.closest('li').remove();
+}
+
+/**
+ * Closes any open dropdowns when clicking outside of them.
+ * @param {Event} event - The window click event.
+ */
+function closeDropdownOnClickOutside(event) {
+    if (!event.target.matches('.dropbtn') &amp;&amp; !event.target.closest('.dropdown-content')) {
+        let dropdowns = document.getElementsByClassName("dropdown-content");
+        for (let i = 0; i &lt; dropdowns.length; i++) {
+            let openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+
+/**
+* Sets the minimum date for the date picker to today's date.
+*/
+function setMinDate() {
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = (today.getMonth() + 1).toString().padStart(2, '0');
+    let day = today.getDate().toString().padStart(2, '0');
+    let todayString = `${year}-${month}-${day}`;
+
+    document.getElementById("date").setAttribute("min", todayString);
+}
+
+/**
+ * Removes the placeholder text when the input is focused.
+ */
+function removePlaceholder() {
+    let input = document.getElementById('dropdown');
+    input.setAttribute('data-placeholder', input.getAttribute('placeholder'));
+    input.setAttribute('placeholder', '');
+}
+
+/**
+ * Restores the placeholder text when the input loses focus.
+ */
+function restorePlaceholder() {
+    let input = document.getElementById('dropdown');
+    if (input.value === '') {
+        input.setAttribute('placeholder', input.getAttribute('data-placeholder'));
+    }
+}
+
+/**
+ * Toggles the checkbox when the containing div is clicked.
+ * @param {Event} event - The click event.
+ * @param {string} key - The key of the contact.
+ */
+function toggleCheckbox(event, key) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    let checkbox = event.currentTarget.querySelector(`input[data-id='${key}']`);
+    let customCheckbox = event.currentTarget.querySelector(`.custom-checkbox[data-id='${key}']`);
+
+    checkbox.checked = !checkbox.checked;
+    if (checkbox.checked) {
+        customCheckbox.classList.add('checked');
+    } else {
+        customCheckbox.classList.remove('checked');
+    }
+
+    let parentA = event.currentTarget.closest('.dropdown-link');
+
+    if (checkbox.checked) {
+        parentA.classList.add('checked');
+    } else {
+        parentA.classList.remove('checked');
+    }
+
+    updateSelectedInitials();
+}
+
+/**
+ * Updates the dropdown content background based on the state of checkboxes.
+ */
+function updateDropdownContentState() {
+    let dropdownContent = document.getElementById('dropdownContent');
+    let anyChecked = Array.from(dropdownContent.querySelectorAll('.dropdown-checkbox')).some(checkbox => checkbox.checked);
+    
+    if (anyChecked) {
+        dropdownContent.classList.add('checked');
+    } else {
+        dropdownContent.classList.remove('checked');
+    }
+}
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addDone">addDone</a></li><li><a href="global.html#addFeedback">addFeedback</a></li><li><a href="global.html#addProgress">addProgress</a></li><li><a href="global.html#addTodo">addTodo</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#clearForm">clearForm</a></li><li><a href="global.html#clearInput">clearInput</a></li><li><a href="global.html#closeDropdownOnClickOutside">closeDropdownOnClickOutside</a></li><li><a href="global.html#createContactItem">createContactItem</a></li><li><a href="global.html#createEditItemHTML">createEditItemHTML</a></li><li><a href="global.html#createSubtaskItem">createSubtaskItem</a></li><li><a href="global.html#createSubtaskItemHTML">createSubtaskItemHTML</a></li><li><a href="global.html#createTask">createTask</a></li><li><a href="global.html#currentDraggedElement">currentDraggedElement</a></li><li><a href="global.html#delTaskInDb">delTaskInDb</a></li><li><a href="global.html#displayCurrentDate">displayCurrentDate</a></li><li><a href="global.html#displayHelloDayTime">displayHelloDayTime</a></li><li><a href="global.html#displayNearestDeadline">displayNearestDeadline</a></li><li><a href="global.html#displayText">displayText</a></li><li><a href="global.html#editItem">editItem</a></li><li><a href="global.html#fetchContacts">fetchContacts</a></li><li><a href="global.html#filterDropdown">filterDropdown</a></li><li><a href="global.html#focusInput">focusInput</a></li><li><a href="global.html#generateContactBadge">generateContactBadge</a></li><li><a href="global.html#getAssignedContacts">getAssignedContacts</a></li><li><a href="global.html#getAssignedContactsHtml">getAssignedContactsHtml</a></li><li><a href="global.html#getAttributeValue">getAttributeValue</a></li><li><a href="global.html#getCheckedRadioButton">getCheckedRadioButton</a></li><li><a href="global.html#getInitials">getInitials</a></li><li><a href="global.html#getInputValue">getInputValue</a></li><li><a href="global.html#getSubtasks">getSubtasks</a></li><li><a href="global.html#handleFormSubmit">handleFormSubmit</a></li><li><a href="global.html#hideIconsIfEmpty">hideIconsIfEmpty</a></li><li><a href="global.html#initializeApp">initializeApp</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#postTask">postTask</a></li><li><a href="global.html#referUrlBoard">referUrlBoard</a></li><li><a href="global.html#removeItem">removeItem</a></li><li><a href="global.html#removePlaceholder">removePlaceholder</a></li><li><a href="global.html#renderContacts">renderContacts</a></li><li><a href="global.html#renderEmptyRow">renderEmptyRow</a></li><li><a href="global.html#renderLive">renderLive</a></li><li><a href="global.html#resetCategoryDropdown">resetCategoryDropdown</a></li><li><a href="global.html#restorePlaceholder">restorePlaceholder</a></li><li><a href="global.html#saveEdit">saveEdit</a></li><li><a href="global.html#searchCards">searchCards</a></li><li><a href="global.html#searchInput">searchInput</a></li><li><a href="global.html#selectCategory">selectCategory</a></li><li><a href="global.html#setMinDate">setMinDate</a></li><li><a href="global.html#setupCheckboxListeners">setupCheckboxListeners</a></li><li><a href="global.html#setupEventListeners">setupEventListeners</a></li><li><a href="global.html#showIcons">showIcons</a></li><li><a href="global.html#showSubTaskCount1">showSubTaskCount1</a></li><li><a href="global.html#showSuccessPopup">showSuccessPopup</a></li><li><a href="global.html#showSumOfAllBoardTasks">showSumOfAllBoardTasks</a></li><li><a href="global.html#showSumOfDone">showSumOfDone</a></li><li><a href="global.html#showSumOfFeedback">showSumOfFeedback</a></li><li><a href="global.html#showSumOfProgress">showSumOfProgress</a></li><li><a href="global.html#showSumOfTodos">showSumOfTodos</a></li><li><a href="global.html#showSumOfUrgent">showSumOfUrgent</a></li><li><a href="global.html#startBoard">startBoard</a></li><li><a href="global.html#startDragging">startDragging</a></li><li><a href="global.html#subTaskIsChecked">subTaskIsChecked</a></li><li><a href="global.html#toggleCheckbox">toggleCheckbox</a></li><li><a href="global.html#toggleDropdown">toggleDropdown</a></li><li><a href="global.html#total">total</a></li><li><a href="global.html#updateBar">updateBar</a></li><li><a href="global.html#updateDropdownContentState">updateDropdownContentState</a></li><li><a href="global.html#updateHTML">updateHTML</a></li><li><a href="global.html#updateSelectedInitials">updateSelectedInitials</a></li><li><a href="global.html#updateUserName">updateUserName</a></li><li><a href="global.html#validateForm">validateForm</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Mon Jul 01 2024 08:47:35 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
