@@ -95,7 +95,7 @@ async function loadTasksData(path) {
     if (data) {
       taskList = Object.entries(data);
       // startBoard(taskList);
-      updateHTML(taskList);
+      updateHTML();
       // console.log('task-list: ', taskList); - CHECK
     }
   } catch (error) {

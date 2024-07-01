@@ -62,6 +62,7 @@ function updateHTML() {
  */
 function addTodo() {
   let todo = taskList.filter(t => t[1]['board'] == 'todo');
+  console.log('START addTodo() - todo: ',todo);
   document.querySelector('#column-1').innerHTML = '';
   for (let i = 0; i < todo.length; i++) {
       const task = todo[i];
@@ -174,6 +175,42 @@ function allowDrop(ev) {
  * This function moves a task from one category to another, needed for Drag-n-Drop
  * @param {string} param - name of specific category of task, i.e. todo or done 
  */
+// WORKING moveTO()
+// function moveTo(category) {
+//   const draggedTaskId = [];
+//   let parts = currentDraggedElement.split('-');
+//   let type1 = parts[0];
+//   let place1 = parseInt(parts[1], 10); 
+//   let tasks = taskList.filter(t => t[1]['board'] == type1);
+//   for (let i = 0; i < tasks.length; i++) {
+//     draggedTaskId.push(tasks[i][0]); 
+//   }
+//   if (tasks[place1]) { 
+//     tasks[place1][1]['board'] = category;
+//     console.log('board has changed!');
+//   }
+//   updateHTML();
+//   //showDataEnd();
+// }  
+
+// Function to update task in Firebase
+async function updateTaskInFirebase(taskId, updatedData) {
+  const url = `${BASE_URL}/tasks/${taskId}.json`; // Construct the URL
+  const response = await fetch(url, {
+    method: 'PATCH', // Use PATCH to update only the specified fields
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updatedData)
+  });
+
+  if (!response.ok) {
+    console.error('Failed to update task in Firebase:', response.statusText);
+  } else {
+    console.log('Task updated successfully in Firebase');
+  }
+}
+
 function moveTo(category) {
   const draggedTaskId = [];
   let parts = currentDraggedElement.split('-');
@@ -181,15 +218,23 @@ function moveTo(category) {
   let place1 = parseInt(parts[1], 10); 
   let tasks = taskList.filter(t => t[1]['board'] == type1);
   for (let i = 0; i < tasks.length; i++) {
-    draggedTaskId.push(tasks[i][0]); 
+    draggedTaskId.push(tasks[i][0]); // Assuming tasks[i][0] is the ID of the task
   }
-  if (tasks[place1]) { 
+  
+  if (tasks[place1]) {
     tasks[place1][1]['board'] = category;
     console.log('board has changed!');
+
+    // Update the task in Firebase
+    const taskId = draggedTaskId[place1];
+    const updatedData = { board: category };
+    updateTaskInFirebase(taskId, updatedData);
   }
+  
   updateHTML();
   //showDataEnd();
-}  
+}
+
 //#endregion
 
 //#region SUBTASK-COUNT
