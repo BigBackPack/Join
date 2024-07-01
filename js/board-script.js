@@ -176,7 +176,7 @@ function dropHandler(event) {
  */
 function moveTo(type, place) {
   console.log('moveTo triggered!');
-  console.log('moveTo() - type, place: ', type, place);
+  console.log('moveTo() - type, place: ', type, place); //column-name ; -id(number)
   let tasks = taskList.filter(t => t[1]['board'] == type);
   console.log('var tasks - moveTo(): ',tasks[place]);
   if (tasks[place]) {

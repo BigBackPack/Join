@@ -167,6 +167,11 @@ p {
   color: var(--blue);
   font-weight: 700;
   font-size: 64px;
+  margin-left: -202px;
+}
+
+.urgent-txt-gap {
+  margin-top: -30px;
 }
 
 /* TILES OVERVIEW */
