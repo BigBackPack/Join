@@ -26,9 +26,9 @@ function renderLiveOverlayCardToDo(tasks,i) {
   let todoTasks = taskList.filter(t=> t[1]['board'] == 'todo');
   tasks = todoTasks;
 
-  console.log('start - renderLiverOverlayTodo: ',tasks);
+  //console.log('start - renderLiverOverlayTodo: ',tasks);
   let subTaskId = tasks[i][1]['subtasks'];
-  console.log('subTaskId: ',subTaskId);
+  //console.log('subTaskId: ',subTaskId);
   // let subtasksHtml = tasks[i][1]['subtasks'].map(subtasks => {
   let subtasksHtml = todoTasks[i][1]['subtasks'].map((subtasks, subIndex) => {
     return `

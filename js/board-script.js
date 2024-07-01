@@ -62,7 +62,6 @@ function updateHTML() {
  */
 function addTodo() {
   let todo = taskList.filter(t => t[1]['board'] == 'todo');
-  console.log('START addTodo() - todo: ',todo);
   document.querySelector('#column-1').innerHTML = '';
   for (let i = 0; i < todo.length; i++) {
       const task = todo[i];
@@ -165,16 +164,6 @@ function allowDrop(ev) {
   ev.preventDefault();
 }
 
-// function dropHandler(event) {
-//   event.preventDefault();
-//   // Call moveTo with the stored type and place
-//   moveTo(type, place);
-// }
-
-/**
- * This function moves a task from one category to another, needed for Drag-n-Drop
- * @param {string} param - name of specific category of task, i.e. todo or done 
- */
 // WORKING moveTO()
 // function moveTo(category) {
 //   const draggedTaskId = [];
@@ -193,17 +182,21 @@ function allowDrop(ev) {
 //   //showDataEnd();
 // }  
 
-// Function to update task in Firebase
+/**
+ * This function updates a task in the Firebase
+ * @param {*} taskId - id of specific task
+ * @param {*} updatedData - data to be updated
+ */
 async function updateTaskInFirebase(taskId, updatedData) {
-  const url = `${BASE_URL}/tasks/${taskId}.json`; // Construct the URL
+  const url = `${BASE_URL}tasks/${taskId}.json`; 
+  //console.log('DnD - url: ', url);
   const response = await fetch(url, {
-    method: 'PATCH', // Use PATCH to update only the specified fields
+    method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(updatedData)
   });
-
   if (!response.ok) {
     console.error('Failed to update task in Firebase:', response.statusText);
   } else {
@@ -211,6 +204,10 @@ async function updateTaskInFirebase(taskId, updatedData) {
   }
 }
 
+/**
+ * This function moves a task from one category to another, needed for Drag-n-Drop
+ * @param {string} param - name of specific category of task, i.e. todo or done 
+ */
 function moveTo(category) {
   const draggedTaskId = [];
   let parts = currentDraggedElement.split('-');
@@ -218,14 +215,13 @@ function moveTo(category) {
   let place1 = parseInt(parts[1], 10); 
   let tasks = taskList.filter(t => t[1]['board'] == type1);
   for (let i = 0; i < tasks.length; i++) {
-    draggedTaskId.push(tasks[i][0]); // Assuming tasks[i][0] is the ID of the task
+    draggedTaskId.push(tasks[i][0]);
   }
   
   if (tasks[place1]) {
     tasks[place1][1]['board'] = category;
     console.log('board has changed!');
 
-    // Update the task in Firebase
     const taskId = draggedTaskId[place1];
     const updatedData = { board: category };
     updateTaskInFirebase(taskId, updatedData);
@@ -256,19 +252,98 @@ function showSubTaskCount1(sumTotal) {
 }
 
 /**
- * This function checks if the subtask is checked or not
- * @param {string} param - specific category of task, i.e. todo or done
- * @param {number} subQty - total amount of subtasks 
+ * This function updates a subtask in the Firebase
+ * @param {*} taskId - id of specific task
+ * @param {*} subTaskIndex - id of specific subtask
+ * @param {*} updatedData - data to be updated
+ */
+async function updateSubTaskInFirebase(task, subQty, index, updatedData) {
+  console.log('subQ and Index: ',subQty, index); // number, whole subT
+  console.log('Task ID:', task);
+  console.log('Subtask Quantity:', subQty);
+  const url = `${BASE_URL}tasks/${task}/1/subtasks/${subQty}.json`;
+  console.log('Constructed URL:', url);
+  console.log('SubCount - url: ', url);
+  const response = await fetch(url, {
+    method: 'PATCH', 
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updatedData)
+  });
+
+  if (!response.ok) {
+    console.error('Failed to update subtask in Firebase:', response.statusText);
+  } else {
+    console.log('Subtask updated successfully in Firebase');
+  }
+}
+
+/**
+ * This function checks if a subtask is checked
+ * @param {*} type - is checkbox on subtask checked or not 
+ * @param {*} param - specific category of task, i.e. todo or done
+ * @param {*} subQty - total amount of subtasks
+ * @param {*} index - index of specific task
  */
 function subTaskIsChecked(type, param, subQty, index) {
-  // console.log('param type: ',type);
-  // console.log('start subTaskCheck: param subInd: ',subIndex);
   let showSubQty = document.querySelector(`.subtask-checked-${type}-${index}`);
   showSubQty.innerHTML = param;
-  // path - taskList[0][1]['subtasks'][0]['checked']
+  console.log('index: ',index); //0 - ?
+  console.log('param: ',param); //overall qty
+  console.log('type: ',type); //todo, done
+  console.log('subQty: ',subQty); //index, kinda
+  let taskStart = taskList.filter(t => t[1]['board'] == type);
+  console.log('taskStart: ', taskStart);
 
-  //updateHTML();
+  // Find the task in taskList using the type and index
+  let task1 = taskList[index]; // the whole task
+  console.log('task from subTaskIsChecked: ', task1[1]['subtasks'][index]);
+  if (task1[1]['subtasks'][subQty]['checked'] == false ) {
+    const updatedData = { checked: 'true' };
+    updateSubTaskInFirebase(task1, subQty, index, updatedData);
+    // updateSubTaskInFirebase(type, subQty, index, updatedData);
+  }
+  
+ 
+  // Update the HTML
+  updateHTML();
 }
+
+// another idea
+// function subTaskIsChecked(type, param, subQty, index) {
+//   let showSubQty = document.querySelector(`.subtask-checked-${type}-${index}`);
+//   showSubQty.innerHTML = param;
+
+//   let task = taskList[index];
+
+//   if (task && task[1].board === type) {
+//     if (task[1].subtasks && task[1].subtasks[subQty]) {
+
+//       const taskId = task[0]; 
+//       const updatedData = { checked: param === 'true' }; 
+//       updateSubTaskInFirebase(taskId, subQty, updatedData);
+//     } else {
+//       console.error('Subtask not found.');
+//     }
+//   } else {
+//     console.error('Task not found and/or mismatch.');
+//   }
+
+//   updateHTML();
+// }
+
+// my function
+// function subTaskIsChecked(type, param, subQty, index) {
+//   // console.log('param type: ',type);
+//   // console.log('start subTaskCheck: param subInd: ',subIndex);
+//   let showSubQty = document.querySelector(`.subtask-checked-${type}-${index}`);
+//   showSubQty.innerHTML = param;
+//   // path - taskList[0][1]['subtasks'][0]['checked']
+//   updateSubTaskInFirebase(taskId, subQty, updatedData);
+
+//   //updateHTML();
+// }
 //#endregion
 
 //#region PROGRESS-BAR
