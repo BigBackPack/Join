@@ -39,8 +39,9 @@ function createEditItemHTML(currentText) {
  * @param {string} text - The text of the subtask item.
  * @returns {string} - The HTML string for the subtask item.
  */
-function createSubtaskItemHTML(text) {
+function createSubtaskItemHTML(text, checked = false) {
     return `
+        <input type="checkbox" class="subtask-checkbox" ${checked ? 'checked' : ''} style="display: none;">
         <span class="item-text">${text}</span>
         <div class="feature-icons">
             <span class="edit-icon" onclick="editItem(this)"><img src="/img/edit_icon.svg"></span>
@@ -49,6 +50,7 @@ function createSubtaskItemHTML(text) {
         </div>
     `;
 }
+
 
 /**
  * Creates a contact item element for the dropdown.

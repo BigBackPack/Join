@@ -273,13 +273,11 @@ async function updateTask() {
     let taskId = currentTask.taskId;
     let taskRef = `${BASE_URL}/tasks/${taskId}.json`;
 
-    // Holen des aktuellen Zustands der Subtasks aus currentTask
-    let subtasks = currentTask.task.subtasks.map((subtask, index) => {
-        let item = document.querySelectorAll('#textList li')[index];
-        return {
-            text: item ? item.textContent : subtask.text, // Beibehaltung des Textes oder Aktualisierung falls geändert
-            checked: subtask.checked // Beibehaltung des aktuellen Zustands
-        };
+    // Sammeln der aktuellen Subtasks aus dem Bearbeitungsformular
+    let subtasks = Array.from(document.querySelectorAll('#textList li')).map((item, index) => {
+        let text = item.querySelector('.item-text').textContent;
+        let checked = item.querySelector('.subtask-checkbox') ? item.querySelector('.subtask-checkbox').checked : false;
+        return { text: text, checked: checked };
     });
 
     let updatedTask = {

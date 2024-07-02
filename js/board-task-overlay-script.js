@@ -88,9 +88,12 @@ function fillTaskOverlayForm(task, isEditMode) {
     updateSelectedInitials();
 
     // Setze die Subtasks
+    let subtasksContainer = document.getElementById('textList');
+    subtasksContainer.innerHTML = '';
     task.subtasks.forEach(subtask => {
-        let newItem = createSubtaskItem(subtask.text);
-        document.getElementById('textList').appendChild(newItem);
+        let newItem = document.createElement('li');
+        newItem.innerHTML = createSubtaskItemHTML(subtask.text, subtask.checked);
+        subtasksContainer.appendChild(newItem);
     });
 
     // Anpassungen für den Edit-Modus
