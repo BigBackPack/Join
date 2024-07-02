@@ -83,8 +83,6 @@ function fillTaskOverlayForm(task, isEditMode) {
             }
         });
     }
-    // Aktualisiere die Checkboxen im Dropdown
-    updateDropdownCheckboxes(task.assignment);
 
     // Aktualisiere die Anzeige der ausgewählten Initialen
     updateSelectedInitials();
@@ -107,7 +105,8 @@ function fillTaskOverlayForm(task, isEditMode) {
         document.querySelector('.tol-header').style.justifyContent = 'flex-end';
         document.querySelector('.ok-button').style.display = 'flex';
     }
-    
+    // Aktualisiere die Checkboxen im Dropdown
+    updateDropdownCheckboxes(task.assignment);
 }
 
 

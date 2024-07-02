@@ -1,15 +1,36 @@
+:root {
+    --mainColor: #2A3647;
+    --mainColorInactive: #2a36475b;
+    --mainColorHover: #4f6481;
+    --mainColorSelect: #091931;
+
+    --secondaryColor: #29ABE2;
+
+    --bgColor: #F6F7F8;
+    --overlayBgColor: #000000e0;
+    --borderColor: #D1D1D1;
+
+    --white: #ffffff;
+    --black: #000000;
+
+    --red: #FF3D00;
+    --orange: #FFA800;
+    --green: #7AE229;
+
+    --dropShadowColor: #00000036;
+
+}
+
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    background-color: var(--bgColor);
 }
 
 .board-header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #f1f1f1;
-    border-bottom: 1px solid #ccc;
     padding-top: 150px;
 }
 
@@ -23,26 +44,26 @@ body {
     gap: 10px;
 }
 
-#board-search-input {
-    padding: 5px;
-    font-size: 16px;
-}
-
-#board-add-task-button {
-    padding: 5px 10px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
 .board-main-container {
     display: flex;
     gap: 10px;
     padding: 10px;
 }
 
+.add-task-plus{
+    border: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 .board-section-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-bottom: 20px;
     padding-top: 20px;
 }
@@ -60,7 +81,7 @@ body {
 }
 
 .board-task-card {
-    background-color: rgb(241, 241, 241);
+    background-color: var(--white);
     padding: 10px;
     border-radius: 15px;
     cursor: grab;
