@@ -197,15 +197,14 @@ function showOverlay(task, taskId, contacts) {
         <p>Due: ${task.dueDate}</p>
         <p>Priority: ${task.priority}</p>
         <div class="board-contacts">${createContactInitials(task.assignment, contacts)}</div>
-        <div class="board-subtasks">
-            ${subtasksHTML}
-        </div>
+        <div class="board-subtasks">${subtasksHTML}</div>
+        <div class="board-card-overlay-footer"> <p>delete</p> <p onclick="openAndFillTaskOverlay(${escapeTaskData(task)}, true)">edit</p> </div>
     `;
 
     overlay.style.display = 'block';
 }
 
-function closeOverlay() {
+function closeCardOverlay() {
     let overlay = document.getElementById('board-card-overlay');
     overlay.style.display = 'none';
     loadTasksAndContacts();

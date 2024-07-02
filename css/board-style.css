@@ -143,3 +143,13 @@ body {
     font-size: 30px;
     cursor: pointer;
 }
+
+.board-card-overlay-footer{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.board-card-overlay-footer p{
+    cursor: pointer;
+}

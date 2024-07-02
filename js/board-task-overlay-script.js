@@ -47,6 +47,7 @@ function closeAddTaskOverlay() {
  * @param {*} isEditMode 
  */
 async function openAndFillTaskOverlay(task, isEditMode = false) {
+    closeCardOverlay();
     await openAddTaskOverlay();
     setTimeout(() => fillTaskOverlayForm(task, isEditMode), 500);
 }
