@@ -14,8 +14,7 @@ function setBoardStatus(boardStatus) {
  * Initializes the application by fetching contacts and setting up event listeners.
  */
 function initializeApp(boardStatus) {
-    if (isInitialized) return;
-    isInitialized = true;
+    
     fetchContacts();
     setupEventListeners();
     setMinDate();

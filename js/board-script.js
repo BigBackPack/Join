@@ -2,6 +2,7 @@ let BASE_URL = "https://join-2c971-default-rtdb.europe-west1.firebasedatabase.ap
 let TASK = "/tasks.json";
 let CONTACT = "/contacts.json";
 let allTasks = {};
+let currentTask = null;
 
 document.addEventListener("DOMContentLoaded", function () {
     loadTasksAndContacts();
@@ -198,10 +199,12 @@ function showOverlay(task, taskId, contacts) {
         <p>Priority: ${task.priority}</p>
         <div class="board-contacts">${createContactInitials(task.assignment, contacts)}</div>
         <div class="board-subtasks">${subtasksHTML}</div>
-        <div class="board-card-overlay-footer"> <p>delete</p> <p onclick="openAndFillTaskOverlay(${escapeTaskData(task)}, true)">edit</p> </div>
+        <div class="board-card-overlay-footer"> <p onclick="deleteTask()">delete</p> <p onclick="openAndFillTaskOverlay(${escapeTaskData(task)}, true)">edit</p> </div>
     `;
 
+    overlay.dataset.taskId = taskId;
     overlay.style.display = 'block';
+    currentTask = { task, taskId, contacts };
 }
 
 function closeCardOverlay() {
@@ -248,4 +251,60 @@ async function filterTasks() {
     let contacts = await contactsResponse.json();
 
     displayTasks(filteredTasks, contacts);
+}
+
+async function deleteTask() {
+    let overlay = document.getElementById('board-card-overlay');
+    let taskId = overlay.dataset.taskId;
+    let taskRef = `${BASE_URL}/tasks/${taskId}.json`;
+
+    let response = await fetch(taskRef, {
+        method: 'DELETE'
+    });
+
+    if (response.ok) {
+        closeCardOverlay();
+    } else {
+        console.error("Failed to delete task");
+    }
+}
+
+async function updateTask() {
+    let taskId = currentTask.taskId;
+    let taskRef = `${BASE_URL}/tasks/${taskId}.json`;
+
+    // Holen des aktuellen Zustands der Subtasks aus currentTask
+    let subtasks = currentTask.task.subtasks.map((subtask, index) => {
+        let item = document.querySelectorAll('#textList li')[index];
+        return {
+            text: item ? item.textContent : subtask.text, // Beibehaltung des Textes oder Aktualisierung falls geändert
+            checked: subtask.checked // Beibehaltung des aktuellen Zustands
+        };
+    });
+
+    let updatedTask = {
+        title: document.getElementById('title').value,
+        description: document.getElementById('description').value,
+        dueDate: document.getElementById('date').value,
+        priority: document.querySelector('input[name="priority"]:checked').id,
+        category: document.getElementById('dropdownCategoryButton').textContent.trim(),
+        subtasks: subtasks,
+        assignment: Array.from(document.querySelectorAll('.dropdown-checkbox:checked')).map(checkbox => checkbox.dataset.id),
+        board: currentTask.task.board
+    };
+
+    let response = await fetch(taskRef, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updatedTask)
+    });
+
+    if (response.ok) {
+        closeAddTaskOverlay();
+        showOverlay(updatedTask, taskId, currentTask.contacts);
+    } else {
+        console.error("Failed to save task");
+    }
 }

@@ -49,7 +49,8 @@ function closeAddTaskOverlay() {
 async function openAndFillTaskOverlay(task, isEditMode = false) {
     closeCardOverlay();
     await openAddTaskOverlay();
-    setTimeout(() => fillTaskOverlayForm(task, isEditMode), 500);
+    setTimeout(() => fillTaskOverlayForm(task, isEditMode), 300);
+    initializeApp(currentBoardStatus);
 }
 
 /**
@@ -70,15 +71,18 @@ function fillTaskOverlayForm(task, isEditMode) {
         console.warn('Keine Checkboxen gefunden. Stellen Sie sicher, dass die Kontakt-Elemente generiert wurden.');
     }
 
-    // Setze die zugewiesenen Kontakte
-    task.assignment.forEach(contactId => {
-        let checkbox = document.querySelector(`.dropdown-checkbox[data-id="${contactId}"]`);
-        if (checkbox) {
-            checkbox.checked = true;
-        } else {
-            console.warn(`Checkbox mit data-id="${contactId}" nicht gefunden.`);
-        }
-    });
+    // Setze die zugewiesenen Kontakte, falls vorhanden
+    if (task.assignment && task.assignment.length > 0) {
+        task.assignment.forEach(contactId => {
+            let checkbox = document.querySelector(`.dropdown-checkbox[data-id="${contactId}"]`);
+            if (checkbox) {
+                checkbox.checked = true;
+                let contactInitials = checkbox.dataset.initials;
+                let contactColor = checkbox.dataset.color;
+                document.getElementById('selected-initials').innerHTML += `<div class="contact-initials" style="background-color: ${contactColor}">${contactInitials}</div>`;
+            }
+        });
+    }
 
     // Aktualisiere die Anzeige der ausgewählten Initialen
     updateSelectedInitials();
