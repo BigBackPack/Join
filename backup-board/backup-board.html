@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex">
+    <!-- css links -->
+    <link rel="stylesheet" href="../css/board/board-style.css" />
+    <link rel="stylesheet" href="../css/board/board-overlay.css">
+    <link rel="stylesheet" href="../css/board/board-task-overlay-style.css">
+    <link rel="stylesheet" href="../css/global-style.css" />
+
+    <!-- css media queries -->
+     <link rel="stylesheet" href="../css/media/board-media.css">
+     <link rel="stylesheet" href="../css/media/board-overlay-media.css">
+     <link rel="stylesheet" href="../css/media/board-task-overlay-media.css">
+    <link rel="stylesheet" href="../css/media/global-media.css"/>
+    <link rel="stylesheet" href="../css/media/template-nav-bar-media.css"/>
+    <link rel="stylesheet" href="../css/media/template-status-bar-media.css"/>
+
+    <!-- js links -->
+    <script src="../js/template-loader.js"></script>
+    <script src="../js/board-scripts/board-dummy-card.js"></script>
+    <!-- <script src="../js/board-scripts/board-dummy-overlay.js"></script> -->
+    <script src="../js/board-scripts/board-card-live.js"></script>
+    <script src="../js/board-scripts/board-ol-card.js"></script>
+    <script src="../js/board-script.js" defer ></script>
+    <script src="../js/board-scripts/board-data.js" ></script>
+
+    <!-- js links for task overlay-->
+    <script src="../js/board-scripts/board-task-overlay-script.js"></script>
+    <script src="../js/add-task-script.js"></script>
+    <script src="../js/add-task-template.js"></script>
+
+    <!-- JS for login-script -->
+    <script src="../js/check-login-status-script.js"></script>
+
+    <title>JOIN Board</title>
+    <link
+      rel="shortcut icon"
+      href="../img/fav_icon.png"
+      type="image/png"
+    />
+  </head>
+
+  <body onload="includeHTML()">
+    <div class="main-content-container">
+      <div class="left-content-container">
+        <!-- nav bar template -->
+        <div w3-include-html="templates/nav-bar-template.html"></div>
+      </div>
+      <div class="right-content-container">
+        <!-- status bar template -->
+        <div w3-include-html="templates/status-bar-template.html"></div>
+
+        <div class="individual-content-container container-css scroll-css">
+          <div id="task-overlay" class="task-overlay d-none"></div>
+          <div id="overlay-card" class="ol-progress d-none"></div>
+          
+          <div>
+            <div id="board-header">
+              <h2>Board</h2>
+              <img
+                onclick="openAddTaskOverlay('todo')"
+                id="mobile-add-task-btn"
+                class="mobile-add-btn d-none"
+                src="../img/png/add-btn-mobile.png"
+                alt="mobile - plus icon"
+              />
+              <div id="search-btn-container">
+                <div id="search-right-container">
+                  <span id="vert-line"></span>
+                  <img
+                    id="search-icon"
+                    src="../img/search-icon.png"
+                    alt="a magnifying glass"
+                  />
+                </div>
+
+                <input
+                  id="search-task"
+                  type="text"
+                  placeholder="Find Task ..."
+                />
+                <button id="add-task-btn" onclick="openAddTaskOverlay('todo')">
+                  Add Task
+                  <img
+                    id="plus-icon"
+                    src="../img/plus-icon.svg"
+                    alt="plus icon"
+                  />
+                </button>
+              </div>
+            </div>
+            <section id="board-title">
+              <div class="column-name col-1">
+                <span class="column-txt  col-1-txt">To Do</span>
+                <button class="task-plus-btn task-btn-1" onclick="openAddTaskOverlay('todo')">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      class="edit-svg-btn"
+                      d="M8.66602 11.3327H0.666016V8.66602H8.66602V0.666016H11.3327V8.66602H19.3327V11.3327H11.3327V19.3327H8.66602V11.3327Z"
+                      fill="white"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="column-name col-2">
+                <span class="column-txt  col-2-txt">In progress</span>
+                <button class="task-plus-btn task-btn-2" onclick="openAddTaskOverlay('progress')">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      class="edit-svg-btn"
+                      d="M8.66602 11.3327H0.666016V8.66602H8.66602V0.666016H11.3327V8.66602H19.3327V11.3327H11.3327V19.3327H8.66602V11.3327Z"
+                      fill="white"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="column-name col-3">
+                <span class="column-txt col-3-txt">Await feedback</span>
+                <button class="task-plus-btn task-btn-3" onclick="openAddTaskOverlay('feedback')">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      class="edit-svg-btn"
+                      d="M8.66602 11.3327H0.666016V8.66602H8.66602V0.666016H11.3327V8.66602H19.3327V11.3327H11.3327V19.3327H8.66602V11.3327Z"
+                      fill="white"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="column-name col-4">
+                <span class="column-txt col-4-txt">Done</span>
+              </div>
+            </section>
+          </div>
+          <br/>
+          <br/>
+          <br/>
+          <div id="board-overview">
+
+            <div id="column-1" class="dragarea all-columns" ondrop="moveTo('todo')" ondragover="allowDrop(event)">
+              <div id="empty-task-col-1" class="empty-task">
+                <span id="empty-task-txt-col-1" class="">No task To do</span>
+              </div>
+            </div>
+
+            <div id="column-2" class="dragarea all-columns columns-margin" ondrop="moveTo('progress')" ondragover="allowDrop(event)">
+              <div id="empty-task-col-2" class="empty-task">
+                <span id="empty-task-txt-col-2" class="">No task To do</span>
+              </div>
+            </div>
+
+            <div id="column-3" class="dragarea all-columns columns-margin" ondrop="moveTo('feedback')" ondragover="allowDrop(event)">
+              <div id="empty-task-col-3" class="empty-task">
+                <span id="empty-task-txt-col-3" class="">No task To do</span>
+              </div>
+            </div>
+
+            <div id="column-4" class="dragarea all-columns columns-margin" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+              <div id="empty-task-col-4" class="empty-task">
+                <span id="empty-task-txt-col-4" class="">No task To do</span>
+              </div>
+            </div> 
+
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+  </body>
+</html>

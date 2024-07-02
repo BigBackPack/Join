@@ -1,0 +1,122 @@
+<div class="tol-overlay-content" onclick="event.stopPropagation()">
+    <div class="tol-individual-content-container">
+        <div class="tol-header">
+            <p class="page-title">Add Task</p>
+            <div onclick="closeAddTaskOverlay()" class="tol-close-icon"><img src="/img/close_icon.svg"></div>
+        </div>
+
+        <form class="form-body" id="add-task-form" onsubmit="return handleFormSubmit(event)">
+
+            <div class="form-fields">
+                <div class="left-form">
+                    <div class="flex-form">
+                        <label class="tol-label" for="title">Title<span class="required-star">*</span></label>
+                        <input class="tol-input-field" id="title" type="text" placeholder="Enter a title" required>
+                    </div>
+                    <div class="flex-form">
+                        <label class="tol-label"for="description">Description</label>
+                        <textarea class="tol-input-field" id="description" rows="5"
+                            placeholder="Enter a Description"></textarea>
+                    </div>
+
+                    <div class="dropdown-container">
+                        <label class="dropdown-label" for="dropdown">Assigned to</label>
+                        <div class="dropdown">
+                            <input type="text" class="dropbtn" id="dropdown" placeholder="Select contacts to assign"
+                                onkeyup="filterDropdown('dropdownContent')" onclick="toggleDropdown('dropdownContent')"
+                                onfocus="removePlaceholder()" onblur="restorePlaceholder()">
+                            <div class="dropdown-content" id="dropdownContent">
+                                <!-- dynamic content for contacts -->
+                            </div>
+                        </div>
+                    </div>
+                    <div id="selected-initials"></div>
+                </div>
+
+                <div class="tol-separator"></div>
+
+                <div class="right-form">
+                    <div class="flex-form">
+                        <label class="tol-label" for="date">Due date<span class="required-star">*</span></label>
+                        <input class="tol-input-field color-grey" type="date" id="date" required>
+                    </div>
+                    <div>
+                        <label class="tol-label" for="urgent">Priority</label>
+                        <div class="prio-buttons" id="prio-buttons">
+                            <input type="radio" name="priority" id="urgent">
+                            <label for="urgent">Urgent
+                                <img src="/img/prio_urgent_icon.svg" alt="Urgent Icon" class="prio-icon">
+                            </label>
+                            <input type="radio" name="priority" id="medium" checked>
+                            <label for="medium">Medium
+                                <img src="/img/prio_medium_icon.svg" alt="Medium Icon" class="prio-icon">
+                            </label>
+                            <input type="radio" name="priority" id="low">
+                            <label for="low">Low
+                                <img src="/img/prio_low_icon.svg" alt="Low Icon" class="prio-icon">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-container">
+                        <label class="tol-label" for="dropdownCategory">Category<span class="required-star">*</span></label>
+                        <div class="dropdown">
+                            <div class="dropbtn" id="dropdownCategoryButton"
+                                onclick="toggleDropdown('dropdownCategoryContent')">Select a category</div>
+                            <div class="dropdown-content" id="dropdownCategoryContent">
+                                <a href="#" class="category-options" data-value="code"
+                                    onclick="selectCategory('User Story')">User Story</a>
+                                <a href="#" class="category-options" data-value="art"
+                                    onclick="selectCategory('Technical Task')">Technical Task</a>
+                            </div>
+                            <p id="required-text" class="required-text" style="display:none;">Please select a
+                                category.</p>
+                        </div>
+                    </div>
+
+                    <div class="subtask-label">
+                        <label class="tol-label" for="subtask-input">Subtask</label>
+                        <div class="input-container">
+                            <input type="text" id="subtask-input" placeholder="Add new subtask" onfocus="showIcons()"
+                                onblur="hideIconsIfEmpty()">
+                            <span class="icon" id="plus-icon" onclick="focusInput()">
+                                <img class="plus-icon-style" src="/img/plus_black_icon.svg">
+                            </span>
+                            <span class="icon hidden" id="x-icon" onclick="clearInput()">
+                                <img class="icon-style" src="/img/close_icon.svg">
+                            </span>
+                            <span class="icon hidden" id="tick-icon" onclick="displayText()">
+                                <img class="icon-style" src="/img/check_black_icon.svg">
+                            </span>
+                        </div>
+                        <div id="textDisplay" class="text-display">
+                            <ul id="textList"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-footer">
+                <div><span class="required-star margin-left-100">*</span> This field is required</div>
+                <div class="form-buttons">
+                    <button onclick="clearForm()" type="button" class="secondary-button tol-secondary-button">Clear <img
+                            class="black-close-icon" src="/img/close_icon.svg"> <img class="blue-close-icon"
+                            src="/img/blue_close_icon.svg"></button>
+                    <button class="primary-button tol-primary-button">Create Task<img
+                            src="/img/check_icon.svg"></button>
+                    <button onclick="" type="button" class="primary-button tol-primary-button ok-button">Ok<img
+                                src="/img/check_icon.svg"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+<div id="addtask-success-popup" class="addtask-success-popup">
+    <div class="addtask-success-popup-content">
+        <p>Task added to board </p>
+        <img src="/img/board_icon.svg">
+    </div>
+</div>
+</div>
