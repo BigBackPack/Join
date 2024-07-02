@@ -83,6 +83,8 @@ function fillTaskOverlayForm(task, isEditMode) {
             }
         });
     }
+    // Aktualisiere die Checkboxen im Dropdown
+    updateDropdownCheckboxes(task.assignment);
 
     // Aktualisiere die Anzeige der ausgewählten Initialen
     updateSelectedInitials();
@@ -105,6 +107,7 @@ function fillTaskOverlayForm(task, isEditMode) {
         document.querySelector('.tol-header').style.justifyContent = 'flex-end';
         document.querySelector('.ok-button').style.display = 'flex';
     }
+    
 }
 
 
@@ -115,4 +118,21 @@ function fillTaskOverlayForm(task, isEditMode) {
  */
 function escapeTaskData(task) {
     return JSON.stringify(task).replace(/"/g, '&quot;');
+}
+
+
+function updateDropdownCheckboxes(assignments) {
+    document.querySelectorAll('.dropdown-checkbox').forEach(checkbox => {
+        let parentLink = checkbox.closest('.dropdown-link');
+        let customCheckbox = parentLink.querySelector('.custom-checkbox');
+        if (assignments.includes(checkbox.dataset.id)) {
+            checkbox.checked = true;
+            parentLink.classList.add('checked');
+            customCheckbox.classList.add('checked');
+        } else {
+            checkbox.checked = false;
+            parentLink.classList.remove('checked');
+            customCheckbox.classList.remove('checked');
+        }
+    });
 }

@@ -14,12 +14,13 @@ function setBoardStatus(boardStatus) {
  * Initializes the application by fetching contacts and setting up event listeners.
  */
 function initializeApp(boardStatus) {
-    
-    fetchContacts();
-    setupEventListeners();
-    setMinDate();
-    setBoardStatus(boardStatus);
+    fetchContacts().then(() => {
+        setupEventListeners();
+        setMinDate();
+        setBoardStatus(boardStatus);
+    });
 }
+
 
 /**
  * Sets up event listeners for the form submission, checkbox changes, and window click events.
@@ -192,15 +193,21 @@ async function postTask(task) {
 /**
  * Fetches contacts from the server and renders them in the dropdown.
  */
-function fetchContacts() {
-    fetch(`${BASE}${CONTACT_PATH}.json`)
-        .then(response => response.json())
-        .then(data => {
-            contactsData = data;
-            renderContacts(data);
-        })
-        .catch(error => console.error('Error fetching contacts:', error));
+async function fetchContacts() {
+    try {
+        let response = await fetch(`${BASE}${CONTACT_PATH}.json`);
+        let data = await response.json();
+        contactsData = data;
+        renderContacts(data);
+        if (currentTask) {
+            updateDropdownCheckboxes(currentTask.task.assignment);
+        }
+    } catch (error) {
+        console.error('Error fetching contacts:', error);
+    }
 }
+
+
 
 /**
  * Renders contacts in the dropdown.
@@ -218,6 +225,7 @@ function renderContacts(contacts) {
     }
     setupCheckboxListeners();
 }
+
 
 
 /**
