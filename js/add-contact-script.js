@@ -1,5 +1,6 @@
 const BASE_URL = "https://join-2c971-default-rtdb.europe-west1.firebasedatabase.app/";
 const CONTACT_PATH_SUFFIX = "/contacts";
+const TASKS_PATH_SUFFIX = "/tasks";
 const contactsPreview = document.getElementById("alphabetic-sorting-container");
 const detailedContactDisplay = document.getElementById("deatailed-contact-container");
 
@@ -421,5 +422,3 @@ async function deleteContact(firebaseId) {
 function stopPropagation(event) {
     event.stopPropagation();
 }
-
-

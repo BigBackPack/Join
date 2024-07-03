@@ -79,13 +79,13 @@ form{
 }
 
 .email-input{
-    background-image: url(/img/mail_icon.svg);
+    background-image: url(../img/mail_icon.svg);
     background-repeat: no-repeat;
     background-position: calc(100% - 20px) center;
 }
 
 .password-input{
-    background-image: url(/img/lock_icon.svg);
+    background-image: url(../img/lock_icon.svg);
     background-repeat: no-repeat;
     background-position: calc(100% - 20px) center;
 }
