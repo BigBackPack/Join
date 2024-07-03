@@ -32,7 +32,7 @@ body {
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    top: 200px;
+    top: 150px;
     width: 75%;
     padding-left: 100px;
     z-index: 1;
@@ -58,13 +58,18 @@ body {
 }
 
 .add-task-plus{
-    border: 1px solid lightgray;
+    border: 2px solid var(--mainColor);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px;
     border-radius: 10px;
     cursor: pointer;
+    padding: 5px;
+}
+
+.add-task-plus img {
+    height: 12px;
+    width: 12px;
 }
 
 .board-section-header {
@@ -72,10 +77,18 @@ body {
     justify-content: space-between;
     align-items: center;
     padding-bottom: 20px;
-    padding-top: 350px;
+    padding-top: 300px;
     position: sticky;
     top: 0;
     background-color: var(--bgColor);
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+.board-section-header p{
+    font-weight: bold;
+    color: var(--mainColorHover);
 }
 
 .board-section {
@@ -214,3 +227,21 @@ body {
 .board-card-overlay-footer p{
     cursor: pointer;
 }
+
+
+.input-mobile{
+    display: none;
+}
+
+.input-desktop {
+    display: unset;
+}
+
+.add-task-mobile{
+    display: none;
+}
+
+.add-task-desktop{
+    display: unset;
+}
+

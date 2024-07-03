@@ -1,0 +1,38 @@
+@media (max-width: 1200px){
+    .board-header-container{
+        width: 80%;
+    }
+}
+
+@media (max-width: 950px){
+    .input-desktop{
+        display: none;
+    }
+    .input-mobile{
+        display: unset;
+        width: 83%;
+        padding-right: 0;
+    }
+    .add-task-mobile{
+        display: unset;
+        height: 50px;
+
+    }
+    .add-task-desktop{
+        display: none;
+    }
+    .mobile-header-container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 85%;
+        
+    }
+    
+    .board-header-container{
+        flex-direction: column;
+        width: 100%;
+        padding-left: 0;
+        top: 100px;
+    }
+}

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../css/media/global-media.css" />
   <link rel="stylesheet" href="../css/media/template-nav-bar-media.css" />
   <link rel="stylesheet" href="../css/media/template-status-bar-media.css" />
+  <link rel="stylesheet" href="../css/media/board-media.css">
   <link rel="stylesheet" href="../css/media/board-task-overlay-media.css">
 
   <!-- js links -->
@@ -43,69 +44,80 @@
       <div w3-include-html="templates/status-bar-template.html"></div>
 
       <div class="individual-content-container container-css scroll-css">
-      <!-- start individual content -->
+        <!-- start individual content -->
 
-      <!-- Overlay for add new task -->
+        <!-- Overlay for add new task -->
         <div id="task-overlay" class="task-overlay d-none"></div>
-        
-      <!-- header with searchbar -->
-        <div id="board-header-container" class="board-header-container">
-          <h2>Board</h2>
-          <div class="board-search-add-container">
-              <input type="text" id="board-search-input" class="input" placeholder="Search tasks..." oninput="filterTasks()">
-              <button id="add-task-button" class="primary-button" onclick="openAddTaskOverlay('todo')">Add Task</button>
-          </div>
-      </div>
 
-      <!-- Main content with task cards -->
-      
-      <div id="board-main-container" class="board-main-container">
+        <!-- header with searchbar -->
+        <div id="board-header-container" class="board-header-container">
+          <div class="mobile-header-container">
+            <h2>Board</h2>
+            <button id="add-task-button" class="primary-button add-task-mobile" onclick="openAddTaskOverlay('todo')">Add
+              Task</button>
+          </div>
+          <div class="board-search-add-container">
+            <input type="text" id="board-search-input" class="input input-desktop" placeholder="Search tasks..."
+              oninput="filterTasks()">
+            <button id="add-task-button" class="primary-button add-task-desktop"
+              onclick="openAddTaskOverlay('todo')">Add Task</button>
+          </div>
+          <input type="text" id="board-search-input" class="input input-mobile" placeholder="Search tasks..."
+            oninput="filterTasks()">
+        </div>
+
+
+        <!-- Main content with task cards -->
+
+        <div id="board-main-container" class="board-main-container">
 
           <div id="todo-section" class="board-section drop-zone">
-              <div id="board-todo-section-header" class="board-section-header">
-                  <p>To Do</p>
-                  <div class="add-task-plus" onclick="openAddTaskOverlay('todo')"><img src="/img/plus_black_icon.svg"></div>
-              </div>
-              <div id="board-todo-tasks" class="board-tasks-container"></div>
+            <div id="board-todo-section-header" class="board-section-header">
+              <p>To Do</p>
+              <div class="add-task-plus" onclick="openAddTaskOverlay('todo')"><img src="/img/plus_black_icon.svg"></div>
+            </div>
+            <div id="board-todo-tasks" class="board-tasks-container"></div>
           </div>
 
           <div id="progress-section" class="board-section drop-zone">
-              <div id="board-progress-section-header" class="board-section-header">
-                  <p>In Progress</p>
-                  <div class="add-task-plus" onclick="openAddTaskOverlay('progress')"><img src="/img/plus_black_icon.svg"></div>
+            <div id="board-progress-section-header" class="board-section-header">
+              <p>In Progress</p>
+              <div class="add-task-plus" onclick="openAddTaskOverlay('progress')"><img src="/img/plus_black_icon.svg">
               </div>
-              <div id="board-progress-tasks" class="board-tasks-container"></div>
+            </div>
+            <div id="board-progress-tasks" class="board-tasks-container"></div>
           </div>
 
           <div id="feedback-section" class="board-section drop-zone">
-              <div id="board-feedback-section-header" class="board-section-header">
-                  <p>Feedback</p>
-                  <div class="add-task-plus" onclick="openAddTaskOverlay('feedback')"><img src="/img/plus_black_icon.svg"></div>
+            <div id="board-feedback-section-header" class="board-section-header">
+              <p>Feedback</p>
+              <div class="add-task-plus" onclick="openAddTaskOverlay('feedback')"><img src="/img/plus_black_icon.svg">
               </div>
-              <div id="board-feedback-tasks" class="board-tasks-container"></div>
+            </div>
+            <div id="board-feedback-tasks" class="board-tasks-container"></div>
           </div>
 
           <div id="done-section" class="board-section drop-zone">
-              <div id="board-done-section-header" class="board-section-header">
-                  <p>Done</p>
-                  <div class="add-task-plus" onclick="openAddTaskOverlay('done')"><img src="/img/plus_black_icon.svg"></div>
-              </div>
-              <div id="board-done-tasks" class="board-tasks-container"></div>
+            <div id="board-done-section-header" class="board-section-header">
+              <p>Done</p>
+              <div class="add-task-plus" onclick="openAddTaskOverlay('done')"><img src="/img/plus_black_icon.svg"></div>
+            </div>
+            <div id="board-done-tasks" class="board-tasks-container"></div>
           </div>
 
-      </div>
-    
-      <!-- overlay for task details -->
-      <div id="board-card-overlay" class="board-card-overlay">
+        </div>
+
+        <!-- overlay for task details -->
+        <div id="board-card-overlay" class="board-card-overlay">
           <div class="board-card-overlay-content">
-              <span class="board-card-close-btn" onclick="closeCardOverlay()">&times;</span>
-              <div id="board-card-details"></div>
+            <span class="board-card-close-btn" onclick="closeCardOverlay()">&times;</span>
+            <div id="board-card-details"></div>
           </div>
-      </div>
+        </div>
 
-      <!-- end individual content -->
+        <!-- end individual content -->
+      </div>
     </div>
-  </div>
 </body>
 
 </html>
