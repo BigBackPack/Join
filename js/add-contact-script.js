@@ -107,7 +107,6 @@ async function loadContactsData(path, editedContactFirebaseId) {
 
 
 async function postContactData(path, data = {}) {
-    console.log("Posting contact data:", data);
     let response = await fetch(BASE_URL + path + ".json", {
         method: "POST",
         headers: {
@@ -117,22 +116,41 @@ async function postContactData(path, data = {}) {
     });
     
     if (!response.ok) {
-        console.error('Failed to post contact data:', response.statusText);
         throw new Error('Failed to post contact data');
     }
-    
-    console.log("Contact data posted successfully");
     return response.json();
 }
 
 
 function storeContactInputs(event) {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
     const bgColor = pickBgColorInitials();
+    const nameInput = document.getElementById('name-input');
+    const mailInput = document.getElementById('mail-input');
+    const telInput = document.getElementById('tel-input');
+
     const nameValue = nameInput.value.trim();
     const mailValue = mailInput.value.trim();
     const telValue = telInput.value.trim();
+
+    if (!mailInput.checkValidity()) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    const namePattern = /^[A-Za-z\s]+$/;
+    if (!namePattern.test(nameValue)) {
+        alert("Please enter a valid name (letters and spaces only).");
+        return;
+    }
+
+    const telPattern = /^[0-9-+\s()]+$/;
+    if (!telPattern.test(telValue)) {
+        alert("Please enter a valid phone number (numbers and special characters only).");
+        return;
+    }
+
 
     if (nameValue && mailValue && telValue) {
         nameTaken = false;
@@ -187,7 +205,7 @@ function saveNewContact(nameValue, mailValue, telValue, bgColor) {
         mailInput.value = "";
         telInput.value = "";
     }).catch(error => {
-        console.error("Error posting contact data:", error);
+        throw new Error("Error posting contact data:");
     });
 }
 
@@ -218,7 +236,6 @@ function addContactsToPreview(editedContactFirebaseId) {
 
 
 function selectLastEditedContact(editedContactFirebaseId) {
-    console.log("last edited contact is: " + editedContactFirebaseId);
     if(editedContactFirebaseId){
         selectContact(editedContactFirebaseId);
     }
@@ -354,11 +371,32 @@ function editContact(firebaseId) {
 
 
 async function overrideContactData(event, firebaseId) {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
+
+    const nameEditInput = document.getElementById('name-edit-input');
+    const mailEditInput = document.getElementById('mail-edit-input');
+    const telEditInput = document.getElementById('tel-edit-input');
 
     const nameValue = nameEditInput.value.trim();
     const mailValue = mailEditInput.value.trim();
     const telValue = telEditInput.value.trim();
+
+    if (!mailEditInput.checkValidity()) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    const namePattern = /^[A-Za-z\s]+$/;
+    if (!namePattern.test(nameValue)) {
+        alert("Please enter a valid name (letters and spaces only).");
+        return;
+    }
+
+    const telPattern = /^[0-9-+\s()]+$/;
+    if (!telPattern.test(telValue)) {
+        alert("Please enter a valid phone number (numbers and special characters only).");
+        return;
+    }
 
     if (nameValue && mailValue && telValue) {
         const updatedContact = {
@@ -378,23 +416,22 @@ async function overrideContactData(event, firebaseId) {
             });
 
             if (!response.ok) {
-                console.error('Failed to update contact:', response.statusText);
                 throw new Error('Failed to update contact');
             }
-            console.log("Contact updated successfully");
             turnOffAllOverlays();
             detailedContactDisplay.style.display = "none";
             
-            loadContactsData(CONTACT_PATH_SUFFIX, firebaseId); // Refresh contact list
+            loadContactsData(CONTACT_PATH_SUFFIX, firebaseId); 
         } catch (error) {
             console.error("Error updating contact data:", error);
         }
+        const message = "Contact edited...";
+        showToastMessage(message);
     } else {
         alert("Your input is incomplete. Please fill out all of the input fields");
     }
-    const message = "contact edited..."
-    showToastMessage(message);
 }
+
 
 
 async function deleteContact(firebaseId) {
@@ -406,15 +443,14 @@ async function deleteContact(firebaseId) {
         });
 
         if (!response.ok) {
-            console.error('Failed to delete contact:', response.statusText);
             throw new Error('Failed to delete contact');
         }
-        loadContactsData(CONTACT_PATH_SUFFIX); // Refresh contact list
+        loadContactsData(CONTACT_PATH_SUFFIX);
         detailedContactDisplay.style.display = "none";
         const message = "contact deleted..."
         showToastMessage(message);
     } catch (error) {
-        console.error("Error deleting contact data:", error);
+        throw new Error("Error deleting contact data:");
     }
 }
 

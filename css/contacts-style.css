@@ -266,6 +266,7 @@ html{ overflow: hidden;}
 .persona-icon-container{
     display: flex;
     justify-content: center;
+    height: 64px;
 }
 
 .persona-icon{

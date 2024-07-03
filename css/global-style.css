@@ -88,9 +88,9 @@ a{
     padding-right: 50px;
 }
 
-.input-type-name{background-image: url(/img/person_icon.svg);}
-.input-type-mail{background-image: url(/img/mail_icon.svg);}
-.input-type-phone{background-image: url(/img/phone_icon.svg);}
+.input-type-name{background-image: url(../img/person_icon.svg);}
+.input-type-mail{background-image: url(../img/mail_icon.svg);}
+.input-type-phone{background-image: url(../img/phone_icon.svg);}
 /* #endregion global inputs*/
 
 

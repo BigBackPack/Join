@@ -31,8 +31,6 @@ function init() {
 
 
 function saveUserLoginData() {
-    console.log("Saving loggedIn:", loggedIn); // DEBUG
-
     let loggedInStatus = JSON.stringify(loggedIn);
     localStorage.setItem("loggedIn", loggedInStatus);
 
@@ -90,13 +88,10 @@ function setTimestempIn() {
 
 function compareTimeStamps() {
     if (timestampOut && timestampIn)
-        if (timestampOut + 1000 > timestampIn) {
-            console.log("same session:", timestampOut + 100, timestampIn);        
-        } else {
-            console.log("new session");
+        if (timestampOut + 1000 < timestampIn) {
             loggedIn = false;
-            localStorage.setItem("loggedIn", false);
-        }
+            localStorage.setItem("loggedIn", false);       
+        } 
 }
 
 
@@ -119,7 +114,6 @@ function checkIfMailIstaken() {
     if (localUserLoginData) {
         let parsedUserLoginData = JSON.parse(localUserLoginData);
         let mailTaken = false;
-        console.log("in");
 
         for (let i = 0; i < parsedUserLoginData.length; i++) {
             if (inputMail === parsedUserLoginData[i].mail) {
@@ -254,11 +248,9 @@ function updateTemopraryUserData(i) {
 
 function checkIfRemembeMeState() {
     let localRememberMeCheck = localStorage.getItem("rememberMeChecked");
-    console.log("localRememberMeCheck: "+ localRememberMeCheck);
 
     if (localRememberMeCheck) {
         rememberMeChecked = localRememberMeCheck;
-        console.log("rememberMeChecked: "+ rememberMeChecked);
     }
 
     rememberedLogin()
@@ -270,10 +262,6 @@ function rememberedLogin() {
     const remberedUserMail = localStorage.getItem("rememberedUserMail");
     const remberedUserName = localStorage.getItem("rememberedUserName");
     const rememberedUserPsw = localStorage.getItem("rememberedUserPsw");
-
-    console.log("user rembered: " + remberedUser);
-    console.log(remberedUserMail);
-    console.log(remberedUserName);
 
     if (remberedUser == "true" && remberedUserName != "Guest") {
         document.getElementById("rememberMeCheckbox").checked = true;
@@ -288,12 +276,10 @@ function rememberedLogin() {
 
 function rememberMe() {
     if (rememberMeChecked == "true") {
-        console.log("dont remember");
         rememberMeChecked = false;
         localStorage.setItem("rememberMeChecked", false);
     } else if (rememberMeChecked == "false") {
         rememberMeChecked = true;
-        console.log("remember");
         localStorage.setItem("rememberMeChecked", true);
         localStorage.setItem("rememberedUserPsw", rememberedUserPsw);
     }
@@ -307,7 +293,6 @@ function guestLogin(event) {
     loggedIn = true;
 
     localStorage.setItem("rememberedUserName", "Guest");
-    console.log("guest log in");
     setTimestempOut();
     window.location = "summary.html";
 }

@@ -192,4 +192,7 @@
     .contact-inputs input{
         max-width: 200px;
     }
+
+    .alphabetic-sorting-container{max-height: 70%;}
+
 }

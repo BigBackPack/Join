@@ -21,7 +21,6 @@ function loadUserLoginStatus() {
 
 
 function checkUserLoginStatus(loggedInStatus) {
-    console.log("Checking login status, loggedIn:", loggedInStatus);
     if (loggedInStatus === "false" || loggedInStatus === null) {
         window.location = "login.html";
     }
@@ -62,13 +61,9 @@ function setTimestempIn() {
 
 function compareTimeStamps() {
     if (timestampOut && timestampIn)
-        if (timestampOut + 1000 > timestampIn) {
-            console.log("same session","in:"+ (timestampOut + 100), "out:" + timestampIn);
-        } else {
-            console.log("new session", "in:"+ (timestampOut + 100), "out:" + timestampIn);
-
+        if (timestampOut + 1000 < timestampIn) {
             logOut();
-        }
+        } 
 }
 // #endregion : time stamp management
 
@@ -124,6 +119,7 @@ function toggleProfileMenuOff() {
 function logOut() {
     localStorage.setItem("loggedIn", false);
     window.location = "index.html";
+    console.log("should go to index");
 }
 // #endregion : generate user initial
 
