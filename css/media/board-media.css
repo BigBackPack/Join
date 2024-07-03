@@ -2,6 +2,28 @@
     .board-header-container{
         width: 80%;
     }
+
+    .board-main-container {
+        padding-left: 22px;
+        width: 95%;
+    }
+
+    .board-section {
+        min-width: unset;
+    }
+
+    .board-card-description {
+        height: 80px;
+        /* border: tomato 2px solid; */
+        overflow: auto;
+    }
+
+    .board-contacts {
+        width: 133px;
+        height: 45px;
+        /* overflow-y: hidden; */
+        overflow: scroll;
+    }
 }
 
 @media (max-width: 950px){
@@ -35,4 +57,33 @@
         padding-left: 0;
         top: 100px;
     }
+}
+
+@media screen and (max-width: 800px) {
+    .board-main-container {
+        padding-left: 11px;
+        width: 97%;
+    }
+
+    .board-section {
+      
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .board-main-container {
+        flex-direction: column;
+        display: flex;
+        margin-top: 50%;
+    }
+
+    .board-section {
+        width: 100%;
+    }
+
+}
+
+#todo-section {
+    border: tomato 2px solid;
+    margin-top: 49%;
 }

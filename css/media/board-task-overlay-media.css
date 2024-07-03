@@ -138,3 +138,11 @@
         width: 90vw;
     }
 }
+
+@media screen and (max-width: 320px) {
+    .board-card-overlay-content {
+        left: 50%;
+        width: 85%;
+    }
+
+}

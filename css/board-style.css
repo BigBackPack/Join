@@ -153,6 +153,7 @@ body {
     margin-right: -10px;
     font-size: 14px;
     padding: 5px;
+    margin-bottom: 10px;
 }
 
 .board-ghost-card {
@@ -200,7 +201,7 @@ body {
 
 .board-card-overlay-content {
     position: absolute;
-    top: 50%;
+    top: 49%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
@@ -208,6 +209,8 @@ body {
     border-radius: 10px;
     width: 60%;
     max-width: 800px;
+    bottom: -40%;
+    overflow: auto;
 }
 
 .board-card-close-btn {

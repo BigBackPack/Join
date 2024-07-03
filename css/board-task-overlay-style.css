@@ -447,6 +447,10 @@ input[type="radio"]#low:checked + label .prio-icon {
     gap: 10px;
 }
 
+.board-subtasks {
+    margin-bottom: 12px;
+}
+
 .input-container input {
     width: 100%;
     padding: 12px 21px;

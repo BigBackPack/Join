@@ -188,7 +188,7 @@ function showOverlay(task, taskId, contacts) {
     let subtasksHTML = '';
     if (task.subtasks && task.subtasks.length > 0) {
         subtasksHTML = task.subtasks.map((subtask, index) => `
-            <div>
+            <div style="margin-bottom: 10px">
                 <input type="checkbox" id="board-subtask-${taskId}-${index}" ${subtask.checked ? 'checked' : ''} onchange="toggleSubtask('${taskId}', ${index}, this.checked)">
                 <label for="subtask-${taskId}-${index}">${subtask.text}</label>
             </div>
@@ -198,10 +198,15 @@ function showOverlay(task, taskId, contacts) {
     taskDetails.innerHTML = `
         <h2>${task.title}</h2>
         <p>${task.description}</p>
-        <p>Due: ${task.dueDate}</p>
-        <p>Priority: ${task.priority}</p>
+        <div style="display: flex; margin-top: 10px">
+            Due: <div class="ol-due-date-txt">&nbsp; ${task.dueDate}</div>
+        </div>
+        <div style="display: flex; margin-top: 10px; margin-bottom: 10px">
+            <p>Priority: &nbsp; ${task.priority} &nbsp;</p>
+            <img id="priority-icon" src="../img/png/prio-${task.priority}.png" />
+        </div>
         <div class="board-contacts">${createContactInitials(task.assignment, contacts)}</div>
-        <div class="board-subtasks">${subtasksHTML}</div>
+        <div  class="board-subtasks">${subtasksHTML}</div>
         <div class="board-card-overlay-footer"> <p onclick="deleteTask()">delete</p> <p onclick="openAndFillTaskOverlay(${escapeTaskData(task)}, true)">edit</p> </div>
     `;
 
