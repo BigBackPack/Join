@@ -33,7 +33,7 @@
   }
 
   #content {
-    left: 25%;
+    left: 20%;
   }
 
   #login-overview {
@@ -60,7 +60,7 @@
   }
 
   .urgent-gap {
-    gap: 5px;
+    gap: 32px;
   }
 
   .icon-urgent {
@@ -200,7 +200,7 @@
 
   .tile-row,
   .third-row {
-    width: 180px;
+    width: 160px;
     height: 60px;
   }
 
@@ -235,6 +235,7 @@
     width: 95%;
     flex-direction: column;
     padding-top: 100px;
+    margin-left: -133px;
   }
 
   h2 {
@@ -298,6 +299,7 @@
 
   #title {
     width: 100%;
+    margin-left: -11px;
   }
 
   #login-overview {
@@ -353,6 +355,7 @@
     gap: 22px;
   }
 }
+
 @media screen and (min-width:322px) and (max-width: 800px) {
   #urgent-left-container {
     position: relative;
@@ -368,6 +371,9 @@
   .mobile-tile-left,
   .mobile-tile-right {
     width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -448,10 +454,11 @@
   #urgent-left-container {
     position: relative;
     left: 41px;
+    gap: 16px;
   }
 
   .urgent-gap {
-    gap: 10px;
+    gap: 32px;
   }
 
   #overview-urgent-vertical {
@@ -461,7 +468,7 @@
 
   #urgent-right-container {
     position: relative;
-    right: 30px;
+    right: 50px;
   }
 
   .mobile-tile-left {
