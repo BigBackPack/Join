@@ -140,7 +140,7 @@ input::placeholder {
     box-sizing: border-box;
     text-align: left;
     margin-top: 10px;
-    background-image: url(/img/small-arrow-down_icon.svg);
+    background-image: url(../img/small-arrow-down_icon.svg);
     background-repeat: no-repeat;
     background-position: calc(100% - 20px) center;
     z-index: 2;
@@ -159,7 +159,7 @@ input::placeholder {
 
 .dropbtn:hover {
     border: 1px solid var(--mainColor);
-    background-image: url(/img/small-arrow-down_bg_icon.svg);
+    background-image: url(../img/small-arrow-down_bg_icon.svg);
 }
 
 
@@ -243,7 +243,7 @@ input::placeholder {
     width: 24px;
     height: 24px;
     cursor: pointer;
-    background-image: url(/img/unchecked_icon.svg);
+    background-image: url(../img/unchecked_icon.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -251,7 +251,7 @@ input::placeholder {
 }
 
 .custom-checkbox.checked {
-    background-image: url(/img/checked_icon.svg);
+    background-image: url(../img/checked_icon.svg);
     fill: white;
 }
 
@@ -347,7 +347,7 @@ input[type="radio"]#low:checked + label .prio-icon {
 
 
 .input-field-icon {
-    background-image: url(/img/mail_icon.svg);
+    background-image: url(../img/mail_icon.svg);
     background-repeat: no-repeat;
     background-position: calc(100% - 20px) center;
 }

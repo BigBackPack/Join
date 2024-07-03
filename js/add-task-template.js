@@ -8,9 +8,9 @@ function createSubtaskItem(text) {
     newItem.innerHTML = `
         <span class="item-text">${text}</span>
         <div class="feature-icons">
-            <span class="edit-icon" onclick="editItem(this)"><img src="/img/edit_icon.svg"></span>
+            <span class="edit-icon" onclick="editItem(this)"><img src="../img/edit_icon.svg"></span>
             <div class="separator-list"></div>
-            <span class="delete-icon" onclick="removeItem(this)"><img src="/img/delete_icon.svg"></span>
+            <span class="delete-icon" onclick="removeItem(this)"><img src="../img/delete_icon.svg"></span>
         </div>
     `;
     return newItem;
@@ -26,9 +26,9 @@ function createEditItemHTML(currentText) {
         <div class="edit-container">
             <input type="text" class="edit-input" value="${currentText}" onblur="saveEdit(this)">
             <div class="feature-icons">
-                <span class="edit-icon" onclick="saveEdit(this)"><img src="/img/check_black_icon.svg"></span>
+                <span class="edit-icon" onclick="saveEdit(this)"><img src="../img/check_black_icon.svg"></span>
                 <div class="separator-list"></div>
-                <span class="delete-icon" onclick="removeItem(this)"><img src="/img/delete_icon.svg"></span>
+                <span class="delete-icon" onclick="removeItem(this)"><img src="../img/delete_icon.svg"></span>
             </div>
         </div>
     `;
@@ -44,9 +44,9 @@ function createSubtaskItemHTML(text, checked = false) {
         <input type="checkbox" class="subtask-checkbox" ${checked ? 'checked' : ''} style="display: none;">
         <span class="item-text">${text}</span>
         <div class="feature-icons">
-            <span class="edit-icon" onclick="editItem(this)"><img src="/img/edit_icon.svg"></span>
+            <span class="edit-icon" onclick="editItem(this)"><img src="../img/edit_icon.svg"></span>
             <div class="separator-list"></div>
-            <span class="delete-icon" onclick="removeItem(this)"><img src="/img/delete_icon.svg"></span>
+            <span class="delete-icon" onclick="removeItem(this)"><img src="../img/delete_icon.svg"></span>
         </div>
     `;
 }
