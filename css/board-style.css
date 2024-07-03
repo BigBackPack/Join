@@ -31,7 +31,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 150px;
+    position: fixed;
+    top: 200px;
+    width: 75%;
+    padding-left: 100px;
+    z-index: 1;
 }
 
 .board-header-container h1 {
@@ -46,8 +50,11 @@ body {
 
 .board-main-container {
     display: flex;
-    gap: 10px;
-    padding: 10px;
+    gap: 30px;
+    padding-left: 100px;
+    padding-right:  100px;
+    overflow-x: auto;
+    height: 100vh;
 }
 
 .add-task-plus{
@@ -65,27 +72,60 @@ body {
     justify-content: space-between;
     align-items: center;
     padding-bottom: 20px;
-    padding-top: 20px;
+    padding-top: 350px;
+    position: sticky;
+    top: 0;
+    background-color: var(--bgColor);
 }
 
 .board-section {
-    flex: 1;
-    height: 100vh;
+    padding-bottom: 150px;
+    min-width: 300px;
     overflow-y: auto;
+    scrollbar-width: none;
+
 }
 
 .board-tasks-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 
 .board-task-card {
     background-color: var(--white);
-    padding: 10px;
-    border-radius: 15px;
+    padding: 25px;
+    border-radius: 25px;
     cursor: grab;
-    position: relative;
+}
+
+.board-card-title{
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    padding-top: 20px;
+}
+
+.board-card-description{
+    color: var(--borderColor);
+    padding-bottom: 20px;
+    font-size: 16px;
+}
+
+.board-card-counter{
+    padding-bottom: 20px;
+}
+
+.board-card-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.board-contacts{
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .board-contact-initials {
@@ -117,7 +157,7 @@ body {
 
 .board-subtask-bar {
     width: 100%;
-    background-color: #ddd;
+    background-color: var(--bgColor);
     border-radius: 5px;
     overflow: hidden;
     margin-right: 10px;
@@ -125,7 +165,7 @@ body {
 
 .board-subtask-progress {
     height: 10px;
-    background-color: #76c7c0;
+    background-color: var(--secondaryColor);
     width: 0;
 }
 

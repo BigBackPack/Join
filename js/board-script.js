@@ -72,12 +72,13 @@ function createTaskElement(task, taskId, contacts) {
     }
 
     taskElement.innerHTML = `
-        <p><strong>${task.title}</strong></p>
-        <p>${task.description}</p>
-        <p>Due: ${task.dueDate}</p>
-        <p>Priority: ${task.priority}</p>
-        <div class="board-contacts">${createContactInitials(task.assignment, contacts)}</div>
-        ${subtasksHTML}
+        <p class="board-card-title">${task.title}</p>
+        <p class="board-card-description">${task.description}</p>
+        <div class="board-card-counter"> ${subtasksHTML} </div>
+        <div class="board-card-footer">
+            <div class="board-contacts">${createContactInitials(task.assignment, contacts)}</div>
+            <p>${task.priority}</p>
+        </div>
     `;
 
     taskElement.addEventListener('click', () => showOverlay(task, taskId, contacts));
