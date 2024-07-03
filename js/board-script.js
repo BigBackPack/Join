@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 async function loadTasksAndContacts() {
     let tasksResponse = await fetch(BASE_URL + TASK);
     let tasks = await tasksResponse.json();
-    allTasks = tasks;  // Store all tasks for filtering
+    allTasks = tasks;  
 
     let contactsResponse = await fetch(BASE_URL + CONTACT);
     let contacts = await contactsResponse.json();
@@ -77,7 +77,9 @@ function createTaskElement(task, taskId, contacts) {
         <div class="board-card-counter"> ${subtasksHTML} </div>
         <div class="board-card-footer">
             <div class="board-contacts">${createContactInitials(task.assignment, contacts)}</div>
-            <p>${task.priority}</p>
+            <div>
+                <img id="priority-icon" src="../img/png/prio-${task.priority}.png" />
+            </div>
         </div>
     `;
 

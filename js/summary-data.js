@@ -57,8 +57,6 @@ let taskListValues = {};
 function summaryInit() {
   loadContactsData(PATH_SUFFIX[0]);
   loadTasksData(PATH_SUFFIX[1]);
-  // login user - f()
-  // updateUserName(); // greet user - GET NAME from Db
 }
 
 
