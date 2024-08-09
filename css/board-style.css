@@ -27,14 +27,13 @@ body {
     background-color: var(--bgColor);
 }
 
+/* .individual-content-container{overflow-y: hidden;} */
+
 .board-header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    top: 150px;
-    width: 75%;
-    padding-left: 100px;
+    padding: 100px 100px 0 100px;
     z-index: 1;
 }
 
@@ -51,10 +50,11 @@ body {
 .board-main-container {
     display: flex;
     gap: 30px;
-    padding-left: 100px;
-    padding-right:  100px;
-    overflow-x: auto;
-    height: 100vh;
+    margin-left: 100px;
+    height: 100dvh;
+    width: 90%;
+    flex-wrap: wrap;
+
 }
 
 .add-task-plus{
@@ -77,14 +77,12 @@ body {
     justify-content: space-between;
     align-items: center;
     padding-bottom: 20px;
-    padding-top: 300px;
     position: sticky;
     top: 0;
     background-color: var(--bgColor);
     padding-left: 10px;
     padding-right: 10px;
 }
-
 
 .board-section-header p{
     font-weight: bold;
@@ -93,10 +91,9 @@ body {
 
 .board-section {
     padding-bottom: 150px;
-    min-width: 300px;
+    width: 300px;
     overflow-y: auto;
     scrollbar-width: none;
-
 }
 
 .board-tasks-container {

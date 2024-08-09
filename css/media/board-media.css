@@ -1,4 +1,4 @@
-@media (max-width: 1200px){
+/* @media (max-width: 1200px){
     .board-header-container{
         width: 80%;
     }
@@ -14,41 +14,41 @@
 
     .board-card-description {
         height: 80px;
-        /* border: tomato 2px solid; */
         overflow: auto;
     }
 
     .board-contacts {
         width: 133px;
         height: 45px;
-        /* overflow-y: hidden; */
         overflow: scroll;
-    }
-}
+    } 
+} */
+
 
 @media (max-width: 950px){
     .input-desktop{
         display: none;
     }
+
     .input-mobile{
         display: unset;
         width: 83%;
         padding-right: 0;
+        margin-bottom: 64px;
     }
+
     .add-task-mobile{
         display: unset;
         height: 50px;
+    }
 
-    }
-    .add-task-desktop{
-        display: none;
-    }
+    .add-task-desktop{display: none;}
+
     .mobile-header-container{
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 85%;
-        
     }
     
     .board-header-container{
@@ -57,20 +57,23 @@
         padding-left: 0;
         top: 100px;
     }
+
+    .board-main-container{
+        width: 100%;
+        margin: 0 70px 0 70px;
+    }
 }
+
 
 @media screen and (max-width: 800px) {
     .board-main-container {
         padding-left: 11px;
         width: 97%;
     }
-
-    .board-section {
-      
-    }
 }
 
-@media screen and (max-width: 700px) {
+
+/* @media screen and (max-width: 700px) {
     .board-main-container {
         flex-direction: column;
         display: flex;
@@ -81,9 +84,4 @@
         width: 100%;
     }
 
-}
-
-#todo-section {
-    border: tomato 2px solid;
-    margin-top: 49%;
-}
+} */
